@@ -4,16 +4,15 @@ const MongoClient = require('mongodb').MongoClient
 const PORT = 8000
 const cors = require('cors')
 const fs = require('fs')
-const { Console } = require('console')
 require('dotenv').config()
 
 let db,
     dbName = 'servants'
 
-    console.log(dbConnectionStr)
-
-MongoClient.connect(`${process.env.DATABASE}`, { useUnifiedTopology: true })
+MongoClient.connect(process.env.DATABASE, { useUnifiedTopology: true })
     .then(client => {
+        console.log(typeof process.env.DATABASE)
+
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
     })
