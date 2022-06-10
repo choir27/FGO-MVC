@@ -23,11 +23,10 @@
     </div>
     <img src = <%= info[i].image %> >
     <div class = 'flex stats'>
-        <img src = "/trash (2).png" class = 'delete'>
-
-        <div class = 'row'>
-        <img src = '/likes.png' class = 'likes'><span class = 'like'><%= info[i].likes %></span>
-        </div>
+        <div class 'row'>
+            <img src = "/trash (2).png" class = 'delete'>
+            <img src = '/likes.png' class = 'likes'><span><%= info[i].likes %></span>
+            </div>
     <h2>Max Attack: </h2> <span><%= info[i].attack %></span>
     <h2>Max Attack At Lv 100: </h2> <span><%= info[i].attackMax %></span>
     <h2>Max Attack At Lv 120: </h2> <span><%= info[i].attackGrail %></span>
@@ -35,6 +34,9 @@
     <h2>Max Health At Lv 100: </h2> <span><%= info[i].healthMax %></span>
     <h2>Max Health At Lv 120: </h2> <span><%= info[i].healthGrail %></span>
     <h2>Cost: </h2> <span><%= info[i].cost %></span>
+    </div>
+    <div class = 'row'>
+    <img src = '/likes.png' class = 'likes'><span><%= info[i].likes %></span>
     </div>
     </div>
 <% } %>
