@@ -8,10 +8,11 @@ const { Console } = require('console')
 require('dotenv').config()
 
 let db,
-    dbConnectionStr =  `${process.env.DATABASE}`,
     dbName = 'servants'
 
-MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+    console.log(dbConnectionStr)
+
+MongoClient.connect(`${process.env.DATABASE}`, { useUnifiedTopology: true })
     .then(client => {
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
