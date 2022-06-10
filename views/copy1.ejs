@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = 'stylesheet' href = '/css/copy.css'>
+</head>
+<body>
+    <header class = 'flex'>
+    <h1>Fate Grand Order Servants</h1>
+    <a class = 'data' href = '/'>Home</a>
+    </header>
+
+<% for(let i=0; i < info.length; i++) {%>
+        
+    <div class = 'box servant servants'>
+    <div class = 'flex info'>
+    <h2>Name: </h2> <span><%= info[i].name %></span>
+    <h2>Class:</h2>  <span><%= info[i].class %></span>
+    <h2>Rarity: </h2> <span><%= info[i].rarity %></span>
+    </div>
+    <img src = <%= info[i].image %> >
+    <div class = 'flex stats'>
+        <img src = "/trash (2).png" class = 'delete'>
+
+        <div class = 'row'>
+        <img src = '/likes.png' class = 'likes'><span class = 'like'><%= info[i].likes %></span>
+        </div>
+    <h2>Max Attack: </h2> <span><%= info[i].attack %></span>
+    <h2>Max Attack At Lv 100: </h2> <span><%= info[i].attackMax %></span>
+    <h2>Max Attack At Lv 120: </h2> <span><%= info[i].attackGrail %></span>
+    <h2>Max Health: </h2> <span><%= info[i].health %></span>
+    <h2>Max Health At Lv 100: </h2> <span><%= info[i].healthMax %></span>
+    <h2>Max Health At Lv 120: </h2> <span><%= info[i].healthGrail %></span>
+    <h2>Cost: </h2> <span><%= info[i].cost %></span>
+    </div>
+    </div>
+<% } %>
+
+    <script src = '/js/copy.js'></script>
+
+</body>
+</html>
