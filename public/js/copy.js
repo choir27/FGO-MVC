@@ -19,12 +19,12 @@ async function deleteServant(){
 let confirmation = confirm('Are you sure you want to delete this?')
 
 if(confirmation){
-  let info = this.parentNode.parentNode.childNodes[1].childNodes
-  let stats = this.parentNode.parentNode.childNodes[5].childNodes
+  let info = this.parentNode.parentNode.parentNode.childNodes[1].childNodes
+  let stats = this.parentNode.parentNode.parentNode.childNodes[5].childNodes
 
   const servantName = info[3].innerText
   const servantClass = info[7].innerText
-  const servantImage = this.parentNode.childNodes[3].innerText
+  const servantImage =  this.parentNode.parentNode.parentNode.childNodes[3]
   const rarity = info[11].innerText
   const attack = stats[5].innerText
   const attackMax = stats[9].innerText
@@ -71,12 +71,12 @@ Array.from(thumbText).forEach((element)=>{
 })
 
 async function addLike(){
-    let info = this.parentNode.parentNode.childNodes[1].childNodes
-    let stats = this.parentNode.parentNode.childNodes[5].childNodes
+  let info = this.parentNode.parentNode.parentNode.childNodes[1].childNodes
+  let stats = this.parentNode.parentNode.parentNode.childNodes[5].childNodes
 
     const servantName = info[3].innerText
     const servantClass = info[7].innerText
-    const servantImage = this.parentNode.parentNode.childNodes[3].src.split('/')[3]
+    const servantImage = this.parentNode.parentNode.parentNode.childNodes[3].src.split('/')[3]
     const rarity = info[11].innerText
     const attack = stats[5].innerText
     const attackMax = stats[9].innerText
@@ -85,7 +85,7 @@ async function addLike(){
     const healthMax = stats[21].innerText
     const healthGrail = stats[25].innerText
     const cost = stats[29].innerText
-    const likes =  Number(this.parentNode.childNodes[2].innerText)
+    const likes =  Number(this.parentNode.childNodes[4].innerText)
 
         try{
             const response = await fetch('addOneLike', {
