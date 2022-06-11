@@ -11,6 +11,7 @@ let db,
 
 MongoClient.connect(process.env.DATABASE, { useUnifiedTopology: true })
     .then(client => {
+
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
     })
