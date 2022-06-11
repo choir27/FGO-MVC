@@ -7,7 +7,7 @@
     "mongodb": "^4.7.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "name": "fgo-app",
   "version": "1.0.0",
