@@ -9,7 +9,7 @@ require('dotenv').config()
 let db,
     dbName = 'servants'
 
-MongoClient.connect(process.env.DATABASE, { useUnifiedTopology: true })
+MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true })
     .then(client => {
 
         console.log(`Connected to ${dbName} Database`)
