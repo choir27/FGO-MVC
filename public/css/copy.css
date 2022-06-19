@@ -12,6 +12,14 @@
     justify-content: center;
 }
 
+.servant{
+    padding-bottom: 2rem;
+}
+
+.servantImage{
+    width: 45%;
+}
+
 a{
     color: white;
     font-size: 2rem;
@@ -32,6 +40,7 @@ h1{
     justify-content: flex-end;
     align-items: center;
 }
+
 
 
 

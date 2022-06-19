@@ -18,10 +18,17 @@
     <div class = 'box servant servants'>
     <div class = 'flex info'>
     <h2>Name: </h2> <span><%= info[i].name %></span>
+    <h2>Gender: </h2> <span><%= info[i].gender %></span>
+    <h2>ID: </h2> <span><%= info[i].servantID %></span>
     <h2>Class:</h2>  <span><%= info[i].class %></span>
     <h2>Rarity: </h2> <span><%= info[i].rarity %></span>
+    <h2>Star Absorption:</h2><span><%= info[i].starAbsorption %></span>
+    <h2>Star Generation:</h2><span><%= info[i].starGeneration %></span>
+    <h2>Death Rate:</h2><span><%= info[i].deathRate %></span>
+    <h2>Alignments:</h2><span><%= info[i].alignments %></span>
+
     </div>
-    <img src = <%= info[i].image %> >
+    <img class = 'servantImage' src = <%= info[i].image %> >
     <div class = 'flex stats'>
         <div class 'row'>
             <img src = "/trash (2).png" class = 'delete'>
@@ -34,9 +41,23 @@
     <h2>Max Health At Lv 100: </h2> <span><%= info[i].healthMax %></span>
     <h2>Max Health At Lv 120: </h2> <span><%= info[i].healthGrail %></span>
     <h2>Cost: </h2> <span><%= info[i].cost %></span>
+    <h2>NP Charge:</h2><span><%= info[i].npCharge %></span>
+    <h2>NP Attack:</h2><span><%= info[i].npAttack %></span>
     </div>
     </div>
+
+    <a href= <%= info[i].name %>><%= info[i].name %></a>
+    <p><%= info[i].class %></p>
+    <form action="/comments" method="POST">
+        <input name="comments" placeholder="Add Comment Here"></input>
+        <button type="submit">Post</button>
+    </form>
+
 <% } %>
+
+
+  
+
 
     <script src = '/js/copy.js'></script>
 

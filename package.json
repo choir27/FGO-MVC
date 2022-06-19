@@ -11,8 +11,8 @@
   },
   "name": "fgo-app",
   "engines": {
-    "node": "12.11.1"
-    },
+    "node": "18.2.0"
+  },
   "main": "server.js",
   "author": "",
   "license": "ISC",

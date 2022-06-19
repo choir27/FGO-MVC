@@ -9,11 +9,15 @@ require('dotenv').config()
 let db,
     dbName = 'servants'
 
+let database,
+    databaseName = 'comments'
+
 MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true })
     .then(client => {
 
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
+        database = client.db(databaseName)
     })
     
 app.set('view engine', 'ejs')
@@ -23,6 +27,7 @@ app.use(express.static('image'))
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
 
 
 app.get('/',(request, response)=>{
@@ -42,23 +47,44 @@ app.get('/api/:servants',(request,response)=>{
 })
 
 
+app.get('/data/comments',(request, response)=>{
+    db.collection('servants').find().toArray()
+    .then(data =>{
+         response.render('comments.ejs', {info: data})
+    })
+    .catch(err => console.error(err))
+})
+
+app.post('/comments', (request,response)=>{
+    db.collection('comments').insertOne({
+        comments: request.body.comments, name: request.body.name
+    }) 
+    .then(result => {
+        response.redirect('/data/comments')
+    })
+    .catch(error => console.error(error))
+})
+
 app.post('/servants', (request, response) => {
-    db.collection('servants').insertOne({name: request.body.name,
+    db.collection('servants').insertOne({name: request.body.name, servantID : request.body.id, gender: request.body.gender,
     class: request.body.class, image: request.body.image, rarity: request.body.rarity, attack: request.body.attack, attackMax: request.body.attackMax, 
     attackGrail: request.body.attackGrail, health: request.body.health, healthMax: request.body.healthMax, healthGrail: request.body.healthGrail, 
-    cost: request.body.cost, likes: 0})
+    cost: request.body.cost, likes: 0,starAbsorption: request.body.starAbsorption, starGeneration: request.body.starGeneration, deathRate: request.body.deathRate,
+     alignments: request.body.alignments, npCharge: request.body.npCharge, npAttack: request.body.npAttack, comments: request.body.comments
+})
     .then(result => {
-
 response.redirect('/data')
     })
     .catch(error => console.error(error))
 })
 
 app.put('/addOneLike', (request, response) => {
-    db.collection('servants').updateOne({name: request.body.name,
+    db.collection('servants').updateOne({name: request.body.name, servantID : request.body.id, gender: request.body.gender,
         class: request.body.class, image: request.body.image, rarity: request.body.rarity, attack: request.body.attack, attackMax: request.body.attackMax, 
         attackGrail: request.body.attackGrail, health: request.body.health, healthMax: request.body.healthMax, healthGrail: request.body.healthGrail, 
-        cost: request.body.cost, likes: request.body.likes},{
+        cost: request.body.cost, likes: request.body.likes ,starAbsorption: request.body.starAbsorption, starGeneration: request.body.starGeneration, 
+        deathRate: request.body.deathRate, alignments: request.body.alignments, npCharge: request.body.npCharge, npAttack: request.body.npAttack, comments: request.body.comments
+    },{
             $set: {
                 likes:request.body.likes + 1
               }
@@ -98,6 +124,7 @@ app.get('/data',(request, response)=>{
         })
         .catch(err=>console.error(err))
 })
+
 
 app.listen(process.env.PORT || PORT, ()=>{  
     console.log(`Server running on port ${PORT}`)
