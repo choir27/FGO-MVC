@@ -41,7 +41,7 @@ app.get('/',(request, response)=>{
 app.get('/api/:servants',(request,response)=>{
     db.collection('servants').find().toArray()
     .then(data => {
-     response.json(data[0])
+     response.json(data)
    })
     .catch(error => console.error(error))
 })
