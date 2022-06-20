@@ -38,6 +38,15 @@ app.get('/',(request, response)=>{
     .catch(error => console.error(error))
 })
 
+app.get('/fate',(request, response)=>{
+    db.collection('servants').find().toArray()
+    .then(data => {
+        response.render('fgo-simulator.ejs', { info: data })
+    })
+    .catch(error => console.error(error))
+})
+
+
 app.get('/api/:servants',(request,response)=>{
     db.collection('servants').find().toArray()
     .then(data => {

@@ -1,0 +1,99 @@
+/* General
+   ========================================================================== */
+
+.one{
+    justify-content: center;
+    align-items: center;
+}
+
+.two,.skills,.deck{
+    justify-content: flex-end;
+}
+
+/* .skills,.deck{
+    height: 5rem;
+} */
+
+.spaceAround{
+    justify-content: space-around;
+}
+
+
+.flex{
+    display: flex;
+}
+
+.row{
+    flex-direction: row;
+}
+
+.column{
+    flex-direction: column;
+}
+
+.hidden{
+    display: none;
+}
+
+
+
+/* Skills
+   ========================================================================== */
+
+.deck img, .skills img{
+    margin-right: 2rem;
+}
+
+
+/* Deck
+   ========================================================================== */
+
+
+/* Buttons
+   ========================================================================== */
+
+div.button{
+    width: 48%;
+    margin-top: 2rem;
+}
+
+.but-alt{
+    width: 60%;
+    justify-content: space-around;
+}
+body *{
+    border: 3px solid black;
+}
+
+
+/* .buttons button{
+    margin-right: 2rem;
+} */
+
+
+/* Battle Hub
+   ========================================================================== */
+
+.battleHub{
+    justify-content: space-around;
+}
+
+.battleHub img{
+    width: 30%;
+}
+
+
+/* Progress
+   ========================================================================== */
+
+progress::-webkit-progress-value{
+ background: rgb(132, 169, 193);
+}
+
+progress#mana::-webkit-progress-value{
+    background: gold;
+}
+
+.progress{
+    border-radius: 50px;
+}

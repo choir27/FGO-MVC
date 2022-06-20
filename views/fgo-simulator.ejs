@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel = 'stylesheet' href = '/css/fate.css'>
+    <title>FGO Simulator</title>
+</head>
+<body>
+<!-- <a href = 'https://fgo-api.herokuapp.com/'>Make your team</a> -->
+<a href = '/'>Home</a>
+<a href = '/data'>Servants</a>
+
+    <main class = 'column flex one'>
+    <h1>FGO Simulator</h1>
+    <section class = 'row flex battleHub'>
+        <div class = 'column flex'>
+        <h2>Saber Alter</h2>
+        <h3>Class: Saber</h3>
+        <h2>Health:</h2>
+        <progress value="14051" max="14051" id="eHealth" ></progress>
+        <h2>Mana:</h2>
+        <div class = 'row flex'>
+        <span class = 'np1'>&#9898;</span>
+        <span class = 'np2'>&#9898;</span>
+        <span class = 'np3'>&#9898;</span>
+        <span class = 'np4'>&#9898;</span>
+        </div>
+        <span class = 'flex row'>Turn:<h2 id = 'turn'>1</h2></span>
+        </div>
+
+
+<img src = '/saberAlter.png'>
+
+<img src = <%= info[0].image %> id = 'player'>
+
+<div class = 'flex column'>
+    <span><%= info[0].name %></span>
+    <span><%= info[0].class %></span>
+
+<h2>Health:</h2>
+<progress value=<%= info[0].attackMax %> max=<%= info[0].attackMax %> id="pHealth"></progress>
+<h2>Mana:</h2>
+<progress id="pMana" value="00.00" max="100.00"></progress>
+</div>
+    </section>
+  
+</main>
+
+<section class = 'two flex row'>
+
+    <div class = 'row flex button'>
+        <div class = 'row flex but-alt'>
+        <button id = 'back' class = 'hidden'>Back</button>
+    
+        <button id = 'deck'>Deck</button>
+        <button id = 'skills'>Skills</button>
+        </div>
+        </div>
+    </section>
+
+<section class = 'row flex deck hidden'>
+<div class = 'spaceAround'>
+    <img src = '/arts.png' id = 'arts'>
+    <img src = '/arts.png' id = 'arts1'>
+    <img src = '/buster.png' id = 'buster'>
+    <img src = '/quick.png' id = 'quick'>
+    <img src = '/quick.png' id = 'quick1'>
+</div>
+</section>
+
+    <section class ='row flex skills hidden'>
+        <div class = 'spaceAround'>
+        <img src = '/Waterfield.png' id = 'waterfield'>
+        <img src = '/NPDrain.png' id = 'npDrain'>
+        <img src = '/Artsup.png' id = 'artsUp'>
+        </div>
+    </section>
+
+
+
+
+    <script src = '/js/fate.js'></script>
+</body>
+</html>
