@@ -19,8 +19,7 @@
 
         <% for(let i=0; i < info.length; i++) {%>
             <section class = 'comments flex column'>
-                <% if(info[i].name!==null && info[i].class !== null && info[i].image !== null) {%>  
-            <img class = 'servantImage' src = <%= info[i].image %>
+                <% if(info[i].name!==null && info[i].class !== null) {%>  
             <h2><%= info[i].name %></h2>
             <h2><%= info[i].class %></h2>
             <% } %>

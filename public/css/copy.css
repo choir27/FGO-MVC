@@ -42,6 +42,12 @@ h1{
 }
 
 
+
+
+body {
+    border: 3px solid black;
+}
+
 .like{
     width: 20%;
     margin: 0;
