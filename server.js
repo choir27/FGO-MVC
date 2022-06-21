@@ -119,6 +119,15 @@ app.delete('/deleteServant', (request, response) => {
     .catch(error => console.error(error))
 })
 
+app.delete('/deleteComment', (request, response) => {
+    db.collection('servants').deleteOne({comments: request.body.comments})
+    .then(data => {
+        response.json('Comment Deleted')
+    })
+    .catch(error => console.error(error))
+})
+
+
 
 const filePath = './views/copy.ejs';    
 const filePathCopy = './views/copy1.ejs';

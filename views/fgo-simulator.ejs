@@ -36,16 +36,15 @@
 <img src = '/saberAlter.png'>
 
 <img src = <%= info[0].image %>
-
-<div class = 'flex column'>
+<aside class = 'flex column'>
     <span><%= info[0].name %></span>
     <span><%= info[0].class %></span>
 
 <h2>Health:</h2>
-<progress value=<%= info[0].attackMax %> max=<%= info[0].attackMax %> id="pHealth"></progress>
+<progress value= <%= info[0].attackMax %> max=<%= info[0].attackMax %> id="pHealth"></progress>
 <h2>Mana:</h2>
 <progress id="pMana" value="00.00" max="100.00"></progress>
-</div>
+</aside>
     </section>
   
 </main>

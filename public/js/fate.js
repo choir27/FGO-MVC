@@ -26,11 +26,12 @@ class Fetch extends Fate{
     super(attack, servantClass, cost, deathRate, gender, health, name, npAttack, npCharge, rarity, servantID, starAbsorption, starGeneration)
     }
     getFetch(){
-        let url = 'https://fgo-api.herokuapp.com/api/servants'
+        let url = 'https://fgo-app.herokuapp.com/api/servants'
     
         fetch(url)
             .then(res=>res.json())
             .then(data=>{
+                console.log(data)
                 let servant = new Fate(data[0].attackMax,data[0].class,data[0].cost,data[0].deathRate,data[0].gender,data[0].healthMax,data[0].name,data[0].npAttack,data[0].npCharge,data[0].rarity,data[0].servantID,data[0].starAbsorption,data[0].starGeneration)
                 document.querySelector('.np1').innerHTML = '&#9899;' // fills in circle
             })
