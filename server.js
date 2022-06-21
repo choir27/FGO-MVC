@@ -9,15 +9,12 @@ require('dotenv').config()
 let db,
     dbName = 'servants'
 
-let database,
-    databaseName = 'comments'
 
 MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true })
     .then(client => {
 
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
-        database = client.db(databaseName)
     })
     
 app.set('view engine', 'ejs')
@@ -65,17 +62,21 @@ app.get('/data/comments',(request, response)=>{
 })
 
 app.post('/comments', (request,response)=>{
-    db.collection('comments').insertOne({
-        comments: request.body.comments, name: request.body.name
-    }) 
-    .then(result => {
-        response.redirect('/data/comments')
+    db.collection('servants').insertOne({name: request.body.name, servantID : request.body.servantID, gender: request.body.gender,
+        class: request.body.class, image: request.body.image, rarity: request.body.rarity, attack: request.body.attack, attackMax: request.body.attackMax, 
+        attackGrail: request.body.attackGrail, health: request.body.health, healthMax: request.body.healthMax, healthGrail: request.body.healthGrail, 
+        cost: request.body.cost, likes: request.body.likes ,starAbsorption: request.body.starAbsorption, starGeneration: request.body.starGeneration, 
+        deathRate: request.body.deathRate, alignments: request.body.alignments, npCharge: request.body.npCharge, npAttack: request.body.npAttack, comments: request.body.comments
     })
+        .then(result => {
+            response.redirect('/data/comments')
+
+        })
     .catch(error => console.error(error))
 })
 
 app.post('/servants', (request, response) => {
-    db.collection('servants').insertOne({name: request.body.name, servantID : request.body.id, gender: request.body.gender,
+    db.collection('servants').insertOne({name: request.body.name, servantID : request.body.servantID, gender: request.body.gender,
     class: request.body.class, image: request.body.image, rarity: request.body.rarity, attack: request.body.attack, attackMax: request.body.attackMax, 
     attackGrail: request.body.attackGrail, health: request.body.health, healthMax: request.body.healthMax, healthGrail: request.body.healthGrail, 
     cost: request.body.cost, likes: 0,starAbsorption: request.body.starAbsorption, starGeneration: request.body.starGeneration, deathRate: request.body.deathRate,
@@ -88,7 +89,7 @@ response.redirect('/data')
 })
 
 app.put('/addOneLike', (request, response) => {
-    db.collection('servants').updateOne({name: request.body.name, servantID : request.body.id, gender: request.body.gender,
+    db.collection('servants').updateOne({name: request.body.name, servantID : request.body.servantID, gender: request.body.gender,
         class: request.body.class, image: request.body.image, rarity: request.body.rarity, attack: request.body.attack, attackMax: request.body.attackMax, 
         attackGrail: request.body.attackGrail, health: request.body.health, healthMax: request.body.healthMax, healthGrail: request.body.healthGrail, 
         cost: request.body.cost, likes: request.body.likes ,starAbsorption: request.body.starAbsorption, starGeneration: request.body.starGeneration, 

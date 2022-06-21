@@ -5,23 +5,34 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel = 'stylesheet' href = '/css/copy.css'>
+        <link rel = 'stylesheet' href = '/css/comments.css'>
     </head>
     <body>
 
-        <header class = 'flex'>
+        <header class = 'grid'>
         <h1>Fate Grand Order Servants</h1>
+        <a href = '/data' class = 'data'>See Servant Data</a>
+        <a href = '/fate' class = 'data'>Simulator</a>
         <a class = 'data' href = '/'>Home</a>
         </header>
+
+
         <% for(let i=0; i < info.length; i++) {%>
-            <%= info[i].name %>
-            <%= info[i].class %>
+            <section class = 'comments flex column'>
+                <% if(info[i].name!==null && info[i].class !== null && info[i].image !== null) {%>  
+            <img class = 'servantImage' src = <%= info[i].image %>
+            <h2><%= info[i].name %></h2>
+            <h2><%= info[i].class %></h2>
+            <% } %>
 
-    <%= info[i].comments %>
-
-
+            <% if(info[i].comments!==null) {%>   
+        <ul class = 'list'>
+        <li> <%= info[i].comments %></li>
+        </ul>    
+    </section>
+        <% } %>
 <% } %>
-    <script src = '/js/copy.js'></script>
+    <script src = '/js/comments.js'></script>
 
 </body>
 </html>

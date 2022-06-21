@@ -12,10 +12,12 @@
     <h1>Fate Grand Order Servants</h1>
     <a class = 'data' href = '/'>Home</a>
     <a href = '/fate' class = 'data'>Simulator</a>
+    <a href = '/data/comments' class = 'data'>Comments</a>
+
     </header>
 
 <% for(let i=0; i < info.length; i++) {%>
-        
+    <% if(info[i].name!==null && info[i].attackGrail!==null && info[i].healthGrail && info[i].class) {%>   
     <div class = 'box servant servants'>
     <div class = 'flex info'>
     <h2>Name: </h2> <span><%= info[i].name %></span>
@@ -29,7 +31,7 @@
     <h2>Alignments:</h2><span><%= info[i].alignments %></span>
 
     </div>
-    <img class = 'servantImage' src = <%= info[i].image %> >
+    <img class = 'servantImage' src = <%= info[i].image %>
     <div class = 'flex stats'>
         <div class 'row'>
             <img src = "/trash (2).png" class = 'delete'>
@@ -54,6 +56,7 @@
         <button type="submit">Post</button>
     </form>
 
+<% } %>
 <% } %>
 
 

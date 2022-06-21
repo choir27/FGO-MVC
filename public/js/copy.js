@@ -84,8 +84,6 @@ async function addLike(){
   let info = this.parentNode.parentNode.parentNode.childNodes[1].childNodes
   let stats = this.parentNode.parentNode.parentNode.childNodes[5].childNodes
 
-console.log(stats)
-
     const servantName = info[3].innerText
     const gender = info[7].innerText
     const servantID = info[11].innerText
