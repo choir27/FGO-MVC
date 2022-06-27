@@ -1,7 +1,7 @@
 /* General
    ========================================================================== */
 
-.one{
+   .one{
     justify-content: center;
     align-items: center;
 }
@@ -9,7 +9,6 @@
 .two,.skills,.deck{
     justify-content: flex-end;
 }
-
 
 /* .skills,.deck{
     height: 5rem;
@@ -36,7 +35,28 @@
     display: none;
 }
 
+header, a{
+margin-bottom: 2rem;
+ padding-bottom: 1rem;
+background: rgb(60, 60, 60);
+color: white;
+font-size: 2rem;
+text-decoration: none;
+align-items: center;
+}
 
+header{
+    padding-top: 1rem;
+}
+
+nav{
+    width: 60%;
+    justify-content: space-around;
+}
+
+a:hover{
+    color: black;
+}
 
 /* Skills
    ========================================================================== */

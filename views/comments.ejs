@@ -15,10 +15,11 @@
         <a href = '/fate' class = 'data'>Simulator</a>
         <a class = 'data' href = '/'>Home</a>
         </header>
-
+<main>
 
         <% for(let i=0; i < info.length; i++) {%>
-            <section class = 'comments flex column'> 
+            
+            <section class = 'comments flex column info'> 
                 <% if(info[i].name!==null && info[i].class !== null) {%>
                     <div class = 'border flex column'>
             <h2><%= info[i].name %></h2>
@@ -39,14 +40,16 @@
                
                 </div>  
                 <aside  class = 'uComments'>
-                    <span> <%= info[i].comments %></span> 
-                                </aside>
-
+                    <h2> <%= info[i].comments %></h2> 
+                </aside>
+          
     </section>
 
-        <% } %>
+    <% } %>
+ 
 
 <% } %>
+</main>
     <script src = '/js/comments.js'></script>
 
 </body>

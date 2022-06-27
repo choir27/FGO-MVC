@@ -11,11 +11,17 @@
 </head>
 <body>
 <!-- <a href = 'https://fgo-api.herokuapp.com/'>Make your team</a> -->
+<header class = 'flex column'>
+<h1>FGO Simulator</h1>
+<nav class = 'flex row'>
 <a href = '/'>Home</a>
 <a href = '/data'>Servants</a>
 <a href = '/data/comments' class = 'data'>Comments</a>
+</nav>
+</header>
+
+
     <main class = 'column flex one'>
-    <h1>FGO Simulator</h1>
     <section class = 'row flex battleHub'>
         <div class = 'column flex'>
         <h2>Saber Alter</h2>
@@ -34,21 +40,28 @@
 
 
 <img src = '/saberAlter.png'>
+<% for(let i=0; i < info.length; i++) {%>
+    <% if(info[i].name !== null) {%>
 
-<img src = <%= info[0].image %>
-<aside class = 'flex column'>
-    <span><%= info[0].name %></span>
-    <span><%= info[0].class %></span>
+<img src = <%= info[i].image %> id = 'player'>
+
+<div class = 'flex column'>
+    <span><%= info[i].name %></span>
+    <span><%= info[i].class %></span>
 
 <h2>Health:</h2>
-<progress value= <%= info[0].attackMax %> max=<%= info[0].attackMax %> id="pHealth"></progress>
+<progress value=<%= info[i].attackMax %> max=<%= info[i].attackMax %> id="pHealth"></progress>
 <h2>Mana:</h2>
 <progress id="pMana" value="00.00" max="100.00"></progress>
-</aside>
+</div>
     </section>
   
 </main>
 
+<% } %>
+ 
+
+<% } %>
 <section class = 'two flex row'>
 
     <div class = 'row flex button'>
@@ -63,12 +76,14 @@
 
 <section class = 'row flex deck hidden'>
 <div class = 'spaceAround'>
-    <img src = '/arts.png' id = 'arts'>
-    <img src = '/arts.png' id = 'arts1'>
-    <img src = '/buster.png' id = 'buster'>
-    <img src = '/quick.png' id = 'quick'>
-    <img src = '/quick.png' id = 'quick1'>
+    <img src = '' id = 'card0'>
+    <img src = '' id = 'card1'>
+    <img src = '' id = 'card2'>
+    <img src = '' id = 'card3'>
+    <img src = '' id = 'card4'>
 </div>
+</section>
+<section id = 'icon'>
 </section>
 
     <section class ='row flex skills hidden'>

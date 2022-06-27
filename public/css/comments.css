@@ -13,7 +13,13 @@ body{
     background: no-repeat url('background.jpg') center/cover;
 }
 
+main{
+    margin: 2rem;
+}
+
 h1{
+    display: flex;
+    justify-content: center;
     margin-bottom: 2rem;
 }
 
@@ -38,21 +44,19 @@ header{
     padding-bottom: 1rem;
 }
 
-h1{
-    display: flex;
-    justify-content: center;
-}
 
 li{
     list-style-type: none;
 }
 
 .comments{
-    padding: 1rem;
     align-items: center;
+    padding-top: 1rem;
 }
 
-
+.info{
+    margin-top: 2rem;
+}
 
 .flex{
     display: flex;
@@ -82,27 +86,23 @@ div.row.flex{
 }
 
 
-.uComments span{
-    line-height: 2rem;
-}
-
 .uComments{
     margin-top: 2rem;
     text-align: center;
+    padding-bottom: 1rem;
 }
 
-.uComments, .border{
+    .border{
     border-bottom: 2px solid black;
     width: 100%;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2rem;
 }
 
-.uComments{
-    padding-bottom: 1rem;
 
-}
+h2{
+    font-size: 1.2rem;
+    line-height: 2rem;
 
-.border{
-    padding-bottom: 3rem;
 }

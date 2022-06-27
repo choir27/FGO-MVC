@@ -1,5 +1,5 @@
 class Fate{
-    constructor(attack, servantClass, cost, deathRate, gender, health, name, npAttack, npCharge, rarity, servantID, starAbsorption, starGeneration ){
+    constructor(attack, servantClass, cost, deathRate, gender, health, name, npAttack, npCharge, rarity, servantID, starAbsorption, starGeneration, skill1,skill2,skill3 ){
 this.attack = attack
 this.class= servantClass
 this.cost= cost
@@ -13,34 +13,57 @@ this.rarity= rarity
 this.servantID= servantID
 this.starAbsorption= starAbsorption
 this.starGeneration= starGeneration
+this.skill1 = skill1
+this.skill2 = skill2
+this.skill3 = skill3
+this.quick = .90
+this.arts = 1.00
+this.buster = 1.20
     }
-    
+    s1(){
+        let skill1 =  this.attack + this.attack* (this.arts+ (this.arts *this.skill1))
+          return skill1
+          //costdown 4 turns
+      }
+      s2(){
+         //apply invincible
+        //costdown 6 turns
+     }
+       s3(){
+           let skill3 = servant.attack + servant.attack * this.skill2
+            return skill3
+        //    Increases own critical star absorption for 1 turn. 500%
+        //    Increases own attack for 1 turn.
+        //    costdown 5 turns
+       }
 }
 
-let salter = new Fate(12408,"Saber",12,'19.2%',"Female","Artoria Pendragon (Alter)",'0.86%','3%',4,3,99,'9.9%')
-console.log(salter)
-
+let salter = new Fate(12408,"Saber",12,'19.2%',"Female",16514,"Artoria Pendragon (Alter)",'0.86%','3%','4 Star',3,99,'9.9%',.20,.100,.50)
+// console.log(salter)
+let servant
 
 class Fetch extends Fate{
-    constructor(attack, servantClass, cost, deathRate, gender, health, name, npAttack, npCharge, rarity, servantID, starAbsorption, starGeneration ){
-    super(attack, servantClass, cost, deathRate, gender, health, name, npAttack, npCharge, rarity, servantID, starAbsorption, starGeneration)
-    }
     getFetch(){
         let url = 'https://fgo-app.herokuapp.com/api/servants'
     
         fetch(url)
             .then(res=>res.json())
             .then(data=>{
-                console.log(data)
-                let servant = new Fate(data[0].attackMax,data[0].class,data[0].cost,data[0].deathRate,data[0].gender,data[0].healthMax,data[0].name,data[0].npAttack,data[0].npCharge,data[0].rarity,data[0].servantID,data[0].starAbsorption,data[0].starGeneration)
-                document.querySelector('.np1').innerHTML = '&#9899;' // fills in circle
-            })
+                // console.log(data)
+                for(let i =0;i<data.length;i++){
+                    if(data[i].name!==null){
+                        servant = new Fate(data[i].attackMax,data[i].class,data[i].cost,data[i].deathRate,data[i].gender,data[i].healthMax,data[i].name,data[i].npAttack,data[i].npCharge,data[i].rarity,data[i].servantID,data[i].starAbsorption,data[i].starGeneration)
+                        document.querySelector('.np1').innerHTML = '&#9899;' // fills in circle
+                    }
+                }
+                })
             .catch(err=>console.error(err))
     }
 }
 
 let fetchAPI = new Fetch()
 fetchAPI.getFetch()
+
 
 class Click{
     showSkills(){
@@ -75,6 +98,8 @@ click.goBack()
 click.showDeck()
 click.showSkills()
 
+// skills.skill1()
+// skills.skill3()
 // alignments: "Female"
 // attack: "13166"
 // attackGrail: "9261"
@@ -97,3 +122,54 @@ click.showSkills()
 // starAbsorption: "91"
 // starGeneration: "12.1%"
 // _id: "62af85df55da1c8b81971c2c"
+
+
+
+let url = 'https://api.atlasacademy.io/export/JP/nice_servant_lore_lang_en.json'
+
+fetch(url)
+  .then(res=>res.json())
+  .then(data=>{
+    data.forEach(ele=>{
+     if(ele.name === servant.name && ele.className === servant.class.toLowerCase()){
+        for(let i =0;i<ele.skills.length;i++){
+
+            // console.log(ele.skills[i].name)
+            // console.log(ele.skills[i].icon)
+
+            // console.log(ele.skills[i].functions)
+
+            ele.skills[i].functions.forEach(ele=>{
+                // console.log(ele.funcPopupIcon)
+           
+                if(ele.funcPopupIcon!==undefined ){
+              
+                    image = ele.funcPopupIcon.split('/')
+                    image = image[image.length-1]
+                //  console.log(image)
+                 console.log(addArr(image))
+                    let icon = document.createElement('img')
+                    icon.src = ele.funcPopupIcon
+                    document.querySelector('#icon').appendChild(icon)
+                }
+            })
+        }
+
+
+        deck(ele.cards)
+     }
+    })
+})
+
+function deck(arr){
+    for(let i =0;i<5;i++){
+        document.querySelector(`#card${i}`).src = `/${arr[i]}.png`
+    }
+}
+
+
+function addArr(a){
+    let array =[]
+    array.push(a)
+    return array
+}
