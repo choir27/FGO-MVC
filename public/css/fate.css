@@ -6,17 +6,13 @@
     align-items: center;
 }
 
-.two,.skills,.deck{
+.two,section.skills,section.deck{
     justify-content: flex-end;
 }
 
 /* .skills,.deck{
     height: 5rem;
 } */
-
-.spaceAround{
-    justify-content: space-around;
-}
 
 
 .flex{
@@ -69,7 +65,6 @@ a:hover{
 /* Deck
    ========================================================================== */
 
-
 /* Buttons
    ========================================================================== */
 
@@ -117,4 +112,54 @@ progress#mana::-webkit-progress-value{
 
 .progress{
     border-radius: 50px;
+}
+
+.spaceAround img{
+width: 15%;
+}
+
+ #icon{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2rem;
+ }
+
+ #icon img{
+    margin-right: .5rem;
+ }
+
+.hub{
+    height: 50vh;   
+}
+
+
+.deck, .skills{
+    width: 100%;
+    justify-content: flex-end;
+}
+
+
+.deck img{
+    width: 12%;
+}
+
+.skills img{
+    width: 15%;
+}
+
+.skills .spaceAround{
+    width: 25%;
+}
+
+.deck .spaceAround{
+    width: 47%;
+}
+
+.spaceAround{
+    justify-content: space-around;
+}
+
+div.row.flex.button{
+    display: flex;
+    justify-content: center;
 }

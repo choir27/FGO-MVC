@@ -136,20 +136,22 @@ fetch(url)
 
             // console.log(ele.skills[i].name)
             // console.log(ele.skills[i].icon)
-
+            // console.log(`/${ele.skills[i].icon}`)
+            
+// console.log(ele.skills[i].icon)
             // console.log(ele.skills[i].functions)
 
             ele.skills[i].functions.forEach(ele=>{
                 // console.log(ele.funcPopupIcon)
-           
                 if(ele.funcPopupIcon!==undefined ){
               
                     image = ele.funcPopupIcon.split('/')
                     image = image[image.length-1]
                 //  console.log(image)
-                 console.log(addArr(image))
+                //  console.log(addArr(image))
                     let icon = document.createElement('img')
                     icon.src = ele.funcPopupIcon
+                    // console.log(icon)
                     document.querySelector('#icon').appendChild(icon)
                 }
             })
@@ -157,19 +159,24 @@ fetch(url)
 
 
         deck(ele.cards)
-     }
+
+
+      
+            // console.log(ele.skills)
+            for(let index = 0;index<3;index++){
+                // console.log(ele.skills)
+            document.querySelector(`#skill${index}`).src = `${ele.skills[index].icon}`
+                }
+
+         }
     })
+
+
+    
 })
 
 function deck(arr){
     for(let i =0;i<5;i++){
         document.querySelector(`#card${i}`).src = `/${arr[i]}.png`
     }
-}
-
-
-function addArr(a){
-    let array =[]
-    array.push(a)
-    return array
 }

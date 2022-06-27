@@ -53,20 +53,15 @@ app.get('/api/:servants',(request,response)=>{
 })
 
 
-app.get('/data/comments',(request, response)=>{
-    db.collection('servants').find().toArray()
-    .then(data =>{
-         response.render('comments.ejs', {info: data})
-    })
-    .catch(err => console.error(err))
-})
+
 
 app.post('/comments', (request,response)=>{
     db.collection('servants').insertOne({name: request.body.name, servantID : request.body.servantID, gender: request.body.gender,
         class: request.body.class, image: request.body.image, rarity: request.body.rarity, attack: request.body.attack, attackMax: request.body.attackMax, 
         attackGrail: request.body.attackGrail, health: request.body.health, healthMax: request.body.healthMax, healthGrail: request.body.healthGrail, 
-        cost: request.body.cost, likes: request.body.likes ,starAbsorption: request.body.starAbsorption, starGeneration: request.body.starGeneration, 
-        deathRate: request.body.deathRate, alignments: request.body.alignments, npCharge: request.body.npCharge, npAttack: request.body.npAttack, comments: request.body.comments
+        cost: request.body.cost, starAbsorption: request.body.starAbsorption, starGeneration: request.body.starGeneration, 
+        deathRate: request.body.deathRate, alignments: request.body.alignments, npCharge: request.body.npCharge, npAttack: request.body.npAttack, 
+        comments: request.body.comments, likes: request.body.likes , commentLikes: 0
     })
         .then(result => {
             response.redirect('/data/comments')
@@ -79,8 +74,8 @@ app.post('/servants', (request, response) => {
     db.collection('servants').insertOne({name: request.body.name, servantID : request.body.servantID, gender: request.body.gender,
     class: request.body.class, image: request.body.image, rarity: request.body.rarity, attack: request.body.attack, attackMax: request.body.attackMax, 
     attackGrail: request.body.attackGrail, health: request.body.health, healthMax: request.body.healthMax, healthGrail: request.body.healthGrail, 
-    cost: request.body.cost, likes: 0,starAbsorption: request.body.starAbsorption, starGeneration: request.body.starGeneration, deathRate: request.body.deathRate,
-     alignments: request.body.alignments, npCharge: request.body.npCharge, npAttack: request.body.npAttack, comments: request.body.comments
+    cost: request.body.cost,starAbsorption: request.body.starAbsorption, starGeneration: request.body.starGeneration, deathRate: request.body.deathRate,
+     alignments: request.body.alignments, npCharge: request.body.npCharge, npAttack: request.body.npAttack, comments: request.body.comments,  likes: 0
 })
     .then(result => {
 response.redirect('/data')
@@ -92,8 +87,9 @@ app.put('/addOneLike', (request, response) => {
     db.collection('servants').updateOne({name: request.body.name, servantID : request.body.servantID, gender: request.body.gender,
         class: request.body.class, image: request.body.image, rarity: request.body.rarity, attack: request.body.attack, attackMax: request.body.attackMax, 
         attackGrail: request.body.attackGrail, health: request.body.health, healthMax: request.body.healthMax, healthGrail: request.body.healthGrail, 
-        cost: request.body.cost, likes: request.body.likes ,starAbsorption: request.body.starAbsorption, starGeneration: request.body.starGeneration, 
+        cost: request.body.cost,starAbsorption: request.body.starAbsorption, starGeneration: request.body.starGeneration, 
         deathRate: request.body.deathRate, alignments: request.body.alignments, npCharge: request.body.npCharge, npAttack: request.body.npAttack, comments: request.body.comments
+        ,likes: request.body.likes
     },{
             $set: {
                 likes:request.body.likes + 1
@@ -109,8 +105,6 @@ app.put('/addOneLike', (request, response) => {
         .catch(error => console.error(error))
     })
 
-
-
 app.delete('/deleteServant', (request, response) => {
     db.collection('servants').deleteOne({name: request.body.name})
     .then(result => {
@@ -119,13 +113,43 @@ app.delete('/deleteServant', (request, response) => {
     .catch(error => console.error(error))
 })
 
-app.delete('/deleteComment', (request, response) => {
+
+app.get('/data/comments',(request, response)=>{
+    db.collection('servants').find().toArray()
+    .then(data =>{
+        response.render('comments.ejs', {info: data})
+    })
+    .catch(err => console.error(err))
+})
+
+app.delete('/data/deleteComment', (request, response) => {
     db.collection('servants').deleteOne({comments: request.body.comments})
-    .then(data => {
+    .then(result => {
         response.json('Comment Deleted')
     })
     .catch(error => console.error(error))
 })
+
+app.put('/data/addCommentLike', (request, response) => {
+    db.collection('servants').updateOne({name: request.body.name, servantID : request.body.servantID, gender: request.body.gender,
+        class: request.body.class, image: request.body.image, rarity: request.body.rarity, attack: request.body.attack, attackMax: request.body.attackMax, 
+        attackGrail: request.body.attackGrail, health: request.body.health, healthMax: request.body.healthMax, healthGrail: request.body.healthGrail, 
+        cost: request.body.cost, starAbsorption: request.body.starAbsorption, starGeneration: request.body.starGeneration, 
+        deathRate: request.body.deathRate, alignments: request.body.alignments, npCharge: request.body.npCharge, npAttack: request.body.npAttack, 
+        comments: request.body.comments, likes: request.body.likes , commentLikes: request.body.commentLikes
+    },{
+            $set: {
+                commentLikes: Number(request.body.commentLikes) + 1              }
+        },{
+            sort: {_id: -1},
+            upsert: true
+        })
+        .then(result => {
+            console.log('Added One Like')
+            response.json('Like Added')
+        })
+        .catch(error => console.error(error))
+    })
 
 
 
