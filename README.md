@@ -12,7 +12,7 @@
   - [ ] Add query parameters to app to enable search function to API
 - [X] Used JS for DOM manipulation to add/remove content
 - [X] Added basic CSS to clean up design of page
-- [ ] Make landing page website using CSS and HTML
+- [X] Make landing page website using CSS and HTML
 - [X] Add page that uses API with JS
 - [ ] Use API documentation and ejs to create FGO simulator
   - [ ] Use DOM work for buttons relative to their intended function
