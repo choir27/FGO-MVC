@@ -10,13 +10,19 @@
 <body>
     <header class = 'flex'>
     <h1>Fate Grand Order Servants</h1>
-    <a class = 'data' href = '/'>Home</a>
-    <a href = '/data/comments' class = 'data'>Comments</a>
-    <a href = '/fate' class = 'data'>Simulator</a>
+    <nav>
+        <ul>
+            <li><a href = '/data' class = 'data'>See Servant Data</a></li>
+            <li><a href = '/data/comments' class = 'data'>Comments</a></li>
+            <li><a href = '/fate' class = 'data'>Simulator</a></li>
+            <li><a href = '/servants' class = 'data'>Add Servant</a></li>
+            <li><a href = '/' class = 'data'>Home</a></li>
+        </ul>
+    </nav>
     </header>
-
+  
 <% for(let i=0; i < info.length; i++) {%>
-    <% if(info[i].name!==null && info[i].attackGrail!==null && info[i].healthGrail && info[i].class) {%>   
+    <% if(info[i].name!==null && info[i].attackGrail!==null && info[i].healthGrail!==null && info[i].class!==null) {%>   
 
     <div class = 'box servant servants'>
     <div class = 'flex info'>

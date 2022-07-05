@@ -106,3 +106,18 @@ h2{
     line-height: 2rem;
 
 }
+
+
+li{
+    list-style-type: none;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+nav{
+    width: 80%;
+}

@@ -33,8 +33,7 @@
 
 header, a{
 margin-bottom: 2rem;
- padding-bottom: 1rem;
-background: rgb(60, 60, 60);
+padding-bottom: 1rem;
 color: white;
 font-size: 2rem;
 text-decoration: none;
@@ -42,6 +41,7 @@ align-items: center;
 }
 
 header{
+    background: rgb(60, 60, 60);
     padding-top: 1rem;
 }
 
@@ -50,8 +50,26 @@ nav{
     justify-content: space-around;
 }
 
-a:hover{
+ul li a:hover{
     color: black;
+}
+
+li{
+    list-style-type: none;
+}
+
+nav ul{
+    justify-content: space-around;
+    width: 100%;
+}
+
+nav{
+    width: 80%;
+}
+
+a,li{
+border-bottom: none;
+text-decoration: none;
 }
 
 /* Skills
@@ -77,14 +95,7 @@ div.button{
     width: 60%;
     justify-content: space-around;
 }
-body *{
-    border: 3px solid black;
-}
 
-
-/* .buttons button{
-    margin-right: 2rem;
-} */
 
 
 /* Battle Hub

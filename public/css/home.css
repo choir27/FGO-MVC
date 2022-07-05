@@ -1,0 +1,80 @@
+.flex{
+    display: flex;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+.row{
+    flex-direction: row;
+}
+
+.column{
+    flex-direction: column;
+}
+
+.flexHCenter{
+    justify-content: center;
+}
+
+.flexVCenter{
+    align-items: center;
+}
+
+
+a, body{
+    color: white;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    color: blue;
+}
+
+li{
+    list-style-type: none;
+}
+
+ul{
+    justify-content: space-around;
+    width: 100%;
+}
+
+nav{
+    width: 80%;
+ margin-top: 6rem;
+ background: rgb(255, 255, 255, .85);
+ border-radius: 5px;
+ padding: 3rem;
+}
+
+header{
+    background: no-repeat url('background1.png') center/cover;
+    height: 60vh;
+}
+
+main{
+    background: url('abby.png') #ADD8E6;
+    background-repeat: no-repeat;
+    background-size: 20%;
+    height: 200vh;
+}
+
+
+body{
+    font-size: 2rem;
+    color: white;
+}
+
+header a, header{
+    color: black;   
+}
+
+header a{
+    font-weight: bolder;
+    font-size: 3rem;
+}

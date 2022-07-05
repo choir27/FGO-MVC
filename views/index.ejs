@@ -13,9 +13,15 @@
     <code>
         <pre>https://fgo-api.herokuapp.com/api/servants</pre>
     </code>
-    <a href = '/data' class = 'data'>See Servant Data</a>
-    <a href = '/data/comments' class = 'data'>Comments</a>
-    <a href = '/fate' class = 'data'>Simulator</a>
+    <nav>
+        <ul>
+            <li><a href = '/data' class = 'data'>See Servant Data</a></li>
+            <li><a href = '/data/comments' class = 'data'>Comments</a></li>
+            <li><a href = '/fate' class = 'data'>Simulator</a></li>
+            <li><a href = '/servants' class = 'data'>Add Servant</a></li>
+            <li><a href = '/' class = 'data'>Home</a></li>
+        </ul>
+    </nav>
 </header>
 
 <form action = '/servants' method = "POST" class = 'flex servants'>
@@ -32,15 +38,15 @@
     </div>
     <div class = 'grid'>
    <h2>Max Attack:</h2> <input class = 'stats' type = 'text' name = 'attack'>
-   <h2>Max Attack at Lv 100:</h2> <input class = 'stats'  type = 'text' name = 'attackMax'>
-   <h2>Max Attack at Lv 120:</h2> <input required = 'required'  class = 'stats' type = 'text' name = 'attackGrail'>
+   <h2>Max Attack at Lv 100:</h2> <input class = 'stats'  type = 'text' name = 'attackGrail'>
+   <h2>Max Attack at Lv 120:</h2> <input required = 'required'  class = 'stats' type = 'text' name = 'attackMax'>
     </div>
 
 
 <div class = 'grid'>
     <h2>Max Health:</h2> <input class = 'stats' type = 'text' name = 'health'>
-   <h2>Max Health at Lv 100:</h2> <input  class = 'stats' type = 'text' name = 'healthMax'>
-   <h2>Max Health at Lv 120:</h2> <input required = 'required' class = 'stats' type = 'text' name = 'healthGrail'>
+   <h2>Max Health at Lv 100:</h2> <input  class = 'stats' type = 'text' name = 'healthGrail'>
+   <h2>Max Health at Lv 120:</h2> <input required = 'required' class = 'stats' type = 'text' name = 'healthMax'>
 </div>
 
 <div class = 'grid'>

@@ -1,3 +1,10 @@
+document.querySelector('#play').addEventListener('click',playMusic)
+
+function playMusic(){
+
+}
+
+
 class Fate{
     constructor(attack, servantClass, cost, deathRate, gender, health, name, npAttack, npCharge, rarity, servantID, starAbsorption, starGeneration, skill1,skill2,skill3 ){
 this.attack = attack
@@ -124,6 +131,14 @@ click.showSkills()
 // _id: "62af85df55da1c8b81971c2c"
 
 
+let url1 ='https://api.atlasacademy.io/export/JP/asset_storage.json'
+fetch(url1)
+    .then(res=>res.json())
+    .then(data=>{
+        console.log(data)
+        document.querySelector('#test').src = data[1024].fileName
+    })
+
 
 let url = 'https://api.atlasacademy.io/export/JP/nice_servant_lore_lang_en.json'
 
@@ -132,6 +147,7 @@ fetch(url)
   .then(data=>{
     data.forEach(ele=>{
      if(ele.name === servant.name && ele.className === servant.class.toLowerCase()){
+        // console.log(ele)
         for(let i =0;i<ele.skills.length;i++){
 
             // console.log(ele.skills[i].name)

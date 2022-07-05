@@ -20,14 +20,22 @@ MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true })
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.static('views'))
+app.use(express.static('audio'))
 app.use(express.static('image'))
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 
-
 app.get('/',(request, response)=>{
+    db.collection('servants').find().toArray()
+    .then(data =>{
+        response.render('home.ejs', {info: data})
+    })
+    .catch(err => console.error(err))
+})
+
+app.get('/servants',(request, response)=>{
     db.collection('servants').find().toArray()
     .then(data => {
         response.render('index.ejs', { info: data })

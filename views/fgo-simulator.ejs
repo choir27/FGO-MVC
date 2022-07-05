@@ -13,14 +13,23 @@
 <!-- <a href = 'https://fgo-api.herokuapp.com/'>Make your team</a> -->
 <header class = 'flex column'>
 <h1>FGO Simulator</h1>
-<nav class = 'flex row'>
-<a href = '/'>Home</a>
-<a href = '/data'>Servants</a>
-<a href = '/data/comments' class = 'data'>Comments</a>
+<nav>
+    <ul class = 'flex'>
+        <li><a href = '/data'>See Servant Data</a></li>
+        <li><a href = '/data/comments'>Comments</a></li>
+        <li><a href = '/fate'>Simulator</a></li>
+        <li><a href = '/servants'>Add Servant</a></li>
+        <li><a href = '/'>Home</a></li>
+    </ul>
 </nav>
 </header>
+<audio controls ><source src = '/background.mp3' type="audio/mp3"></audio>
+<audio controls ><source src = '/start.mp3' type="audio/mp3"></audio>
+<audio controls ><source src = '' type="audio/cpk.bytes" id = 'test'></audio>
 
-
+<button id ='play'>Play</button>
+<button id = 'mute'>Mute</button>
+<button id = 'unmute'>Unmute</button>
 
     <main class = 'column flex one'>
     <section class = 'row flex battleHub'>
@@ -51,7 +60,7 @@
     <span><%= info[i].class %></span>
 
 <h2>Health:</h2>
-<progress value=<%= info[i].attackMax %> max=<%= info[i].attackMax %> id="pHealth"></progress>
+<progress value= <%= info[i].attackMax %> max=<%= info[i].attackMax %> id="pHealth"></progress>
 <h2>Mana:</h2>
 <progress id="pMana" value="00.00" max="100.00"></progress>
 </div>
