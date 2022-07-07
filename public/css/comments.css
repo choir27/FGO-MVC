@@ -10,7 +10,7 @@ a{
     text-decoration: none;
 }
 body{
-    background: no-repeat url('background.jpg') center/cover;
+    background: no-repeat url('image/background.jpg') center/cover;
 }
 
 main{

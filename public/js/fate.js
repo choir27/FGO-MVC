@@ -193,6 +193,6 @@ fetch(url)
 
 function deck(arr){
     for(let i =0;i<5;i++){
-        document.querySelector(`#card${i}`).src = `/${arr[i]}.png`
+        document.querySelector(`#card${i}`).src = `/simulator/${arr[i]}.png`
     }
 }

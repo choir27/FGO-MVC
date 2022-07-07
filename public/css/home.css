@@ -14,11 +14,11 @@ html{
     flex-direction: column;
 }
 
-.flexHCenter{
+.justifyContent{
     justify-content: center;
 }
 
-.flexVCenter{
+.alignItems{
     align-items: center;
 }
 
@@ -53,14 +53,15 @@ nav{
 }
 
 header{
-    background: no-repeat url('background1.png') center/cover;
+    background: no-repeat url('image/background1.png') center/cover;
     height: 60vh;
 }
 
 main{
-    background: url('abby.png') #ADD8E6;
+    background: url('image/abby.png'),  url('image/hokusai.png') #ADD8E6;
     background-repeat: no-repeat;
-    background-size: 20%;
+    background-size: 20%, 58%;
+    background-position: 20px 50px, 832px 45px;
     height: 200vh;
 }
 
@@ -78,3 +79,14 @@ header a{
     font-weight: bolder;
     font-size: 3rem;
 }
+
+/* section1
+   ========================================================================== */
+
+   section img{
+    width: 40%;
+   }
+
+   body *{
+    border: 3px solid black;
+   }
