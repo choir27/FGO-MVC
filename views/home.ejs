@@ -9,20 +9,26 @@
     <link rel = 'stylesheet' href = '/css/home.css'>
     <title>FGO</title>
 </head>
-<body>
-    <header class = 'flex column justifyContent alignItems'>
-<h1>Fate Grand Order</h1>
-<nav>
+
+
+<nav class = 'nav'>
     <ul class = 'flex'>
+        <li><a href = '/' class = 'data'>Home</a></li>
+        <li><a href = '/servants' class = 'data'>Add Servant</a></li>
         <li><a href = '/data' class = 'data'>See Servant Data</a></li>
         <li><a href = '/data/comments' class = 'data'>Comments</a></li>
         <li><a href = '/fate' class = 'data'>Simulator</a></li>
-        <li><a href = '/servants' class = 'data'>Add Servant</a></li>
-        <li><a href = '/' class = 'data'>Home</a></li>
     </ul>
 </nav>
+
+<body class = 'flex column alignItems'>
+
+
+    <header class = 'flex column justifyContent alignItems'>
+<h1>Fate Grand Order</h1>
+
     </header>
-<body>
+
 
 <div class = 'padding flex alignItems column'>
     <section id = 'one'>
@@ -36,25 +42,48 @@ Originally released in Japan in 2015, the game reached China in 2016 and the Uni
 
 
     <main class = 'flex alignItems column'>
-        <section class = 'flex alignItems column section4'>
-            <h2> Add Servants </h2>
-            <img src = '/home/add.PNG'>
-        </section>
         <section class = 'flex alignItems column section1'>
-            <h2> Preview Added Servants </h2>
-            <img src = '/home/preview.PNG'>
-        </section>
-        <section class = 'flex alignItems column section3'>
-            <h2> Comments about Added Servants </h2>
-            <img src = '/home/comments.PNG'>
+            <a class = 'flex column alignItems'href= '/servants'>
+                <h2> Add Servants </h2>
+            <img src = '/home/add.PNG'></a>
         </section>
         <section class = 'flex alignItems column section2'>
+            <a class = 'flex column alignItems'href = '/data'>
+            <h2> Preview Added Servants </h2>
+            <img src = '/home/preview.PNG'>
+            </a>
+        </section>
+        <section class = 'flex alignItems column section3'>
+            <a class = 'flex column alignItems'href = '/comments'>
+            <h2> Comments about Added Servants </h2>
+            <img src = '/home/comments.PNG'>
+            </a>
+        </section>
+        <section class = 'flex alignItems column section4'>
+            <a class = 'flex column alignItems'href = '/fate'>
             <h2> Servant Simulator </h2>
             <img src = '/home/simulator.PNG'>
+            </a>
         </section>
 
     </div>
     </main>
+
+
+
+    <footer class = 'flex' id = 'footer'>
+          <nav class= "flex">
+            <small class = 'flex justifyContent alignItems'>FGO app &copy; choir</small>
+              <ul class = 'flex'>
+
+                <li><a href = '/' class = 'data'>Home</a></li>
+                <li><a href = '/servants' class = 'data'>Add Servant</a></li>
+                <li><a href = '/data' class = 'data'>Servant Data</a></li>
+                <li><a href = '/data/comments' class = 'data'>Comments</a></li>
+                <li><a href = '/fate' class = 'data'>Simulator</a></li>
+      </ul>
+      </nav>
+      </footer>
 
     <script src = '/js/home.js'></script>
 </body>

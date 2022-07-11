@@ -80,7 +80,7 @@ h2, span, .delete, .likes{
     width: 15%;
 }
 
-.servants, header.flex{
+.servants, header.flex, footer{
     background: rgb(60, 60, 60);
     color: white;
 }
@@ -116,3 +116,48 @@ nav ul{
 nav{
     width: 80%;
 }
+
+body{
+    padding: 0rem;
+    margin: 0rem;
+}
+
+
+footer{
+    margin-top: 3rem;
+    border-radius: 5px;
+    padding: 3rem;
+    justify-content: space-between;
+}
+   footer a, footer small, footer li, header li{
+       color: white;
+       list-style-type: none;
+   }
+
+   footer li{
+       margin-right: 3rem;
+   }
+   
+   footer nav{
+       justify-content: space-around;
+   }
+
+.justifyContent{
+   justify-content: center;
+}
+
+.alignItems{
+   align-items: center;
+}
+
+.column{
+   flex-direction: column;
+}
+
+.row{
+   flex-direction: row;
+}
+
+.flexbox{
+   display: flex;
+} 

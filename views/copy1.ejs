@@ -11,12 +11,12 @@
     <header class = 'flex'>
     <h1>Fate Grand Order Servants</h1>
     <nav>
-        <ul>
-            <li><a href = '/data' class = 'data'>See Servant Data</a></li>
+        <ul class = 'flexbox'>
+            <li><a href = '/' class = 'data'>Home</a></li>
+            <li><a href = '/servants' class = 'data'>Add Servant</a></li>
+            <li><a href = '/data' class = 'data'>Servant Data</a></li>
             <li><a href = '/data/comments' class = 'data'>Comments</a></li>
             <li><a href = '/fate' class = 'data'>Simulator</a></li>
-            <li><a href = '/servants' class = 'data'>Add Servant</a></li>
-            <li><a href = '/' class = 'data'>Home</a></li>
         </ul>
     </nav>
     </header>
@@ -24,7 +24,7 @@
 <% for(let i=0; i < info.length; i++) {%>
     <% if(info[i].name!==null && info[i].attackGrail!==null && info[i].healthGrail!==null && info[i].class!==null) {%>   
 
-    <div class = 'box servant servants'>
+    <section class = 'box servant servants'>
     <div class = 'flex info'>
     <h2>Name: </h2> <span><%= info[i].name %></span>
     <h2>Gender: </h2> <span><%= info[i].gender %></span>
@@ -38,9 +38,10 @@
     </div>
     <img class = 'servantImage' src = <%= info[i].image %> >
     <div class = 'flex stats'>
-        <div class 'row'>
+        <div class = 'row flexbox justifyContent alignItems icons'>
             <img src = "/trash (2).png" class = 'delete'>
-            <img src = '/likes.png' class = 'likes'><span><%= info[i].likes %></span>
+     <img src = '/likes.png' class = 'likes'> 
+     <div class = 'flexbox justifyContent alignItems'><span><%= info[i].likes %></span></div>
             </div>
     <h2>Max Attack: </h2> <span><%= info[i].attack %></span>
     <h2>Max Attack At Lv 100: </h2> <span><%= info[i].attackMax %></span>
@@ -52,16 +53,33 @@
     <h2>NP Charge:</h2><span><%= info[i].npCharge %></span>
     <h2>NP Attack:</h2><span><%= info[i].npAttack %></span>
     </div>
-    </div>
+</section>
+
+<section class = 'flexbox column alignItems form'>
+<div class = 'flexbox column alignItems'>
     <a href= <%= info[i].name %>><%= info[i].name %></a>
     <p><%= info[i].class %></p>
-    <form action="/comments" method="POST">
+    <form action="/comments" method="POST" class = 'flexbox column alignItems'>
         <input name="comments" placeholder="Add Comment Here"></input>
         <button type="submit">Post</button>
     </form>
+</div>
+</section>
 <% } %>
 <% } %>
   
+<footer class = 'flexbox' id = 'footer'>
+    <small class = 'flexbox justifyContent alignItems'>Illya Fansite &copy; choir</small>
+      <nav class= "flexbox">
+          <ul class = 'flexbox'>
+            <li><a href = '/' class = 'data'>Home</a></li>
+            <li><a href = '/servants' class = 'data'>Add Servant</a></li>
+            <li><a href = '/data' class = 'data'>Servant Data</a></li>
+            <li><a href = '/data/comments' class = 'data'>Comments</a></li>
+            <li><a href = '/fate' class = 'data'>Simulator</a></li>
+  </ul>
+  </nav>
+  </footer>
 
 
     <script src = '/js/copy.js'></script>

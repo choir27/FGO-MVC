@@ -30,15 +30,15 @@ html{
    ========================================================================== */
 
 a, body{
-    color: white;
+    color: black;
 }
 
 a{
     text-decoration: none;
 }
 
-a:hover{
-    color: blue;
+footer a:hover, .nav a:hover{
+    color: rgb(245, 228, 228);
 }
 
 
@@ -58,9 +58,6 @@ a:hover{
     color: white;
 }
 
-.padding{
-    padding: 4rem;
-}
 
 
 /* Nav
@@ -92,6 +89,7 @@ width: 80%;
 
 
 header{
+    width: 100%;
     background: no-repeat url('image/background1.png') center/cover;
     height: 60vh;
 }
@@ -176,3 +174,44 @@ header a{
     background: rgba(134, 44, 134, 0.5);
 
    }
+
+
+
+footer{
+    border-radius: 5px;
+    padding: 3rem;
+    justify-content: space-between;
+}
+
+   footer a, footer small, footer li, header li{
+       color: black;
+       list-style-type: none;
+   }
+
+   footer li{
+       margin-right: 3rem;
+   }
+   
+   footer nav{
+       justify-content: space-around;
+   }
+
+footer nav, footer{
+    width: 94%;
+}
+
+.nav{
+    position: fixed;
+    z-index: 1;
+}
+
+.nav li a{
+    color: black;
+
+}
+
+body{
+position: relative;
+z-index: 0;
+}
+
