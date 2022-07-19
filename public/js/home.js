@@ -14,8 +14,9 @@ function preloadImages(array) {
             }
         }
         list.push(img);
-        img.src = array[i];
+        // img.src = array[i];
+        document.querySelector(`.row${i}`).src = array[i]
     }
 }
 
-preloadImages(["abby.png", "background1.png", "url3.jpg"]);
+preloadImages(["/home/add.PNG","/home/preview.PNG","/home/comments.PNG","/home/simulator.PNG"])
