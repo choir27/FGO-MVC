@@ -39,6 +39,16 @@ app.get('/',(request, response)=>{
     .catch(err => console.error(err))
 })
 
+app.get('/data',(request, response)=>{
+    db.collection('servants').find().toArray()
+    .then(data =>{
+        response.render('servants.ejs', {info: data})
+    })
+    .catch(err => console.error(err))
+})
+
+
+
 app.get('/servants',(request, response)=>{
     db.collection('servants').find().toArray()
     .then(data => {
@@ -64,34 +74,69 @@ app.get('/api/:servants',(request,response)=>{
     .catch(error => console.error(error))
 })
 
-
-
-
-app.post('/comments', (request,response)=>{
-    db.collection('servants').insertOne({
+app.get('/comments',(request, response)=>{
+    db.collection('servants').find().toArray()
+    .then(data =>{
+        response.render('comments.ejs', {info: data})
+    })
+    .catch(err => console.error(err))
 })
+
+
+app.get('/home/:id', async(request, response)=>{
+    db.collection('servants').find().toArray()
         .then(result => {
-            response.redirect('/data/comments')
-
-        })
-    .catch(error => console.error(error))
+        let query = request.params.id // Your lookup to find Kiruya's data.  In this, req.params.id would be helpful.
+        for(let i = 0;i<result.length;i++){
+           if(result[i].firstName.toLowerCase()===query){
+           let info = result[i]
+            response.render('template.ejs', {info})
+           }
+        }
+    }).catch(err => console.error(err))
 })
+
+
 
 app.post('/servants', (request, response) => {
     db.collection('servants').insertOne({firstName: request.body.firstName, lastName: request.body.lastName,
-    image: request.body.image, gender: request.body.gender, servantID: request.body.servantID, servantClass: request.body.servantClass,
-    attack: request.body.attack, health: request.body.health, cost: request.body.cost, rarity: request.body.rarity, likes: 0
-})
+        image: request.body.image, gender: request.body.gender, servantID: request.body.servantID, servantClass: request.body.servantClass,
+        attack: request.body.attack, health: request.body.health, cost: request.body.cost, rarity: request.body.rarity, likes: request.body.likes,
+        Comments: { commentLikes: 0 , comments: request.body.comments} })
     .then(result => {
 response.redirect('/')
     })
     .catch(error => console.error(error))
 })
 
+
+app.put('/comments', (request, response) => {
+    db.collection('servants').updateOne({firstName: request.body.firstName, lastName: request.body.lastName,
+        image: request.body.image, gender: request.body.gender, servantID: request.body.servantID, servantClass: request.body.servantClass,
+        attack: request.body.attack, health: request.body.health, cost: request.body.cost, rarity: request.body.rarity, likes: request.body.likes,
+        Comments: { commentLikes: 0 , comments: request.body.comments }
+    },{
+            $set: {
+                comments: request.body.comments
+              }
+        },{
+            sort: {_id: -1},
+            upsert: true
+        })
+        .then(result => {
+            console.log('add comments')
+        })
+        .catch(error => console.error(error))
+    })
+
+
+
+
 app.put('/addOneLike', (request, response) => {
     db.collection('servants').updateOne({firstName: request.body.firstName, lastName: request.body.lastName,
         image: request.body.image, gender: request.body.gender, servantID: request.body.servantID, servantClass: request.body.servantClass,
-        attack: request.body.attack, health: request.body.health, cost: request.body.cost, rarity: request.body.rarity, likes: request.body.likes
+        attack: request.body.attack, health: request.body.health, cost: request.body.cost, rarity: request.body.rarity, likes: request.body.likes,
+        Comments: { commentLikes: request.body.commentLikes , comments: request.body.comments }
     },{
             $set: {
                 likes:request.body.likes + 1
@@ -107,6 +152,26 @@ app.put('/addOneLike', (request, response) => {
         .catch(error => console.error(error))
     })
 
+    app.put('/data/addCommentLike', (request, response) => {
+        db.collection('servants').updateOne({firstName: request.body.firstName, lastName: request.body.lastName,
+            image: request.body.image, gender: request.body.gender, servantID: request.body.servantID, servantClass: request.body.servantClass,
+            attack: request.body.attack, health: request.body.health, cost: request.body.cost, rarity: request.body.rarity, likes: request.body.likes,
+            Comments: { commentLikes: request.body.commentLikes , comments: request.body.comments}
+        },{
+                $set: {
+                    commentLikes: Number(request.body.commentLikes) + 1              }
+            },{
+                sort: {_id: -1},
+                upsert: true
+            })
+            .then(result => {
+                console.log('Added One Like')
+                response.json('Like Added')
+            })
+            .catch(error => console.error(error))
+        })
+
+
 app.delete('/deleteServant', (request, response) => {
     db.collection('servants').deleteOne({firstName: request.body.firstName})
     .then(result => {
@@ -116,14 +181,6 @@ app.delete('/deleteServant', (request, response) => {
 })
 
 
-app.get('/data/comments',(request, response)=>{
-    db.collection('servants').find().toArray()
-    .then(data =>{
-        response.render('comments.ejs', {info: data})
-    })
-    .catch(err => console.error(err))
-})
-
 app.delete('/data/deleteComment', (request, response) => {
     db.collection('servants').deleteOne({comments: request.body.comments})
     .then(result => {
@@ -132,38 +189,9 @@ app.delete('/data/deleteComment', (request, response) => {
     .catch(error => console.error(error))
 })
 
-app.put('/data/addCommentLike', (request, response) => {
-    db.collection('servants').updateOne({firstName: request.body.firstName, lastName: request.body.lastName,
-        image: request.body.image, gender: request.body.gender, servantID: request.body.servantID, servantClass: request.body.servantClass,
-        attack: request.body.attack, health: request.body.health, cost: request.body.cost, rarity: request.body.rarity, likes: request.body.likes,
-        comments: request.body.comments, commentLikes: request.body.commentLikes
-    },{
-            $set: {
-                commentLikes: Number(request.body.commentLikes) + 1              }
-        },{
-            sort: {_id: -1},
-            upsert: true
-        })
-        .then(result => {
-            console.log('Added One Like')
-            response.json('Like Added')
-        })
-        .catch(error => console.error(error))
-    })
+
     
     
-app.get('/home/:id', async(request, response)=>{
-        db.collection('servants').find().toArray()
-            .then(result => {
-            let query = request.params.id // Your lookup to find Kiruya's data.  In this, req.params.id would be helpful.
-            for(let i = 0;i<result.length;i++){
-               if(result[i].firstName.toLowerCase()===query){
-               let info = result[i]
-                response.render('template.ejs', {info})
-               }
-            }
-        }).catch(err => console.error(err))
-    })
 
 
 app.listen(process.env.PORT || PORT, ()=>{  

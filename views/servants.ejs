@@ -19,25 +19,14 @@
             <li><a href = '/fate' class = 'data'>Simulator</a></li>
         </ul>
     </nav>
-    </header>   
+    </header> 
+    
+    <% for(let i =0; i < info.length; i++) { %>
+    <a href = '/home/<%= info[i].firstName.toLowerCase() %>'> <%= info[i].firstName %> </a>
 
-    <%= info.firstName%>
-    <%= info.lastName%>
+    <% } %>
 
-    <img class = 'servantImage' src = '/<%= info.image %>' >
-    <%= info.cost%>
-    <%= info.attack%>
-    <%= info.health%>
-    <%= info.gender%>
-    <%= info.rarity%>
-    <%= info.servantClass%>
-    <%= info.likes%>
-
-    <form action="/comments" method="PUT" class = 'flexbox column alignItems'>
-        <input name="comments" placeholder="Add Comment Here"></input>
-        <button type="submit">Post</button>
-    </form>
-
+    
 <footer class = 'flexbox' id = 'footer'>
     <small class = 'flexbox justifyContent alignItems'>Illya Fansite &copy; choir</small>
       <nav class= "flexbox">
