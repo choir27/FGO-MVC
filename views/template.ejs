@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = 'stylesheet' href = '/css/copy.css'>
+</head>
+<body>
+    <header class = 'flex'>
+    <h1>Fate Grand Order Servants</h1>
+    <nav>
+        <ul class = 'flexbox'>
+            <li><a href = '/' class = 'data'>Home</a></li>
+            <li><a href = '/servants' class = 'data'>Add Servant</a></li>
+            <li><a href = '/data' class = 'data'>Servant Data</a></li>
+            <li><a href = '/data/comments' class = 'data'>Comments</a></li>
+            <li><a href = '/fate' class = 'data'>Simulator</a></li>
+        </ul>
+    </nav>
+    </header>   
+
+    <%= info.firstName%>
+    <%= info.lastName%>
+
+    <img class = 'servantImage' src = '/<%= info.image %>' >
+    <%= info.cost%>
+    <%= info.attack%>
+    <%= info.health%>
+    <%= info.gender%>
+    <%= info.rarity%>
+    <%= info.servantClass%>
+    <%= info.likes%>
+
+  
+<footer class = 'flexbox' id = 'footer'>
+    <small class = 'flexbox justifyContent alignItems'>Illya Fansite &copy; choir</small>
+      <nav class= "flexbox">
+          <ul class = 'flexbox'>
+            <li><a href = '/' class = 'data'>Home</a></li>
+            <li><a href = '/servants' class = 'data'>Add Servant</a></li>
+            <li><a href = '/data' class = 'data'>Servant Data</a></li>
+            <li><a href = '/data/comments' class = 'data'>Comments</a></li>
+            <li><a href = '/fate' class = 'data'>Simulator</a></li>
+  </ul>
+  </nav>
+  </footer>
+
+
+    <script src = '/js/copy.js'></script>
+
+</body>
+</html>
