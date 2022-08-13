@@ -39,7 +39,7 @@ app.get('/',(request, response)=>{
     .catch(err => console.error(err))
 })
 
-app.get('/data',(request, response)=>{
+app.get('/servants',(request, response)=>{
     db.collection('servants').find().toArray()
     .then(data =>{
         response.render('servants.ejs', {info: data})
@@ -49,20 +49,29 @@ app.get('/data',(request, response)=>{
 
 
 
-app.get('/servants',(request, response)=>{
+app.get('/add',(request, response)=>{
     db.collection('servants').find().toArray()
     .then(data => {
-        response.render('index.ejs', { info: data })
+        response.render('add.ejs', { info: data })
     })
     .catch(error => console.error(error))
 })
 
-app.get('/fate',(request, response)=>{
+app.get('/simulator',(request, response)=>{
     db.collection('servants').find().toArray()
     .then(data => {
-        response.render('fgo-simulator.ejs', { info: data })
+        response.render('simulator.ejs', { info: data })
     })
     .catch(error => console.error(error))
+})
+
+
+app.get('/comments',(request, response)=>{
+    db.collection('servants').find().toArray()
+    .then(data =>{
+        response.render('comments.ejs', {info: data})
+    })
+    .catch(err => console.error(err))
 })
 
 
@@ -74,13 +83,6 @@ app.get('/api/:servants',(request,response)=>{
     .catch(error => console.error(error))
 })
 
-app.get('/comments',(request, response)=>{
-    db.collection('servants').find().toArray()
-    .then(data =>{
-        response.render('comments.ejs', {info: data})
-    })
-    .catch(err => console.error(err))
-})
 
 
 app.get('/home/:id', async(request, response)=>{

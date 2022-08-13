@@ -4,25 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = 'stylesheet' href = '/css/reset.css'>
+    <link rel = 'stylesheet' href = '/css/normalize.css'>
     <link rel = 'stylesheet' href = '/css/style.css'>
+    <link rel = 'stylesheet' href = '/css/add.css'>
     <title>Document</title>
 </head>
 <body>
-    <header class = 'flex'>
-    <h1>Fate Grand Order Servants</h1>
-    <code>
-        <pre>https://fgo-api.herokuapp.com/api/servants</pre>
-    </code>
-    <nav>
-        <ul>
-            <li><a href = '/data' class = 'data'>See Servant Data</a></li>
-            <li><a href = '/data/comments' class = 'data'>Comments</a></li>
-            <li><a href = '/fate' class = 'data'>Simulator</a></li>
-            <li><a href = '/servants' class = 'data'>Add Servant</a></li>
-            <li><a href = '/' class = 'data'>Home</a></li>
-        </ul>
-    </nav>
+    <header class = 'flex column alignItems'>
+        <div class = 'banner'></div>
+<nav class = 'flex'>
+        <li><h2 class = 'logo'>Fate Grand Order</h2></li>s
+
+            <ul class = 'flex row'>
+                <li><a href = '/' class = 'data'>Home</a></li>
+                <li><a href = '/add' class = 'data'>Add Servant</a></li>
+                <li><a href = '/servants' class = 'data'>See Servant Data</a></li>
+                <li><a href = '/comments' class = 'data'>Comments</a></li>
+                <li><a href = '/simulator' class = 'data'>Simulator</a></li>
+            </ul>
+</nav>
+
+<section class = 'column alignItems flex'>
+<h1>Add Servant Data</h1>
+<span>Enter in information regarding Fate Grand Servants below and submit the data once everything is filled out.</span>
+
+<span>Use the link <code><pre>https://fgo-app.herokuapp.com/api/servants</pre></code> to access the added servant data API</span>
+
+<img src = '' alt = ''>
+</section>
+
 </header>
+
 
 <form action = '/servants' method = "POST" class = 'flex servants'>
      <div class = 'grid'>
@@ -57,10 +70,10 @@
       <nav class= "flexbox">
           <ul class = 'flexbox'>
             <li><a href = '/' class = 'data'>Home</a></li>
-            <li><a href = '/servants' class = 'data'>Add Servant</a></li>
-            <li><a href = '/data' class = 'data'>Servant Data</a></li>
-            <li><a href = '/data/comments' class = 'data'>Comments</a></li>
-            <li><a href = '/fate' class = 'data'>Simulator</a></li>
+            <li><a href = '/add' class = 'data'>Add Servant</a></li>
+            <li><a href = '/servants' class = 'data'>See Servant Data</a></li>
+            <li><a href = '/comments' class = 'data'>Comments</a></li>
+            <li><a href = '/simulator' class = 'data'>Simulator</a></li>
   </ul>
   </nav>
   </footer>

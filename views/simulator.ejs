@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel = 'stylesheet' href = '/css/fate.css'>
+    <link rel = 'stylesheet' href = '/css/simulator.css'>
     <title>FGO Simulator</title>
 </head>
 <body>
@@ -15,11 +15,11 @@
 <h1>FGO Simulator</h1>
 <nav>
     <ul class = 'flex'>
-        <li><a href = '/data'>See Servant Data</a></li>
-        <li><a href = '/data/comments'>Comments</a></li>
-        <li><a href = '/fate'>Simulator</a></li>
-        <li><a href = '/servants'>Add Servant</a></li>
-        <li><a href = '/'>Home</a></li>
+        <li><a href = '/' class = 'data'>Home</a></li>
+            <li><a href = '/add' class = 'data'>Add Servant</a></li>
+            <li><a href = '/servants' class = 'data'>See Servant Data</a></li>
+            <li><a href = '/comments' class = 'data'>Comments</a></li>
+            <li><a href = '/simulator' class = 'data'>Simulator</a></li>
     </ul>
 </nav>
 </header>
@@ -109,7 +109,18 @@
 
 </article>
 
-
-    <script src = '/js/fate.js'></script>
+<footer class = 'flexbox' id = 'footer'>
+    <small class = 'flexbox justifyContent alignItems'>Illya Fansite &copy; choir</small>
+      <nav class= "flexbox">
+          <ul class = 'flexbox'>
+            <li><a href = '/' class = 'data'>Home</a></li>
+        <li><a href = '/add' class = 'data'>Add Servant</a></li>
+        <li><a href = '/servants' class = 'data'>See Servant Data</a></li>
+        <li><a href = '/comments' class = 'data'>Comments</a></li>
+        <li><a href = '/simulator' class = 'data'>Simulator</a></li>
+  </ul>
+  </nav>
+  </footer>
+    <script src = '/js/simulator.js'></script>
 </body>
 </html>
