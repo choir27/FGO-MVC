@@ -8,85 +8,99 @@
     <link rel = 'stylesheet' href = '/css/normalize.css'>
     <link rel = 'stylesheet' href = '/css/style.css'>
     <link rel = 'stylesheet' href = '/css/add.css'>
-    <title>Document</title>
+    <title>Add Servant</title>
 </head>
 <body>
-    <header class = 'flex column alignItems'>
+    <header class = 'flex column alignItems justifyContent'>
         <div class = 'banner'></div>
 
-<nav class = 'flex'>
-        <li><h2 class = 'logo'>Fate Grand Order</h2></li>s
+        <nav class = 'flex'>
+            <li><h2 class = 'logo'>Fate Grand Order</h2></li>s
+    
+                <ul class = 'flex row'>
+                    <li><a href = '/'>Home</a></li>
+                    <li><a href = '/add'>Add Servant</a></li>
+                    <li><a href = '/servants'>See Servant Data</a></li>
+                    <li><a href = '/comments'>Comments</a></li>
+                    <li><a href = '/simulator'>Simulator</a></li>
+                </ul>
+        </nav>
+    </header>
 
-            <ul class = 'flex row'>
-                <li><a href = '/' class = 'data'>Home</a></li>
-                <li><a href = '/add' class = 'data'>Add Servant</a></li>
-                <li><a href = '/servants' class = 'data'>See Servant Data</a></li>
-                <li><a href = '/comments' class = 'data'>Comments</a></li>
-                <li><a href = '/simulator' class = 'data'>Simulator</a></li>
-            </ul>
-</nav>
 
-<section class = 'flex justifyContent'>
-    <div class = 'flex alignItems'>
-        <div class = 'flex column content'>
-            <h1>Add Servant Data</h1>
+
+
+
+<section class = 'flex justifyContent column alignItems'>
+        <div class = 'flex column alignItems data'>
+            <h1 class = 'flex justifyContent'>Add Servant Data</h1>
             <span>Enter in information regarding Fate Grand Servants below and submit the data once everything is filled out.</span>
 
             <span>Use the link below to access the added servant data API</span>
             <code><pre>https://fgo-app.herokuapp.com/api/servants</pre></code>
         </div>
-<img src = '/add/icon.png' alt = 'fgo mash kyrielight icon waltz in the moonlight lostroom'>
-    </div>
-</section>
-
-<i class="fa-solid fa-angle-down" id = 'arrow-down'><a href = '#one'></a></i>
-</header>
-
-<section id = 'one'>
-</section>
-
-<form action = '/servants' method = "POST" class = 'flex servants'>
-     <div class = 'grid'>
-    <h2>Image:</h2> <input required="required" type = 'file' id = 'image' name = 'image'>
-    <h2>First Name: </h2><input required="required" type = 'text' id = 'firstName' name = 'firstName'>
-    <h2>Last Name: </h2><input required="required" type = 'text' id = 'lastName' name = 'lastName'>
-
+        
+<form action = '/servants' method = "POST" class = 'flex alignItems column'>
+     <div class = 'flex'>
+        <input required="required" type = 'text' name = 'firstName' placeholder="First Name">
+        <input required="required" type = 'text' name = 'lastName' placeholder="Last Name">
      </div>
-     <div class = 'grid'>
-        <h2>Gender:</h2> <input required='required' type = 'text' name = 'gender'>
-        <h2>ID:</h2> <input required='required' type = 'text' name = 'servantID'>
-        <h2>Class:</h2> <input required='required' required="required" type = 'text' id = 'class' name = 'servantClass'>
-    </div>
-    <div class = 'grid'>
-   <h2>Max Attack:</h2> <input required='required' class = 'stats' type = 'text' name = 'attack'>
-   <h2>Rarity:</h2> <input required='required' type = 'text' name = 'rarity'>
-   <h2>Cost: </h2> <input required='required' class = 'stats' type = 'text' name ='cost'>
 
+    <div class = 'flex column alignItems'>
+        <label for = "image">Upload Image</label>
+        <input required="required" type = 'file' name = 'image' class = 'image'>
     </div>
 
-
-<div class = 'grid'>
-    <h2>Max Health:</h2> <input class = 'stats' type = 'text' name = 'health'>
-    <button type = 'submit' id ='submit' class = 'button'>Submit</button>
+<div class = 'flex'>
+    <input required='required' type = 'text' name = 'gender' placeholder="Gender">
+    <input required='required' type = 'text' name = 'servantID' placeholder='Servant ID Number'>
 </div>
 
+<div class = 'flex'>
+        <input required='required'  type = 'text' name = 'health' placeholder="Servant Health">
+        <input required='required' type = 'text' name = 'attack' placeholder="Servant Attack">
+</div>
+
+<div class = 'flex'>
+   <input required='required' type = 'text' name = 'rarity' placeholder="Servant Rarity">
+   <input required='required'  type = 'text' name ='cost' placeholder="Servant Cost Amount">
+</div>
+
+<div class = 'flex'>
+<input required='required' type = 'text' name = 'servantClass' placeholder="Servant Class">
+</div>
+
+<button required='required' type = 'submit' class = 'button'>Submit</button>
+
 </form>
+</section>
 
 
-<footer class = 'flexbox' id = 'footer'>
-    <small class = 'flexbox justifyContent alignItems'>Illya Fansite &copy; choir</small>
-      <nav class= "flexbox">
-          <ul class = 'flexbox'>
-            <li><a href = '/' class = 'data'>Home</a></li>
-            <li><a href = '/add' class = 'data'>Add Servant</a></li>
-            <li><a href = '/servants' class = 'data'>See Servant Data</a></li>
-            <li><a href = '/comments' class = 'data'>Comments</a></li>
-            <li><a href = '/simulator' class = 'data'>Simulator</a></li>
-  </ul>
-  </nav>
+<footer class = 'flex column alignItems' id = 'footer'>
+    <section class = 'flex icons'>
+    <i class="fa-brands fa-facebook-f"></i>
+    <i class="fa-brands fa-instagram"></i>
+    <i class="fa-brands fa-twitter"></i>
+    <i class="fa-brands fa-github"></i>
+    <i class="fa-solid fa-envelope"></i>
+    </section>
+      <nav>
+    
+          <ul class = 'flex justifyContent'>
+
+        <li><a href = '/'>Home</a></li>
+        <li><a href = '/add'>Add Servant</a></li>
+        <li><a href = '/servants'>See Servant Data</a></li>
+        <li><a href = '/comments'>Comments</a></li>
+        <li><a href = '/simulator'>Simulator</a></li>
+            </ul>
+     </nav>
+
+     <small>FGO app &copy; choir Design: HTML5 UP</small>
+    
   </footer>
-  
+
   <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
-    <script src = '/js/add.js'></script>
+  <script src = '/js/home.js'></script>
 </body>
 </html>

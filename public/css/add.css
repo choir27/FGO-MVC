@@ -1,0 +1,54 @@
+a{
+    color: white;
+}
+
+header{
+    z-index: 4;
+    position: fixed;
+    width: 100%;
+    height: 8vh;
+}
+
+.banner::after{
+    background: -moz-linear-gradient(top, rgba(23, 24, 32, 0.99), rgba(23, 24, 32, 0.99));
+    background: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.99), rgba(23, 24, 32, 0.99));
+    background: -ms-linear-gradient(top, rgba(23, 24, 32, 0.99), rgba(23, 24, 32, 0.99));
+    background: linear-gradient(top, rgba(23, 24, 32, 0.99), rgba(23, 24, 32, 0.99));
+}
+
+section{
+    position: relative;
+    padding-top: 12rem;
+    background: rgba(39, 40, 51, 0.965);
+}
+
+input{
+    background: transparent;
+    border-radius: 4px;
+    border: solid 1px rgba(255, 255, 255, 0.3);
+    width: 100%;
+    margin: 2rem 2rem 4rem 2rem;
+}
+
+form div{
+    width: 60%;
+    padding: 2rem;
+}
+
+.data{
+    border-bottom: 3px solid #e44c65;
+    padding-bottom: 3rem;
+}
+
+span, code{
+    padding-bottom: 1rem;
+}
+
+form{
+    width:80%;
+    padding: 8rem 3rem;
+}
+
+.image{
+    width: 94%;
+}

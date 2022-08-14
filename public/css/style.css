@@ -28,14 +28,16 @@ nav h2, nav ul{
 nav{
     justify-content: space-between;
     align-items: flex-start;
-}
-
-nav{
     width: 100%;
 }
 
 /*Font
    ========================================================================== */
+
+a, li, p, span, pre, input, button, h1, h2, h3, small, i, label{
+    color: white;
+}
+
 
 html{
     font-size: 62.5%;
@@ -51,9 +53,18 @@ li{
     list-style-type: none;
 }
 
-a, li, p, span, pre, input, button, small, i{
+a, li, p, span, pre, input, button, small, i, label{
     font-size: 2rem;
     line-height: 3.5rem;
+}
+
+i{
+    padding-bottom: 3rem;
+    font-size: 4rem;
+}
+
+i:hover{
+    cursor: pointer;
 }
 
 
@@ -82,20 +93,19 @@ a{
     text-decoration: none;
 }
 
-a:hover{
-    color: white;
-}
 
 .button{
     padding: 1rem 2rem;
-    border: 2px solid black;
-    background: none;
+    border: 0;
+    background: transparent;
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 30%);
     border-radius: 5px;
 }
 
 .button:hover{
     cursor: pointer;
-    background-color: rgb(247, 242, 242);
+color: #e44c65;
+border: 1px solid #e44c65;
 }
 
 .button:active{
@@ -105,6 +115,7 @@ a:hover{
 
 /* Footer
    ========================================================================== */
+
 
 #footer{
     height: 50vh;
@@ -121,4 +132,27 @@ a:hover{
     width: 20%;
 }
 
+/* Banner
+   ========================================================================== */
 
+
+.banner::after{
+    background: -moz-linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75));
+    background: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75));
+    background: -ms-linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75));
+    background: linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75));
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    height: 100%;
+    content: '';
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+header, img, a, li, p, span, pre, input, button, h1, h2, h3, small, i, #section1, #two, #three, #four{
+    position: relative;
+}

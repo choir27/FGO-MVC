@@ -16,10 +16,6 @@ img, a, li, p, span, pre, input, button, h1, h2, h3, small, i{
     display: block;
 }
 
-header, img, a, li, p, span, pre, input, button, h1, h2, h3, small, i, #section1, #two, #three, #four{
-    position: relative;
-}
-
 header section img{
     border-radius: 50%;
     height: 26rem;
@@ -66,37 +62,6 @@ body{
 nav a{
     color: rgba(255, 255, 255, 0.75);
  }
-
-.banner::after{
-    background: -moz-linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75));
-    background: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75));
-    background: -ms-linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75));
-    background: linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75));
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    height: 100%;
-    content: '';
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-}
-
-a, li, p, span, pre, input, button, h1, h2, h3, small, i{
-    color: white;
-}
-
-
-i{
-    padding-bottom: 3rem;
-    font-size: 4rem;
-}
-
-i:hover{
-    cursor: pointer;
-}
 
 /* Section 1
    ========================================================================== */
