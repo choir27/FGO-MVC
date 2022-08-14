@@ -13,6 +13,7 @@
 <body>
     <header class = 'flex column alignItems'>
         <div class = 'banner'></div>
+
 <nav class = 'flex'>
         <li><h2 class = 'logo'>Fate Grand Order</h2></li>s
 
@@ -25,17 +26,24 @@
             </ul>
 </nav>
 
-<section class = 'column alignItems flex'>
-<h1>Add Servant Data</h1>
-<span>Enter in information regarding Fate Grand Servants below and submit the data once everything is filled out.</span>
+<section class = 'flex justifyContent'>
+    <div class = 'flex alignItems'>
+        <div class = 'flex column content'>
+            <h1>Add Servant Data</h1>
+            <span>Enter in information regarding Fate Grand Servants below and submit the data once everything is filled out.</span>
 
-<span>Use the link <code><pre>https://fgo-app.herokuapp.com/api/servants</pre></code> to access the added servant data API</span>
-
-<img src = '' alt = ''>
+            <span>Use the link below to access the added servant data API</span>
+            <code><pre>https://fgo-app.herokuapp.com/api/servants</pre></code>
+        </div>
+<img src = '/add/icon.png' alt = 'fgo mash kyrielight icon waltz in the moonlight lostroom'>
+    </div>
 </section>
 
+<i class="fa-solid fa-angle-down" id = 'arrow-down'><a href = '#one'></a></i>
 </header>
 
+<section id = 'one'>
+</section>
 
 <form action = '/servants' method = "POST" class = 'flex servants'>
      <div class = 'grid'>
@@ -78,6 +86,7 @@
   </nav>
   </footer>
   
-    <script src = '/js/main.js'></script>
+  <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
+    <script src = '/js/add.js'></script>
 </body>
 </html>

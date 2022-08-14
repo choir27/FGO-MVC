@@ -1,0 +1,104 @@
+body{
+    background-image: url('/css/image/background3.jpg');
+    background-repeat: none;
+    background-position: center;
+    background-size: cover;
+}
+
+nav a{
+   color: rgba(255, 255, 255, 0.75);
+}
+
+header, img{
+    position: relative;
+}
+
+header{
+    height: 100vh;
+}
+
+
+.banner::after{
+    background: -moz-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95));
+    background: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95));
+    background: -ms-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95));
+    background: linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95));
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    height: 100%;
+    content: '';
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+a, li, p, span, pre, input, button, h1, h2, h3, small, i{
+    color: white;
+    position: relative;
+}
+
+header section img{
+    border-radius: 50%;
+    height: 26rem;
+}
+
+
+header section div{
+    width: 80%;
+}
+
+header section .content{
+    width: 100%;
+    align-items: flex-start;
+}
+
+.content span{
+    width: 80%;
+    padding-bottom: 2rem;
+}
+
+
+header section{
+    padding: 6rem;
+    padding-top: 8rem;
+    width: 70%;
+}
+
+header section span, .banner::after, code{
+    width: 100%;
+}
+
+header span{
+    width: 30%;
+}
+
+i{
+    padding-top: 3rem;
+    font-size: 4rem;
+}
+
+i:hover{
+    cursor: pointer;
+}
+
+
+header{
+    margin: 0rem;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    background: rgb(0,0,0,.6);
+  }
+header li, header h1, header h2, header a, header span, header img{
+    transition: 0.3s;
+    display: block;
+  }
+
+#one{
+height: 50vh;
+}
