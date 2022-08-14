@@ -1,3 +1,61 @@
+/* Header Layout
+   ========================================================================== */
+
+header, #section1, #two, #three, #four{
+    margin: 0rem;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    background: rgb(0,0,0,.6);
+    height: 105vh;
+}
+img, a, li, p, span, pre, input, button, h1, h2, h3, small, i{
+    transition: 0.3s;
+    display: block;
+}
+
+header, img, a, li, p, span, pre, input, button, h1, h2, h3, small, i, #section1, #two, #three, #four{
+    position: relative;
+}
+
+header section img{
+    border-radius: 50%;
+    height: 26rem;
+}
+
+header section div{
+    width: 80%;
+}
+
+header section .content{
+    width: 100%;
+    align-items: flex-start;
+}
+
+header .content span{
+    width: 80%;
+    padding-bottom: 2rem;
+}
+
+header section{
+    padding: 6rem;
+    padding-top: 8rem;
+    width: 70%;
+}
+
+header section span, .banner::after, code, .box, #two img, #three img, #four img{
+    width: 100%;
+}
+
+header span{
+    width: 30%;
+}
+
+/* Header Other Styles
+   ========================================================================== */
+
 body{
     background-image: url('/css/image/background3.jpg');
     background-repeat: none;
@@ -6,23 +64,14 @@ body{
 }
 
 nav a{
-   color: rgba(255, 255, 255, 0.75);
-}
-
-header, img{
-    position: relative;
-}
-
-header{
-    height: 100vh;
-}
-
+    color: rgba(255, 255, 255, 0.75);
+ }
 
 .banner::after{
-    background: -moz-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95));
-    background: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95));
-    background: -ms-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95));
-    background: linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95));
+    background: -moz-linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75));
+    background: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75));
+    background: -ms-linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75));
+    background: linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75));
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -37,46 +86,11 @@ header{
 
 a, li, p, span, pre, input, button, h1, h2, h3, small, i{
     color: white;
-    position: relative;
 }
 
-header section img{
-    border-radius: 50%;
-    height: 26rem;
-}
-
-
-header section div{
-    width: 80%;
-}
-
-header section .content{
-    width: 100%;
-    align-items: flex-start;
-}
-
-.content span{
-    width: 80%;
-    padding-bottom: 2rem;
-}
-
-
-header section{
-    padding: 6rem;
-    padding-top: 8rem;
-    width: 70%;
-}
-
-header section span, .banner::after, code{
-    width: 100%;
-}
-
-header span{
-    width: 30%;
-}
 
 i{
-    padding-top: 3rem;
+    padding-bottom: 3rem;
     font-size: 4rem;
 }
 
@@ -84,21 +98,86 @@ i:hover{
     cursor: pointer;
 }
 
-
-header{
-    margin: 0rem;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    transition: 0.5s;
-    background: rgb(0,0,0,.6);
-  }
-header li, header h1, header h2, header a, header span, header img{
-    transition: 0.3s;
-    display: block;
-  }
+/* Section 1
+   ========================================================================== */
 
 #one{
-height: 50vh;
+height: 40vh;
 }
+
+#section1 img{
+    width: 30%;
+}
+
+#section1{
+    padding-top: 2rem;
+    overflow: hidden;
+    height: 50vh;
+}
+
+#section1 a, #two a, #three a, #four a{
+    justify-content: space-around;
+    height: 100%;
+}
+
+#section1 p{
+    width: 30%;
+}
+
+#section1 .content{
+    width: 30%;
+}
+
+#section1 .content h2, #section1 .content span{
+  padding: 2rem;
+}
+
+/* Section 2-4
+   ========================================================================== */
+
+#two, #three, #four{
+    width: 30%;
+    height:100vh;
+}
+
+#two a, #three a, #four a{
+    padding: 5rem;
+}
+
+
+.box{
+    justify-content: flex-end;
+}
+
+.container{
+    align-items: flex-end;
+}
+
+.container i{
+color: black;
+}
+
+.container{
+    width: 80%;
+}
+
+.two{
+    background-image: url('/css/image/background5.jpg');
+}
+
+.three{
+    justify-content: flex-end;
+    background-image: url('/css/image/background1.png');
+}
+
+.four{
+    background-image: url('/css/image/background2.jpg');
+}
+
+.three, .two, .four{
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
