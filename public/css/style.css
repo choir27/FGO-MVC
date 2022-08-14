@@ -156,3 +156,9 @@ border: 1px solid #e44c65;
 header, img, a, li, p, span, pre, input, button, h1, h2, h3, small, i, #section1, #two, #three, #four{
     position: relative;
 }
+
+
+a{
+    color: white;
+}
+

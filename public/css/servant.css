@@ -1,0 +1,55 @@
+/* Servant
+   ========================================================================== */
+
+   a{
+    color: white;
+}
+
+header{
+    z-index: 4;
+    position: fixed;
+    width: 100%;
+    height: 8vh;
+}
+
+section{
+    position: relative;
+    padding: 8rem 2rem 0rem 2rem;
+    background: rgba(39, 40, 51, 0.965);
+}
+
+img{
+border-radius: 5px;
+width: 20%;
+}
+
+
+div, section a{
+    width: 100%;
+}
+
+section a{
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 5rem 0rem;
+    justify-content: space-around;
+}
+
+section div a div{
+    width: 50%;
+}
+
+.button:hover{
+border: 3px solid #e44c65;
+ color:  #e44c65
+
+}
+
+h2{
+    margin-right: 2rem;
+}
+
+h1{
+    width: 50%;
+    padding-bottom: 4rem;
+    border-bottom: 4px solid #e44c65;
+}

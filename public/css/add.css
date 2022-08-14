@@ -9,12 +9,6 @@ header{
     height: 8vh;
 }
 
-.banner::after{
-    background: -moz-linear-gradient(top, rgba(23, 24, 32, 0.99), rgba(23, 24, 32, 0.99));
-    background: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.99), rgba(23, 24, 32, 0.99));
-    background: -ms-linear-gradient(top, rgba(23, 24, 32, 0.99), rgba(23, 24, 32, 0.99));
-    background: linear-gradient(top, rgba(23, 24, 32, 0.99), rgba(23, 24, 32, 0.99));
-}
 
 section{
     position: relative;

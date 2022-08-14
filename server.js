@@ -106,7 +106,7 @@ app.post('/servants', (request, response) => {
         attack: request.body.attack, health: request.body.health, cost: request.body.cost, rarity: request.body.rarity, likes: request.body.likes,
         Comments: { commentLikes: 0 , comments: request.body.comments} })
     .then(result => {
-response.redirect('/')
+response.redirect('/servants')
     })
     .catch(error => console.error(error))
 })
