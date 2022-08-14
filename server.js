@@ -5,6 +5,8 @@ const PORT = 8000
 const cors = require('cors')
 const fs = require('fs')
 require('dotenv').config()
+const fetch = (...args) =>
+	import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 let db,
     dbName = 'servants'
@@ -88,14 +90,18 @@ app.get('/api/:servants',(request,response)=>{
 app.get('/home/:id', async(request, response)=>{
     db.collection('servants').find().toArray()
         .then(result => {
-        let query = request.params.id // Your lookup to find Kiruya's data.  In this, req.params.id would be helpful.
-        for(let i = 0;i<result.length;i++){
-           if(result[i].firstName.toLowerCase()===query){
-           let info = result[i]
-            response.render('template.ejs', {info})
-           }
-        }
-    }).catch(err => console.error(err))
+            fetch('https://api.atlasacademy.io/export/JP/nice_servant_lore_lang_en.json')
+                .then(res=>res.json())
+                .then(data=>{
+                    let query = request.params.id // Your lookup to find Kiruya's data.  In this, req.params.id would be helpful.
+                    for(let i = 0;i<result.length;i++){
+                       if(result[i].firstName.toLowerCase()===query){
+                       let info = result[i]
+                        response.render('template.ejs', {info, data})
+                       }
+                    }
+                    }).catch(err => console.error(err))
+                }).catch(error=>console.error(error))     
 })
 
 
@@ -103,8 +109,7 @@ app.get('/home/:id', async(request, response)=>{
 app.post('/servants', (request, response) => {
     db.collection('servants').insertOne({firstName: request.body.firstName, lastName: request.body.lastName,
         image: request.body.image, gender: request.body.gender, servantID: request.body.servantID, servantClass: request.body.servantClass,
-        attack: request.body.attack, health: request.body.health, cost: request.body.cost, rarity: request.body.rarity, likes: request.body.likes,
-        Comments: { commentLikes: 0 , comments: request.body.comments} })
+        attack: request.body.attack, health: request.body.health, cost: request.body.cost, rarity: request.body.rarity, likes: 0})
     .then(result => {
 response.redirect('/servants')
     })
@@ -112,33 +117,10 @@ response.redirect('/servants')
 })
 
 
-app.put('/comments', (request, response) => {
-    db.collection('servants').updateOne({firstName: request.body.firstName, lastName: request.body.lastName,
-        image: request.body.image, gender: request.body.gender, servantID: request.body.servantID, servantClass: request.body.servantClass,
-        attack: request.body.attack, health: request.body.health, cost: request.body.cost, rarity: request.body.rarity, likes: request.body.likes,
-        Comments: { commentLikes: 0 , comments: request.body.comments }
-    },{
-            $set: {
-                comments: request.body.comments
-              }
-        },{
-            sort: {_id: -1},
-            upsert: true
-        })
-        .then(result => {
-            console.log('add comments')
-        })
-        .catch(error => console.error(error))
-    })
-
-
-
-
 app.put('/addOneLike', (request, response) => {
     db.collection('servants').updateOne({firstName: request.body.firstName, lastName: request.body.lastName,
         image: request.body.image, gender: request.body.gender, servantID: request.body.servantID, servantClass: request.body.servantClass,
         attack: request.body.attack, health: request.body.health, cost: request.body.cost, rarity: request.body.rarity, likes: request.body.likes,
-        Comments: { commentLikes: request.body.commentLikes , comments: request.body.comments }
     },{
             $set: {
                 likes:request.body.likes + 1
@@ -154,11 +136,28 @@ app.put('/addOneLike', (request, response) => {
         .catch(error => console.error(error))
     })
 
+
+    app.put('/comments', (request, response) => {
+        db.collection('comments').updateOne({
+            commments: request.body.comments, likes: 0
+        },{
+                $set: {
+                    comments: request.body.comments
+                  }
+            },{
+                sort: {_id: -1},
+                upsert: true
+            })
+            .then(result => {
+                console.log('add comments')
+            })
+            .catch(error => console.error(error))
+        })
+
+
     app.put('/data/addCommentLike', (request, response) => {
-        db.collection('servants').updateOne({firstName: request.body.firstName, lastName: request.body.lastName,
-            image: request.body.image, gender: request.body.gender, servantID: request.body.servantID, servantClass: request.body.servantClass,
-            attack: request.body.attack, health: request.body.health, cost: request.body.cost, rarity: request.body.rarity, likes: request.body.likes,
-            Comments: { commentLikes: request.body.commentLikes , comments: request.body.comments}
+        db.collection('servants').updateOne({ 
+            commments: request.body.comments, likes: request.body.likes
         },{
                 $set: {
                     commentLikes: Number(request.body.commentLikes) + 1              }
@@ -172,15 +171,6 @@ app.put('/addOneLike', (request, response) => {
             })
             .catch(error => console.error(error))
         })
-
-
-app.delete('/deleteServant', (request, response) => {
-    db.collection('servants').deleteOne({firstName: request.body.firstName})
-    .then(result => {
-        response.json('Servant Deleted')
-    })
-    .catch(error => console.error(error))
-})
 
 
 app.delete('/data/deleteComment', (request, response) => {

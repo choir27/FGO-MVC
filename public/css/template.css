@@ -1,0 +1,43 @@
+a{
+    color: white;
+}
+
+header{
+    z-index: 4;
+    position: fixed;
+    width: 100%;
+    height: 8vh;
+}
+
+section{
+    position: relative;
+    padding: 10rem 2rem 4rem 2rem;
+    background: rgba(39, 40, 51, 0.965);
+}
+
+section, div{
+    width: 100%;
+}
+
+section div{
+    margin-bottom: 4rem;
+}
+
+
+
+input{
+    border: solid 1px rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    background: transparent;
+    margin-right: 2rem;
+}
+
+img{
+padding-left: 3rem;
+border-radius: 5px;
+width: 30%;
+}
+
+h2{
+   margin-right: 2rem;
+}

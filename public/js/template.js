@@ -1,3 +1,11 @@
+let url = 'https://api.atlasacademy.io/export/JP/nice_servant_lore_lang_en.json'
+
+fetch(url)
+    .then(res=>res.json())
+    .then(data=>{
+        console.log(data)
+    })
+
 // const deleteText = document.querySelectorAll('.delete')
 
 // Array.from(deleteText).forEach((element)=>{
