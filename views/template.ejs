@@ -28,19 +28,17 @@
     </header>
     
     <section class = 'flex column alignItems'>
-        <div class = 'flex '>
+        <div class = 'flex'>
     <img class = 'servantImage' src = '/<%= info.image %>' alt = 'Image of <%= info.firstName %> <%= info.lastName %>'>
     <div class = 'flex column alignItems'>
     <h1 class = 'flex justifyContent'><%= info.firstName%> <%= info.lastName%></h1>
     <div class = 'flex justifyContent'><h2>Health: <%= info.health%></h2><h2>Attack: <%= info.attack%></h2></div>
     <div class = 'flex justifyContent'><h2>Rarity: <%= info.rarity%></h2><h2>Class: <%= info.servantClass%></h2></div>
-    <h2><%= info.servantID %></h2>
     <div class = 'flex justifyContent'><h2>Cost: <%= info.cost%></h2><h2>Gender: <%= info.gender%></h2></div>
-
-
-    <h2>Likes: <%= info.likes%></h2>
+    <div class = 'flex justifyContent'><h2>Servant ID: <%= info.servantID %></h2><h2>Likes: <%= info.likes%></h2></div>
+  </div>
 </div>
-</div>
+
 
 <!-- appendPassive: (3) [{…}, {…}, {…}]
 appendSkillMaterials: {1: {…}, 2: {…}, 3: {…}, 4: {…}, 5: {…}, 6: {…}, 7: {…}, 8: {…}, 9: {…}}
@@ -104,71 +102,78 @@ valentineScript: [{…}]
    <% } %>
 
             <% const ascensions = {'0': 'First', '1': 'Second', '2': 'Third', '3': 'Fourth', '4': 'Last'} %>
-<h3> Max levels to reach next each ascension</h3>
+      <article class = 'flex'>
+        <div class = 'flex alignItems column  '> 
+            <h3> Max levels to reach next each ascension</h3>
    <% for(let keys in data[index].ascensionAdd.lvMax.ascension) { %>
-      <div class = 'flex'><h2><%= ascensions[keys]%> Ascension:</h2><h2>Level <%= data[index].ascensionAdd.lvMax.ascension[keys] %></h2></div>
+            <div class = 'flex'><span><%= ascensions[keys]%> Ascension: </span><span> Level <%= data[index].ascensionAdd.lvMax.ascension[keys] %></span></div>
    <% } %>
+        </div>
 
-  <span> Attribute: <% data[index].attribute %> </span>
+   <div class = 'flex alignItems column'>
+
+    <% data[index].classPassive.forEach(ele=>{ %>
+      <h3> <%= ele.name %></h3>
+      <img src = '<%= ele.icon %>'>
+    <% }) %>
+    </div>
+  </article>
+
+  <span> Attribute: <%= data[index].attribute %> </span>
   <h3><%= data[index].name %>'s Deck</h3>
-  <div class = 'flex'>
+  <div class = 'flex cards'>
   <% data[index].cards.forEach(ele=>{ %>
     <img src = '/simulator/<%= ele%>.png'>
  <% }) %>
   </div>
 
-
-  <% data[index].classPassive.forEach(ele=>{ %>
-    <h2> <%= ele.name %></h2>
-    <img src = '<%= ele.icon %>'>
-
-  <% }) %>
-
+ 
+<aside class = 'flex ascension'>
 <% for(let keys in data[index].extraAssets.charaFigure.ascension){ %>
   <img src = '<%= data[index].extraAssets.charaFigure.ascension[keys] %>'>
 <% } %>
-
 <% for(let keys in data[index].extraAssets.charaGraph.ascension){ %>
     <img src = '<%= data[index].extraAssets.charaGraph.ascension[keys] %>'>
   <% } %>
+</aside>
 </article>
 
+
+<form action="/comments" method="PUT">
+  <input name="comments" placeholder="Add Comment Here" ></input>
+  <button type="submit" class = 'button'>Post</button>
+</form>
 
 
 </section>
 
 
-<form action="/comments" method="PUT">
-    <input name="comments" placeholder="Add Comment Here" ></input>
-    <button type="submit" class = 'button'>Post</button>
-</form>
-
 
 <footer class = 'flex column alignItems' id = 'footer'>
-    <section class = 'flex icons'>
-    <i class="fa-brands fa-facebook-f"></i>
-    <i class="fa-brands fa-instagram"></i>
-    <i class="fa-brands fa-twitter"></i>
-    <i class="fa-brands fa-github"></i>
-    <i class="fa-solid fa-envelope"></i>
-    </section>
-      <nav>
-    
-          <ul class = 'flex justifyContent'>
+  <section class = 'flex icons'>
+  <i class="fa-brands fa-facebook-f"></i>
+  <i class="fa-brands fa-instagram"></i>
+  <i class="fa-brands fa-twitter"></i>
+  <i class="fa-brands fa-github"></i>
+  <i class="fa-solid fa-envelope"></i>
+  </section>
+    <nav>
+  
+        <ul class = 'flex justifyContent'>
 
-        <li><a href = '/'>Home</a></li>
-        <li><a href = '/add'>Add Servant</a></li>
-        <li><a href = '/servants'>See Servant Data</a></li>
-        <li><a href = '/comments'>Comments</a></li>
-        <li><a href = '/simulator'>Simulator</a></li>
-            </ul>
-     </nav>
+      <li><a href = '/' class = 'data'>Home</a></li>
+      <li><a href = '/add' class = 'data'>Add Servant</a></li>
+      <li><a href = '/servants' class = 'data'>See Servant Data</a></li>
+      <li><a href = '/comments' class = 'data'>Comments</a></li>
+      <li><a href = '/simulator' class = 'data'>Simulator</a></li>
+          </ul>
+   </nav>
 
-     <small>FGO app &copy; choir Design: HTML5 UP</small>
-    
-  </footer>
+   <small>FGO app &copy; choir Design: HTML5 UP</small>
+  
+</footer>
 
-  <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
-  <script src = '/js/template.js'></script>
+<script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
+<script src = '/js/home.js'></script>
 </body>
 </html>

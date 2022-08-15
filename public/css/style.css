@@ -34,7 +34,7 @@ nav{
 /*Font
    ========================================================================== */
 
-a, li, p, span, pre, input, button, h1, h2, h3, small, i, label{
+a, li, p, span, pre, input, button, h1, h2, h3, small, i, label, h4{
     color: white;
 }
 
@@ -53,7 +53,7 @@ li{
     list-style-type: none;
 }
 
-a, li, p, span, pre, input, button, small, i, label{
+a, li, p, span, pre, input, button, small, i, label, h4{
     font-size: 2rem;
     line-height: 3.5rem;
 }
@@ -84,6 +84,7 @@ h2{
 h3{
     font-size: 3rem;
 }
+
 
 small{
     font-size: 1rem;
