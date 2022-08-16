@@ -3,7 +3,14 @@ let url = 'https://api.atlasacademy.io/export/JP/nice_servant_lore_lang_en.json'
 fetch(url)
     .then(res=>res.json())
     .then(data=>{
-        console.log(data)
+        let array = []
+       for(let i = 0; i< data[271].profile.voices.length;i++){
+        for(let index = 0;index<data[271].profile.voices[i].voiceLines.length;index++){
+        array.push(data[271].profile.voices[i].voiceLines[index].audioAssets[0])
+        }
+       }
+ 
+
     })
 
 // const deleteText = document.querySelectorAll('.delete')
