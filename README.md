@@ -1,9 +1,9 @@
 # FGO-APP
 ![fgo-app](https://user-images.githubusercontent.com/66279068/186749361-d8e4e79a-6726-4a3b-88b3-0948b3ce9762.PNG)
 
-<div align= 'center'>
+<!-- <div align= 'center'>
 <a href = 'https://fgo-app.herokuapp.com//'><img src = 'https://user-images.githubusercontent.com/66279068/171734019-e53f6670-cfe3-4c33-8365-974362aa2a69.png'></a>
-</div>
+</div> -->
 
 # To Do List
 - [ ] Implement CSS for all pages, ranging from layouts, backgrounds, font styling, colors, etc.
