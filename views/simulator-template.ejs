@@ -29,9 +29,9 @@
 </header>
 
 <section>
-    <% for(let i = 0;i< data.length ; i++) {%>
-            <a href = '/simulator/<%= data[i].firstName %>' class = 'button'><%= data[i].firstName %><%= data[i].lastName %></a>
-        <% } %>
+    <h1 class = 'flex justifyContent'><%= info.firstName%> <%= info.lastName%></h1>
+    <div class = 'flex justifyContent'><h2>Health: <%= info.health%></h2><h2>Attack: <%= info.attack%></h2></div>
+
 </section>
 
 

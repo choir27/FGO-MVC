@@ -8,7 +8,7 @@
     <link rel = 'stylesheet' href = '/css/normalize.css'>
     <link rel = 'stylesheet' href = '/css/style.css'>
     <link rel = 'stylesheet' href = '/css/servant.css'>
-    <title>Add Servant</title>
+    <title>Servants</title>
 </head>
 <body>
     <header class = 'flex column alignItems justifyContent'>
@@ -17,13 +17,13 @@
         <nav class = 'flex'>
             <li><h2 class = 'logo'>Fate Grand Order</h2></li>s
     
-                <ul class = 'flex row'>
-                    <li><a href = '/'>Home</a></li>
-                    <li><a href = '/add'>Add Servant</a></li>
-                    <li><a href = '/servants'>See Servant Data</a></li>
-                    <li><a href = '/comments'>Comments</a></li>
-                    <li><a href = '/simulator'>Simulator</a></li>
-                </ul>
+            <ul class = 'flex row'>
+                <li><a href = '/'>Home</a></li>
+                <li><a href = '/add'>Add Servant</a></li>
+                <li><a href = '/servants'>See Servant Data</a></li>
+                <li><a href = '/gameplay'>Gameplay</a></li>
+                <li><a href = '/simulator'>Simulator</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -31,8 +31,9 @@
         <h1 class="justifyContent flex">List of Servant Links</h1>
 
     <% for(let i =0; i < info.length; i++) { %>
-            <a href = '/home/<%= info[i].firstName.toLowerCase() %>' class = 'flex alignItems'> <div class = 'flex alignItems column '><h2>Servant <%= [i+1] %>: </h2> <%= info[i].firstName %> <%= info[i].lastName %>'s page</div>
-    <img src = '/<%=info[i].image%>'> </a>
+            <a href = '/home/<%= info[i].servant.name.toLowerCase() %>' class = 'flex alignItems'> <div class = 'flex alignItems column '><h2>Servant <%= [i+1] %>: </h2> <%= info[i].servant.name %>'s page</div>
+    
+    <img src = '<%=info[i].servant.extraAssets.charaGraph.ascension[1] %>'> </a>
     <% } %>
     </section>
     

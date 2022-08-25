@@ -6,11 +6,10 @@ header, #section1, #two, #three, #four{
     z-index: 1;
     top: 0;
     left: 0;
-    overflow-x: hidden;
     transition: 0.5s;
     background: rgb(0,0,0,.6);
-    height: 105vh;
 }
+
 img, a, li, p, span, pre, input, button, h1, h2, h3, small, i{
     transition: 0.3s;
     display: block;
@@ -59,9 +58,6 @@ body{
     background-size: cover;
 }
 
-nav a{
-    color: rgba(255, 255, 255, 0.75);
- }
 
 /* Section 1
    ========================================================================== */

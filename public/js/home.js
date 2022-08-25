@@ -5,15 +5,15 @@ document.querySelector('.arrow-down3').addEventListener('click',scrollDown3)
 document.querySelector('.arrow-down4').addEventListener('click',scrollDown4)
 
 function scrollDown(){
-   window.scrollTo({ top: 800, behavior: 'smooth' })
+   window.scrollTo({ top: 700, behavior: 'smooth' })
 }
 
 function scrollDown1(){
-   window.scrollTo({ top: 1600, behavior: 'smooth' })
+   window.scrollTo({ top: 1400, behavior: 'smooth' })
 }
 
 function scrollDown2(){
-   window.scrollTo({ top: 2160, behavior: 'smooth' })
+   window.scrollTo({ top: 2140, behavior: 'smooth' })
 }
 
 function scrollDown3(){

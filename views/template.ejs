@@ -8,7 +8,7 @@
     <link rel = 'stylesheet' href = '/css/normalize.css'>
     <link rel = 'stylesheet' href = '/css/style.css'>
     <link rel = 'stylesheet' href = '/css/template.css'>
-    <title>Add Servant</title>
+    <title><%= info.firstName%> <%= info.lastName%></title>
 </head>
 <body>
     <header class = 'flex column alignItems justifyContent'>
@@ -17,142 +17,99 @@
         <nav class = 'flex'>
             <li><h2 class = 'logo'>Fate Grand Order</h2></li>s
     
-                <ul class = 'flex row'>
-                    <li><a href = '/'>Home</a></li>
-                    <li><a href = '/add'>Add Servant</a></li>
-                    <li><a href = '/servants'>See Servant Data</a></li>
-                    <li><a href = '/comments'>Comments</a></li>
-                    <li><a href = '/simulator'>Simulator</a></li>
-                </ul>
+            <ul class = 'flex row'>
+              <li><a href = '/'>Home</a></li>
+              <li><a href = '/add'>Add Servant</a></li>
+              <li><a href = '/servants'>See Servant Data</a></li>
+              <li><a href = '/gameplay'>Gameplay</a></li>
+              <li><a href = '/simulator'>Simulator</a></li>
+          </ul>
         </nav>
     </header>
     
-    <section class = 'flex column alignItems'>
-        <div class = 'flex'>
-    <img class = 'servantImage' src = '/<%= info.image %>' alt = 'Image of <%= info.firstName %> <%= info.lastName %>'>
-    <div class = 'flex column alignItems'>
-    <h1 class = 'flex justifyContent'><%= info.firstName%> <%= info.lastName%></h1>
-    <div class = 'flex justifyContent'><h2>Health: <%= info.health%></h2><h2>Attack: <%= info.attack%></h2></div>
-    <div class = 'flex justifyContent'><h2>Rarity: <%= info.rarity%></h2><h2>Class: <%= info.servantClass%></h2></div>
-    <div class = 'flex justifyContent'><h2>Cost: <%= info.cost%></h2><h2>Gender: <%= info.gender%></h2></div>
-    <div class = 'flex justifyContent'><h2>Servant ID: <%= info.servantID %></h2><h2>Likes: <%= info.likes%></h2></div>
-  </div>
-</div>
+<section class = 'flex column alignItems'>
+  <h2><%= info.servant.className %></h2>
+  <h2><%= info.servant.gender %></h2>
+  <h2><%= info.servant.lvMax %></h2>
+  <h2><%= info.servant.atkMax %></h2>
+  <h2><%= info.servant.hpMax %></h2>
+  <h2><%= info.servant.cost %></h2>
+  <h2><%= info.servant.collectionNo %></h2>
+  <h2><%= info.servant.name %></h2>
 
+  <article class = 'flex'>
+<% for(let i = 0; i< info.servant.cards.length; i++) { %>
 
-<!-- appendPassive: (3) [{…}, {…}, {…}]
-appendSkillMaterials: {1: {…}, 2: {…}, 3: {…}, 4: {…}, 5: {…}, 6: {…}, 7: {…}, 8: {…}, 9: {…}}
-ascensionMaterials: {0: {…}, 1: {…}, 2: {…}, 3: {…}}
-atkGrowth: (120) [1522, 1567, 1620, 1674, 1735, 1795, 1864, 1925, 2001, 2069, 2146, 2229, 2305, 2389, 2480, 2572, 2663, 2754, 2853, 2952, 3051, 3158, 3257, 3371, 3478, 3584, 3698, 3812, 3927, 4048, 4163, 4284, 4406, 4520, 4642, 4771, 4893, 5015, 5137, 5259, 5388, 5510, 5631, 5753, 5875, 6004, 6126, 6240, 6362, 6484, 6598, 6720, 6834, 6948, 7062, 7169, 7275, 7390, 7489, 7595, 7694, 7793, 7892, 7983, 8075, 8166, 8257, 8341, 8417, 8501, 8577, 8645, 8722, 8782, 8851, 8912, 8973, 9026, 9079, 9133, 9224, 9323, 9414, 9513, 9612, 9703, 9802, 9901, 9993, 10091, 10190, 10282, 10381, 10480, 10571, 10670, 10769, 10860, 10959, 11058, …]
-bondEquip: 9303330
-bondGrowth: (15) [2000, 5000, 9000, 14000, 20000, 230000, 460000, 730000, 1080000, 1480000, 2570000, 3800000, 5160000, 6660000, 8300000]
-cardDetails: {arts: {…}, buster: {…}, quick: {…}, extra: {…}}
-classPassive: (2) [{…}, {…}]
-coin: {summonNum: 50, item: {…}}
-costumeMaterials: {}
-expFeed: (120) [12000, 12010, 12020, 12030, 12040, 12050, 12060, 12070, 12080, 12090, 12100, 12110, 12120, 12130, 12140, 12150, 12160, 12170, 12180, 12190, 12200, 12210, 12220, 12230, 12240, 12250, 12260, 12270, 12280, 12290, 12300, 12310, 12320, 12330, 12340, 12350, 12360, 12370, 12380, 12390, 12400, 12410, 12420, 12430, 12440, 12450, 12460, 12470, 12480, 12490, 12500, 12510, 12520, 12530, 12540, 12550, 12560, 12570, 12580, 12590, 12600, 12610, 12620, 12630, 12640, 12650, 12660, 12670, 12680, 12690, 12700, 12710, 12720, 12730, 12740, 12750, 12760, 12770, 12780, 12790, 12800, 12810, 12820, 12830, 12840, 12850, 12860, 12870, 12880, 12890, 12900, 12910, 12920, 12930, 12940, 12950, 12960, 12970, 12980, 12990, …]
-expGrowth: (120) [0, 100, 400, 1000, 2000, 3500, 5600, 8400, 12000, 16500, 22000, 28600, 36400, 45500, 56000, 68000, 81600, 96900, 114000, 133000, 154000, 177100, 202400, 230000, 260000, 292500, 327600, 365400, 406000, 449500, 496000, 545600, 598400, 654500, 714000, 777000, 843600, 913900, 988000, 1066000, 1148000, 1234100, 1324400, 1419000, 1518000, 1621500, 1729600, 1842400, 1960000, 2082500, 2210000, 2342600, 2480400, 2623500, 2772000, 2926000, 3085600, 3250900, 3422000, 3599000, 3782000, 3971100, 4166400, 4368000, 4576000, 4790500, 5011600, 5239400, 5474000, 5715500, 5964000, 6219600, 6482400, 6752500, 7030000, 7315000, 7607600, 7907900, 8216000, 8532000, 8856000, 9188100, 9528400, 9877000, 10234000, 10599500, 10973600, 11356400, 11748000, 12148500, 12567000, 13021900, 13532000, 14116500, 14795000, 15587500, 16514400, 17596500, 18855000, 20311500, …]
-extraAssets: {charaGraph: {…}, faces: {…}, charaGraphEx: {…}, charaGraphName: {…}, narrowFigure: {…}, …}
-extraPassive: (18) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-hitsDistribution: {arts: Array(2), buster: Array(4), quick: Array(4), extra: Array(5)}
-hpGrowth: (120) [1976, 2038, 2110, 2183, 2266, 2349, 2443, 2526, 2629, 2723, 2826, 2941, 3044, 3159, 3283, 3408, 3532, 3657, 3792, 3927, 4061, 4207, 4342, 4497, 4643, 4788, 4944, 5099, 5255, 5421, 5577, 5743, 5909, 6064, 6230, 6407, 6573, 6739, 6905, 7071, 7248, 7414, 7580, 7746, 7912, 8088, 8254, 8410, 8576, 8742, 8898, 9064, 9219, 9375, 9531, 9676, 9821, 9977, 10112, 10257, 10392, 10527, 10662, 10786, 10911, 11035, 11160, 11274, 11378, 11492, 11596, 11689, 11793, 11876, 11970, 12053, 12136, 12208, 12281, 12354, 12478, 12613, 12737, 12872, 13007, 13132, 13267, 13402, 13526, 13661, 13796, 13921, 14055, 14190, 14315, 14450, 14585, 14709, 14844, 14979, …]
-id: 303400
-instantDeathChance: 360
-lvMax: 80
-noblePhantasms: [{…}]
-originalBattleName: "茨木童子"
-originalName: "茨木童子"
-profile: {cv: 'Nao Toyama', illustrator: 'Hidari', stats: {…}, costume: {…}, comments: Array(7), …}
-rarity: 4
-relateQuestIds: []
-ruby: "イバラキドウジ"
-script: {}
-skillMaterials: {1: {…}, 2: {…}, 3: {…}, 4: {…}, 5: {…}, 6: {…}, 7: {…}, 8: {…}, 9: {…}}
-skills: (3) [{…}, {…}, {…}]
-starAbsorb: 90
-starGen: 117
-svtChange: []
-traitAdd: (2) [{…}, {…}]
-traits: (17) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-trialQuestIds: []
-type: "normal"
-valentineEquip: [9806970]
-valentineScript: [{…}]
-[[Prototype]]: Object -->
+  <img src = '/simulator/<%= info.servant.cards[i] %>.png'>
 
-<article class = 'flex column alignItems'>
-<% let index = 0 %>
-    <% for(let i = 0; i < data.length; i++) { %>
-        <% let splitBySpace = data[i].name.split(' ')%>
-        <% let splitByHyphen = data[i].name.split('-')%>
-
-        <% if((splitByHyphen[0] === info.firstName || splitBySpace[0] === info.firstName) && info.servantClass.toLowerCase() === data[i].className) { %>
-           <% index = i %>
-
-        <% break; %>
-        <% } %>
-   <% } %>
-
-            <% const ascensions = {'0': 'First', '1': 'Second', '2': 'Third', '3': 'Fourth', '4': 'Last'} %>
-      <article class = 'flex'>
-        <div class = 'flex alignItems column  '> 
-            <h3> Max levels to reach next each ascension</h3>
-   <% for(let keys in data[index].ascensionAdd.lvMax.ascension) { %>
-            <div class = 'flex'><span><%= ascensions[keys]%> Ascension: </span><span> Level <%= data[index].ascensionAdd.lvMax.ascension[keys] %></span></div>
-   <% } %>
-        </div>
-
-   <div class = 'flex alignItems column'>
-
-    <% data[index].classPassive.forEach(ele=>{ %>
-      <h3> <%= ele.name %></h3>
-      <img src = '<%= ele.icon %>'>
-    <% }) %>
-    </div>
+  <% } %>
   </article>
 
-  <span> Attribute: <%= data[index].attribute %> </span>
-  <h3><%= data[index].name %>'s Deck</h3>
-  <div class = 'flex cards'>
-  <% data[index].cards.forEach(ele=>{ %>
-    <img src = '/simulator/<%= ele%>.png'>
- <% }) %>
-  </div>
 
- 
-<aside class = 'flex ascension'>
-<% for(let keys in data[index].extraAssets.charaFigure.ascension){ %>
-  <img src = '<%= data[index].extraAssets.charaFigure.ascension[keys] %>'>
-<% } %>
-<% for(let keys in data[index].extraAssets.charaGraph.ascension){ %>
-    <img src = '<%= data[index].extraAssets.charaGraph.ascension[keys] %>'>
+  <article class = 'ascension flex'>
+ <% for(let keys in info.servant.extraAssets.charaGraph.ascension) { %>
+
+  <img src = '<%=info.servant.extraAssets.charaGraph.ascension[keys] %>'>
+
   <% } %>
-</aside>
-
-<aside>
-  <h4><%=data[index].profile.cv%></h4>
-  <h4><%=data[index].profile.illustrator%></h4>
-
-  <% for(let keys in data[index].profile.stats) {%>
-    <h4 class = 'flex'><%= keys %> : <%= data[index].profile.stats[keys]%></h4>
-  <% } %>
-</aside>
-
-<% for(let o = 0; o< data[index].profile.voices.length; o++){ %>
-<% for(let i = 0; i< data[index].profile.voices[o].voiceLines.length; i++) { %>
-  <audio class = 'audio' controls src = '<%= data[index].profile.voices[o].voiceLines[i].audioAssets[0] %>'></audio>
-<% } %>
-<% } %>
-</article>
-
-
-<form action="/comments" method="PUT">
-  <input name="comments" placeholder="Add Comment Here" ></input>
-  <button type="submit" class = 'button'>Post</button>
-</form>
-
-
+  </article>
 </section>
+<!-- 
+appendPassive: (3) [{…}, {…}, {…}]
+appendSkillMaterials: {1: {…}, 2: {…}, 3: {…}, 4: {…}, 5: {…}, 6: {…}, 7: {…}, 8: {…}, 9: {…}}
+ascensionAdd: {individuality: {…}, voicePrefix: {…}, overWriteServantName: {…}, originalOverWriteServantName: {…}, overWriteServantBattleName: {…}, …}
+ascensionImage: []
+ascensionMaterials: {0: {…}, 1: {…}, 2: {…}, 3: {…}}
+atkBase: 1677
+atkGrowth: (120) [1677, 1833, 1998, 2154, 2319, 2475, 2640, 2796, 2953, 3109, 3255, 3412, 3558, 3705, 3852, 3990, 4128, 4265, 4394, 4522, 4651, 4770, 4890, 5000, 5110, 5220, 5321, 5413, 5505, 5596, 5670, 5752, 5826, 5890, 5954, 6009, 6055, 6101, 6138, 6175, 6202, 6230, 6248, 6257, 6267, 6276, 6285, 6294, 6303, 6322, 6349, 6386, 6423, 6468, 6514, 6569, 6634, 6698, 6771, 6854, 6927, 7019, 7111, 7203, 7304, 7414, 7524, 7634, 7754, 7873, 8002, 8130, 8259, 8396, 8534, 8672, 8819, 8965, 9112, 9268, 9415, 9571, 9727, 9883, 10049, 10205, 10370, 10526, 10691, 10857, 10957, 11058, 11159, 11260, 11371, 11472, 11573, 11674, 11784, 11885, …]
+atkMax: 10857
+attribute: "human"
+battleName: "イリヤ"
+bondEquip: 9301390
+bondGrowth: (15) [2500, 6250, 11250, 17500, 27500, 285000, 546000, 855000, 1198600, 1630000, 2720000, 3950000, 5310000, 6810000, 8450000]
+cardDetails: {arts: {…}, buster: {…}, quick: {…}, extra: {…}}
+cards: (5) ['quick', 'arts', 'arts', 'arts', 'buster']
+classPassive: (2) [{…}, {…}]
+coin: {summonNum: 90, item: {…}}
+costumeMaterials: {502830: {…}}
+expFeed: (120) [15000, 15010, 15020, 15030, 15040, 15050, 15060, 15070, 15080, 15090, 15100, 15110, 15120, 15130, 15140, 15150, 15160, 15170, 15180, 15190, 15200, 15210, 15220, 15230, 15240, 15250, 15260, 15270, 15280, 15290, 15300, 15310, 15320, 15330, 15340, 15350, 15360, 15370, 15380, 15390, 15400, 15410, 15420, 15430, 15440, 15450, 15460, 15470, 15480, 15490, 15500, 15510, 15520, 15530, 15540, 15550, 15560, 15570, 15580, 15590, 15600, 15610, 15620, 15630, 15640, 15650, 15660, 15670, 15680, 15690, 15700, 15710, 15720, 15730, 15740, 15750, 15760, 15770, 15780, 15790, 15800, 15810, 15820, 15830, 15840, 15850, 15860, 15870, 15880, 15890, 15900, 15910, 15920, 15930, 15940, 15950, 15960, 15970, 15980, 15990, …]
+expGrowth: (120) [0, 100, 400, 1000, 2000, 3500, 5600, 8400, 12000, 16500, 22000, 28600, 36400, 45500, 56000, 68000, 81600, 96900, 114000, 133000, 154000, 177100, 202400, 230000, 260000, 292500, 327600, 365400, 406000, 449500, 496000, 545600, 598400, 654500, 714000, 777000, 843600, 913900, 988000, 1066000, 1148000, 1234100, 1324400, 1419000, 1518000, 1621500, 1729600, 1842400, 1960000, 2082500, 2210000, 2342600, 2480400, 2623500, 2772000, 2926000, 3085600, 3250900, 3422000, 3599000, 3782000, 3971100, 4166400, 4368000, 4576000, 4790500, 5011600, 5239400, 5474000, 5715500, 5964000, 6219600, 6482400, 6752500, 7030000, 7315000, 7607600, 7907900, 8216000, 8532000, 8856000, 9188100, 9528400, 9877000, 10234000, 10599500, 10973600, 11356400, 11748000, 12148500, 12567000, 13021900, 13532000, 14116500, 14795000, 15587500, 16514400, 17596500, 18855000, 20311500, …]
+extraAssets: {charaGraph: {…}, faces: {…}, charaGraphEx: {…}, charaGraphName: {…}, narrowFigure: {…}, …}
+extraPassive: (12) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+flag: "normal"
+growthCurve: 10
+hitsDistribution: {arts: Array(5), buster: Array(1), quick: Array(3), extra: Array(5)}
+hpBase: 2027
+hpGrowth: (120) [2027, 2227, 2439, 2640, 2852, 3053, 3265, 3466, 3666, 3867, 4056, 4256, 4445, 4634, 4823, 5000, 5177, 5354, 5519, 5684, 5849, 6002, 6156, 6297, 6439, 6581, 6710, 6828, 6946, 7064, 7159, 7265, 7359, 7442, 7524, 7595, 7654, 7713, 7760, 7808, 7843, 7878, 7902, 7914, 7926, 7937, 7949, 7961, 7973, 7996, 8032, 8079, 8126, 8185, 8244, 8315, 8397, 8480, 8574, 8681, 8775, 8893, 9011, 9129, 9259, 9400, 9542, 9683, 9837, 9990, 10155, 10320, 10486, 10663, 10840, 11017, 11205, 11394, 11583, 11783, 11972, 12173, 12373, 12574, 12786, 12987, 13199, 13400, 13612, 13825, 13954, 14084, 14214, 14344, 14485, 14615, 14745, 14875, 15016, 15146, …]
+hpMax: 13825
+id: 502800
+instantDeathChance: 420
+lvMax: 90
+name: "Illyasviel von Einzbern"
+noblePhantasms: (2) [{…}, {…}]
+originalBattleName: "イリヤ"
+originalName: "イリヤスフィール・フォン・アインツベルン"
+profile: {cv: 'Maii Kadowaki & Naoko Takano', illustrator: 'Hiroshi Hiroyama', stats: {…}, costume: {…}, comments: Array(7), …}
+rarity: 5
+relateQuestIds: (2) [91502801, 94062081]
+ruby: "イリヤスフィール・フォン・アインツベルン"
+script: {}
+skillMaterials: {1: {…}, 2: {…}, 3: {…}, 4: {…}, 5: {…}, 6: {…}, 7: {…}, 8: {…}, 9: {…}}
+skills: (4) [{…}, {…}, {…}, {…}]
+starAbsorb: 51
+starGen: 107
+svtChange: []
+traitAdd: (3) [{…}, {…}, {…}]
+traits: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+trialQuestIds: []
+type: "normal"
+valentineEquip: [9805620]
+valentineScript: [{…}] -->
+
+
+
+
+
 
 
 
@@ -178,6 +135,7 @@ valentineScript: [{…}]
 
    <small>FGO app &copy; choir Design: HTML5 UP</small>
   
+
 </footer>
 
 <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>

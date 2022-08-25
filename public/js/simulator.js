@@ -1,3 +1,30 @@
+
+// const grabServant = document.querySelectorAll('.fate')
+
+// Array.from(grabServant).forEach((element)=>{
+//     element.addEventListener('click', getServant)
+// })
+
+//     function getServant(){
+//         fetch('https://api.atlasacademy.io/export/JP/nice_servant_lore_lang_en.json')
+//         .then(res=>res.json())
+//         .then(data=>{
+//             let index = 0
+//             for(let i = 0; i < data.length; i++) {
+//                 let splitBySpace = data[i].name.split(' ')
+//                 let splitByHyphen = data[i].name.split('-')
+//                 let servant = this.classList[1].split('-')
+
+//                 if((splitByHyphen[0] === servant[0] || splitBySpace[0] === servant[0]) && servant[1].toLowerCase() === data[i].className) {
+//                  index = i
+        
+//              break;
+//              }
+//            }
+ 
+//            console.log(data[index])
+//         })
+//     }
 // document.querySelector('#play').addEventListener('click',playMusic)
 
 // function playMusic(){
