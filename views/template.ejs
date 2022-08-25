@@ -36,77 +36,157 @@
   <h2><%= info.servant.cost %></h2>
   <h2><%= info.servant.collectionNo %></h2>
   <h2><%= info.servant.name %></h2>
+  <h2><%= info.servant.instantDeathChance%></h2>
+  <h2><%= info.servant.rarity%></h2>
+  <h2><%= info.servant.starAbsorb%></h2>
+  <h2><%= info.servant.starGen%></h2>
+  <h2><%= info.servant.id%></h2>
+  <h2><%= info.servant.attribute%></h2>
 
   <article class = 'flex'>
 <% for(let i = 0; i< info.servant.cards.length; i++) { %>
-
   <img src = '/simulator/<%= info.servant.cards[i] %>.png'>
-
   <% } %>
   </article>
+
+  <article class = 'flex ascension'>
+    <% for(let i = 0; i< info.servant.skills.length; i++) { %>
+      <h2><%= info.servant.skills[i].name %></h2>
+      <img src = '<%= info.servant.skills[i].icon %>'>
+      <% let array = [] %>
+      <% for(let index = 0;index < info.servant.skills[i].coolDown.length; index++) { %>
+        <% if(array.indexOf(info.servant.skills[i].coolDown[index]) === -1) { %>
+              <% array.push(info.servant.skills[i].coolDown[index]) %>
+              <h2><%= info.servant.skills[i].coolDown[index] %></h2>
+          <% } %>
+          <% } %>
+      <% } %>
+      </article>
+
+  <article class = 'flex'>
+
+<% let ascension = 1 %>
+ <% for(let keys in info.servant.extraAssets.charaGraph.ascension) { %>
+  <a href = '#tab<%= ascension%>' class ='link<%= ascension %>'>Ascension <%=ascension%></a>
+  <div id = 'tab<%=ascension%>'>
+  <img src = '<%=info.servant.extraAssets.charaGraph.ascension[keys] %>'>
+  </div>
+  <% ascension+=1 %>
+  <% } %>
+
+  <% for(let keys in info.servant.extraAssets.charaGraph.costume) { %>
+      <a href = '#tab<%= ascension%>' class ='link<%= ascension %>'>Ascension <%=ascension%></a>
+
+    <% if(info.servant.extraAssets.charaGraph.costume[keys] !== null || info.servant.extraAssets.charaGraph.costume[keys] !== undefined){ %>
+      <div id = 'tab<%=ascension%>'>
+    <img src = '<%=info.servant.extraAssets.charaGraph.costume[keys] %>'>
+      </div>
+    <% } %>
+
+    <% } %>
+
+
+  </article>
+
+  
+
 
 
   <article class = 'ascension flex'>
- <% for(let keys in info.servant.extraAssets.charaGraph.ascension) { %>
+    <% for(let keys in info.servant.extraAssets.charaFigure.story) { %>
+      <% if(info.servant.extraAssets.charaFigure.story[keys] !== null || info.servant.extraAssets.charaFigure.story[keys] !== undefined) { %>
+      <img src = '<%=info.servant.extraAssets.charaFigure.story[keys] %>'>
+      <% } %>
+      <% } %>
 
-  <img src = '<%=info.servant.extraAssets.charaGraph.ascension[keys] %>'>
-
+  <% for(let keys in info.servant.extraAssets.charaFigure.ascension){ %>
+    <img src = '<%= info.servant.extraAssets.charaFigure.ascension[keys] %>'>
   <% } %>
+
+</article>
+
+
+<article>
+  <% for(let keys in info.servant.extraAssets.commands.ascension){ %>
+    <img src = '<%= info.servant.extraAssets.commands.ascension[keys] %>'>
+  <% } %>
+
+
+  <% for(let keys in info.servant.extraAssets.commands.costume){ %>
+    <% if(info.servant.extraAssets.commands.costume[keys] !== null || info.servant.extraAssets.commands.costume[keys] !== undefined) { %>
+    <img src = '<%= info.servant.extraAssets.commands.costume[keys] %>'>
+    <% } %>
+  <% } %>
+</article>
+
+
+<% for(let keys in info.servant.extraAssets.status.ascension){ %>
+  <img src = '<%= info.servant.extraAssets.status.ascension[keys] %>'>
+<% } %>
+
+
+  <% const ascensions = {'0': 'First', '1': 'Second', '2': 'Third', '3': 'Fourth', '4': 'Last'} %>
+  <div class = 'flex alignItems column  '> 
+    <h3> Max levels to reach next each ascension</h3>
+<% for(let keys in info.servant.ascensionAdd.lvMax.ascension) { %>
+    <span><%= ascensions[keys]%> Ascension: Level <%= info.servant.ascensionAdd.lvMax.ascension[keys] %></span>
+<% } %>
+</div>
+
+<aside>
+<h4><%= info.servant.profile.cv%></h4>
+<h4><%= info.servant.profile.illustrator%></h4>
+</aside>
+
+<section>
+  <% for(let keys in info.servant.profile.stats) {%>
+    <h4 class = 'flex'><%= keys %> : <%= info.servant.profile.stats[keys]%></h4>
+  <% } %>
+</section>
+
+
+<section>
+<% for(let o = 0; o< info.servant.profile.voices.length; o++){ %>
+  <% for(let i = 0; i< info.servant.profile.voices[o].voiceLines.length; i++) { %>
+    <h2><%= info.servant.profile.voices[o].voiceLines[i].name %></h2>
+    <audio class = 'audio' controls src = '<%= info.servant.profile.voices[o].voiceLines[i].audioAssets[0] %>'></audio>
+  <% } %>
+  <% } %>
+  </section>
+
+
+  <article>
+    <% info.servant.classPassive.forEach(ele=>{ %>
+      <h3> <%= ele.name %></h3>
+      <img src = '<%= ele.icon %>'>
+    <% }) %>
   </article>
+<% let lastindex = info.servant.noblePhantasms[0].individuality.length %>
+<h2><%= info.servant.noblePhantasms[0].card %></h2>
+<img src = '<%= info.servant.noblePhantasms[0].icon %>'>
+<h2><%= info.servant.noblePhantasms[0].name %></h2>
+<h2><%= info.servant.noblePhantasms[0].rank %></h2>
+<h2><%= info.servant.noblePhantasms[1].card %></h2>
+<img src = '<%= info.servant.noblePhantasms[1].icon %>'>
+<h2><%= info.servant.noblePhantasms[1].name %></h2>
+<h2><%= info.servant.noblePhantasms[1].rank %></h2>
+
+<h2><%= info.servant.coin.item.name%></h2>
+<img src = '<%= info.servant.coin.item.icon %>'>
+
+
+<% for(let i=0;i< info.servant.appendPassive.length;i++) { %>
+  <h2><%= info.servant.appendPassive[i].skill.name %></h2>
+<img src = '<%= info.servant.appendPassive[i].skill.icon %>'>
+  <% } %>
+
 </section>
 <!-- 
-appendPassive: (3) [{…}, {…}, {…}]
 appendSkillMaterials: {1: {…}, 2: {…}, 3: {…}, 4: {…}, 5: {…}, 6: {…}, 7: {…}, 8: {…}, 9: {…}}
-ascensionAdd: {individuality: {…}, voicePrefix: {…}, overWriteServantName: {…}, originalOverWriteServantName: {…}, overWriteServantBattleName: {…}, …}
-ascensionImage: []
 ascensionMaterials: {0: {…}, 1: {…}, 2: {…}, 3: {…}}
-atkBase: 1677
-atkGrowth: (120) [1677, 1833, 1998, 2154, 2319, 2475, 2640, 2796, 2953, 3109, 3255, 3412, 3558, 3705, 3852, 3990, 4128, 4265, 4394, 4522, 4651, 4770, 4890, 5000, 5110, 5220, 5321, 5413, 5505, 5596, 5670, 5752, 5826, 5890, 5954, 6009, 6055, 6101, 6138, 6175, 6202, 6230, 6248, 6257, 6267, 6276, 6285, 6294, 6303, 6322, 6349, 6386, 6423, 6468, 6514, 6569, 6634, 6698, 6771, 6854, 6927, 7019, 7111, 7203, 7304, 7414, 7524, 7634, 7754, 7873, 8002, 8130, 8259, 8396, 8534, 8672, 8819, 8965, 9112, 9268, 9415, 9571, 9727, 9883, 10049, 10205, 10370, 10526, 10691, 10857, 10957, 11058, 11159, 11260, 11371, 11472, 11573, 11674, 11784, 11885, …]
-atkMax: 10857
-attribute: "human"
-battleName: "イリヤ"
-bondEquip: 9301390
-bondGrowth: (15) [2500, 6250, 11250, 17500, 27500, 285000, 546000, 855000, 1198600, 1630000, 2720000, 3950000, 5310000, 6810000, 8450000]
-cardDetails: {arts: {…}, buster: {…}, quick: {…}, extra: {…}}
-cards: (5) ['quick', 'arts', 'arts', 'arts', 'buster']
-classPassive: (2) [{…}, {…}]
-coin: {summonNum: 90, item: {…}}
-costumeMaterials: {502830: {…}}
-expFeed: (120) [15000, 15010, 15020, 15030, 15040, 15050, 15060, 15070, 15080, 15090, 15100, 15110, 15120, 15130, 15140, 15150, 15160, 15170, 15180, 15190, 15200, 15210, 15220, 15230, 15240, 15250, 15260, 15270, 15280, 15290, 15300, 15310, 15320, 15330, 15340, 15350, 15360, 15370, 15380, 15390, 15400, 15410, 15420, 15430, 15440, 15450, 15460, 15470, 15480, 15490, 15500, 15510, 15520, 15530, 15540, 15550, 15560, 15570, 15580, 15590, 15600, 15610, 15620, 15630, 15640, 15650, 15660, 15670, 15680, 15690, 15700, 15710, 15720, 15730, 15740, 15750, 15760, 15770, 15780, 15790, 15800, 15810, 15820, 15830, 15840, 15850, 15860, 15870, 15880, 15890, 15900, 15910, 15920, 15930, 15940, 15950, 15960, 15970, 15980, 15990, …]
-expGrowth: (120) [0, 100, 400, 1000, 2000, 3500, 5600, 8400, 12000, 16500, 22000, 28600, 36400, 45500, 56000, 68000, 81600, 96900, 114000, 133000, 154000, 177100, 202400, 230000, 260000, 292500, 327600, 365400, 406000, 449500, 496000, 545600, 598400, 654500, 714000, 777000, 843600, 913900, 988000, 1066000, 1148000, 1234100, 1324400, 1419000, 1518000, 1621500, 1729600, 1842400, 1960000, 2082500, 2210000, 2342600, 2480400, 2623500, 2772000, 2926000, 3085600, 3250900, 3422000, 3599000, 3782000, 3971100, 4166400, 4368000, 4576000, 4790500, 5011600, 5239400, 5474000, 5715500, 5964000, 6219600, 6482400, 6752500, 7030000, 7315000, 7607600, 7907900, 8216000, 8532000, 8856000, 9188100, 9528400, 9877000, 10234000, 10599500, 10973600, 11356400, 11748000, 12148500, 12567000, 13021900, 13532000, 14116500, 14795000, 15587500, 16514400, 17596500, 18855000, 20311500, …]
-extraAssets: {charaGraph: {…}, faces: {…}, charaGraphEx: {…}, charaGraphName: {…}, narrowFigure: {…}, …}
-extraPassive: (12) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-flag: "normal"
-growthCurve: 10
-hitsDistribution: {arts: Array(5), buster: Array(1), quick: Array(3), extra: Array(5)}
-hpBase: 2027
-hpGrowth: (120) [2027, 2227, 2439, 2640, 2852, 3053, 3265, 3466, 3666, 3867, 4056, 4256, 4445, 4634, 4823, 5000, 5177, 5354, 5519, 5684, 5849, 6002, 6156, 6297, 6439, 6581, 6710, 6828, 6946, 7064, 7159, 7265, 7359, 7442, 7524, 7595, 7654, 7713, 7760, 7808, 7843, 7878, 7902, 7914, 7926, 7937, 7949, 7961, 7973, 7996, 8032, 8079, 8126, 8185, 8244, 8315, 8397, 8480, 8574, 8681, 8775, 8893, 9011, 9129, 9259, 9400, 9542, 9683, 9837, 9990, 10155, 10320, 10486, 10663, 10840, 11017, 11205, 11394, 11583, 11783, 11972, 12173, 12373, 12574, 12786, 12987, 13199, 13400, 13612, 13825, 13954, 14084, 14214, 14344, 14485, 14615, 14745, 14875, 15016, 15146, …]
-hpMax: 13825
-id: 502800
-instantDeathChance: 420
-lvMax: 90
-name: "Illyasviel von Einzbern"
-noblePhantasms: (2) [{…}, {…}]
-originalBattleName: "イリヤ"
-originalName: "イリヤスフィール・フォン・アインツベルン"
-profile: {cv: 'Maii Kadowaki & Naoko Takano', illustrator: 'Hiroshi Hiroyama', stats: {…}, costume: {…}, comments: Array(7), …}
-rarity: 5
-relateQuestIds: (2) [91502801, 94062081]
-ruby: "イリヤスフィール・フォン・アインツベルン"
-script: {}
 skillMaterials: {1: {…}, 2: {…}, 3: {…}, 4: {…}, 5: {…}, 6: {…}, 7: {…}, 8: {…}, 9: {…}}
-skills: (4) [{…}, {…}, {…}, {…}]
-starAbsorb: 51
-starGen: 107
-svtChange: []
-traitAdd: (3) [{…}, {…}, {…}]
 traits: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-trialQuestIds: []
-type: "normal"
-valentineEquip: [9805620]
-valentineScript: [{…}] -->
-
-
+ -->
 
 
 

@@ -20,3 +20,7 @@ section{
     overflow-y: scroll;
     width: 100%;
 }
+
+#tab6, #tab4, #tab2, #tab3, #tab5{
+    display: none;
+}
