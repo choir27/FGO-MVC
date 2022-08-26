@@ -8,6 +8,31 @@ require('dotenv').config()
 const fetch = (...args) =>
 	import('node-fetch').then(({default: fetch}) => fetch(...args));
 
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDw7yVuIlGN4E8ixhoIAqqJcv2pwGlXnSI",
+  authDomain: "fgo-app.firebaseapp.com",
+  projectId: "fgo-app",
+  storageBucket: "fgo-app.appspot.com",
+  messagingSenderId: "370269799510",
+  appId: "1:370269799510:web:8ef3fe251316c005b827f7",
+  measurementId: "G-YDL6C6TGHF"
+};
+
+// Initialize Firebase
+const firebase = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+
+
 let db,
     dbName = 'servants'
 
