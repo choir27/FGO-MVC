@@ -31,6 +31,10 @@ nav{
     width: 100%;
 }
 
+.hidden{
+    display: none;
+}
+
 /*Font
    ========================================================================== */
 
@@ -45,6 +49,10 @@ html{
 
 body{
     font-family: 'Source Sans Pro', Arial, sans-serif;
+}
+
+a{
+    text-decoration: none;
 }
 
 
@@ -93,11 +101,12 @@ small{
 /*Buttons and Links
    ========================================================================== */
 
-a{
-    color: black;
-    text-decoration: none;
-}
 
+
+a:hover, button:hover, i:hover{
+cursor: pointer;
+color: #e44c65;
+}
 
 .button{
     padding: 1rem 2rem;
@@ -162,8 +171,4 @@ header, img, a, li, p, span, pre, input, button, h1, h2, h3, small, i, #section1
     position: relative;
 }
 
-
-a{
-    color: white;
-}
 

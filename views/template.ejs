@@ -27,6 +27,44 @@
         </nav>
     </header>
     
+<section>
+
+    <article class = 'flex justifyContent alignItems column'>
+        <div class = 'flex alignItems justifyContent buttons'>
+<% for(let i = 1;i< 6; i++) { %>
+          <button class ='button link<%= i %>'>Ascension <%= i%></button>
+<% } %>
+        </div>
+
+  <div id = 'tab1'>
+    <img src = '<%=info.servant.extraAssets.charaGraph.ascension[1] %>'>
+  </div>
+  
+<% let ascension = 1 %>
+<% for(let keys in info.servant.extraAssets.charaGraph.ascension) { %>
+<% if(keys !== 1) { %>
+  <div id = 'tab<%=ascension%>' class = 'hidden'>
+    <img src = '<%=info.servant.extraAssets.charaGraph.ascension[keys] %>'>
+  </div>
+<% ascension++ %>
+    <% } %>
+    <% } %>
+  
+<% for(let keys in info.servant.extraAssets.charaGraph.costume) { %>
+  
+      <% if(info.servant.extraAssets.charaGraph.costume[keys] !== null || info.servant.extraAssets.charaGraph.costume[keys] !== undefined){ %>
+        <div id = 'tab<%=ascension%>' class = 'hidden'>
+      <img src = '<%=info.servant.extraAssets.charaGraph.costume[keys] %>'>
+        </div>
+      <% } %>
+  
+      <% } %>
+  
+  
+    </article>
+  </section>
+
+<!-- 
 <section class = 'flex column alignItems'>
   <h2><%= info.servant.className %></h2>
   <h2><%= info.servant.gender %></h2>
@@ -63,30 +101,7 @@
       <% } %>
       </article>
 
-  <article class = 'flex'>
 
-<% let ascension = 1 %>
- <% for(let keys in info.servant.extraAssets.charaGraph.ascension) { %>
-  <a href = '#tab<%= ascension%>' class ='link<%= ascension %>'>Ascension <%=ascension%></a>
-  <div id = 'tab<%=ascension%>'>
-  <img src = '<%=info.servant.extraAssets.charaGraph.ascension[keys] %>'>
-  </div>
-  <% ascension+=1 %>
-  <% } %>
-
-  <% for(let keys in info.servant.extraAssets.charaGraph.costume) { %>
-      <a href = '#tab<%= ascension%>' class ='link<%= ascension %>'>Ascension <%=ascension%></a>
-
-    <% if(info.servant.extraAssets.charaGraph.costume[keys] !== null || info.servant.extraAssets.charaGraph.costume[keys] !== undefined){ %>
-      <div id = 'tab<%=ascension%>'>
-    <img src = '<%=info.servant.extraAssets.charaGraph.costume[keys] %>'>
-      </div>
-    <% } %>
-
-    <% } %>
-
-
-  </article>
 
   
 
@@ -180,7 +195,7 @@
 <img src = '<%= info.servant.appendPassive[i].skill.icon %>'>
   <% } %>
 
-</section>
+</section> -->
 <!-- 
 appendSkillMaterials: {1: {…}, 2: {…}, 3: {…}, 4: {…}, 5: {…}, 6: {…}, 7: {…}, 8: {…}, 9: {…}}
 ascensionMaterials: {0: {…}, 1: {…}, 2: {…}, 3: {…}}

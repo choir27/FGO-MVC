@@ -1,7 +1,3 @@
-a{
-    color: white;
-}
-
 header{
     z-index: 4;
     position: fixed;
@@ -21,6 +17,11 @@ section{
     width: 100%;
 }
 
-#tab6, #tab4, #tab2, #tab3, #tab5{
-    display: none;
+.buttons{
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+body *{
+border: 3px solid white;
 }
