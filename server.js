@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
-    const PORT = 9000
+    const PORT = 8000
 const cors = require('cors')
 const fs = require('fs')
 require('dotenv').config()

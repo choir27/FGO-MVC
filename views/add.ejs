@@ -43,34 +43,24 @@
 <form action = '/servants' method = "POST" class = 'flex alignItems column'>
      <div class = 'flex'>
         <input required="required" type = 'text' name = 'firstName' placeholder="First Name">
+        <input type = 'text' name = 'middleName' placeholder="Middle Name">
         <input required="required" type = 'text' name = 'lastName' placeholder="Last Name">
+
      </div>
 
-    <div class = 'flex column alignItems'>
-        <label for = "image">Upload Image</label>
-        <input required="required" type = 'file' name = 'image' class = 'image'>
+     <div class = 'flex'>
+        <input required='required' type = 'text' name = 'servantClass' placeholder="Servant Class">
     </div>
+    
 
 <div class = 'flex'>
-    <input required='required' type = 'text' name = 'gender' placeholder="Gender">
-    <input required='required' type = 'text' name = 'servantID' placeholder='Servant ID Number'>
+    <input type = 'text' name = 'gender' placeholder="Gender">
+    <input type = 'text' name = 'servantID' placeholder='Servant ID Number'>
 </div>
 
-<div class = 'flex'>
-        <input required='required'  type = 'text' name = 'health' placeholder="Servant Health">
-        <input required='required' type = 'text' name = 'attack' placeholder="Servant Attack">
-</div>
 
-<div class = 'flex'>
-   <input required='required' type = 'text' name = 'rarity' placeholder="Servant Rarity">
-   <input required='required'  type = 'text' name ='cost' placeholder="Servant Cost Amount">
-</div>
 
-<div class = 'flex'>
-<input required='required' type = 'text' name = 'servantClass' placeholder="Servant Class">
-</div>
-
-<button required='required' type = 'submit' class = 'button'>Submit</button>
+<button type = 'submit' class = 'button'>Submit</button>
 
 </form>
 </section>

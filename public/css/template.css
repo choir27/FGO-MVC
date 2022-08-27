@@ -1,7 +1,6 @@
 header{
     z-index: 4;
     position: fixed;
-    width: 100%;
     height: 8vh;
 }
 
@@ -11,17 +10,68 @@ section{
     background: rgba(39, 40, 51, 0.965);
 }
 
-.ascension{
-    overflow-x: scroll;
-    overflow-y: scroll;
-    width: 100%;
-}
+
 
 .buttons{
     flex-wrap: wrap;
-    width: 50%;
+    margin-bottom: 4.5rem;
 }
 
-body *{
-border: 3px solid white;
+h2, h1, h4{
+    text-transform: capitalize;
+}
+
+.stars img{
+    margin-left: 1rem;
+    width: 10%;
+}
+
+.stars, div, .ascension, .buttons, header, h2, h3, h4, span{
+    width: 100%;
+}
+
+.stats{
+    padding: 1rem;
+}
+
+.cards img{
+    margin-right: 2rem;
+}
+
+
+section h2{
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+}
+
+.rarity{
+    margin: 4rem 0rem;
+}
+
+.div{
+    margin-bottom: 1.5rem;
+}
+
+
+.article1{
+    justify-content: flex-start;
+    padding: 3rem;
+}
+
+.article2 div+div, h4, h3, span{
+    margin-bottom: 2rem;
+}
+
+.article2 div+div{
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.article2 div+div div{
+    margin-top: 2.5rem;
+}
+
+h1, .article1{
+    padding-bottom: 2rem;
+    border-bottom: 3px solid #e44c65;
 }

@@ -8,7 +8,7 @@
     <link rel = 'stylesheet' href = '/css/normalize.css'>
     <link rel = 'stylesheet' href = '/css/style.css'>
     <link rel = 'stylesheet' href = '/css/template.css'>
-    <title><%= info.firstName%> <%= info.lastName%></title>
+    <title><%= info.servant.name %></title>
 </head>
 <body>
     <header class = 'flex column alignItems justifyContent'>
@@ -17,33 +17,35 @@
         <nav class = 'flex'>
             <li><h2 class = 'logo'>Fate Grand Order</h2></li>s
     
-            <ul class = 'flex row'>
-              <li><a href = '/'>Home</a></li>
-              <li><a href = '/add'>Add Servant</a></li>
-              <li><a href = '/servants'>See Servant Data</a></li>
-              <li><a href = '/gameplay'>Gameplay</a></li>
-              <li><a href = '/simulator'>Simulator</a></li>
-          </ul>
+                <ul class = 'flex row'>
+                    <li><a href = '/'>Home</a></li>
+                    <li><a href = '/add'>Add Servant</a></li>
+                    <li><a href = '/servants'>See Servant Data</a></li>
+                    <li><a href = '/gameplay'>Gameplay</a></li>
+                    <li><a href = '/simulator'>Simulator</a></li>
+                </ul>
         </nav>
     </header>
-    
-<section>
 
-    <article class = 'flex justifyContent alignItems column'>
+
+<section class = 'flex column alignItems'>
+
+  <article class = 'flex alignItems article1'>
+      <div class = 'flex justifyContent alignItems column'>
         <div class = 'flex alignItems justifyContent buttons'>
 <% for(let i = 1;i< 6; i++) { %>
           <button class ='button link<%= i %>'>Ascension <%= i%></button>
 <% } %>
         </div>
 
-  <div id = 'tab1'>
+  <div id = 'tab1' class = 'flex justifyContent'>
     <img src = '<%=info.servant.extraAssets.charaGraph.ascension[1] %>'>
   </div>
   
 <% let ascension = 1 %>
 <% for(let keys in info.servant.extraAssets.charaGraph.ascension) { %>
 <% if(keys !== 1) { %>
-  <div id = 'tab<%=ascension%>' class = 'hidden'>
+  <div id = 'tab<%=ascension%>' class = 'hidden flex justifyContent'>
     <img src = '<%=info.servant.extraAssets.charaGraph.ascension[keys] %>'>
   </div>
 <% ascension++ %>
@@ -53,155 +55,68 @@
 <% for(let keys in info.servant.extraAssets.charaGraph.costume) { %>
   
       <% if(info.servant.extraAssets.charaGraph.costume[keys] !== null || info.servant.extraAssets.charaGraph.costume[keys] !== undefined){ %>
-        <div id = 'tab<%=ascension%>' class = 'hidden'>
+        <div id = 'tab<%=ascension%>' class = 'hidden flex justifyContent'>
       <img src = '<%=info.servant.extraAssets.charaGraph.costume[keys] %>'>
         </div>
       <% } %>
   
       <% } %>
-  
-  
-    </article>
-  </section>
+      </div>
+    <div class = 'stats'>
+      <h1 class = 'flex'>full name: <%= info.servant.name %></h1>
 
-<!-- 
-<section class = 'flex column alignItems'>
-  <h2><%= info.servant.className %></h2>
-  <h2><%= info.servant.gender %></h2>
-  <h2><%= info.servant.lvMax %></h2>
-  <h2><%= info.servant.atkMax %></h2>
-  <h2><%= info.servant.hpMax %></h2>
-  <h2><%= info.servant.cost %></h2>
-  <h2><%= info.servant.collectionNo %></h2>
-  <h2><%= info.servant.name %></h2>
-  <h2><%= info.servant.instantDeathChance%></h2>
-  <h2><%= info.servant.rarity%></h2>
-  <h2><%= info.servant.starAbsorb%></h2>
-  <h2><%= info.servant.starGen%></h2>
-  <h2><%= info.servant.id%></h2>
-  <h2><%= info.servant.attribute%></h2>
+      <h2 class = 'flex'>class Name: <%= info.servant.className %></h2>
 
-  <article class = 'flex'>
-<% for(let i = 0; i< info.servant.cards.length; i++) { %>
-  <img src = '/simulator/<%= info.servant.cards[i] %>.png'>
-  <% } %>
+      <div class = 'flex rarity'>
+      <h2 class = 'flex alignItems stars'>rarity: <%for(let i = 0; i < info.servant.rarity; i++) { %>
+        <img src = '/servants/star.png'>
+        <% }%>
+
+        <h2>collection number: <%= info.servant.collectionNo %></h2>
+      </h2>
+    </div>
+
+    <div class = 'div flex'><h2>gender: <%= info.servant.gender %></h2><h2>max level: <%= info.servant.lvMax %></h2></div>
+    <div class = 'div flex'><h2>max attack: <%= info.servant.atkMax %></h2><h2>max health: <%= info.servant.hpMax %></h2></div>
+    <div class = 'div flex'><h2>cost: <%= info.servant.cost %></h2><h2>servant id: <%= info.servant.id%></h2></div>
+    <div class = 'div flex'><h2>star absorb: <%= info.servant.starAbsorb%></h2><h2>star gen: <%= info.servant.starGen%></h2></div>
+    <h2>servant attribute: <%= info.servant.attribute%></h2>
+    <h2>instant death chance: <%= info.servant.instantDeathChance%></h2>    
+    
+      <div class = 'flex cards'>
+    <% for(let i = 0; i< info.servant.cards.length; i++) { %>
+      <img src = '/simulator/<%= info.servant.cards[i] %>.png'>
+      <% } %>
+      </div>
+    </div>
   </article>
 
-  <article class = 'flex ascension'>
-    <% for(let i = 0; i< info.servant.skills.length; i++) { %>
-      <h2><%= info.servant.skills[i].name %></h2>
-      <img src = '<%= info.servant.skills[i].icon %>'>
-      <% let array = [] %>
-      <% for(let index = 0;index < info.servant.skills[i].coolDown.length; index++) { %>
-        <% if(array.indexOf(info.servant.skills[i].coolDown[index]) === -1) { %>
-              <% array.push(info.servant.skills[i].coolDown[index]) %>
-              <h2><%= info.servant.skills[i].coolDown[index] %></h2>
-          <% } %>
-          <% } %>
+
+  <article class = 'flex justifyContent alignItems article2'>
+    <div class ='flex alignItems column'>
+      <% for(let keys in info.servant.profile.stats) {%>
+        <h4 class = 'flex'><%= keys %> : <%= info.servant.profile.stats[keys]%></h4>
       <% } %>
-      </article>
+    </div>
 
-
-
-  
-
-
-
-  <article class = 'ascension flex'>
-    <% for(let keys in info.servant.extraAssets.charaFigure.story) { %>
-      <% if(info.servant.extraAssets.charaFigure.story[keys] !== null || info.servant.extraAssets.charaFigure.story[keys] !== undefined) { %>
-      <img src = '<%=info.servant.extraAssets.charaFigure.story[keys] %>'>
-      <% } %>
-      <% } %>
-
-  <% for(let keys in info.servant.extraAssets.charaFigure.ascension){ %>
-    <img src = '<%= info.servant.extraAssets.charaFigure.ascension[keys] %>'>
-  <% } %>
-
-</article>
-
-
-<article>
-  <% for(let keys in info.servant.extraAssets.commands.ascension){ %>
-    <img src = '<%= info.servant.extraAssets.commands.ascension[keys] %>'>
-  <% } %>
-
-
-  <% for(let keys in info.servant.extraAssets.commands.costume){ %>
-    <% if(info.servant.extraAssets.commands.costume[keys] !== null || info.servant.extraAssets.commands.costume[keys] !== undefined) { %>
-    <img src = '<%= info.servant.extraAssets.commands.costume[keys] %>'>
+      <% const ascensions = {'0': 'First', '1': 'Second', '2': 'Third', '3': 'Fourth', '4': 'Last'} %>
+      <div class = 'flex alignItems column'> 
+        <h3> Max levels to reach next each ascension</h3>
+    <% for(let keys in info.servant.ascensionAdd.lvMax.ascension) { %>
+        <span><%= ascensions[keys]%> Ascension: Level <%= info.servant.ascensionAdd.lvMax.ascension[keys] %></span>
     <% } %>
-  <% } %>
-</article>
 
-
-<% for(let keys in info.servant.extraAssets.status.ascension){ %>
-  <img src = '<%= info.servant.extraAssets.status.ascension[keys] %>'>
-<% } %>
-
-
-  <% const ascensions = {'0': 'First', '1': 'Second', '2': 'Third', '3': 'Fourth', '4': 'Last'} %>
-  <div class = 'flex alignItems column  '> 
-    <h3> Max levels to reach next each ascension</h3>
-<% for(let keys in info.servant.ascensionAdd.lvMax.ascension) { %>
-    <span><%= ascensions[keys]%> Ascension: Level <%= info.servant.ascensionAdd.lvMax.ascension[keys] %></span>
-<% } %>
-</div>
-
-<aside>
-<h4><%= info.servant.profile.cv%></h4>
-<h4><%= info.servant.profile.illustrator%></h4>
-</aside>
-
-<section>
-  <% for(let keys in info.servant.profile.stats) {%>
-    <h4 class = 'flex'><%= keys %> : <%= info.servant.profile.stats[keys]%></h4>
-  <% } %>
-</section>
-
-
-<section>
-<% for(let o = 0; o< info.servant.profile.voices.length; o++){ %>
-  <% for(let i = 0; i< info.servant.profile.voices[o].voiceLines.length; i++) { %>
-    <h2><%= info.servant.profile.voices[o].voiceLines[i].name %></h2>
-    <audio class = 'audio' controls src = '<%= info.servant.profile.voices[o].voiceLines[i].audioAssets[0] %>'></audio>
-  <% } %>
-  <% } %>
-  </section>
-
-
-  <article>
-    <% info.servant.classPassive.forEach(ele=>{ %>
-      <h3> <%= ele.name %></h3>
-      <img src = '<%= ele.icon %>'>
-    <% }) %>
+    <div class = 'flex alignItems column'>
+    <h4 class = 'flex'><%= info.servant.profile.cv%></h4>
+    <h4 class = 'flex'><%= info.servant.profile.illustrator%></h4>
+    </div>
+    </div>
+  
   </article>
-<% let lastindex = info.servant.noblePhantasms[0].individuality.length %>
-<h2><%= info.servant.noblePhantasms[0].card %></h2>
-<img src = '<%= info.servant.noblePhantasms[0].icon %>'>
-<h2><%= info.servant.noblePhantasms[0].name %></h2>
-<h2><%= info.servant.noblePhantasms[0].rank %></h2>
-<h2><%= info.servant.noblePhantasms[1].card %></h2>
-<img src = '<%= info.servant.noblePhantasms[1].icon %>'>
-<h2><%= info.servant.noblePhantasms[1].name %></h2>
-<h2><%= info.servant.noblePhantasms[1].rank %></h2>
 
-<h2><%= info.servant.coin.item.name%></h2>
-<img src = '<%= info.servant.coin.item.icon %>'>
+  
 
-
-<% for(let i=0;i< info.servant.appendPassive.length;i++) { %>
-  <h2><%= info.servant.appendPassive[i].skill.name %></h2>
-<img src = '<%= info.servant.appendPassive[i].skill.icon %>'>
-  <% } %>
-
-</section> -->
-<!-- 
-appendSkillMaterials: {1: {…}, 2: {…}, 3: {…}, 4: {…}, 5: {…}, 6: {…}, 7: {…}, 8: {…}, 9: {…}}
-ascensionMaterials: {0: {…}, 1: {…}, 2: {…}, 3: {…}}
-skillMaterials: {1: {…}, 2: {…}, 3: {…}, 4: {…}, 5: {…}, 6: {…}, 7: {…}, 8: {…}, 9: {…}}
-traits: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
- -->
+</section>
 
 
 
