@@ -92,15 +92,15 @@
   </article>
 
 
-  <article class = 'flex justifyContent alignItems article2'>
-    <div class ='flex alignItems column'>
+  <article class = 'flex alignItems justifyContent article2'>
+    <div class ='flex alignItems column profile-stats'>
       <% for(let keys in info.servant.profile.stats) {%>
         <h4 class = 'flex'><%= keys %> : <%= info.servant.profile.stats[keys]%></h4>
       <% } %>
     </div>
 
       <% const ascensions = {'0': 'First', '1': 'Second', '2': 'Third', '3': 'Fourth', '4': 'Last'} %>
-      <div class = 'flex alignItems column'> 
+      <div class = 'flex alignItems column ascension-level'> 
         <h3> Max levels to reach next each ascension</h3>
     <% for(let keys in info.servant.ascensionAdd.lvMax.ascension) { %>
         <span><%= ascensions[keys]%> Ascension: Level <%= info.servant.ascensionAdd.lvMax.ascension[keys] %></span>
@@ -110,7 +110,37 @@
     <h4 class = 'flex'><%= info.servant.profile.cv%></h4>
     <h4 class = 'flex'><%= info.servant.profile.illustrator%></h4>
     </div>
+
     </div>
+
+    <div class = 'flex column skill-levels'>
+      <div class = 'flex skill-heading'>
+      <h2 class="flex alignItems">Servant Skills</h2>
+      <div class = 'flex alignItems column level-heading'><h2 class = 'flex justifyContent'>Lv</h2><h2 class = 'flex justifyContent'> 1-5</h2></div>
+      <div class = 'flex alignItems column level-heading'><h2 class = 'flex justifyContent'>Lv</h2><h2 class = 'flex justifyContent'> 6-9</h2></div>
+      <div class = 'flex alignItems column level-heading'><h2 class = 'flex justifyContent'>Lv</h2><h2 class = 'flex justifyContent'> 10</h2></div>
+      </div>
+      <% for(let i = 0; i< info.servant.skills.length; i++) { %>
+        <% let array = [] %>
+      
+        <div class ='flex alignItems'>
+        
+        <h2><%= info.servant.skills[i].name %></h2>
+        <img src = '<%= info.servant.skills[i].icon %>'>
+
+        <% for(let index = 0;index < info.servant.skills[i].coolDown.length; index++) { %>
+          <% if(array.indexOf(info.servant.skills[i].coolDown[index]) === -1) { %>
+                <% array.push(info.servant.skills[i].coolDown[index]) %>
+                
+                <h2 class = 'flex justifyContent skills'><%= info.servant.skills[i].coolDown[index] %></h2>
+              
+            <% } %>
+            <% } %>
+          </div>
+        <% } %>
+          
+      </div>
+  
   
   </article>
 

@@ -40,7 +40,6 @@ h2, h1, h4{
 
 
 section h2{
-    margin-bottom: 2rem;
     margin-right: 2rem;
 }
 
@@ -71,7 +70,46 @@ section h2{
     margin-top: 2.5rem;
 }
 
-h1, .article1{
+h1, .article1, .skill-heading{
     padding-bottom: 2rem;
     border-bottom: 3px solid #e44c65;
 }
+
+
+
+.profile-stats{
+    padding: 2rem;
+    width: 30%;
+} 
+
+.profile-stats, .ascension-level{
+    padding-right: 4rem;
+}
+
+.ascension-level{
+    width: 40%;
+    margin-right: 2rem;
+}
+
+
+.skills{
+    margin-left: 3rem;
+    width: 20%;
+}
+
+.level-heading{
+   width: 25%;
+   margin: 0rem;
+   padding: 0rem;
+}
+
+
+.skill-heading{
+    height: 12rem;
+
+}
+
+/* body *{
+    border: 3px solid white;
+} */
+

@@ -69,8 +69,12 @@ function showTab5(){
 
 }
 
-
-/* <section class = 'flex column alignItems'>
+/*
+<% for(let i=0;i< info.servant.appendPassive.length;i++) { %>
+  <h2><%= info.servant.appendPassive[i].skill.name %></h2>
+<img src = '<%= info.servant.appendPassive[i].skill.icon %>'>
+  <% } %>
+ <section class = 'flex column alignItems'>
 
   <article class = 'flex ascension'>
     <% for(let i = 0; i< info.servant.skills.length; i++) { %>
@@ -125,12 +129,6 @@ function showTab5(){
 <% } %>
 
 
- 
-
-<section>
-
-</section>
-
 
 <section>
 <% for(let o = 0; o< info.servant.profile.voices.length; o++){ %>
@@ -162,10 +160,7 @@ function showTab5(){
 <img src = '<%= info.servant.coin.item.icon %>'>
 
 
-<% for(let i=0;i< info.servant.appendPassive.length;i++) { %>
-  <h2><%= info.servant.appendPassive[i].skill.name %></h2>
-<img src = '<%= info.servant.appendPassive[i].skill.icon %>'>
-  <% } %>
+
 
 </section> -->
 <!-- 
