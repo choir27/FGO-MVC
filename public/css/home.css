@@ -142,3 +142,39 @@ color: black;
     background-size: cover;
 }
 
+/* Authed Users Only
+   ========================================================================== */
+
+   .section img{
+    border-radius: 0px;
+   }
+
+   .section{
+    padding: 4rem;
+   }
+
+   .section div{
+    width: 100%;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    margin-right: 3rem;
+   }
+ 
+   .section div h4,.section div h2,.section div h3{
+    margin: 2rem 0rem;
+   }
+
+   .section h1 + h2{
+    margin-bottom: 8rem;
+   }
+
+   .section .edit-delete{
+    width: 5%;
+    height: 100%;
+   }
+
+  
+
+   body *{
+    border: 3px solid white;
+   }

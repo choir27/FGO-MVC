@@ -104,7 +104,7 @@ small{
 
 
 
-a:hover, button:hover, i:hover{
+a:hover, button:hover, i:hover, .logo:hover{
 cursor: pointer;
 color: #e44c65;
 }
@@ -118,9 +118,8 @@ color: #e44c65;
 }
 
 .button:hover{
-    cursor: pointer;
+cursor: pointer;
 color: #e44c65;
-border: 1px solid #e44c65;
 }
 
 .button:active{

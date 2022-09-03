@@ -8,7 +8,7 @@ module.exports={
     getHome: async(req,res) =>{
         try{
             const data = await Servant.find({userId:req.user.id}).lean()
-            res.render('authed/home.ejs', {data, name: req.user.firstName})
+            res.render('authed/home.ejs', {info: data, name: req.user.firstName})
         }catch(err){
             console.error(err)
         } 
@@ -61,7 +61,7 @@ module.exports={
                         let splitByHyphen = data[i].name.split('-')
         
                         if((splitByHyphen[0].toLowerCase() === request.body.firstName.toLowerCase() || splitBySpace[0].toLowerCase() === request.body.firstName.toLowerCase()) && request.body.servantClass.toLowerCase() === data[i].className.toLowerCase()) {
-                            request.body.servant = data[i]
+                            request.body.servant = {name: data[i].name, extraAssets: data[i].extraAssets, className: data[i].className, rarity: data[i].rarity, collectionNo: data[i].collectionNo, gender: data[i].gender, lvMax: data[i].lvMax, atkMax: data[i].atkMax, hpMax: data[i].hpMax, cost: data[i].cost, id: data[i].id, starAbsorb: data[i].starAbsorb, starGen: data[i].starGen, attribute: data[i].atrribute, instantDeathChance: data[i].instantDeathChance, cards: data[i].cards, profile: data[i].profile, ascensionAdd: data[i].ascensionAdd, skills: data[i].skills, appendPassive: data[i].appendPassive, classPassive: data[i].classPassive, noblePhantasms: data[i].noblePhantasms, coin: data[i].coin,      }
                 
                      break;
                         }

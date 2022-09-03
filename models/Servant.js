@@ -11,7 +11,7 @@ const ServantSchema = new mongoose.Schema({
   },
   lastName: {
     type: String,
-    required: true
+    required: false
   },
   servantClass: {
     type: String,
