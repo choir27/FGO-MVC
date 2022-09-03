@@ -77,17 +77,7 @@ function showTab5(){
  <section class = 'flex column alignItems'>
 
   <article class = 'flex ascension'>
-    <% for(let i = 0; i< info.servant.skills.length; i++) { %>
-      <h2><%= info.servant.skills[i].name %></h2>
-      <img src = '<%= info.servant.skills[i].icon %>'>
-      <% let array = [] %>
-      <% for(let index = 0;index < info.servant.skills[i].coolDown.length; index++) { %>
-        <% if(array.indexOf(info.servant.skills[i].coolDown[index]) === -1) { %>
-              <% array.push(info.servant.skills[i].coolDown[index]) %>
-              <h2><%= info.servant.skills[i].coolDown[index] %></h2>
-          <% } %>
-          <% } %>
-      <% } %>
+
       </article>
 
 

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = 'stylesheet' href = '/css/reset.css'>
+    <link rel = 'stylesheet' href = '/css/normalize.css'>
+    <link rel = 'stylesheet' href = '/css/style.css'>
+    <link rel = 'stylesheet' href = '/css/simulator.css'>
+    <title>Gameplay</title>
+</head>
+<body>
+<!-- <a href = 'https://fgo-api.herokuapp.com/'>Make your team</a> -->
+<header class = 'flex column alignItems justifyContent'>
+    <div class = 'banner'></div>
+
+    <nav class = 'flex'>
+        <li><h2 class = 'logo'>Fate Grand Order</h2></li>
+
+            <ul class = 'flex row'>
+                <li><a href = '/user'>Home</a></li>
+                <li><a href = '/user/add'>Add Servant</a></li>
+                <li><a href = '/user/servants'>See Servant Data</a></li>
+                <li><a href = '/user/gameplay'>Gameplay</a></li>
+                <li><a href = '/user/simulator'>Simulator</a></li>
+                <li><a href = '/auth/logout'>Logout</a></li>
+
+            </ul>
+    </nav>
+</header>
+
+<section>
+    <% for(let i = 0;i< data.length ; i++) {%>
+            <a href = '/simulator/<%= data[i].firstName %>' class = 'button'><%= data[i].firstName %><%= data[i].lastName %></a>
+        <% } %>
+</section>
+
+
+
+<footer class = 'flex column alignItems' id = 'footer'>
+    <section class = 'flex icons'>
+    <i class="fa-brands fa-facebook-f"></i>
+    <i class="fa-brands fa-instagram"></i>
+    <i class="fa-brands fa-twitter"></i>
+    <i class="fa-brands fa-github"></i>
+    <i class="fa-solid fa-envelope"></i>
+    </section>
+      <nav>
+    
+          <ul class = 'flex justifyContent'>
+
+            <li><a href = '/user'>Home</a></li>
+                  <li><a href = '/user/add'>Add Servant</a></li>
+                  <li><a href = '/user/servants'>See Servant Data</a></li>
+                  <li><a href = '/user/gameplay'>Gameplay</a></li>
+                  <li><a href = '/user/simulator'>Simulator</a></li>
+                  <li><a href = '/auth/logout'>Logout</a></li>
+            </ul>
+     </nav>
+
+     <small>FGO app &copy; choir Design: HTML5 UP</small>
+    
+  </footer>
+
+  <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
+  <script src = '/js/simulator.js'></script>
+</body>
+</html>

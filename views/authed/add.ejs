@@ -15,19 +15,19 @@
         <div class = 'banner'></div>
 
         <nav class = 'flex'>
-            <li><h2 class = 'logo'>Fate Grand Order</h2></li>s
+            <li><h2 class = 'logo'>Fate Grand Order</h2></li>
     
                 <ul class = 'flex row'>
-                    <li><a href = '/'>Home</a></li>
-                    <li><a href = '/add'>Add Servant</a></li>
-                    <li><a href = '/servants'>See Servant Data</a></li>
-                    <li><a href = '/gameplay'>Gameplay</a></li>
-                    <li><a href = '/simulator'>Simulator</a></li>
+                    <li><a href = '/user'>Home</a></li>
+                    <li><a href = '/user/add'>Add Servant</a></li>
+                    <li><a href = '/user/servants'>See Servant Data</a></li>
+                    <li><a href = '/user/gameplay'>Gameplay</a></li>
+                    <li><a href = '/user/simulator'>Simulator</a></li>
+                    <li><a href = '/auth/logout'>Logout</a></li>
+
                 </ul>
         </nav>
     </header>
-
-
 
 
 
@@ -40,17 +40,29 @@
             <code><pre>https://fgo-app.herokuapp.com/api/servants</pre></code>
         </div>
         
-<form action = '/servants' method = "POST" class = 'flex alignItems column'>
+<form action = '/user/servants' method = "POST" class = 'flex alignItems column'>
      <div class = 'flex'>
         <input required="required" type = 'text' name = 'firstName' placeholder="First Name">
         <input type = 'text' name = 'middleName' placeholder="Middle Name">
-        <input required="required" type = 'text' name = 'lastName' placeholder="Last Name">
+        <input type = 'text' name = 'lastName' placeholder="Last Name">
 
      </div>
 
-     <div class = 'flex'>
-        <input required='required' type = 'text' name = 'servantClass' placeholder="Servant Class">
+     <div class = 'flex alignItems'>
+        <div class ='flex alignItems column'>
+
+        <h2>Status:</h2>
+        <select id="status" name="status">
+            <option value="public" selected>Public</option>
+            <option value="private">Private</option>
+        </select>
     </div>
+        <input required='required' type = 'text' name = 'servantClass' placeholder="Servant Class">
+   
+
+    </div>
+
+  
     
 
 <div class = 'flex'>
@@ -78,11 +90,12 @@
     
           <ul class = 'flex justifyContent'>
 
-        <li><a href = '/'>Home</a></li>
-        <li><a href = '/add'>Add Servant</a></li>
-        <li><a href = '/servants'>See Servant Data</a></li>
-        <li><a href = '/comments'>Comments</a></li>
-        <li><a href = '/simulator'>Simulator</a></li>
+            <li><a href = '/user'>Home</a></li>
+            <li><a href = '/user/add'>Add Servant</a></li>
+            <li><a href = '/user/servants'>See Servant Data</a></li>
+            <li><a href = '/user/gameplay'>Gameplay</a></li>
+            <li><a href = '/user/simulator'>Simulator</a></li>
+            <li><a href = '/auth/logout'>Logout</a></li>
             </ul>
      </nav>
 

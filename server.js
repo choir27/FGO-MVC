@@ -1,27 +1,38 @@
 const express = require('express')
 const app = express()
-const MongoClient = require('mongodb').MongoClient
     const PORT = 8000
 const cors = require('cors')
 const fs = require('fs')
-require('dotenv').config()
-const fetch = (...args) =>
-	import('node-fetch').then(({default: fetch}) => fetch(...args));
+require('dotenv').config({path: './config/.env'})
+const connectDB = require('./config/database')
+const path = require('path')
+const mongoose = require('mongoose')
+const morgan = require('morgan')
+const passport = require('passport')
+const methodOverride = require('method-override')
+const { initialize } = require('passport');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')
 
+require('./config/passport')(passport)
 
+connectDB()
 
+// Method override
+app.use(methodOverride(function (req, res) {
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+      // look in urlencoded POST bodies and delete it
+      let method = req.body._method
+      delete req.body._method
+      return method
+    }
+  }))
 
+// handling
+if(process.env.NODE_ENV === 'development'){
+    app.use(morgan('dev'))
+}
 
-let db,
-    dbName = 'servants'
-
-MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true })
-    .then(client => {
-
-        console.log(`Connected to ${dbName} Database`)
-        db = client.db(dbName)
-    })
-    
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.static('views'))
@@ -35,105 +46,30 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-
-app.get('/',(request, response)=>{
-    db.collection('servants').find().toArray()
-    .then(data =>{
-        response.render('home.ejs', {info: data})
+//Sessions middleware
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUnitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL
     })
-    .catch(err => console.error(err))
-})
+    //cookie: { secure: true }
+}))
 
-app.get('/servants',(request, response)=>{
-    db.collection('servants').find().toArray()
-    .then(data =>{
-        response.render('servants.ejs', {info: data})
-    })
-    .catch(err => console.error(err))
-})
+//Passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
 
-
-
-app.get('/add',(request, response)=>{
-    db.collection('servants').find().toArray()
-    .then(data => {
-        response.render('add.ejs', { info: data })
-    })
-    .catch(error => console.error(error))
-})
-
-app.get('/simulator',(request, response)=>{
-    db.collection('servants').find().toArray()
-    .then(data => {
-        response.render('simulator.ejs', { data })
-    })
-    .catch(error => console.error(error))
+//set global variable
+app.use(function (req,res,next) {
+    res.locals.user = req.user || null
+    next()
 })
 
 
-app.get('/gameplay',(request, response)=>{
-    db.collection('servants').find().toArray()
-    .then(data =>{
-        response.render('gameplay.ejs', {info: data})
-    })
-    .catch(err => console.error(err))
-})
-
-
-app.get('/api/:servants',(request,response)=>{
-    db.collection('servants').find().toArray()
-    .then(data => {
-     response.json(data)
-   })
-    .catch(error => console.error(error))
-})
-
-
-
-app.get('/home/:id', async(request, response)=>{
-    db.collection('servants').find().toArray()
-        .then(result => {
-                    let query = request.params.id // Your lookup to find Kiruya's data.  In this, req.params.id would be helpful.
-                    for(let i = 0;i<result.length;i++){
-                       if(result[i].servant.name.toLowerCase()===query){
-                       let info = result[i]
-                        response.render('template.ejs', {info})
-                       }
-                    }
-                }).catch(error=>console.error(error))     
-})
-
-app.post('/simulator', (request, response) => {
-    db.collection('simulator').insertOne({text: request.body.text})
-    .then(result => {
-response.redirect('/simulator')
-    })
-    .catch(error => console.error(error))
-})
-
-
-
-app.post('/servants', (request, response) => {
-    fetch('https://api.atlasacademy.io/export/JP/nice_servant_lore_lang_en.json')
-        .then(res=>res.json())
-        .then(data=>{
-            let index = 0
-            for(let i = 0; i < data.length; i++) {
-                let splitBySpace = data[i].name.split(' ')
-                let splitByHyphen = data[i].name.split('-')
-
-                if((splitByHyphen[0] === request.body.firstName || splitBySpace[0] === request.body.firstName) && request.body.servantClass.toLowerCase() === data[i].className) {
-                 index = i
-        
-             break;
-                }
-            }
-    db.collection('servants').insertOne({servant : data[index]})
-        .then(result => {
-            response.redirect('/servants')
-                 }).catch(error => console.error(error))
-}).catch(error => console.error(error))
-})
+app.use('/', require('./routes/index'))
+app.use('/user', require('./routes/user'))
+app.use('/auth', require('./routes/auth'))
 
 
 app.listen(process.env.PORT || PORT, ()=>{  

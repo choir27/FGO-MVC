@@ -38,7 +38,8 @@ nav{
 /*Font
    ========================================================================== */
 
-a, li, p, span, pre, input, button, h1, h2, h3, small, i, label, h4{
+a, li, p, span, pre, input, button, h1, h2, h3, small, i, label, h4, select{
+    text-transform: capitalize;
     color: white;
 }
 
@@ -61,7 +62,7 @@ li{
     list-style-type: none;
 }
 
-a, li, p, span, pre, input, button, small, i, label, h4{
+a, li, p, span, pre, input, button, small, i, label, h4, select{
     font-size: 2rem;
     line-height: 3.5rem;
 }
