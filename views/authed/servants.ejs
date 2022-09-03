@@ -33,9 +33,14 @@
         <h1 class="justifyContent flex">List of Servant Links</h1>
 
     <% for(let i =0; i < info.length; i++) { %>
+        <% if(info[i].servant !== undefined && info[i].servant !== null && !(info[i].servant.length < 1)) { %>
+
+        <h2><%= userName %></h2>
+        <h2><%= info[i].user._id %></h2>
             <a href = '/user/<%= info[i]._id %>' class = 'flex alignItems'> <div class = 'flex alignItems column '><h2>Servant <%= [i+1] %>: </h2> <%= info[i].servant[0].name %>'s page</div>
     
     <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[1] %>'> </a>
+    <% } %>
     <% } %>
     </section>
     
@@ -65,5 +70,6 @@
       </footer>
     
       <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
+      <script src="/js/servants.js"></script>
     </body>
     </html>
