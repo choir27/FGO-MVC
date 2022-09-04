@@ -19,7 +19,7 @@ router.get('/:id', ensureAuth , async (request,response) =>{
     try{
         const info = await Servant.findById(request.params.id).populate('user').lean()
         if (!info) {
-            return response.render('authed/error')
+            return response.render('authed/error')  
           }
       
           if (info.user._id != request.user.id && info.status == 'private') {
@@ -33,22 +33,17 @@ router.get('/:id', ensureAuth , async (request,response) =>{
       }
     })
 
-router.get('/user/:userId', ensureAuth, async (req, res) => {
-      try {
-        const servant = await Servant.find({
-          user: req.params.userId,
-          status: 'public',
-        })
-          .populate('user')
-          .lean()
-    
-        res.render('/user/servants', {
-          servant
-        })
-      } catch (err) {
-        console.error(err)
-        res.render('error/500')
-      }
+  router.get('/id/:name', ensureAuth, async (req,res)=>{
+    try{
+      const info = await Servant.find({user: req.params.name, status: 'public'})
+        .populate('user')
+        .lean()
+    res.render('authed/simulator', {info})
+
+  } catch (err) {
+    console.error(err)
+    res.render('authed/error')
+  }
     })
 
 router.get('/', ensureAuth , homeController.getHome)

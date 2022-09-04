@@ -111,7 +111,7 @@ color: #e44c65;
 
 .button{
     padding: 1rem 2rem;
-    border: 0;
+    border: 1px solid white;
     background: transparent;
     box-shadow: inset 0 0 0 1px rgb(255 255 255 / 30%);
     border-radius: 5px;

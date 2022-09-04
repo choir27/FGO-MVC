@@ -33,12 +33,13 @@
         <h1 class="justifyContent flex">List of Servant Links</h1>
 
     <% for(let i =0; i < info.length; i++) { %>
-        <% if(info[i].servant !== undefined && info[i].servant !== null && !(info[i].servant.length < 1)) { %>
+        <% if(info[i].servant !== undefined && info[i].servant !== null && !(info[i].servant.length < 1 && info[i].status === 'public')) { %>
 
-        <h2><%= userName %></h2>
-        <h2><%= info[i].user._id %></h2>
-            <a href = '/user/<%= info[i]._id %>' class = 'flex alignItems'> <div class = 'flex alignItems column '><h2>Servant <%= [i+1] %>: </h2> <%= info[i].servant[0].name %>'s page</div>
-    
+       
+            <a href = '/user/<%= info[i]._id %>' class = 'flex alignItems'>
+                <div class = 'flex alignItems column '> <%= info[i].servant[0].name %>'s page</div>
+                <div class = 'flex alignItems column'><h2><%= userName %></h2></div>
+                <a href = '/user/id/<%= info[i].user._id %>'></a>
     <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[1] %>'> </a>
     <% } %>
     <% } %>

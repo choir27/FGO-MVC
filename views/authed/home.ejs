@@ -32,6 +32,7 @@
             <h2 class = 'flex justifyContent'>Your Servants</h2>
 
             <% for(let i =0; i < info.length; i++) { %>
+                <% if(info[i].servant !== undefined && info[i].servant !== null  && info[i].user._id==userID && !(info[i].servant.length < 1)) { %>
 
         <div href = '/user/<%= info[i]._id %>' class = 'flex alignItems justifyContent button'> 
             <div class ='edit-delete'>
@@ -49,7 +50,8 @@
             </div>
             <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[1] %>'>
 
-        </div>  
+        </div>      <% } %>
+
 
         <% } %> 
 </section>
