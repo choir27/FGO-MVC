@@ -7,11 +7,11 @@
     <link rel = 'stylesheet' href = '/css/reset.css'>
     <link rel = 'stylesheet' href = '/css/normalize.css'>
     <link rel = 'stylesheet' href = '/css/style.css'>
-    <link rel = 'stylesheet' href = '/css/gameplay.css'>
-    <title>Gameplay</title>
+    <link rel = 'stylesheet' href = '/css/add.css'>
+    <title>Edit Servant</title>
 </head>
 <body>
-    <header class = 'flex column alignItems justifyContent header'>
+    <header class = 'flex column alignItems justifyContent'>
         <div class = 'banner'></div>
 
         <nav class = 'flex'>
@@ -29,9 +29,55 @@
         </nav>
     </header>
 
-<section class = 'section'>
-    <h1>Gameplay</h1>
+
+
+<section class = 'flex justifyContent column alignItems'>
+        <div class = 'flex column alignItems data'>
+            <h1 class = 'flex justifyContent'>Edit Servant Data</h1>
+            <span>Enter in information regarding Fate Grand Servants below and submit the data once everything is filled out.</span>
+
+            <span>Use the link below to access the added servant data API</span>
+            <code><pre>https://fgo-app.herokuapp.com/api/servants</pre></code>
+        </div>
+        
+<form action = '/user/servants' method = "POST" class = 'flex alignItems column'>
+     <div class = 'flex'>
+        
+        <input required="required" type = 'text' name = 'firstName' placeholder="First Name" value = '<%= data.firstName %>'>
+        <input type = 'text' name = 'middleName' placeholder="Middle Name" value = '<%= data.middleName %>'>
+        <input type = 'text' name = 'lastName' placeholder="Last Name" value = '<%= data.lastName %>'>
+
+     </div>
+
+     <div class = 'flex alignItems'>
+        <div class ='flex alignItems column'>
+            <h2><%= data.status %></h2>
+        <h2>Status:</h2>
+        <select id="status" name="status">
+            
+            <option value="public" selected>Public</option>
+            <option value="private">Private</option>
+        </select>
+    </div>
+        <input required='required' type = 'text' name = 'servantClass' placeholder="Servant Class"  value = '<%= data.servantClass %>'>
+   
+
+    </div>
+
+  
+    
+
+<div class = 'flex'>
+    <input type = 'text' name = 'gender' placeholder="Gender" value = '<%= data.gender %>'>
+    <input type = 'text' name = 'servantID' placeholder='Servant ID Number' value = '<%= data.servantID %>'>
+</div>
+
+
+<button type = 'submit' class = 'button'>Submit</button>
+
+</form>
 </section>
+
 
 <footer class = 'flex column alignItems' id = 'footer'>
     <section class = 'flex icons'>

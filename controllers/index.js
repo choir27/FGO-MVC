@@ -19,7 +19,7 @@ module.exports={
                 .populate('user')
                 .sort({ createdAt: 'desc' })
                 .lean()
-            res.render('authed/servants.ejs', {info: data, userName: req.user.displayName, userImage: req.user.image})
+            res.render('authed/servants.ejs', {info: data, userID: req.user.id , userName: req.user.displayName, userImage: req.user.image})
         }catch(err){
             console.error(err)
         } 
@@ -75,6 +75,50 @@ module.exports={
                 }catch(err){
                     console.error(err)
                 }
+    },
+    getTemplate: async (request,response) =>{
+        try{
+            const info = await Servant.findById(request.params.id).populate('user').lean()
+            if (!info) {
+                return response.render('authed/error')  
+              }
+          
+              if (info.user._id != request.user.id && info.status == 'private') {
+                response.render('authed/error')
+              } else {
+                response.render('authed/template.ejs', { info})
+              }
+        }
+        catch(err){
+            console.error(err)
+          }
+    },
+    getUserPage: async (req,res)=>{
+        try{
+          const data = await Servant.find({user: req.params.name, status: 'public'})
+            .populate('user')
+            .lean()
+        res.render('authed/view', {info: data, userName: req.user.displayName, userImage: req.user.image})
+    
+      } catch (err) {
+        console.error(err)
+        res.render('authed/error')
+      }
+    },
+    editPage: async (req,res)=>{
+        try{
+            const data = await Servant.findById(req.params.servant).populate('user').lean()
+            if (!data) {
+                return res.render('authed/error')  
+              }
+              if (data.user._id != req.user.id) {
+                res.render('authed/error')
+              } else {
+                res.render('authed/edit.ejs', {data})
+              }
+        }catch(err){
+            res.render('authed/error')
+        }
     }
 }
 

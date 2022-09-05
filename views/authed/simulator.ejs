@@ -12,7 +12,7 @@
 </head>
 <body>
 <!-- <a href = 'https://fgo-api.herokuapp.com/'>Make your team</a> -->
-<header class = 'flex column alignItems justifyContent'>
+<header class = 'flex column alignItems justifyContent header'>
     <div class = 'banner'></div>
 
     <nav class = 'flex'>
@@ -30,10 +30,10 @@
     </nav>
 </header>
 
-<section>
+<section class = 'section'>
     Simulator Template
-    <h1 class = 'flex justifyContent'><%= info.firstName%> <%= info.lastName%></h1>
-    <div class = 'flex justifyContent'><h2>Health: <%= info.health%></h2><h2>Attack: <%= info.attack%></h2></div>
+    <h1 class = 'flex justifyContent'><%= data.firstName%> <%= data.lastName%></h1>
+    <div class = 'flex justifyContent'><h2>Health: <%= data.health%></h2><h2>Attack: <%= data.attack%></h2></div>
 
 </section>
 <!-- <a href = 'https://fgo-api.herokuapp.com/'>Make your team</a> -->
@@ -66,6 +66,5 @@
   </footer>
 
   <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
-  <script src = '/js/simulator.js'></script>
 </body>
 </html>

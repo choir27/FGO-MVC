@@ -11,7 +11,7 @@
     <title>Servants</title>
 </head>
 <body>
-    <header class = 'flex column alignItems justifyContent'>
+    <header class = 'flex column alignItems justifyContent header'>
         <div class = 'banner'></div>
 
         <nav class = 'flex'>
@@ -29,12 +29,11 @@
         </nav>
     </header>
 
-    <section class = 'alignItems column flex justifyContent'>
+    <section class = 'alignItems column flex justifyContent section'>
         <h1 class="justifyContent flex">List of Servant Links</h1>
 
     <% for(let i =0; i < info.length; i++) { %>
-        <% if(info[i].servant !== undefined && info[i].servant !== null && !(info[i].servant.length < 1 && info[i].status === 'public')) { %>
-
+        <% if(info[i].servant !== undefined && info[i].servant !== null && info[i].status == 'public' && !(info[i].servant.length < 1)) { %>
        <div class = 'flex servant-row'>
             <a href = '/user/<%= info[i]._id %>' class = 'flex alignItems servant'>
                 <% let className = info[i].servant[0].className.split('').map(ele=>{
@@ -83,6 +82,5 @@
       </footer>
     
       <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
-      <script src="/js/servants.js"></script>
     </body>
     </html>

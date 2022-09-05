@@ -15,40 +15,17 @@ router.get('/gameplay', ensureAuth, homeController.getGameplay)
 
 router.get('/api/:servants', ensureAuth, homeController.getAPI)
 
-router.get('/:id', ensureAuth , async (request,response) =>{
-    try{
-        const info = await Servant.findById(request.params.id).populate('user').lean()
-        if (!info) {
-            return response.render('authed/error')  
-          }
-      
-          if (info.user._id != request.user.id && info.status == 'private') {
-            response.render('authed/error')
-          } else {
-            response.render('authed/template.ejs', { info})
-          }
-    }
-    catch(err){
-        console.error(err)
-      }
-    })
-
-  router.get('/id/:name', ensureAuth, async (req,res)=>{
-    try{
-      const data = await Servant.find({user: req.params.name, status: 'public'})
-        .populate('user')
-        .lean()
-    res.render('authed/view', {info: data, userName: req.user.displayName, userImage: req.user.image})
-
-  } catch (err) {
-    console.error(err)
-    res.render('authed/error')
-  }
-    })
-
 router.get('/', ensureAuth , homeController.getHome)
 
 router.post('/servants', homeController.postServants)
+
+router.get('/edit/:servant', ensureAuth, homeController.editPage)
+
+router.get('/:id', ensureAuth , homeController.getTemplate)
+
+router.get('/id/:name', ensureAuth, homeController.getUserPage)
+
+
 
 
 module.exports = router
