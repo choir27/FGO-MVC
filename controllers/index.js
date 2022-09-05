@@ -19,7 +19,7 @@ module.exports={
                 .populate('user')
                 .sort({ createdAt: 'desc' })
                 .lean()
-            res.render('authed/servants.ejs', {info: data, userName: req.user.displayName})
+            res.render('authed/servants.ejs', {info: data, userName: req.user.displayName, userImage: req.user.image})
         }catch(err){
             console.error(err)
         } 

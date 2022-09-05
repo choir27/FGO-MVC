@@ -38,8 +38,7 @@ section div a div{
     width: 50%;
 }
 
-.button:hover{
-border: 3px solid #e44c65;
+a:hover, .servant-row h2:hover{
  color:  #e44c65
 
 }
@@ -52,4 +51,8 @@ h1{
     width: 50%;
     padding-bottom: 4rem;
     border-bottom: 4px solid #e44c65;
+}
+
+.servant h3{
+    margin: 1rem 0rem;
 }

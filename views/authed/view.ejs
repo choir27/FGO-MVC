@@ -7,11 +7,10 @@
     <link rel = 'stylesheet' href = '/css/reset.css'>
     <link rel = 'stylesheet' href = '/css/normalize.css'>
     <link rel = 'stylesheet' href = '/css/style.css'>
-    <link rel = 'stylesheet' href = '/css/simulator.css'>
-    <title>Gameplay</title>
+    <link rel = 'stylesheet' href = '/css/view.css'>
+    <title><%= userName %>'s Servant Pages</title>
 </head>
 <body>
-<!-- <a href = 'https://fgo-api.herokuapp.com/'>Make your team</a> -->
 <header class = 'flex column alignItems justifyContent'>
     <div class = 'banner'></div>
 
@@ -30,10 +29,43 @@
     </nav>
 </header>
 
-<section>
-    <% for(let i = 0;i< info.length ; i++) {%>
-        <h2><%= info[i].firstName %></h2>
+<section class = 'flex column'>
+    <h1><%= userName %>'s servants</h1>
+    <div class = 'flex row'>
+    <% for(let i =0; i < info.length; i++) { %>
+        <% if(info[i].servant !== undefined && info[i].servant !== null && !(info[i].servant.length < 1)) { %>
+        <a href = '/user/<%= info[i]._id %>'>
+        <article class = 'button flex column'>
+        <h2><%= info[i].servant[0].name %></h2>
+     
+<div class = 'flex'>
+        <% let a = Math.ceil(Math.random() * 4) %>
+        <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[a] %>' class = 'ascension'> 
+
+        <% let o = Math.floor(Math.random() * info[i].servant[0].profile.voices.length) %>
+        <% let v = Math.floor(Math.random() * info[i].servant[0].profile.voices[o].voiceLines.length) %>
+        <div class = 'flex column justifyContent audio'>
+                <h2>Voice Line for </h2>
+               <h2><%= info[i].servant[0].profile.voices[o].voiceLines[v].name %></h2>
+               <audio controls src = '<%= info[i].servant[0].profile.voices[o].voiceLines[v].audioAssets[0] %>'></audio>
+        </div>
+    </div>
+
+    <div class = 'flex'>
+        <% for(let index = 0; index< info[i].servant[0].cards.length; index++) { %>
+            <img src = '/simulator/<%= info[i].servant[0].cards[index] %>.png'>
+            <% } %>
+        </div>
+
+          
+
+   
+
+        </article>
+    </a>
+    <% } %>
         <% } %>
+</div>
 </section>
 
 
@@ -64,6 +96,6 @@
   </footer>
 
   <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
-  <script src = '/js/simulator.js'></script>
+  <script src = '/js/view.js'></script>
 </body>
 </html>

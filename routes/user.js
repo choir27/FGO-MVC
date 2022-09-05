@@ -35,10 +35,10 @@ router.get('/:id', ensureAuth , async (request,response) =>{
 
   router.get('/id/:name', ensureAuth, async (req,res)=>{
     try{
-      const info = await Servant.find({user: req.params.name, status: 'public'})
+      const data = await Servant.find({user: req.params.name, status: 'public'})
         .populate('user')
         .lean()
-    res.render('authed/simulator', {info})
+    res.render('authed/view', {info: data, userName: req.user.displayName, userImage: req.user.image})
 
   } catch (err) {
     console.error(err)
