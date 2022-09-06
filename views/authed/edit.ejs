@@ -40,7 +40,9 @@
             <code><pre>https://fgo-app.herokuapp.com/api/servants</pre></code>
         </div>
         
-<form action = '/user/servants' method = "POST" class = 'flex alignItems column'>
+<form action = '/user/details/<%= data._id %>' method = "POST" class = 'flex alignItems column'>
+    <input type = "hidden" class="_method" value="PUT">
+    <input type="hidden" name="_method" value="PUT">
      <div class = 'flex'>
         
         <input required="required" type = 'text' name = 'firstName' placeholder="First Name" value = '<%= data.firstName %>'>

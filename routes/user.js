@@ -19,7 +19,9 @@ router.get('/', ensureAuth , homeController.getHome)
 
 router.post('/servants', homeController.postServants)
 
-router.get('/edit/:servant', ensureAuth, homeController.editPage)
+router.post('/details/:character', homeController.editServant)
+
+router.get('/edit/:servant', ensureAuth, homeController.getEditPage)
 
 router.get('/:id', ensureAuth , homeController.getTemplate)
 
