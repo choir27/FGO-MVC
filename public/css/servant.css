@@ -44,3 +44,14 @@ h1{
 .servant h3{
     margin: 1rem 0rem;
 }
+
+
+.edit-delete{
+    padding: .5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    align-items: flex-start;
+}
+
+.edit-delete, .edit-delete a, .edit-delete i{
+    width: 5%;
+   }

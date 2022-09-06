@@ -36,12 +36,10 @@
 
         <div href = '/user/<%= info[i]._id %>' class = 'flex alignItems justifyContent button'> 
             <div class ='edit-delete'>
-                <form>
             <a href = '/user/edit/<%= info[i]._id %>'><i class="fa-solid fa-pen"></i></a>
-                </form>
-                <form>
+            
             <i class="fa-solid fa-trash"></i>
-                </form>
+
             </div>
             <div class = 'flex alignItems column '>
                 <h2>Servant Name: <%= info[i].servant[0].name %></h2>
