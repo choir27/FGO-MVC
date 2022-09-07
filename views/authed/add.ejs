@@ -52,18 +52,26 @@
         <div class ='flex alignItems column'>
 
         <h2>Status:</h2>
-        <select id="status" name="status">
+        <select name="status">
             <option value="public" selected>Public</option>
             <option value="private">Private</option>
         </select>
     </div>
-        <input required='required' type = 'text' name = 'servantClass' placeholder="Servant Class">
-   
-
+        <div class ='flex alignItems column'>
+            <h2>Pick Ascension Art to Show:</h2>
+            <select name="ascension">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div> 
     </div>
 
+    <div class = 'flex justifyContent'>
+    <input required='required' type = 'text' name = 'servantClass' placeholder="Servant Class">
+    </div>
   
-    
 
 <div class = 'flex'>
     <input type = 'text' name = 'gender' placeholder="Gender">

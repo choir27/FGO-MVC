@@ -1,5 +1,3 @@
-
-
 document.querySelector(`.link1`).addEventListener('click',showTab)
 
 

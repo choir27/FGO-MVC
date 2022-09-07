@@ -53,13 +53,23 @@
 
      <div class = 'flex alignItems'>
         <div class ='flex alignItems column'>
-            <h2><%= data.status %></h2>
-        <h2>Status:</h2>
+        
+       
+        <% if( data.status == 'public') { %>
+            <h2>Status:</h2>
         <select id="status" name="status">
-            
             <option value="public" selected>Public</option>
             <option value="private">Private</option>
         </select>
+        <% } %>
+
+        <% if( data.status == 'private') { %>
+            <h2>Status:</h2>
+        <select id="status" name="status">
+            <option value="public">Public</option>
+            <option value="private" selected>Private</option>
+        </select>
+        <% } %>
     </div>
         <input required='required' type = 'text' name = 'servantClass' placeholder="Servant Class"  value = '<%= data.servantClass %>'>
    

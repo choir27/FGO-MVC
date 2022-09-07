@@ -34,6 +34,11 @@ const ServantSchema = new mongoose.Schema({
     default: 'public',
     enum: ['public', 'private']
 },
+ascension: {
+  type: String,
+  default: '1',
+  enum: ['1','2','3','4']
+},
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref:  'User'

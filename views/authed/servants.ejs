@@ -58,27 +58,28 @@
     <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[1] %>'> </a>
     
     <a class ='flex alignItems' href = '/user/id/<%= info[i].user._id %>'><h2>See more of <%= userName %>'s pages</h2></a>
-
-    <% if(info[i].user._id==userID) { %>
+    <% } %>
+    
+    <% if(info[i].user._id==userID && info[i].servant !== undefined && info[i].servant !== null && info[i].status == 'public' && !(info[i].servant.length < 1)) { %>
         <div class ='edit-delete flex alignItems column'>
             <a href = '/user/edit/<%= info[i]._id %>'><i class="fa-solid fa-pen"></i></a>
              <i class="fa-solid fa-trash"></i>
 
             </div>
-            <% } %>
+    <% } %>
 
-    <% if(info[i].user._id!=userID) { %>
+    <% if(info[i].user._id!=userID && info[i].servant !== undefined && info[i].servant !== null && info[i].status == 'public' && !(info[i].servant.length < 1)) { %>
         <div class ='edit-delete flex alignItems justifyContent column'><i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
 
         </div>
         
-            <% } %>      
+    <% } %>      
     </div>
 
           
-    <% } %>
+    
     <% } %>
     </section>
     

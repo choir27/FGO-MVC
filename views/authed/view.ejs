@@ -33,7 +33,7 @@
     <h1><%= userName %>'s servants</h1>
     <div class = 'flex row'>
     <% for(let i =0; i < info.length; i++) { %>
-        <% if(info[i].servant !== undefined && info[i].servant !== null && !(info[i].servant.length < 1)) { %>
+        <% if(info[i].servant !== undefined && info[i].servant !== null && info[i].status == 'public' && !(info[i].servant.length < 1)) { %>
         <a href = '/user/<%= info[i]._id %>'>
         <article class = 'button flex column'>
         <h2><%= info[i].servant[0].name %></h2>
