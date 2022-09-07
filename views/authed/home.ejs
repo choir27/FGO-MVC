@@ -35,10 +35,12 @@
                 <% if(info[i].servant !== undefined && info[i].servant !== null  && info[i].user._id==userID && !(info[i].servant.length < 1)) { %>
 
         <div href = '/user/<%= info[i]._id %>' class = 'flex alignItems justifyContent button'> 
-            <div class ='edit-delete'>
+            <div class ='edit-delete' data-id = '<%= info[i]._id %>'>
             <a href = '/user/edit/<%= info[i]._id %>'><i class="fa-solid fa-pen"></i></a>
             
-            <i class="fa-solid fa-trash"></i>
+            <i class="fas fa-trash del"></i>
+
+           
 
             </div>
             <div class = 'flex alignItems column '>
@@ -148,5 +150,7 @@
 
       <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
       <script src = '/js/home.js'></script>
+      <script src = '/js/main.js'></script>
+
 </body>
 </html>

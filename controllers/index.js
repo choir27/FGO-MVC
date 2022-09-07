@@ -145,16 +145,13 @@ module.exports={
             response.render('authed/error')
         }
     },
+    deleteServant: async (req, res) => {
+        try{
+            await Servant.findOneAndDelete({_id:req.body.todoIdFromJSFile})
+        }catch(err){
+            response.render('authed/error')
+        }
+    }
 }
 
-    
-    // router.post('/simulator', (request, response) => {
-    //     db.collection('simulator').insertOne({text: request.body.text})
-    //     .then(result => {
-    // response.redirect('/simulator')
-    //     })
-    //     .catch(error => console.error(error))
-    // })
-    
-    
-    
+   

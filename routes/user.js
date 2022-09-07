@@ -21,6 +21,8 @@ router.post('/servants', homeController.postServants)
 
 router.post('/details/:character', homeController.editServant)
 
+router.delete('/delete', homeController.deleteServant)
+
 router.get('/edit/:servant', ensureAuth, homeController.getEditPage)
 
 router.get('/:id', ensureAuth , homeController.getTemplate)
