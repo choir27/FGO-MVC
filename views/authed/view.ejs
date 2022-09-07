@@ -31,38 +31,40 @@
 
 <section class = 'flex column section'>
     <h1><%= userName %>'s servants</h1>
-    <div class = 'flex row'>
+<div class = 'flex row'>
     <% for(let i =0; i < info.length; i++) { %>
-        <% if(info[i].servant !== undefined && info[i].servant !== null && info[i].status == 'public' && !(info[i].servant.length < 1)) { %>
-        <a href = '/user/<%= info[i]._id %>'>
-        <article class = 'button flex column'>
-        <h2><%= info[i].servant[0].name %></h2>
-     
-<div class = 'flex'>
+        <% if(info[i].servant[0] && info[i].status == 'public') { %>
+           
+
+    <a href = '/user/<%= info[i]._id %>'>
         
-        <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[info[i].ascension] %>' class = 'ascension'> 
+        <article class = 'button flex column'>
+           
+            <h2><%= info[i].servant[0].name %></h2>
+            
+    
+            <div class = 'flex'>
+        
+                <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[info[i].ascension] %>' class = 'ascension'> 
 
         <% let o = Math.floor(Math.random() * info[i].servant[0].profile.voices.length) %>
         <% let v = Math.floor(Math.random() * info[i].servant[0].profile.voices[o].voiceLines.length) %>
-        <div class = 'flex column justifyContent audio'>
-                <h2>Voice Line for </h2>
-               <h2><%= info[i].servant[0].profile.voices[o].voiceLines[v].name %></h2>
-               <audio controls src = '<%= info[i].servant[0].profile.voices[o].voiceLines[v].audioAssets[0] %>'></audio>
-        </div>
-    </div>
+                <div class = 'flex column justifyContent audio'>
+                    <h2>Voice Line for </h2>
+                    <h2><%= info[i].servant[0].profile.voices[o].voiceLines[v].name %></h2>
+                    <audio controls src = '<%= info[i].servant[0].profile.voices[o].voiceLines[v].audioAssets[0] %>'></audio>
+                </div>
+            </div>
 
-    <div class = 'flex'>
+            <div class = 'flex'>
         <% for(let index = 0; index< info[i].servant[0].cards.length; index++) { %>
-            <img src = '/simulator/<%= info[i].servant[0].cards[index] %>.png'>
+                <img src = '/simulator/<%= info[i].servant[0].cards[index] %>.png'>
             <% } %>
-        </div>
-
-          
-
-   
+            </div>
 
         </article>
     </a>
+  
     <% } %>
         <% } %>
 </div>

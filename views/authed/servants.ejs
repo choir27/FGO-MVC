@@ -35,7 +35,7 @@
     <% for(let i =0; i < info.length; i++) { %>
       
 
-        <% if(info[i].servant !== undefined && info[i].servant !== null && info[i].status == 'public' && !(info[i].servant.length < 1)) { %>
+        <% if(info[i].servant[0] && info[i].status == 'public') { %>
        <div class = 'flex servant-row'>
       
 
@@ -63,11 +63,14 @@
     <% } %>
     
     <% if(info[i].user._id==userID && info[i].servant !== undefined && info[i].servant !== null && info[i].status == 'public' && !(info[i].servant.length < 1)) { %>
-        <div class ='edit-delete flex alignItems column'>
+        <div class ='flex alignItems justifyContent column edit-delete' data-id = '<%= info[i]._id %>'>
             <a href = '/user/edit/<%= info[i]._id %>'><i class="fa-solid fa-pen"></i></a>
-             <i class="fa-solid fa-trash"></i>
+            
+            <i class="fas fa-trash del"></i>
 
-            </div>
+           
+
+        </div>
     <% } %>
 
     <% if(info[i].user._id!=userID && info[i].servant !== undefined && info[i].servant !== null && info[i].status == 'public' && !(info[i].servant.length < 1)) { %>
@@ -83,6 +86,13 @@
     
     <% } %>
 
+    <% for(let i =0; i < info.length; i++) { %>
+        <% if(!info) { %>
+            <h2>No Servants have been added yet</h2>
+           <% break; %>
+        <% } %>
+
+    <% } %>
     </section>
     
     <footer class = 'flex column alignItems' id = 'footer'>
@@ -111,5 +121,7 @@
       </footer>
     
       <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
+      <script src = '/js/servant.js'></script>
+
     </body>
     </html>

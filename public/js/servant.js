@@ -8,7 +8,7 @@ async function deleteServant(){
     const todoId = this.parentNode.dataset.id
     console.log(todoId)
     try{
-        const response = await fetch('user/delete', {
+        const response = await fetch('delete', {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({

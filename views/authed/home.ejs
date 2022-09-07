@@ -30,13 +30,15 @@
 <section class = 'flex justifyContent alignItems column section'>
             <h1 class = 'flex justifyContent'>Welcome <%= name %>!</h1>
             <h2 class = 'flex justifyContent'>Your Servants</h2>
-
+<% let check = 0 %>
+           
+     
             <% for(let i =0; i < info.length; i++) { %>
-               
+              
 
+                <% if(info[i].servant[0] && info[i].user._id==userID) { %>
 
-                <% if(info[i].servant !== undefined && info[i].servant !== null  && info[i].user._id==userID && !(info[i].servant.length < 1)) { %>
-
+                    <% check +=1 %>
         <div href = '/user/<%= info[i]._id %>' class = 'flex alignItems justifyContent button'> 
             <div class ='edit-delete' data-id = '<%= info[i]._id %>'>
             <a href = '/user/edit/<%= info[i]._id %>'><i class="fa-solid fa-pen"></i></a>
@@ -48,18 +50,46 @@
             </div>
             <div class = 'flex alignItems column '>
                 <h2>Servant Name: <%= info[i].servant[0].name %></h2>
-                <h3>Servant Class: <%=info[i].servant[0].className %></h3> 
+                <% let className = info[i].servant[0].className.split('').map(ele => { %>
+                        <% if(ele === ele.toUpperCase()) { %>
+                           <% return ' ' + ele %>
+                            <% } %>
+                        <% if(ele != ele.toUpperCase()) { %>
+                           <% return ele %>
+                            <% } %>
+               <% }).join('') %>
+                <h3>Servant Class: <%=className %></h3> 
                 <a href = '/user/<%= info[i]._id %>' class = 'button'>Go to <%= info[i].servant[0].name %>'s page</a>
             </div>
 
            
             <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[info[i].ascension] %>'>
 
-        </div>      <% } %>
+        </div>     
+        <% } else if(!info[i].servant[0] && info[i].user._id==userID) { %>  
+            <% check +=1 %>
+            <div class = 'flex alignItems justifyContent button'> 
+                <div class ='edit-delete' data-id = '<%= info[i]._id %>'>
+                <a href = '/user/edit/<%= info[i]._id %>'><i class="fa-solid fa-pen"></i></a>
+                
+                <i class="fas fa-trash del"></i>
+                </div>
+                <h2>The servant you added couldn't be found</h2>
 
-        <% } %> 
+            </div>
+        <% } %>
 
-       
+        <% } %>
+
+
+        <% for(let i =0; i < info.length; i++) { %>
+            <% if(check == 0) { %>
+                <h2>No Servants have been added yet</h2>
+               <% break; %>
+            <% } %>
+
+        <% } %>
+
 </section>
 
 <i class="fa-solid fa-angle-down arrow-down"><a href = '#one'></a></i>
