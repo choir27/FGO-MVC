@@ -39,8 +39,8 @@
         <h2><%= info[i].servant[0].name %></h2>
      
 <div class = 'flex'>
-        <% let a = Math.ceil(Math.random() * 4) %>
-        <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[a] %>' class = 'ascension'> 
+        
+        <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[info[i].ascension] %>' class = 'ascension'> 
 
         <% let o = Math.floor(Math.random() * info[i].servant[0].profile.voices.length) %>
         <% let v = Math.floor(Math.random() * info[i].servant[0].profile.voices[o].voiceLines.length) %>

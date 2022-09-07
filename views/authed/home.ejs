@@ -32,6 +32,9 @@
             <h2 class = 'flex justifyContent'>Your Servants</h2>
 
             <% for(let i =0; i < info.length; i++) { %>
+               
+
+
                 <% if(info[i].servant !== undefined && info[i].servant !== null  && info[i].user._id==userID && !(info[i].servant.length < 1)) { %>
 
         <div href = '/user/<%= info[i]._id %>' class = 'flex alignItems justifyContent button'> 
@@ -48,12 +51,15 @@
                 <h3>Servant Class: <%=info[i].servant[0].className %></h3> 
                 <a href = '/user/<%= info[i]._id %>' class = 'button'>Go to <%= info[i].servant[0].name %>'s page</a>
             </div>
-            <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[1] %>'>
+
+           
+            <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[info[i].ascension] %>'>
 
         </div>      <% } %>
 
-
         <% } %> 
+
+       
 </section>
 
 <i class="fa-solid fa-angle-down arrow-down"><a href = '#one'></a></i>

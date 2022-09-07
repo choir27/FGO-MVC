@@ -33,6 +33,8 @@
         <h1 class="justifyContent flex">List of Servant Links</h1>
         
     <% for(let i =0; i < info.length; i++) { %>
+      
+
         <% if(info[i].servant !== undefined && info[i].servant !== null && info[i].status == 'public' && !(info[i].servant.length < 1)) { %>
        <div class = 'flex servant-row'>
       
@@ -55,7 +57,7 @@
                     <img src = '<%= userImage %>'>
                 </div>
                 
-    <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[1] %>'> </a>
+    <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[info[i].ascension] %>'> </a>
     
     <a class ='flex alignItems' href = '/user/id/<%= info[i].user._id %>'><h2>See more of <%= userName %>'s pages</h2></a>
     <% } %>
@@ -77,10 +79,10 @@
         
     <% } %>      
     </div>
-
           
     
     <% } %>
+
     </section>
     
     <footer class = 'flex column alignItems' id = 'footer'>

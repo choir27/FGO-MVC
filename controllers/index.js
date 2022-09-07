@@ -148,8 +148,9 @@ module.exports={
     deleteServant: async (req, res) => {
         try{
             await Servant.findOneAndDelete({_id:req.body.todoIdFromJSFile})
+            res.json('deleted servant')
         }catch(err){
-            response.render('authed/error')
+            res.render('authed/error')
         }
     }
 }

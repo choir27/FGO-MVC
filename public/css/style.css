@@ -1,6 +1,7 @@
 /* Layout
    ========================================================================== */
 .section{
+    min-height: 30.5vh;
     position: relative;
     padding: 10rem 2rem 4rem 2rem;
     background: rgba(39, 40, 51, 0.965);

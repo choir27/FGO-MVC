@@ -71,12 +71,24 @@
         </select>
         <% } %>
     </div>
-        <input required='required' type = 'text' name = 'servantClass' placeholder="Servant Class"  value = '<%= data.servantClass %>'>
+    
+        <div class ='flex alignItems column'>
+            <h2>Pick Ascension Art to Show:</h2>
+            <select name="ascension">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div> 
+   
    
 
     </div>
 
-  
+    <div class = 'flex justifyContent'>
+        <input required='required' type = 'text' name = 'servantClass' placeholder="Servant Class"  value = '<%= data.servantClass %>'>
+        </div>
     
 
 <div class = 'flex'>
