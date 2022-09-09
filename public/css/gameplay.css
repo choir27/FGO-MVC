@@ -1,2 +1,20 @@
 /* Gameplay Layout
    ========================================================================== */
+
+   img{
+      width: 100%;
+   }
+
+   h2{
+      text-align: center;
+      margin-bottom: 2rem;
+   }
+
+   div{
+      justify-content: space-around;
+   }
+
+   div div{
+      width: 30%;
+   }
+ 

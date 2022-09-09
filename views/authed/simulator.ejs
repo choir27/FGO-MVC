@@ -31,12 +31,21 @@
 </header>
 
 <section class = 'section'>
-    Simulator Template
-    <h1 class = 'flex justifyContent'><%= data.firstName%> <%= data.lastName%></h1>
-    <div class = 'flex justifyContent'><h2>Health: <%= data.health%></h2><h2>Attack: <%= data.attack%></h2></div>
+    <h1 class = 'flex justifyContent'>Simulator</h1>
 
+<div class = 'flex'>
+    <% for(let i =0; i < data.length; i++) { %>
+        <% if(data[i].servant[0] && data[i].status == 'public') { %>
+            
+        <form action = '/user/simulator/<%= data._id %>' method = "POST" class = 'flex alignItems column'>
+            <h2><%= data[i].servant[0].name %></h2>
+            <img src = '<%=data[i].servant[0].extraAssets.charaGraph.ascension[data[i].ascension] %>'> </a>
+            <button class = 'button' type = 'submit'>Choose</button>
+        </form>
+    <% } %>
+    <% } %>
+</div>
 </section>
-<!-- <a href = 'https://fgo-api.herokuapp.com/'>Make your team</a> -->
 
 
 
