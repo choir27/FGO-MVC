@@ -19,11 +19,12 @@ const ServantSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    required: false
+    required: true
   },
-  servantID: {
-    type: String,
-    required: false
+  rarity: {
+      type: String,
+      default: '1',
+      enum: ['1','2','3','4', '5']
   },
   servant: {
     type: Array,

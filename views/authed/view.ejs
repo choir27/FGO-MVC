@@ -45,15 +45,11 @@
     
             <div class = 'flex'>
         
-                <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[info[i].ascension] %>' class = 'ascension'> 
+                <% let array = [info[i].servant[0].cloud_1.image, info[i].servant[0].cloud_2.image, info[i].servant[0].cloud_3.image, info[i].servant[0].cloud_4.image] %>
+            
+                <img src = '<%= array[info[i].ascension-1] %>'>
 
-        <% let o = Math.floor(Math.random() * info[i].servant[0].profile.voices.length) %>
-        <% let v = Math.floor(Math.random() * info[i].servant[0].profile.voices[o].voiceLines.length) %>
-                <div class = 'flex column justifyContent audio'>
-                    <h2>Voice Line for </h2>
-                    <h2><%= info[i].servant[0].profile.voices[o].voiceLines[v].name %></h2>
-                    <audio controls src = '<%= info[i].servant[0].profile.voices[o].voiceLines[v].audioAssets[0] %>'></audio>
-                </div>
+      
             </div>
 
             <div class = 'flex'>

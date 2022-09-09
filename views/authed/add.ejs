@@ -73,9 +73,19 @@
     </div>
   
 
-<div class = 'flex'>
-    <input type = 'text' name = 'gender' placeholder="Gender">
-    <input type = 'text' name = 'servantID' placeholder='Servant ID Number'>
+<div class = 'flex row alignItems'>
+    <input requird = 'required' type = 'text' name = 'gender' placeholder="Gender">
+    <div class="alignItems column flex">
+    <h2>Pick Rarity of Servant:</h2>
+    <select name="rarity">
+        <option value="1" selected>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+
+    </select>
+</div>
 </div>
 
 

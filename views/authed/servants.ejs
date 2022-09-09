@@ -57,8 +57,10 @@
                     <img src = '<%= userImage %>'>
                 </div>
                 
-    <img src = '<%=info[i].servant[0].extraAssets.charaGraph.ascension[info[i].ascension] %>'> </a>
-    
+    <% let array = [info[i].servant[0].cloud_1.image, info[i].servant[0].cloud_2.image, info[i].servant[0].cloud_3.image, info[i].servant[0].cloud_4.image] %>
+            
+    <img src = '<%= array[info[i].ascension-1] %>'>
+
     <a class ='flex alignItems' href = '/user/id/<%= info[i].user._id %>'><h2>See more of <%= userName %>'s pages</h2></a>
     <% } %>
     

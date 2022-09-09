@@ -21,9 +21,9 @@ router.post('/servants', homeController.postServants)
 
 router.post('/details/:character', homeController.editServant)
 
-router.post('/simulator/:select', homeController.chooseServant)
+// router.post('/simulator/:select', homeController.chooseServant)
 
-router.delete('/delete', homeController.deleteServant)
+router.delete('/delete/:select', homeController.deleteServant)
 
 router.get('/edit/:servant', ensureAuth, homeController.getEditPage)
 
