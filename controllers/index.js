@@ -36,7 +36,7 @@ module.exports={
     getSimulator: async(req,res) =>{
         try{
             const data = await Servant.find({userId:req.user.id})
-            res.render('authed/simulator.ejs', {data})
+            res.render('authed/simulator.ejs', {data,userID: req.user.id})
         }catch(err){
             console.error(err)
         } 

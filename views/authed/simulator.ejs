@@ -35,11 +35,14 @@
 
 <div class = 'flex'>
     <% for(let i =0; i < data.length; i++) { %>
-        <% if(data[i].servant[0] && data[i].status == 'public') { %>
+        <% if(data[i].servant[0] && data[i].user._id==userID) { %>
             
         <form action = '/user/simulator/<%= data._id %>' method = "POST" class = 'flex alignItems column'>
             <h2><%= data[i].servant[0].name %></h2>
-            <img src = '<%=data[i].servant[0].extraAssets.charaGraph.ascension[data[i].ascension] %>'> </a>
+
+            <% let array = [data[i].servant[0].cloud_1.image,data[i].servant[0].cloud_2.image,data[i].servant[0].cloud_3.image,data[i].servant[0].cloud_4.image] %>
+
+            <img src = '<%= array[data[i].ascension-1] %>'>
             <button class = 'button' type = 'submit'>Choose</button>
         </form>
     <% } %>

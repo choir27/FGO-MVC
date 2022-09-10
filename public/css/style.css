@@ -185,4 +185,27 @@ header, img, a, li, p, span, pre, input, button, h1, h2, h3, small, i, #section1
     position: relative;
 }
 
+.edit-delete .edit{
+    width: 2rem;
+    height: 2.5rem;
+    margin-bottom: 2rem;
+}
 
+.edit i{
+    font-size: 2.4rem;
+}
+
+div.button:hover{
+    cursor:auto;
+    color: black;
+    }
+    
+div.button:active{
+        background-color: none;
+        box-shadow: none;
+    }
+    
+
+/* body *{
+    border: 3px solid white;
+} */

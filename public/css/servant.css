@@ -55,3 +55,9 @@ h1{
 .edit-delete, .edit-delete a, .edit-delete i{
     width: 5%;
    }
+
+.edit{
+        width: 5rem;
+        align-items: flex-start;
+        justify-content: flex-start;
+}

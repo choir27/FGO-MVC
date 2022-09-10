@@ -42,18 +42,14 @@
 
 
         <div href = '/user/<%= info[i]._id %>' class = 'flex alignItems justifyContent button'> 
+<div class="flex alignItems justifyContent column edit-delete">
+            <a href = '/user/edit/<%= info[i]._id %>' class = 'button edit flex justifyContent'><i class="fa-solid fa-pen"></i></a>
 
-
-            <form action="/user/delete/<%= info[i]._id  %>?_method=DELETE" method="POST" class ='edit-delete'>
-
-            <a href = '/user/edit/<%= info[i]._id %>' class = 'button'><i class="fa-solid fa-pen"></i></a>
-                
+            <form action="/user/delete/<%= info[i]._id  %>?_method=DELETE" method="POST" class ='flex justifyContent'>    
             <button class="button btn-primary fa fa-trash" type="submit"></button>
-         
-
             </form>
 
-
+        </div>
 
             <div class = 'flex alignItems column '>
                 <h2>Servant Name: <%= info[i].servant[0].name %></h2>

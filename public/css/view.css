@@ -29,21 +29,8 @@ section h2{
 
 
 
-.audio h2{
-    padding: 0rem;
-    padding-left: 2rem;
-    padding-top: 2rem;
-    align-items: flex-start;
-}
 
-.ascension{
+
+.ascension-img{
     width: 40%;
-}
-
-.audio{
-    width: 50%;
-}
-
-audio{
-    padding-top:2rem;
 }
