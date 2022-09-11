@@ -42,7 +42,7 @@ input, select, option{
 }
 
 form div{
-    width: 60%;
+    /* width: 60%; */
     padding: 2rem;
 }
 
@@ -66,4 +66,19 @@ form{
 
 h2{
     text-align: center;
+}
+
+section form div{
+    width: 80%;
+    flex-wrap: wrap;
+    height: 70rem;
+    overflow: scroll;
+    margin-bottom: 4rem;    
+}
+
+
+
+img{
+    margin: 2rem;
+    width: 15%;
 }
