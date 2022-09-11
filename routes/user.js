@@ -13,7 +13,7 @@ router.get('/simulator', ensureAuth, homeController.getSimulator)
 
 router.get('/gameplay', ensureAuth, homeController.getGameplay)
 
-router.get('/api/:servants', ensureAuth, homeController.getAPI)
+router.get('/api/:servants', homeController.getAPI)
 
 router.get('/', ensureAuth , homeController.getHome)
 

@@ -1,4 +1,8 @@
-
+fetch('https://fgo-app.herokuapp.com/user/api/servants')
+    .then(res=>res.json())
+    .then(data=>{
+        console.log(data)
+    })
 
 // <!-- <div class = 'flex column alignItems data'>
 // <h1 class = 'flex justifyContent'>Add Servant Data</h1>
