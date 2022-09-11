@@ -78,6 +78,11 @@ section form div{
 
 
 
+.status{
+    overflow: hidden;
+    height: 16rem;
+}
+
 img{
     margin: 2rem;
     width: 15%;

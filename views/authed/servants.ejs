@@ -45,21 +45,20 @@
 
 
 
-                <% let className = info[i].servant[0].className.split('').map(ele=>{
+                <% let className = info[i].className.split('').map(ele=>{
                     if(ele===ele.toUpperCase()){
                         return ' ' + ele
                     }else{
                         return ele
                     }
                 }).join('') %>
-                <div class = 'flex alignItems column '>View <%= className %> <%= info[i].servant[0].name %>'s page
+                <div class = 'flex alignItems column'>View <%= className %> <%= info[i].name %>page
                     <h3>By <%= userName %></h3>
                     <img src = '<%= userImage %>'>
                 </div>
                 
-    <% let array = [info[i].servant[0].cloud_1.image, info[i].servant[0].cloud_2.image, info[i].servant[0].cloud_3.image, info[i].servant[0].cloud_4.image] %>
             
-    <img src = '<%= array[info[i].ascension-1] %>'>
+                <img src = '<%= info1[info[i].index].servant[0].image %>'>
 
     <a class ='flex alignItems' href = '/user/id/<%= info[i].user._id %>'><h2>See more of <%= userName %>'s pages</h2></a>
     <% } %>

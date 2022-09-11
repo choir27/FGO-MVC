@@ -1,7 +1,18 @@
-fetch('https://fgo-app.herokuapp.com/user/api/servants')
+fetch('http://localhost:8000/user/api/servants')
     .then(res=>res.json())
     .then(data=>{
-        console.log(data)
+        let o;
+        for(let i =0;i<data.length;i++){
+            document.querySelector(`.select-${i}`).addEventListener('click',function getServant(){
+               document.querySelector('#name').setAttribute('value',data[i].servant[0].name)
+               document.querySelector('#rarity').setAttribute('value',data[i].servant[0].rarity)
+               document.querySelector('#gender').setAttribute('value',data[i].servant[0].gender)
+               document.querySelector('#className').setAttribute('value',data[i].servant[0].className)
+               document.querySelector('#index').setAttribute('value',i)
+
+            })
+        }
+        
     })
 
 // <!-- <div class = 'flex column alignItems data'>

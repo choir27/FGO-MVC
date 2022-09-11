@@ -40,14 +40,19 @@
         
         <article class = 'button flex column'>
            
-            <h2><%= info[i].servant[0].name %></h2>
+            <h2><%= info[i].name %></h2>
             
-    
+            <% let className = info[i].className.split('').map(ele=>{
+                if(ele===ele.toUpperCase()){
+                    return ' ' + ele
+                }else{
+                    return ele
+                }
+            }).join('') %>
+            <h2><%= className %></h2>
             <div class = 'flex'>
-        
-                <% let array = [info[i].servant[0].cloud_1.image, info[i].servant[0].cloud_2.image, info[i].servant[0].cloud_3.image, info[i].servant[0].cloud_4.image] %>
-            
-                <img src = '<%= array[info[i].ascension-1] %>' class = 'ascension-img'>
+                    
+                <img src = '<%= info1[info[i].index].servant[0].image %>'>
 
       
             </div>

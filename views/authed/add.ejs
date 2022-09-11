@@ -35,19 +35,29 @@
     <form action = '/user/servants' method = "POST" class = 'flex alignItems column'>
         <h1 class = 'flex justifyContent'>Choose Servant to Add</h1>
 
-<div class = 'flex'>
+<div class = 'flex alignItems justifyContent'>
         <% for(let i = 0; i< info1.length; i++) { %>
           
             <img src = '<%= info1[i].servant[0].image %>' class = 'select-<%=i %>'>
            
             <% } %>
 
-          <input type="hidden" id = 'name'>
-          <input type="hidden" id = 'rarity'>
-          <input type="hidden" id = 'gender'>
-          <input type="hidden" id = 'className'>
-
         </div>
+
+        <input class = 'hidden' type="text" name = 'name' id = 'name'>
+        <input class = 'hidden' type="text" name = 'rarity' id = 'rarity'>
+        <input class = 'hidden' type="text" name = 'gender' id = 'gender'>
+        <input class = 'hidden' type="text" name ='className' id = 'className'>
+        <input class = 'hidden' type="text" name ='index' id = 'index'>
+
+        <div class ='flex alignItems column status'>
+
+        <h2>Status:</h2>
+        <select name="status">
+            <option value="public" selected required='required'>Public</option>
+            <option value="private" required='required'>Private</option>
+        </select>
+            </div>
 
         <button type = 'submit' class = 'button'>Submit</button>
     </form>

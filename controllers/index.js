@@ -18,7 +18,12 @@ module.exports={
     getHome: async(req,res) =>{
         try{
             const data = await Servant.find({userId:req.user.id}).lean()
-            res.render('authed/home.ejs', {info: data, name: req.user.firstName, userID: req.user.id})
+            const data1 = await Choose.find({userId:req.user.id})
+            const data2 = await Choose1.find({userId:req.user.id})
+            const data3 = await Choose2.find({userId:req.user.id})
+            const data4 = await Choose3.find({userId:req.user.id})
+           
+            res.render('authed/home.ejs', {info1: data1,info2: data2,info3: data3,info4: data4, info: data, name: req.user.firstName, userID: req.user.id})
         }catch(err){
             console.error(err)
         } 
@@ -29,7 +34,11 @@ module.exports={
                 .populate('user')
                 .sort({ createdAt: 'desc' })
                 .lean()
-            res.render('authed/servants.ejs', {info: data, userID: req.user.id , userName: req.user.displayName, userImage: req.user.image})
+            const data1 = await Choose.find({userId:req.user.id})
+            const data2 = await Choose1.find({userId:req.user.id})
+            const data3 = await Choose2.find({userId:req.user.id})
+            const data4 = await Choose3.find({userId:req.user.id})
+            res.render('authed/servants.ejs', {info1: data1, info2: data2, info3: data3, info4: data4, info: data, userID: req.user.id , userName: req.user.displayName, userImage: req.user.image})
         }catch(err){
             console.error(err)
         } 
@@ -37,17 +46,8 @@ module.exports={
     getAdd: async(req,res) =>{
         try{
         const data = await Choose.find({userId:req.user.id})
-        const data1 = await Choose1.find({userId:req.user.id})
-        const data2 = await Choose2.find({userId:req.user.id})
-        const data3 = await Choose3.find({userId:req.user.id})
-        const skill1 = await Skill1.find({userId:req.user.id})
-        const skill2 = await Skill2.find({userId:req.user.id})
-        const skill3 = await Skill3.find({userId:req.user.id})
-        const appendskill1 = await AppendSkill1.find({userId:req.user.id})
-        const appendskill2 = await AppendSkill2.find({userId:req.user.id})
-        const appendskill3 = await AppendSkill3.find({userId:req.user.id})
 
-        res.render('authed/add.ejs', {appendSkill1: appendskill1, appendSkill2: appendskill2, appendSkill3: appendskill3, skill1: skill1, skill2: skill2, skill3: skill3, info1: data, info2: data1, info3: data2, info4: data3 })
+        res.render('authed/add.ejs', {info1: data})
         }catch(err){
             console.error(err)
         } 
@@ -55,7 +55,14 @@ module.exports={
     getSimulator: async(req,res) =>{
         try{
             const data = await Servant.find({userId:req.user.id})
-            res.render('authed/simulator.ejs', {data,userID: req.user.id})
+            const data1 = await Choose.find({userId:req.user.id})
+            const data2 = await Choose1.find({userId:req.user.id})
+            const data3 = await Choose2.find({userId:req.user.id})
+            const data4 = await Choose3.find({userId:req.user.id})
+            const skill1 = await Skill1.find({userId:req.user.id})
+            const skill2 = await Skill2.find({userId:req.user.id})
+            const skill3 = await Skill3.find({userId:req.user.id})
+            res.render('authed/simulator.ejs', {data,skill1: skill1,skill2: skill2,skill3: skill3,info1: data1, info2: data2, info3: data3, info4: data4, userID: req.user.id})
         }catch(err){
             console.error(err)
         } 
@@ -77,25 +84,29 @@ module.exports={
     },
     postServants: async (request,response) =>{
         try{
-         
-              let res = await fetch(`https://api.atlasacademy.io/nice/NA/servant/search?name=${request.body.firstName.toLowerCase().trim()}&rarity=${request.body.rarity}&className=${request.body.servantClass.toLowerCase().split(' ').join('').trim()}&gender=${request.body.gender}`)
+              let res = await fetch(`https://api.atlasacademy.io/nice/NA/servant/search?name=${request.body.name}&rarity=${request.body.rarity}&className=${request.body.className}&gender=${request.body.gender}`)
               let data = await res.json()
-              if(data[0] && data){
-                request.body.servant = {name: data[0].name, className: data[0].className, rarity: data[0].rarity, collectionNo: data[0].collectionNo, gender: data[0].gender, lvMax: data[0].lvMax, atkMax: data[0].atkMax, hpMax: data[0].hpMax, cost: data[0].cost, id: data[0].id, starAbsorb: data[0].starAbsorb, starGen: data[0].starGen, attribute: data[0].atrribute, instantDeathChance: data[0].instantDeathChance, cards: data[0].cards, profile: data[0].profile, ascensionAdd: data[0].ascensionAdd, skills: { skillCooldown1: [data[0].skills[0].coolDown], skillCooldown2: [data[0].skills[1].coolDown], skillCooldown3: [data[0].skills[2].coolDown] ,skillName1: data[0].skills[0].name, skillName2: data[0].skills[1].name, skillName3: data[0].skills[0].name} , noblePhantasms: data[0].noblePhantasms}
-                           request.body.user = request.user.id
-                  await Servant.create(request.body)
-           response.redirect('servants')
-              
-       }else{
-        console.error('error')
-        response.render('authed/error')
-       }
-                }catch(err){
-                    console.error(err)
+                request.body.servant = {collectionNo: data[0].collectionNo, lvMax: data[0].lvMax, atkMax: data[0].atkMax, hpMax: data[0].hpMax, cost: data[0].cost, id: data[0].id, starAbsorb: data[0].starAbsorb, starGen: data[0].starGen, attribute: data[0].atrribute, instantDeathChance: data[0].instantDeathChance, cards: data[0].cards, profile: data[0].profile, ascensionAdd: data[0].ascensionAdd, noblePhantasms: data[0].noblePhantasms}
+                    request.body.user = request.user.id
+                    await Servant.create(request.body)
+                response.redirect('servants')
+       }catch(err){
+        console.error(err)
                 }
     },
     getTemplate: async (request,response) =>{
         try{
+            const data1 = await Choose.find({userId:request.user.id})
+            const data2 = await Choose1.find({userId:request.user.id})
+            const data3 = await Choose2.find({userId:request.user.id})
+            const data4 = await Choose3.find({userId:request.user.id})
+            const skill1 = await Skill1.find({userId:request.user.id})
+            const skill2 = await Skill2.find({userId:request.user.id})
+            const skill3 = await Skill3.find({userId:request.user.id})
+            const appendskill1 = await AppendSkill1.find({userId:request.user.id})
+            const appendskill2 = await AppendSkill2.find({userId:request.user.id})
+            const appendskill3 = await AppendSkill3.find({userId:request.user.id})
+
             const info = await Servant.findById(request.params.id).populate('user').lean()
             if (!info) {
                 return response.render('authed/error')  
@@ -104,7 +115,7 @@ module.exports={
               if (info.user._id != request.user.id && info.status == 'private') {
                 response.render('authed/error')
               } else {
-                response.render('authed/template.ejs', { info})
+                response.render('authed/template.ejs', {appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 , skill1: skill1,skill2: skill2,skill3: skill3,info1: data1, info2: data2, info3: data3, info4: data4, info})
               }
         }
         catch(err){
@@ -116,7 +127,11 @@ module.exports={
           const data = await Servant.find({user: req.params.name, status: 'public'})
             .populate('user')
             .lean()
-        res.render('authed/view', {info: data, userName: req.user.displayName, userImage: req.user.image})
+            const data1 = await Choose.find({userId:req.user.id})
+            const data2 = await Choose1.find({userId:req.user.id})
+            const data3 = await Choose2.find({userId:req.user.id})
+            const data4 = await Choose3.find({userId:req.user.id})
+        res.render('authed/view', {info1: data1, info2: data2, info3: data3, info4: data4,info: data, userName: req.user.displayName, userImage: req.user.image})
     
       } catch (err) {
         console.error(err)

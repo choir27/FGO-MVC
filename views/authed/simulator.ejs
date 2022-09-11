@@ -38,11 +38,10 @@
         <% if(data[i].servant[0] && data[i].user._id==userID) { %>
             
         <form action = '/user/simulator/<%= data._id %>' method = "POST" class = 'flex alignItems column'>
-            <h2><%= data[i].servant[0].name %></h2>
+            <h2><%= data[i].name %></h2>
 
-            <% let array = [data[i].servant[0].cloud_1.image,data[i].servant[0].cloud_2.image,data[i].servant[0].cloud_3.image,data[i].servant[0].cloud_4.image] %>
 
-            <img src = '<%= array[data[i].ascension-1] %>'>
+            <img src = '<%= info1[data[i].index].servant[0].image %>'>
             <button class = 'button' type = 'submit'>Choose</button>
         </form>
     <% } %>

@@ -35,34 +35,45 @@
   <article class = 'flex alignItems article1'>
       <div class = 'flex justifyContent alignItems column'>
         <div class = 'flex alignItems justifyContent buttons'>
-<% for(let i = 1;i< 6; i++) { %>
+<% for(let i = 1;i< 5; i++) { %>
           <button class ='button link<%= i %>'>Ascension <%= i%></button>
 <% } %>
         </div>
-        <% let array = [info.servant[0].cloud_1.image, info.servant[0].cloud_2.image, info.servant[0].cloud_3.image, info.servant[0].cloud_4.image] %>
 
   <div id = 'tab1' class = 'flex justifyContent'>
             
-    <img src = '<%= array[1] %>'>
+    <img src = '<%= info1[info.index].servant[0].image %>'>
   </div>
 
 
-<% let ascension = 1 %>
-<% for(let keys =1;keys < array.length; keys++) { %>
-  <div id = 'tab<%=ascension%>' class = 'hidden flex justifyContent'>
-    <img src = '<%= array[keys] %>'>
+  <div id = 'tab2' class = 'hidden flex justifyContent'>
+    <img src = '<%= info2[info.index].servant[0].image %>'>
   </div>
-<% ascension++ %>
-    <% } %>
+
+  <div id = 'tab3' class = 'hidden flex justifyContent'>
+    <img src = '<%= info3[info.index].servant[0].image %>'>
+  </div>
+
+  <div id = 'tab4' class = 'hidden flex justifyContent'>
+    <img src = '<%= info4[info.index].servant[0].image %>'>
+  </div>
   
       </div>
     <div class = 'stats'>
-      <h1 class = 'flex'>full name: <%= info.servant[0].name %></h1>
+      <h1 class = 'flex'>full name: <%= info.name %></h1>
 
-      <h2 class = 'flex'>class Name: <%= info.servant[0].className %></h2>
+      <% let className = info.className.split('').map(ele=>{
+        if(ele===ele.toUpperCase()){
+            return ' ' + ele
+        }else{
+            return ele
+        }
+    }).join('') %>
+
+      <h2 class = 'flex'>class Name: <%= className %></h2>
 
       <div class = 'flex rarity'>
-      <h2 class = 'flex alignItems stars'>rarity: <%for(let i = 0; i < info.servant[0].rarity; i++) { %>
+      <h2 class = 'flex alignItems stars'>rarity: <%for(let i = 0; i < info.rarity; i++) { %>
         <img src = '/servants/star.png'>
         <% }%>
 
@@ -70,7 +81,7 @@
       </h2>
     </div>
 
-    <div class = 'div flex'><h2>gender: <%= info.servant[0].gender %></h2><h2>max level: <%= info.servant[0].lvMax %></h2></div>
+    <div class = 'div flex'><h2>gender: <%= info.gender %></h2><h2>max level: <%= info.servant[0].lvMax %></h2></div>
     <div class = 'div flex'><h2>max attack: <%= info.servant[0].atkMax %></h2><h2>max health: <%= info.servant[0].hpMax %></h2></div>
     <div class = 'div flex'><h2>cost: <%= info.servant[0].cost %></h2><h2>servant id: <%= info.servant[0].id%></h2></div>
     <div class = 'div flex'><h2>star absorb: <%= info.servant[0].starAbsorb%></h2><h2>star gen: <%= info.servant[0].starGen%></h2></div>
@@ -108,35 +119,34 @@
       <div class = 'flex alignItems column level-heading'><h2 class = 'flex justifyContent'>Lv</h2><h2 class = 'flex justifyContent'> 10</h2></div>
       </div>
 
-      <% let skills = [info.servant[0].cloud_5.image, info.servant[0].cloud_6.image, info.servant[0].cloud_7.image] %>
       
         <div class ='flex alignItems'>
         
-        <h2><%= info.servant[0].skills.skillName1%></h2>
-        <img src = '<%= skills[0] %>'>
-        <h2 class = 'flex justifyContent skills'><%= info.servant[0].skills.skillCooldown1[0][0] %></h2>
-        <h2 class = 'flex justifyContent skills'><%= info.servant[0].skills.skillCooldown1[0][6] %></h2>
-        <h2 class = 'flex justifyContent skills'><%= info.servant[0].skills.skillCooldown1[0][9] %></h2>
+        <h2><%= skill1[info.index].servant[0].skillName %></h2>
+        <img src = '<%= skill1[info.index].servant[0].image %>'>
+        <h2 class = 'flex justifyContent skills'><%= skill1[info.index].servant[0].skillCooldown[0] %></h2>
+        <h2 class = 'flex justifyContent skills'><%= skill1[info.index].servant[0].skillCooldown[6] %></h2>
+        <h2 class = 'flex justifyContent skills'><%= skill1[info.index].servant[0].skillCooldown[9] %></h2>
 
       </div>
 
       <div class ='flex alignItems'>
 
-      <h2><%= info.servant[0].skills.skillName2%></h2>
-      <img src = '<%= skills[1] %>'>
-      <h2 class = 'flex justifyContent skills'><%= info.servant[0].skills.skillCooldown1[0][0] %></h2>
-      <h2 class = 'flex justifyContent skills'><%= info.servant[0].skills.skillCooldown1[0][6] %></h2>
-      <h2 class = 'flex justifyContent skills'><%= info.servant[0].skills.skillCooldown2[0][9] %></h2>
+      <h2><%= skill2[info.index].servant[0].skillName%></h2>
+      <img src = '<%= skill2[info.index].servant[0].image %>'>
+      <h2 class = 'flex justifyContent skills'><%= skill2[info.index].servant[0].skillCooldown[0] %></h2>
+      <h2 class = 'flex justifyContent skills'><%= skill2[info.index].servant[0].skillCooldown[6] %></h2>
+      <h2 class = 'flex justifyContent skills'><%= skill2[info.index].servant[0].skillCooldown[9] %></h2>
 
     </div>
 
     <div class ='flex alignItems'>
 
-      <h2><%= info.servant[0].skills.skillName3%></h2>
-      <img src = '<%= skills[2] %>'>
-      <h2 class = 'flex justifyContent skills'><%= info.servant[0].skills.skillCooldown1[0][0] %></h2>
-      <h2 class = 'flex justifyContent skills'><%= info.servant[0].skills.skillCooldown1[0][6] %></h2>
-      <h2 class = 'flex justifyContent skills'><%= info.servant[0].skills.skillCooldown3[0][9] %></h2>
+      <h2><%= skill3[info.index].servant[0].skillName %></h2>
+        <img src = '<%= skill3[info.index].servant[0].image %>'>
+        <h2 class = 'flex justifyContent skills'><%= skill3[info.index].servant[0].skillCooldown[0] %></h2>
+        <h2 class = 'flex justifyContent skills'><%= skill3[info.index].servant[0].skillCooldown[6] %></h2>
+        <h2 class = 'flex justifyContent skills'><%= skill3[info.index].servant[0].skillCooldown[9] %></h2>
 
     </div>
         
