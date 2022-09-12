@@ -182,8 +182,9 @@ module.exports={
     },
     deleteServant: async (req, res) => {
         try{
-            let post = await Servant.findById({ _id: req.params.select });
-            await Servant.findOneAndDelete({post})
+            // let post = await Servant.findById({ _id: req.params.select });
+            let post = await Servant.findByIdAndDelete({_id: req.params.select })
+            console.log(post)
 
             res.redirect('/user/servants')
         }catch(err){

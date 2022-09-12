@@ -32,9 +32,8 @@
     <section class = 'alignItems column flex justifyContent section'>
         <h1 class="justifyContent flex">List of Servant Links</h1>
         
-<% let data = {...info, ...info1} %>
 
-    <% for(let i =0; i < data.length; i++) { %>
+    <% for(let i =0; i < info.length; i++) { %>
       
 
         <% if(info[i].servant[0] && info[i].status == 'public') { %>
@@ -67,9 +66,9 @@
     
     <% if(info[i].user._id==userID && info[i].servant !== undefined && info[i].servant !== null && info[i].status == 'public' && !(info[i].servant.length < 1)) { %>
         <div class="flex alignItems justifyContent column edit-delete">
-            <a href = '/user/edit/<%= info[i]._id %>' class = 'button edit flex'><i class="fa-solid fa-pen"></i></a>
+            <a href = '/user/edit/<%=  info[i]._id %>' class = 'button edit flex'><i class="fa-solid fa-pen"></i></a>
 
-            <form action="/user/delete/<%= info[i]._id  %>?_method=DELETE" method="POST" class ='flex justifyContent'>    
+            <form action="/user/delete/<%=  info[i]._id  %>?_method=DELETE" method="POST" class ='flex justifyContent'>    
             <button class="button btn-primary fa fa-trash" type="submit"></button>
             </form>
 
