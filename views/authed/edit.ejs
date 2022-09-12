@@ -34,7 +34,7 @@
 <section class = 'flex justifyContent column alignItems'>
         <div class = 'flex column alignItems data'>
             <h1 class = 'flex justifyContent'>Edit Servant Data</h1>
-            <span>Enter in information regarding Fate Grand Servants below and submit the data once everything is filled out.</span>
+            <span>Change information from created posts</span>
 
             <span>Use the link below to access the added servant data API</span>
             <code><pre>https://fgo-app.herokuapp.com/api/servants</pre></code>
@@ -43,182 +43,47 @@
 <form action = '/user/details/<%= data._id %>' method = "POST" class = 'flex alignItems column'>
     <input type = "hidden" class="_method" value="PUT">
     <input type="hidden" name="_method" value="PUT">
-     <div class = 'flex'>
-        
-        <input required="required" type = 'text' name = 'firstName' placeholder="First Name" value = '<%= data.firstName %>'>
-        <input type = 'text' name = 'middleName' placeholder="Middle Name" value = '<%= data.middleName %>'>
-        <input type = 'text' name = 'lastName' placeholder="Last Name" value = '<%= data.lastName %>'>
+    <div class = 'flex alignItems justifyContent'>
+        <% for(let i = 0; i< info1.length; i++) { %>
+          
+            <img src = '<%= info1[i].servant[0].image %>' class = 'select-<%=i %>'>
+           
+            <% } %>
 
-     </div>
+        </div>
 
-     <div class = 'flex alignItems'>
-        <div class ='flex alignItems column'>
+        <input class = 'hidden' type="text" name = 'name' id = 'name'>
+        <input class = 'hidden' type="text" name = 'rarity' id = 'rarity'>
+        <input class = 'hidden' type="text" name = 'gender' id = 'gender'>
+        <input class = 'hidden' type="text" name ='className' id = 'className'>
+        <input class = 'hidden' type="text" name ='index' id = 'index'>
+
         
        
         <% if( data.status == 'public') { %>
+            <div class ='flex alignItems column status'>
+
             <h2>Status:</h2>
-        <select id="status" name="status">
-            <option value="public" selected>Public</option>
-            <option value="private">Private</option>
-        </select>
+            <select name="status">
+                <option value="public" selected required='required'>Public</option>
+                <option value="private" required='required'>Private</option>
+            </select>
+        </div>
+
         <% } %>
+
 
         <% if( data.status == 'private') { %>
+            <div class ='flex alignItems column status'>
+
             <h2>Status:</h2>
-        <select id="status" name="status">
-            <option value="public">Public</option>
-            <option value="private" selected>Private</option>
-        </select>
-        <% } %>
-    </div>
-    
-    <% if( data.ascension == 1) { %>
-
-        <div class ='flex alignItems column'>
-            <h2>Pick Ascension Art to Show:</h2>
-            <select name="ascension">
-                <option value="1" selected>1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+            <select name="status">
+                <option value="public" required='required'>Public</option>
+                <option value="private" selected required='required'>Private</option>
             </select>
-        </div> 
-<% } %>
+                </div>
+        <% } %>
 
-<% if( data.ascension == 2) { %>
-
-    <div class ='flex alignItems column'>
-        <h2>Pick Ascension Art to Show:</h2>
-        <select name="ascension">
-            <option value="1">1</option>
-            <option value="2" selected>2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-        </select>
-    </div> 
-<% } %>
-
-<% if( data.ascension == 3) { %>
-
-    <div class ='flex alignItems column'>
-        <h2>Pick Ascension Art to Show:</h2>
-        <select name="ascension">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3" selected>3</option>
-            <option value="4">4</option>
-        </select>
-    </div> 
-<% } %>
-
-<% if( data.ascension == 4) { %>
-
-    <div class ='flex alignItems column'>
-        <h2>Pick Ascension Art to Show:</h2>
-        <select name="ascension">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4" selected>4</option>
-        </select>
-    </div> 
-<% } %>
-   
-
-    </div>
-
-    <div class = 'flex justifyContent'>
-        <input required='required' type = 'text' name = 'servantClass' placeholder="Servant Class"  value = '<%= data.servantClass %>'>
-        </div>
-    
-
-<div class = 'flex alignItems row'>
-    <input required='required' type = 'text' name = 'gender' placeholder="Gender" value = '<%= data.gender %>'>
-
-
-    <% if( data.rarity == 1) { %>
-
-    <div class="alignItems column flex">
-        <h2>Pick Rarity of Servant:</h2>
-        <select name="rarity">
-            <option value="1" selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-    
-        </select>
-    </div>
-
-<% } %>
-
-
-<% if( data.rarity == 2) { %>
-
-    <div class="alignItems column flex">
-        <h2>Pick Rarity of Servant:</h2>
-        <select name="rarity">
-            <option value="1">1</option>
-            <option value="2" selected>2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-    
-        </select>
-    </div>
-
-<% } %>
-
-
-<% if( data.rarity == 3) { %>
-
-    <div class="alignItems column flex">
-        <h2>Pick Rarity of Servant:</h2>
-        <select name="rarity">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3" selected>3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-    
-        </select>
-    </div>
-
-<% } %>
-
-<% if( data.rarity == 4) { %>
-
-    <div class="alignItems column flex">
-        <h2>Pick Rarity of Servant:</h2>
-        <select name="rarity">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4" selected>4</option>
-            <option value="5">5</option>
-    
-        </select>
-    </div>
-
-<% } %>
-
-
-<% if( data.rarity == 5) { %>
-
-    <div class="alignItems column flex">
-        <h2>Pick Rarity of Servant:</h2>
-        <select name="rarity">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5" selected>5</option>
-    
-        </select>
-    </div>
-
-<% } %>
-</div>
 
 
 <button type = 'submit' class = 'button'>Submit</button>

@@ -1,16 +1,30 @@
 fetch('http://localhost:8000/user/api/servants')
     .then(res=>res.json())
     .then(data=>{
-        let o;
+
         for(let i =0;i<data.length;i++){
             document.querySelector(`.select-${i}`).addEventListener('click',function getServant(){
+                resetBorder()
+                document.querySelector(`.select-${i}`).style.border = '3px solid red'
                document.querySelector('#name').setAttribute('value',data[i].servant[0].name)
                document.querySelector('#rarity').setAttribute('value',data[i].servant[0].rarity)
                document.querySelector('#gender').setAttribute('value',data[i].servant[0].gender)
                document.querySelector('#className').setAttribute('value',data[i].servant[0].className)
-               document.querySelector('#index').setAttribute('value',i)
+               document.querySelector('#image').setAttribute('src',data[i].servant[0].image)
+               document.querySelector('#servantName').innerText = data[i].servant[0].name
+               document.querySelector('#servantClass').innerText = data[i].servant[0].className
+               document.querySelector('#servantRarity').innerText = data[i].servant[0].rarity
 
+               document.querySelector('#index').setAttribute('value',i)
+            
             })
+        }
+    
+
+        function resetBorder(){
+            for(let i =0;i<data.length;i++){
+                document.querySelector(`.select-${i}`).style.border = '3px solid rgba(39, 40, 51, 0.965)'
+            }
         }
         
     })

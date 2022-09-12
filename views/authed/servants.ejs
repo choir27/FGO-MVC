@@ -32,7 +32,9 @@
     <section class = 'alignItems column flex justifyContent section'>
         <h1 class="justifyContent flex">List of Servant Links</h1>
         
-    <% for(let i =0; i < info.length; i++) { %>
+<% let data = {...info, ...info1} %>
+
+    <% for(let i =0; i < data.length; i++) { %>
       
 
         <% if(info[i].servant[0] && info[i].status == 'public') { %>

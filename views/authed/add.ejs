@@ -32,13 +32,22 @@
 
 
 <section class = 'flex justifyContent column alignItems'>
+    <div class = 'flex column alignItems data'>
+        <h1 class = 'flex justifyContent'>Add Servant</h1>
+        <span>Enter in information regarding Fate Grand Servants below and submit the data once everything is filled out.</span>
+
+        <span>Use the link below to access the added servant data API</span>
+        <code><pre>https://fgo-app.herokuapp.com/api/servants</pre></code>
+    </div>
     <form action = '/user/servants' method = "POST" class = 'flex alignItems column'>
         <h1 class = 'flex justifyContent'>Choose Servant to Add</h1>
 
-<div class = 'flex alignItems justifyContent'>
+            <input type="search" name = 'search' id = 'search'>
+
+<div class = 'flex alignItems justifyContent servants button'>
         <% for(let i = 0; i< info1.length; i++) { %>
           
-            <img src = '<%= info1[i].servant[0].image %>' class = 'select-<%=i %>'>
+            <img src = '<%= info1[i].servant[0].image %>' class = 'select-<%=i %> <%= info1[i].servant[0].className%>' id ='<%= info1[i].servant[0].name%>'>
            
             <% } %>
 
@@ -58,6 +67,17 @@
             <option value="private" required='required'>Private</option>
         </select>
             </div>
+
+        <article class = 'flex justifyContent alignItems'>
+            <img id = 'image'>
+            <div class="flex alignItems justifyContent column">
+                <h2>Servant Name: <h3 id="servantName"></h3></h2>
+                <h2>Servant Class: <h3 id= 'servantClass'></h3></h2>
+                <h2>Servant Rarity: <h3 id= 'servantRarity'></h3></h2>
+            </div>
+   
+        </article>
+
 
         <button type = 'submit' class = 'button'>Submit</button>
     </form>
