@@ -50,6 +50,7 @@
             </form>
 
         </div>
+        <img src = '<%= info1[info[i].index].servant[0].image %>'>
 
             <div class = 'flex alignItems column '>
                 <h2>Servant Name: <%= info[i].servant[0].name %></h2>
@@ -61,6 +62,7 @@
                            <% return ele %>
                             <% } %>
                <% }).join('') %>
+
                 <h3>Servant Class: <%=className %></h3> 
                 <a href = '/user/<%= info[i]._id %>' class = 'button'>Go to <%= info[i].name %> page</a>
             </div>

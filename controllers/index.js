@@ -157,26 +157,21 @@ module.exports={
     },
     editServant: async (req,res)=>{
         try{
-    //         let res = await fetch(`https://api.atlasacademy.io/nice/NA/servant/search?name=${req.body.firstName.toLowerCase().trim()}&rarity=${req.body.rarity}&className=${req.body.servantClass.toLowerCase().split(' ').join('').trim()}&gender=${req.body.gender}`)
-    //         let data = await res.json()
-    //         if(data){
-    //     const image = await cloudinary.uploader.upload(data[0].extraAssets.charaGraph.ascension[1])
-    //     const image2 = await cloudinary.uploader.upload(data[0].extraAssets.charaGraph.ascension[2])
-    //     const image3 = await cloudinary.uploader.upload(data[0].extraAssets.charaGraph.ascension[3])
-    //     const image4 = await cloudinary.uploader.upload(data[0].extraAssets.charaGraph.ascension[4])
-    //     const image5 = await cloudinary.uploader.upload(data[0].skills[0].icon)
-    //     const image6 = await cloudinary.uploader.upload(data[0].skills[1].icon)
-    //     const image7 = await cloudinary.uploader.upload(data[0].skills[2].icon)
-    //      req.body.servant = { cloud_1: {cloudinaryId: image.public_id, image: image.secure_url}, cloud_2: {cloudinaryId: image2.public_id, image: image2.secure_url}, cloud_3: {cloudinaryId: image3.public_id, image: image3.secure_url}, cloud_4: {cloudinaryId: image4.public_id, image: image4.secure_url}, cloud_5: {cloudinaryId: image5.public_id, image: image5.secure_url}, cloud_6: {cloudinaryId: image6.public_id, image: image6.secure_url}, cloud_7: {cloudinaryId: image7.public_id, image: image7.secure_url}, name: data[0].name, className: data[0].className, rarity: data[0].rarity, collectionNo: data[0].collectionNo, gender: data[0].gender, lvMax: data[0].lvMax, atkMax: data[0].atkMax, hpMax: data[0].hpMax, cost: data[0].cost, id: data[0].id, starAbsorb: data[0].starAbsorb, starGen: data[0].starGen, attribute: data[0].atrribute, instantDeathChance: data[0].instantDeathChance, cards: data[0].cards, profile: data[0].profile, ascensionAdd: data[0].ascensionAdd, skills: { skillCooldown1: [data[0].skills[0].coolDown], skillCooldown2: [data[0].skills[1].coolDown], skillCooldown3: [data[0].skills[2].coolDown] ,skillName1: data[0].skills[0].name, skillName2: data[0].skills[1].name, skillName3: data[0].skills[0].name} , noblePhantasms: data[0].noblePhantasms}
-    //             let character = await Servant.findById(req.params.character).lean() 
-    //             req.body.user = req.user.id
-    //             character = await Servant.findOneAndUpdate({ _id: req.params.character }, req.body, {
-    //                 new: true,
-    //                 runValidators: true,
-    //               })
-    //     res.redirect('/user/servants')
-    // }
+            let response = await fetch(`https://api.atlasacademy.io/nice/NA/servant/search?name=${req.body.name}&rarity=${req.body.rarity}&className=${req.body.className}&gender=${req.body.gender}`)
+            let data = await response.json()
+            if(data){
+      
+                req.body.servant = {collectionNo: data[0].collectionNo, lvMax: data[0].lvMax, atkMax: data[0].atkMax, hpMax: data[0].hpMax, cost: data[0].cost, id: data[0].id, starAbsorb: data[0].starAbsorb, starGen: data[0].starGen, attribute: data[0].atrribute, instantDeathChance: data[0].instantDeathChance, cards: data[0].cards, profile: data[0].profile, ascensionAdd: data[0].ascensionAdd, noblePhantasms: data[0].noblePhantasms}
+                let character = await Servant.findById(req.params.character).lean() 
+                req.body.user = req.user.id
+                character = await Servant.findOneAndUpdate({ _id: req.params.character }, req.body, {
+                    new: true,
+                    runValidators: true,
+                  })
+        res.redirect('/user/servants')
+    }
         }catch(err){
+            console.log(err)
             res.render('authed/error')
         }
     },
