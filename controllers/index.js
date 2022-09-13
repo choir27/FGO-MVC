@@ -88,20 +88,6 @@ module.exports={
             console.error(err)
         } 
     },
-    getAPI: async(req, res) =>{
-        try{
-            const data = await Choose.find({userId:req.user.id})
-            const skill1 = await Skill1.find({userId:req.user.id})
-            const skill2 = await Skill2.find({userId:req.user.id})
-            const skill3 = await Skill3.find({userId:req.user.id})
-            const appendskill1 = await AppendSkill1.find({userId:req.user.id})
-            const appendskill2 = await AppendSkill2.find({userId:req.user.id})
-            const appendskill3 = await AppendSkill3.find({userId:req.user.id})
-            res.json({info: data, skill1: skill1, skill2: skill2, skill3: skill3,  appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 })
-        }catch(err){
-            console.error(err)
-        } 
-    },
     postServants: async (req,res) =>{
         try{
     let response = await fetch(`https://api.atlasacademy.io/nice/NA/servant/search?name=${req.body.name}&rarity=${req.body.rarity}&className=${req.body.className}&gender=${req.body.gender}`)
