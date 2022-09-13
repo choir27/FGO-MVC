@@ -1,4 +1,4 @@
-fetch('http://localhost:8000/user/api/servants')
+fetch('https://fgo-app.herokuapp.com/api/servants')
     .then(res=>res.json())
     .then(data=>{
         for(let i =0;i<data.info.length;i++){
