@@ -144,7 +144,7 @@
             <img src = '<%= image %>'>
 
 
-            <div class = 'flex alignItems column '>
+            <div class = 'flex alignItems column name'>
                 <h2>Servant Name: <%= info[i].servant[0].name %></h2>
                 <% let className = info[i].className.split('').map(ele => { %>
                         <% if(ele === ele.toUpperCase()) { %>
@@ -159,8 +159,27 @@
                 <a href = '/user/<%= info[i]._id %>' class = 'button'>Go to <%= info[i].name %> page</a>
             </div>
 
-                    
-            
+
+            <div class="flex alignItems column"  id = 'skills'>
+
+                <div class="flex justifyContent alignContent column skills">
+                    <h2>Skills</h2>
+                    <div class="flex justifyContent alignContent row image">
+                    <div class = 'flex'><img src="<%= skill1[i].servant[0].image %>" alt="">   <h2>Lv:<%= info[i].skill1 %></h2></div>
+                    <div class = 'flex'><img src="<%= skill2[i].servant[0].image %>" alt="">   <h2>Lv:<%= info[i].skill2 %></h2></div>
+                    <div class = 'flex'><img src="<%= skill3[i].servant[0].image %>" alt="">   <h2>Lv:<%= info[i].skill3 %></h2></div>
+                </div>
+                </div>
+
+                <div class="flex justifyContent alignContent column skills" id = 'skills'>
+                    <h2>Append Skills</h2>
+                    <div class="flex justifyContent alignContent row image">
+                    <div class = 'flex'><img src="<%= appendskill1[i].servant[0].image %>" alt="">   <h2>Lv:<%= info[i].skill1 %></h2></div>
+                    <div class = 'flex'><img src="<%= appendskill2[i].servant[0].image %>" alt="">   <h2>Lv:<%= info[i].skill2 %></h2></div>
+                    <div class = 'flex'><img src="<%= appendskill3[i].servant[0].image %>" alt="">   <h2>Lv:<%= info[i].skill3 %></h2></div>
+                    </div>
+                </div>
+            </div>
         </div>     
         <% } else if(!info[i].servant[0] && info[i].user._id==userID) { %>  
             <% check +=1 %>

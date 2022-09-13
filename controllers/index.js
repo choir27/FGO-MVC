@@ -22,8 +22,13 @@ module.exports={
             const data2 = await Choose1.find({userId:req.user.id})
             const data3 = await Choose2.find({userId:req.user.id})
             const data4 = await Choose3.find({userId:req.user.id})
-           
-            res.render('authed/home.ejs', {info1: data1,info2: data2,info3: data3,info4: data4, info: data, name: req.user.firstName, userID: req.user.id})
+            const skill1 = await Skill1.find({userId:req.user.id})
+            const skill2 = await Skill2.find({userId:req.user.id})
+            const skill3 = await Skill3.find({userId:req.user.id})
+            const appendskill1 = await AppendSkill1.find({userId:req.user.id})
+            const appendskill2 = await AppendSkill2.find({userId:req.user.id})
+            const appendskill3 = await AppendSkill3.find({userId:req.user.id})
+            res.render('authed/home.ejs', {appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1, skill1: skill1, skill2: skill2, skill3: skill3, info1: data1,info2: data2,info3: data3,info4: data4, info: data, name: req.user.firstName, userID: req.user.id})
         }catch(err){
             console.error(err)
         } 
@@ -38,7 +43,11 @@ module.exports={
             const data2 = await Choose1.find({userId:req.user.id})
             const data3 = await Choose2.find({userId:req.user.id})
             const data4 = await Choose3.find({userId:req.user.id})
-            res.render('authed/servants.ejs', {info1: data1, info2: data2, info3: data3, info4: data4, info: data, userID: req.user.id , userName: req.user.displayName, userImage: req.user.image})
+            const skill1 = await Skill1.find({userId:req.user.id})
+            const skill2 = await Skill2.find({userId:req.user.id})
+            const skill3 = await Skill3.find({userId:req.user.id})
+    
+            res.render('authed/servants.ejs', {skill1: skill1, skill2: skill2, skill3: skill3, info1: data1, info2: data2, info3: data3, info4: data4, info: data, userID: req.user.id , userName: req.user.displayName, userImage: req.user.image})
         }catch(err){
             console.error(err)
         } 

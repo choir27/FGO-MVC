@@ -8,7 +8,7 @@
 
 img{
 border-radius: 5px;
-width: 20%;
+width: 25%;
 }
 
 
@@ -61,3 +61,64 @@ h1{
         align-items: flex-start;
         justify-content: flex-start;
 }
+
+
+.skills img{
+    height: 8rem;
+
+   }
+
+   .skills div{
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+   }
+
+   .skills div h2{
+    color: black;
+    margin: 0rem;
+    padding:.2rem;
+    background-color: aliceblue;
+    font-size: 2rem;
+    font-weight: bold;
+    position: absolute;
+   }
+
+   #skills .skills,#skills .skills .image, #skills .skills .image div{
+    width: 100%;
+   }
+
+   .skills img{
+    width: 100%;
+    padding: 1rem;
+   }
+
+   .skills h2{
+    text-align: center;
+   }
+
+   .section .name{
+    padding: 0rem;
+    margin: 0rem;
+   }
+
+   div div a{
+    border-bottom: 0rem;
+   }
+
+    .skill-alt{
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+   }
+
+   .skill-alt a{
+    margin: 0rem;
+    padding: 0rem;
+   }
+
+   .skill-alt h2{
+    padding-top: 2.5rem;
+   }
+/* 
+   body *{
+    border: 3px solid white;
+   } */

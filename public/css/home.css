@@ -172,4 +172,66 @@ color: black;
     width: 5%;
    }
 
- 
+   #skills{
+    position: relative;
+   }
+
+   #skills div{
+    width: 50%;
+    padding: 0rem;
+    margin: 0rem;
+    border: 0rem;
+   }
+
+   #skills{
+    width: 40%;
+   }
+
+   /* body *{
+    border: 3px solid white;
+   } */
+
+
+
+   .skills img{
+    height: 8rem;
+
+   }
+
+   .skills div{
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+   }
+
+   .skills div h2{
+    color: black;
+    margin: 0rem;
+    padding:.2rem;
+    background-color: aliceblue;
+    font-size: 2rem;
+    font-weight: bold;
+    position: absolute;
+   }
+
+   #skills .skills,#skills .skills .image, #skills .skills .image div{
+    width: 100%;
+   }
+
+   .skills img{
+    padding: 1rem;
+   }
+
+   .skills h2{
+    text-align: center;
+   }
+
+   .section .name{
+    padding: 0rem;
+    margin: 0rem;
+   }
+   
+/* 
+   body *{
+    border: 2px solid white;
+   } */
