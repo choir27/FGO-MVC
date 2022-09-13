@@ -2,19 +2,24 @@ const mongoose = require('mongoose')
 
 const ServantSchema = new mongoose.Schema({
   name:{
-    type: String
+    type: String,
+    required: true,
   },
   className: {
-    type: String
+    type: String,
+    required: true,
     },
   gender: {
-    type: String
+    type: String,
+    required: true,
   },
   rarity: {
-    type: String
+    type: String,
+    required: true,
   },
   index: {
-    type: String
+    type: String,
+    required: true,
   },
   status: {
     type: String,
@@ -24,6 +29,46 @@ const ServantSchema = new mongoose.Schema({
 servant: {
   type: Array,
   required: false
+},
+skill1: {
+  type: String,
+  required: true
+},
+skill2: {
+  type: String,
+  required: true
+},
+skill3: {
+  type: String,
+  required: true
+},
+appendSkill1:{
+  type: String,
+  required: true
+},
+appendSkill2:{
+  type: String,
+  required: true
+},
+appendSkill3:{
+  type: String,
+  required: true
+},
+skillCooldown1:{
+  type: Array,
+  required: true
+},
+skillCooldown2:{
+  type: Array,
+  required: true
+},
+skillCooldown3:{
+  type: Array,
+  required: true
+},
+level:{
+  type: String,
+  required: true
 },
   user: {
     type: mongoose.Schema.Types.ObjectId,

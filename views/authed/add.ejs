@@ -11,7 +11,7 @@
     <title>Add Servant</title>
 </head>
 <body>
-    <header class = 'flex column alignItems justifyContent'>
+    <header class = 'flex column alignItems justifyContent header'>
         <div class = 'banner'></div>
 
         <nav class = 'flex'>
@@ -31,7 +31,7 @@
 
 
 
-<section class = 'flex justifyContent column alignItems'>
+<section class = 'flex justifyContent column alignItems section'>
     <div class = 'flex column alignItems data'>
         <h1 class = 'flex justifyContent'>Add Servant</h1>
         <span>Enter in information regarding Fate Grand Servants below and submit the data once everything is filled out.</span>
@@ -67,13 +67,71 @@
         </select>
             </div>
 
+
+            <div class="flex justifyContent alignItems servant">
+                <h2>Name: </h2><h2 id="servantName"></h2>
+                <h2>Rarity: </h2><h2 id= 'servantRarity'></h2>
+                <h2>Class: </h2><h2 id= 'servantClass'></h2>
+                <h2>Servant Level: </h2>
+                <input name = 'level' type="number" max="120" min = '1' id = 'level'>
+            </div>
+
+
+
         <article class = 'flex justifyContent alignItems'>
             <img id = 'image'>
             <div class="flex alignItems justifyContent column">
-                <h2>Servant Name: <h3 id="servantName"></h3></h2>
-                <h2>Servant Class: <h3 id= 'servantClass'></h3></h2>
-                <h2>Servant Rarity: <h3 id= 'servantRarity'></h3></h2>
+                
+
+
+                <div class="flex justifyContent alignItems column">
+                <h2>Servant Skills:</h2>
+                <div class="flex justifyContent">
+                    <div class="flex column alignItems">
+                    <img id = 'skill1' src="" alt="">
+                    <h2>Level</h2>
+                    <input name = 'skill1' type="number" max="10" min = '1' step = '1'>
+                </div>
+                <div class="flex column alignItems">
+                    <img id = 'skill2' src="" alt="">
+                    <h2>Level</h2><input name = 'skill2' type="number" max="10" min = '1' step = '1'>
+                 </div>
+                 <div class="flex column alignItems">
+
+                    <img id = 'skill3' src="" alt="">
+                    <h2>Level</h2><input name = 'skill3' type="number" max="10" min = '1' step = '1'>
+                </div>
             </div>
+
+            <input class = 'hidden' name = 'skillName1'id = 'skillName1' type="text">
+            <input class = 'hidden' name = 'skillName2'id = 'skillName2' type="text">
+            <input class = 'hidden' name = 'skillName3'id = 'skillName3' type="text">
+            <input class = 'hidden' name = 'skillCooldown1'id = 'skillCooldown1' type="text">
+            <input class = 'hidden' name = 'skillCooldown2'id = 'skillCooldown2' type="text">
+            <input class = 'hidden' name = 'skillCooldown3'id = 'skillCooldown3' type="text">
+
+            <div class="flex justifyContent alignItems column">
+
+                <h2>Append Skills:</h2>
+                <div class="flex justifyContent">
+                    <div class="flex column alignItems">
+                    <img id = 'appendSkill1' src="" alt="">
+                    <h2>Level</h2><input name = 'appendSkill1' type="number" max="10" min = '0'>
+                </div>
+                <div class="flex column alignItems">
+                    <img id = 'appendSkill2' src="" alt="">
+                    <h2>Level</h2><input name = 'appendSkill2' type="number" max="10" min = '0'>
+                 </div>
+                 <div class="flex column alignItems">
+
+                    <img id = 'appendSkill3' src="" alt="">
+                    <h2>Level</h2><input name = 'appendSkill3' type="number" max="10" min = '0'>
+                </div>
+                </div>
+                    
+                </div>
+            </div>
+           
    
         </article>
 

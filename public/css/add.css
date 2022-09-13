@@ -1,10 +1,4 @@
-header{
-    z-index: 4;
-    position: fixed;
-    height: 8vh;
-    width: 100%;
-}
- 
+
 a{
     color: white;
 }
@@ -19,12 +13,6 @@ option,select{
 
 }
 
-
-section{
-    position: relative;
-    padding-top: 12rem;
-    background: rgba(39, 40, 51, 0.965);
-}
 
 input{
     width: 100%;
@@ -94,30 +82,50 @@ div img{
     border: 3px solid rgba(39, 40, 51, 0.965);
 }
 
+#skill1, #skill2, #skill3, #appendSkill1, #appendSkill2, #appendSkill3{
+    border-radius: 0;
+    border: none;
+    width: 60%;
+}
+
 div img:hover{
     cursor: pointer;
     opacity: 80%;
 }
 
 #image{
-min-width: 50%;
+max-width: 40%;
 content: '';
-width: 50%;
+width: 40%;
 }
 
-#image + div{
-    height: 50rem;
-}
-
-#image + div h3{
-    margin-bottom: 4rem;
-}
-
-#image + div h2{
-    margin-bottom: 1rem;
-}
 
 article{
     min-width: 60%;
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
 }
+
+
+.servant{
+    border-bottom: 3px solid #e44c65;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+
+h2{
+ margin-right: 2rem;   
+}
+
+#servantName, #servantRarity, #servantClass{
+    margin-right: 5rem;
+}
+
+
+#level{
+    width: 8rem;
+}
+
+/* body *{
+    border: 3px solid white;
+} */

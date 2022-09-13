@@ -1,11 +1,11 @@
-img{
+section img{
     width: 50%;
 }
 
-h2{
+section h2{
     margin-bottom: 2rem;
 }
 
-button{
+section button{
     margin-top: 2rem;
 }

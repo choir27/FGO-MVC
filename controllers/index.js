@@ -46,8 +46,13 @@ module.exports={
     getAdd: async(req,res) =>{
         try{
         const data = await Choose.find({userId:req.user.id})
-
-        res.render('authed/add.ejs', {info1: data})
+        const skill1 = await Skill1.find({userId:req.user.id})
+        const skill2 = await Skill2.find({userId:req.user.id})
+        const skill3 = await Skill3.find({userId:req.user.id})
+        const appendskill1 = await AppendSkill1.find({userId:req.user.id})
+        const appendskill2 = await AppendSkill2.find({userId:req.user.id})
+        const appendskill3 = await AppendSkill3.find({userId:req.user.id})
+        res.render('authed/add.ejs', {info1: data, appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 , skill1: skill1,skill2: skill2,skill3: skill3})
         }catch(err){
             console.error(err)
         } 
@@ -62,7 +67,7 @@ module.exports={
             const skill1 = await Skill1.find({userId:req.user.id})
             const skill2 = await Skill2.find({userId:req.user.id})
             const skill3 = await Skill3.find({userId:req.user.id})
-            res.render('authed/simulator.ejs', {data,skill1: skill1,skill2: skill2,skill3: skill3,info1: data1, info2: data2, info3: data3, info4: data4, userID: req.user.id})
+            res.render('authed/simulator.ejs', {info: data,skill1: skill1,skill2: skill2,skill3: skill3,info1: data1, info2: data2, info3: data3, info4: data4, userID: req.user.id})
         }catch(err){
             console.error(err)
         } 
@@ -77,7 +82,13 @@ module.exports={
     getAPI: async(req, res) =>{
         try{
             const data = await Choose.find({userId:req.user.id})
-            res.json(data)
+            const skill1 = await Skill1.find({userId:req.user.id})
+            const skill2 = await Skill2.find({userId:req.user.id})
+            const skill3 = await Skill3.find({userId:req.user.id})
+            const appendskill1 = await AppendSkill1.find({userId:req.user.id})
+            const appendskill2 = await AppendSkill2.find({userId:req.user.id})
+            const appendskill3 = await AppendSkill3.find({userId:req.user.id})
+            res.json({info: data, skill1: skill1, skill2: skill2, skill3: skill3,  appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 })
         }catch(err){
             console.error(err)
         } 

@@ -59,8 +59,97 @@
                 </div>
                 
             
-                <img src = '<%= info1[info[i].index].servant[0].image %>'>
+                <% let image = '' %>
 
+                <% function one(){ %>
+                    <% if(info[i].level<=25){ %>
+                    <%  return image = info1[info[i].index].servant[0].image  %>
+                    <% }else if(info[i].level<=45){ %>
+                    <%  return image = info2[info[i].index].servant[0].image  %>
+                    <% }else if(info[i].level<=55){ %>
+                    <%   return image = info3[info[i].index].servant[0].image  %>
+                    <% }else if(info[i].level>=55 && info[i].level <= 120){ %>
+                    <%  return image = info4[info[i].index].servant[0].image  %>
+                    <% } %>
+                <% } %>
+                <% function two(){ %>
+                    <%     if(info[i].level<=20){ %>
+                    <%    return image = info1[info[i].index].servant[0].image  %>
+                    <%       }else if(info[i].level<=40){ %>
+                    <%  return image = info2[info[i].index].servant[0].image  %>
+                    <%       }else if(info[i].level<=50){ %>
+                    <%  return image = info3[info[i].index].servant[0].image  %>
+                    <%       }else if(info[i].level>=60 && info[i].level <= 120){ %>
+                    <%  returnimage =  info4[info[i].index].servant[0].image  %>
+                    <%       } %>
+                    <% } %>
+        
+                    <% function three(){ %>
+                    <%     if(info[i].level<=25){ %>
+                    <%        return image = info1[info[i].index].servant[0].image  %>
+                    <%       }else if(info[i].level<=45){ %>
+                    <%      return image = info2[info[i].index].servant[0].image  %>
+                    <%       }else if(info[i].level<=55){ %>
+                    <%      return image = info3[info[i].index].servant[0].image  %>
+                    <%       }else if(info[i].level>=65 && info[i].level <= 120){ %>
+                    <%      return image = info4[info[i].index].servant[0].image  %>
+                    <%       } %>
+                    <% } %>
+        
+                    <% function three(){ %>
+                    <%     if(info[i].level<=30){ %>
+                    <%        return image = info1[info[i].index].servant[0].image  %>
+                    <%       }else if(info[i].level<=50){ %>
+                    <%      return image = info2[info[i].index].servant[0].image  %>
+                    <%       }else if(info[i].level<=60){ %>
+                    <%      return image = info3[info[i].index].servant[0].image  %>
+                    <%       }else if(info[i].level>=70 && info[i].level <= 120){ %>
+                    <%      return image = info4[info[i].index].servant[0].image  %>
+                    <%       } %>
+                    <% } %>
+        
+                    <% function four(){ %>
+                    <%     if(info[i].level<=40){ %>
+                    <%       return  image = info1[info[i].index].servant[0].image  %>
+                    <%       }else if(info[i].level<=60){ %>
+                    <%      return image = info2[info[i].index].servant[0].image  %>
+                    <%       }else if(info[i].level<=70){ %>
+                    <%      return image = info3[info[i].index].servant[0].image  %>
+                    <%       }else if(info[i].level>=80 && info[i].level <= 120){ %>
+                    <%      return image = info4[info[i].index].servant[0].image  %>
+                    <%       } %>
+                    <% } %>
+        
+                    <% function five(){ %>
+                    <%     if(info[i].level<=50){ %>
+                    <%    image = info1[info[i].index].servant[0].image  %>
+                    <% return image %>
+                    <%       }else if(info[i].level<=70){ %>
+                    <%  image = info2[info[i].index].servant[0].image  %>
+                    <% return image %>
+                    <%       }else if(info[i].level<=80){ %>
+                    <%  image = info3[info[i].index].servant[0].image  %>
+                    <% return image %>
+                    <%       }else if(info[i].level>=90 && info[i].level <= 120){ %>
+                    <%  image = info4[info[i].index].servant[0].image  %>
+                    <% return image %>
+                    <%       } %>
+                    <% } %>
+        
+                    <% if(info[i].rarity == '1'){ %>
+                           <% one() %>
+                   <% }else if(info[i].rarity == '2'){ %>
+                            <% two() %>
+                    <% }else if(info[i].rarity == '3'){ %>
+                            <% three() %>
+                    <% }else if(info[i].rarity == '4'){ %>
+                          <% four() %>
+                    <% }else if(info[i].rarity == '5'){ %>
+                            <% five() %>
+                    <% } %>
+        
+                    <img src = '<%= image %>'>
+                    
     <a class ='flex alignItems' href = '/user/id/<%= info[i].user._id %>'><h2>See more of <%= userName %>'s pages</h2></a>
     <% } %>
     
