@@ -18,16 +18,16 @@ module.exports={
     getHome: async(req,res) =>{
         try{
             const data = await Servant.find({userId:req.user.id}).lean()
-            const data1 = await Choose.find({userId:req.user.id})
-            const data2 = await Choose1.find({userId:req.user.id})
-            const data3 = await Choose2.find({userId:req.user.id})
-            const data4 = await Choose3.find({userId:req.user.id})
-            const skill1 = await Skill1.find({userId:req.user.id})
-            const skill2 = await Skill2.find({userId:req.user.id})
-            const skill3 = await Skill3.find({userId:req.user.id})
-            const appendskill1 = await AppendSkill1.find({userId:req.user.id})
-            const appendskill2 = await AppendSkill2.find({userId:req.user.id})
-            const appendskill3 = await AppendSkill3.find({userId:req.user.id})
+            const data1 = await Choose.find({userId:req.user.id}).lean()
+            const data2 = await Choose1.find({userId:req.user.id}).lean()
+            const data3 = await Choose2.find({userId:req.user.id}).lean()
+            const data4 = await Choose3.find({userId:req.user.id}).lean()
+            const skill1 = await Skill1.find({userId:req.user.id}).lean()
+            const skill2 = await Skill2.find({userId:req.user.id}).lean()
+            const skill3 = await Skill3.find({userId:req.user.id}).lean()
+            const appendskill1 = await AppendSkill1.find({userId:req.user.id}).lean()
+            const appendskill2 = await AppendSkill2.find({userId:req.user.id}).lean()
+            const appendskill3 = await AppendSkill3.find({userId:req.user.id}).lean()
             res.render('authed/home.ejs', {appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1, skill1: skill1, skill2: skill2, skill3: skill3, info1: data1,info2: data2,info3: data3,info4: data4, info: data, name: req.user.firstName, userID: req.user.id})
         }catch(err){
             console.error(err)
@@ -35,17 +35,17 @@ module.exports={
     },
     getServants: async(req,res) =>{
         try{
-            const data = await Servant.find({userId:req.user.id})
+            const data = await Servant.find({userId:req.user.id}).lean()
                 .populate('user')
                 .sort({ createdAt: 'desc' })
                 .lean()
-            const data1 = await Choose.find({userId:req.user.id})
-            const data2 = await Choose1.find({userId:req.user.id})
-            const data3 = await Choose2.find({userId:req.user.id})
-            const data4 = await Choose3.find({userId:req.user.id})
-            const skill1 = await Skill1.find({userId:req.user.id})
-            const skill2 = await Skill2.find({userId:req.user.id})
-            const skill3 = await Skill3.find({userId:req.user.id})
+            const data1 = await Choose.find({userId:req.user.id}).lean()
+            const data2 = await Choose1.find({userId:req.user.id}).lean()
+            const data3 = await Choose2.find({userId:req.user.id}).lean()
+            const data4 = await Choose3.find({userId:req.user.id}).lean()
+            const skill1 = await Skill1.find({userId:req.user.id}).lean()
+            const skill2 = await Skill2.find({userId:req.user.id}).lean()
+            const skill3 = await Skill3.find({userId:req.user.id}).lean()
     
             res.render('authed/servants.ejs', {skill1: skill1, skill2: skill2, skill3: skill3, info1: data1, info2: data2, info3: data3, info4: data4, info: data, userID: req.user.id , userName: req.user.displayName, userImage: req.user.image})
         }catch(err){
@@ -54,13 +54,13 @@ module.exports={
     },
     getAdd: async(req,res) =>{
         try{
-        const data = await Choose.find({userId:req.user.id})
-        const skill1 = await Skill1.find({userId:req.user.id})
-        const skill2 = await Skill2.find({userId:req.user.id})
-        const skill3 = await Skill3.find({userId:req.user.id})
-        const appendskill1 = await AppendSkill1.find({userId:req.user.id})
-        const appendskill2 = await AppendSkill2.find({userId:req.user.id})
-        const appendskill3 = await AppendSkill3.find({userId:req.user.id})
+        const data = await Choose.find({userId:req.user.id}).lean()
+        const skill1 = await Skill1.find({userId:req.user.id}).lean()
+        const skill2 = await Skill2.find({userId:req.user.id}).lean()
+        const skill3 = await Skill3.find({userId:req.user.id}).lean()
+        const appendskill1 = await AppendSkill1.find({userId:req.user.id}).lean()
+        const appendskill2 = await AppendSkill2.find({userId:req.user.id}).lean()
+        const appendskill3 = await AppendSkill3.find({userId:req.user.id}).lean()
         res.render('authed/add.ejs', {info1: data, appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 , skill1: skill1,skill2: skill2,skill3: skill3})
         }catch(err){
             console.error(err)
@@ -68,14 +68,14 @@ module.exports={
     },
     getSimulator: async(req,res) =>{
         try{
-            const data = await Servant.find({userId:req.user.id})
-            const data1 = await Choose.find({userId:req.user.id})
-            const data2 = await Choose1.find({userId:req.user.id})
-            const data3 = await Choose2.find({userId:req.user.id})
-            const data4 = await Choose3.find({userId:req.user.id})
-            const skill1 = await Skill1.find({userId:req.user.id})
-            const skill2 = await Skill2.find({userId:req.user.id})
-            const skill3 = await Skill3.find({userId:req.user.id})
+            const data = await Servant.find({userId:req.user.id}).lean()
+            const data1 = await Choose.find({userId:req.user.id}).lean()
+            const data2 = await Choose1.find({userId:req.user.id}).lean()
+            const data3 = await Choose2.find({userId:req.user.id}).lean()
+            const data4 = await Choose3.find({userId:req.user.id}).lean()
+            const skill1 = await Skill1.find({userId:req.user.id}).lean()
+            const skill2 = await Skill2.find({userId:req.user.id}).lean()
+            const skill3 = await Skill3.find({userId:req.user.id}).lean()
             res.render('authed/simulator.ejs', {info: data,skill1: skill1,skill2: skill2,skill3: skill3,info1: data1, info2: data2, info3: data3, info4: data4, userID: req.user.id})
         }catch(err){
             console.error(err)
@@ -103,16 +103,16 @@ module.exports={
     },
     getTemplate: async (req,res) =>{
         try{
-            const data1 = await Choose.find({userId:req.user.id})
-            const data2 = await Choose1.find({userId:req.user.id})
-            const data3 = await Choose2.find({userId:req.user.id})
-            const data4 = await Choose3.find({userId:req.user.id})
-            const skill1 = await Skill1.find({userId:req.user.id})
-            const skill2 = await Skill2.find({userId:req.user.id})
-            const skill3 = await Skill3.find({userId:req.user.id})
-            const appendskill1 = await AppendSkill1.find({userId:req.user.id})
-            const appendskill2 = await AppendSkill2.find({userId:req.user.id})
-            const appendskill3 = await AppendSkill3.find({userId:req.user.id})
+            const data1 = await Choose.find({userId:req.user.id}).lean()
+            const data2 = await Choose1.find({userId:req.user.id}).lean()
+            const data3 = await Choose2.find({userId:req.user.id}).lean()
+            const data4 = await Choose3.find({userId:req.user.id}).lean()
+            const skill1 = await Skill1.find({userId:req.user.id}).lean()
+            const skill2 = await Skill2.find({userId:req.user.id}).lean()
+            const skill3 = await Skill3.find({userId:req.user.id}).lean()
+            const appendskill1 = await AppendSkill1.find({userId:req.user.id}).lean()
+            const appendskill2 = await AppendSkill2.find({userId:req.user.id}).lean()
+            const appendskill3 = await AppendSkill3.find({userId:req.user.id}).lean()
 
             const info = await Servant.findById(req.params.id).populate('user').lean()
             if (!info) {
@@ -134,10 +134,10 @@ module.exports={
           const data = await Servant.find({user: req.params.name, status: 'public'})
             .populate('user')
             .lean()
-            const data1 = await Choose.find({userId:req.user.id})
-            const data2 = await Choose1.find({userId:req.user.id})
-            const data3 = await Choose2.find({userId:req.user.id})
-            const data4 = await Choose3.find({userId:req.user.id})
+            const data1 = await Choose.find({userId:req.user.id}).lean()
+            const data2 = await Choose1.find({userId:req.user.id}).lean()
+            const data3 = await Choose2.find({userId:req.user.id}).lean()
+            const data4 = await Choose3.find({userId:req.user.id}).lean()
         res.render('authed/view', {info1: data1, info2: data2, info3: data3, info4: data4,info: data, userName: req.user.displayName, userImage: req.user.image})
     
       } catch (err) {
