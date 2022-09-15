@@ -39,24 +39,33 @@
         <span>Use the link below to access the added servant data API</span>
         <code><pre>https://fgo-app.herokuapp.com/api/servants</pre></code>
     </div>
-    <form action = '/user/servants' method = "POST" class = 'flex alignItems column'>
         <h1 class = 'flex justifyContent'>Choose Servant to Add</h1>
 
 
-<div class = 'flex alignItems justifyContent servants button'>
+    <% let choice = '' %>
         <% for(let i = 0; i< info1.length; i++) { %>
           
-            <img src = '<%= info1[i].servant[0].image %>' class = 'select-<%=i %> <%= info1[i].servant[0].className%>' id ='<%= info1[i].servant[0].name%>'>
-           
+            <form action = '/user/choose/servant' method = 'POST' class = 'flex alignItems justifyContent servants'>
+
+<button type='submit' class = 'button'><img src = '<%= info1[i].servant[0].image %>' class = 'select-<%= i %> <% choice = i %> <%= info1[i].servant[0].className%>' id ='<%= info1[i].servant[0].name%>'></button>
+
+<input value = '<%= i %>' class = 'hidden' type="text" name = 'index' id ='choose'>
+</form>
+    
             <% } %>
 
-        </div>
 
-        <input class = 'hidden' type="text" name = 'name' id = 'name'>
-        <input class = 'hidden' type="text" name = 'rarity' id = 'rarity'>
-        <input class = 'hidden' type="text" name = 'gender' id = 'gender'>
-        <input class = 'hidden' type="text" name ='className' id = 'className'>
-        <input class = 'hidden' type="text" name ='index' id = 'index'>
+
+
+
+
+        <form action = '/user/servants' method = "POST" class = 'flex alignItems column'>
+
+        <input value = '<%= info1[choose[choose.length-1].index].servant[0].name  %>' class = 'hidden' type="text" name = 'name' id = 'name'>
+        <input value = '<%= info1[choose[choose.length-1].index].servant[0].rarity  %>' class = 'hidden' type="text" name = 'rarity' id = 'rarity'>
+        <input value = '<%= info1[choose[choose.length-1].index].servant[0].gender %>' class = 'hidden' type="text" name = 'gender' id = 'gender'>
+        <input value = '<%= info1[choose[choose.length-1].index].servant[0].className  %>' class = 'hidden' type="text" name ='className' id = 'className'>
+        <input value = '<%= choose[choose.length-1].index  %>' class = 'hidden' type="text" name ='index' id = 'index'>
 
         <div class ='flex alignItems column status'>
 
@@ -79,17 +88,17 @@
         </div> 
 
             <div class="flex justifyContent alignItems servant">
-                <h2>Name: </h2><h2 id="servantName"></h2>
-                <h2>Rarity: </h2><h2 id= 'servantRarity'></h2>
-                <h2>Class: </h2><h2 id= 'servantClass'></h2>
+                <h2>Name: </h2><h2 id="servantName"><%= info1[choose[choose.length-1].index].servant[0].name  %></h2>
+                <h2>Rarity: </h2><h2 id= 'servantRarity'><%= info1[choose[choose.length-1].index].servant[0].rarity  %></h2>
+                <h2>Class: </h2><h2 id= 'servantClass'><%= info1[choose[choose.length-1].index].servant[0].className  %></h2>
                 <h2>Servant Level: </h2>
-                <input name = 'level' type="number" max="120" min = '1' id = 'level'>
+                <input value = '' name = 'level' type="number" max="120" min = '1' id = 'level'>
             </div>
 
 
 
         <article class = 'flex justifyContent alignItems'>
-            <img id = 'image'>
+            <img id = 'image' src = '<%= info1[choose[choose.length-1].index].servant[0].image  %>'>
             <div class="flex alignItems justifyContent column">
                 
 
@@ -98,7 +107,7 @@
                 <h2>Servant Skills:</h2>
                 <div class="flex justifyContent">
                     <div class="flex column alignItems">
-                    <img id = 'skill1' src="" alt="">
+                    <img id = 'skill1' src="<%= skill1[choose[choose.length-1].index].servant[0].image  %>" alt="">
                     <h2>Level</h2>
                     <input name = 'skill1' type="number" max="10" min = '1' step = '1'>
                 </div>

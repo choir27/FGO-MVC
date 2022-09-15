@@ -12,6 +12,7 @@ const Skill3 = require('../models/Skill3')
 const AppendSkill1 = require('../models/AppendSkill1.js')
 const AppendSkill2 = require('../models/AppendSkill2.js')
 const AppendSkill3 = require('../models/AppendSkill3.js')
+const ChooseServant = require('../models/ChooseServant.js')
 
 
 module.exports={
@@ -61,7 +62,8 @@ module.exports={
         const appendskill1 = await AppendSkill1.find({userId:req.user.id}).lean()
         const appendskill2 = await AppendSkill2.find({userId:req.user.id}).lean()
         const appendskill3 = await AppendSkill3.find({userId:req.user.id}).lean()
-        res.render('authed/add.ejs', {info1: data, appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 , skill1: skill1,skill2: skill2,skill3: skill3})
+        const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
+        res.render('authed/add.ejs', {choose: chooseServant ,info1: data, appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 , skill1: skill1,skill2: skill2,skill3: skill3})
         }catch(err){
             console.error(err)
         } 
@@ -191,7 +193,17 @@ module.exports={
             res.render('authed/error')
         }
     },
+    chooseServant: async (req, res)=>{
+    try{
+        req.body.user = req.user.id
+        await ChooseServant.create(req.body)
+        res.redirect('/user/add')
+    }catch(err){
+        res.render('authed/error')
+    }
     
+}
+
 }
 
 

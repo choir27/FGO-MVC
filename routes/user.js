@@ -17,6 +17,9 @@ router.get('/', ensureAuth , homeController.getHome)
 
 router.post('/servants', homeController.postServants)
 
+router.post('/choose/servant', homeController.chooseServant)
+
+
 router.post('/details/:character', homeController.editServant)
 
 // router.post('/simulator/:select', homeController.chooseServant)
