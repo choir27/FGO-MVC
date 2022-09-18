@@ -41,11 +41,12 @@
     </div>
         <h1 class = 'flex justifyContent'>Choose Servant to Add</h1>
 
+        <article id = 'servant' class = 'flex button justifyContent alignItems'>
 
     <% let choice = '' %>
         <% for(let i = 0; i< info1.length; i++) { %>
           
-            <form action = '/user/choose/servant' method = 'POST' class = 'flex alignItems justifyContent servants'>
+            <form action = '/user/choose/servant' method = 'POST'>
 
 <button type='submit' class = 'button'><img src = '<%= info1[i].servant[0].image %>' class = 'select-<%= i %> <% choice = i %> <%= info1[i].servant[0].className%>' id ='<%= info1[i].servant[0].name%>'></button>
 
@@ -53,13 +54,13 @@
 </form>
     
             <% } %>
+        </article>
 
 
 
 
 
-
-        <form action = '/user/servants' method = "POST" class = 'flex alignItems column'>
+        <form action = '/user/servants' method = "POST" class = 'flex alignItems column servant button'>
 
         <input value = '<%= info1[choose[choose.length-1].index].servant[0].name  %>' class = 'hidden' type="text" name = 'name' id = 'name'>
         <input value = '<%= info1[choose[choose.length-1].index].servant[0].rarity  %>' class = 'hidden' type="text" name = 'rarity' id = 'rarity'>
@@ -87,7 +88,7 @@
                 </select>
         </div> 
 
-            <div class="flex justifyContent alignItems servant">
+            <div class="flex justifyContent alignItems fgo">
                 <h2>Name: </h2><h2 id="servantName"><%= info1[choose[choose.length-1].index].servant[0].name  %></h2>
                 <h2>Rarity: </h2><h2 id= 'servantRarity'><%= info1[choose[choose.length-1].index].servant[0].rarity  %></h2>
                 <h2>Class: </h2><h2 id= 'servantClass'><%= info1[choose[choose.length-1].index].servant[0].className  %></h2>
@@ -97,7 +98,7 @@
 
 
 
-        <article class = 'flex justifyContent alignItems'>
+        <article class = 'flex justifyContent alignItems button'>
             <img id = 'image' src = '<%= info1[choose[choose.length-1].index].servant[0].image  %>'>
             <div class="flex alignItems justifyContent column">
                 
@@ -112,12 +113,12 @@
                     <input name = 'skill1' type="number" max="10" min = '1' step = '1'>
                 </div>
                 <div class="flex column alignItems">
-                    <img id = 'skill2' src="" alt="">
+                    <img id = 'skill2' src="<%= skill2[choose[choose.length-1].index].servant[0].image  %>" alt="">
                     <h2>Level</h2><input name = 'skill2' type="number" max="10" min = '1' step = '1'>
                  </div>
                  <div class="flex column alignItems">
 
-                    <img id = 'skill3' src="" alt="">
+                    <img id = 'skill3' src="<%= skill3[choose[choose.length-1].index].servant[0].image  %>" alt="">
                     <h2>Level</h2><input name = 'skill3' type="number" max="10" min = '1' step = '1'>
                 </div>
             </div>
@@ -134,16 +135,16 @@
                 <h2>Append Skills:</h2>
                 <div class="flex justifyContent">
                     <div class="flex column alignItems">
-                    <img id = 'appendSkill1' src="" alt="">
+                        <img id = 'skill2' src="<%= appendskill1[choose[choose.length-1].index].servant[0].image  %>" alt="">
                     <h2>Level</h2><input name = 'appendSkill1' type="number" max="10" min = '0'>
                 </div>
                 <div class="flex column alignItems">
-                    <img id = 'appendSkill2' src="" alt="">
+                    <img id = 'appendSkill2' src="<%= appendskill2[choose[choose.length-1].index].servant[0].image  %>" alt="">
                     <h2>Level</h2><input name = 'appendSkill2' type="number" max="10" min = '0'>
                  </div>
                  <div class="flex column alignItems">
 
-                    <img id = 'appendSkill3' src="" alt="">
+                    <img id = 'appendSkill3' src="<%= appendskill3[choose[choose.length-1].index].servant[0].image  %>" alt="">
                     <h2>Level</h2><input name = 'appendSkill3' type="number" max="10" min = '0'>
                 </div>
                 </div>

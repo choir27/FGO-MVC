@@ -11,7 +11,7 @@
     <title>Add Servant</title>
 </head>
 <body>
-    <header class = 'flex column alignItems justifyContent'>
+    <header class = 'flex column alignItems justifyContent header'>
         <div class = 'banner'></div>
 
         <nav class = 'flex'>
@@ -31,7 +31,7 @@
 
 
 
-<section class = 'flex justifyContent column alignItems'>
+<section class = 'flex justifyContent column alignItems section'>
         <div class = 'flex column alignItems data'>
             <h1 class = 'flex justifyContent'>Edit Servant Data</h1>
             <span>Change information from created posts</span>
@@ -40,39 +40,65 @@
             <code><pre>https://fgo-app.herokuapp.com/api/servants</pre></code>
         </div>
         
-<form action = '/user/details/<%= data._id %>' method = "POST" class = 'flex alignItems column'>
-    <input type = "hidden" class="_method" value="PUT">
-    <input type="hidden" name="_method" value="PUT">
+    <article id = 'servant' class = 'flex button justifyContent alignItems'>
+
+        <% let choice = '' %>
+            <% for(let i = 0; i< info1.length; i++) { %>
+              
+                <form action = '/user/choose/servant' method = 'POST'>
+    
+    <button type='submit' class = 'button'><img src = '<%= info1[i].servant[0].image %>' class = 'select-<%= i %> <% choice = i %> <%= info1[i].servant[0].className%>' id ='<%= info1[i].servant[0].name%>'></button>
+    
+    <input value = '<%= i %>' class = 'hidden' type="text" name = 'index' id ='choose'>
+    </form>
+        
+                <% } %>
+            </article>
+    
+    
+    
+    
+    
+            <form action = '/user/details/<%= data._id %>' method = "POST" class = 'flex alignItems column'>
+    
+            <input value = '' class = 'hidden' type="text" name = 'name' id = 'name'>
+            <input value = '' class = 'hidden' type="text" name = 'rarity' id = 'rarity'>
+            <input value = '' class = 'hidden' type="text" name = 'gender' id = 'gender'>
+            <input value = '' class = 'hidden' type="text" name ='className' id = 'className'>
+            <input value = '' class = 'hidden' type="text" name ='index' id = 'index'>
+    
+            <div class ='flex alignItems column status'>
+    
+            <h2>Status:</h2>
+            <select name="status">
+                <option value="public" selected required='required'>Public</option>
+                <option value="private" required='required'>Private</option>
+            </select>
+                </div>
+    
 
 
-    <article class = 'flex justifyContent alignItems'>
-        <img id = 'image' src = '<%= info1[data.index].servant[0].image %>'>
-        <div class="flex alignItems justifyContent column">
-            <h2>Servant Name: <h3 id="servantName"><%= data.name %></h3></h2>
-            <h2>Servant Class: <h3 id= 'servantClass'><%= data.className %></h3></h2>
-            <h2>Servant Rarity: <h3 id= 'servantRarity'><%= data.rarity%></h3></h2>
-        </div>
+   
+    <div class ='flex alignItems column'>
+        <h2>Pick Ascension Art to Show:</h2>
+        <select name="ascension">
+            <option value="default">Default Based on Level</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+</div> 
 
-    </article>
-
-
-    <div class = 'flex alignItems justifyContent servants button'>
-        <% for(let i = 0; i< info1.length; i++) { %>
-
-            <img src = '<%= info1[i].servant[0].image %>' class = 'select-<%=i %> <%= info1[i].servant[0].className%>' id ='<%= info1[i].servant[0].name%>'>
-           
-            <% } %>
-
-        </div>
-
-        <input class = 'hidden' value = '<%=data.name %>' type="text" name = 'name' id = 'name'>
-        <input class = 'hidden' value = '<%=data.rarity %>' type="text" name = 'rarity' id = 'rarity'>
-        <input class = 'hidden' value = '<%=data.gender %>' type="text" name = 'gender' id = 'gender'>
-        <input class = 'hidden' value = '<%=data.className %>' type="text" name ='className' id = 'className'>
-        <input class = 'hidden' value = '<%=data.index %>' type="text" name ='index' id = 'index'>
+    <div class="flex justifyContent alignItems fgo">
+        <h2>Name: <%= data.name %></h2><h2 id="servantName"></h2>
+        <h2>Rarity: <%= data.rarity %></h2><h2 id= 'servantRarity'></h2>
+        <h2>Class: </h2><h2 id= 'servantClass'><%= data.className %></h2>
+        <h2>Servant Level: </h2>
+        <input value = '<%= data.level %>' name = 'level' type="number" max="120" min = '1' id = 'level'>
+    </div>
 
         
-       
         <% if( data.status == 'public') { %>
             <div class ='flex alignItems column status'>
 
@@ -97,6 +123,62 @@
         <% } %>
 
 
+        <article class = 'flex justifyContent alignItems button'>
+            <img id = 'image' src = ''>
+            <div class="flex alignItems justifyContent column">
+                
+
+
+                <div class="flex justifyContent alignItems column">
+                <h2>Servant Skills:</h2>
+                <div class="flex justifyContent">
+                    <div class="flex column alignItems">
+                    <img id = 'skill1' src="" alt="">
+                    <h2>Level</h2>
+                    <input name = 'skill1' type="number" max="10" min = '1' step = '1'>
+                </div>
+                <div class="flex column alignItems">
+                    <img id = 'skill2' src="" alt="">
+                    <h2>Level</h2><input name = 'skill2' type="number" max="10" min = '1' step = '1'>
+                 </div>
+                 <div class="flex column alignItems">
+
+                    <img id = 'skill3' src="" alt="">
+                    <h2>Level</h2><input name = 'skill3' type="number" max="10" min = '1' step = '1'>
+                </div>
+            </div>
+
+            <input class = 'hidden' name = 'skillName1'id = 'skillName1' type="text">
+            <input class = 'hidden' name = 'skillName2'id = 'skillName2' type="text">
+            <input class = 'hidden' name = 'skillName3'id = 'skillName3' type="text">
+            <input class = 'hidden' name = 'skillCooldown1'id = 'skillCooldown1' type="text">
+            <input class = 'hidden' name = 'skillCooldown2'id = 'skillCooldown2' type="text">
+            <input class = 'hidden' name = 'skillCooldown3'id = 'skillCooldown3' type="text">
+
+            <div class="flex justifyContent alignItems column">
+
+                <h2>Append Skills:</h2>
+                <div class="flex justifyContent">
+                    <div class="flex column alignItems">
+                        <img id = 'skill2' src="" alt="">
+                    <h2>Level</h2><input name = 'appendSkill1' type="number" max="10" min = '0'>
+                </div>
+                <div class="flex column alignItems">
+                    <img id = 'appendSkill2' src="" alt="">
+                    <h2>Level</h2><input name = 'appendSkill2' type="number" max="10" min = '0'>
+                 </div>
+                 <div class="flex column alignItems">
+
+                    <img id = 'appendSkill3' src="" alt="">
+                    <h2>Level</h2><input name = 'appendSkill3' type="number" max="10" min = '0'>
+                </div>
+                </div>
+                    
+                </div>
+            </div>
+           
+   
+        </article>
 
       
 
