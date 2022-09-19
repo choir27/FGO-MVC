@@ -21,9 +21,11 @@ const ServantSchema = new mongoose.Schema({
     default: 'public',
     enum: ['public', 'private']
 },
+ascension: {
+  type: String
+},
 servant: {
-  type: Array,
-  required: false
+  type: Array
 },
 skill1: {
   type: String
