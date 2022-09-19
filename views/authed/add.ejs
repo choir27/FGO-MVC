@@ -44,14 +44,22 @@
         <article id = 'servant' class = 'flex button justifyContent alignItems'>
 
     <% let choice = '' %>
-        <% for(let i = 0; i< info1.length; i++) { %>
           
-            <form action = '/user/choose/servant' method = 'POST'>
+            <form action = '/user/choose/servant?_method=PUT' method = 'POST'>
+
+    <button type='submit' class = ' selected button'><img src = '<%= info1[choose[choose.length-1].index].servant[0].image %>' class = 'select-<%= choose[choose.length-1].index%> <% choice = choose[choose.length-1].index %> <%= info1[choose[choose.length-1].index].servant[0].className%>' id ='<%= info1[choose[choose.length-1].index].servant[0].name%>'></button>
+<input value = 'choose[choose.length-1].index' class = 'hidden' type="text" name = 'index' id ='choose'>
+</form>
+
+<% for(let i = 0; i< info1.length; i++) { %>
+    <% if (i !== choose[choose.length-1].index) { %>
+    <form action = '/user/choose/servant?_method=PUT' method = 'POST'>
 
 <button type='submit' class = 'button'><img src = '<%= info1[i].servant[0].image %>' class = 'select-<%= i %> <% choice = i %> <%= info1[i].servant[0].className%>' id ='<%= info1[i].servant[0].name%>'></button>
 
 <input value = '<%= i %>' class = 'hidden' type="text" name = 'index' id ='choose'>
 </form>
+<% } %>
     
             <% } %>
         </article>

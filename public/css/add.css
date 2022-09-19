@@ -129,6 +129,16 @@ h2{
     width: 8rem;
 }
 
+.button:active{
+    background: rgba(39, 40, 51, 0.965);
+    box-shadow: none;
+}
+
 /* body *{
     border: 3px solid white;
 } */
+
+.selected{
+    border:3px solid #e44c65;
+
+}
