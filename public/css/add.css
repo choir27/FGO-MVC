@@ -134,11 +134,16 @@ h2{
     box-shadow: none;
 }
 
-/* body *{
-    border: 3px solid white;
-} */
-
 .selected{
     border:3px solid #e44c65;
+}
 
+.buttons{
+    width: 80%;
+    overflow: scroll;
+    margin-bottom: 4rem;
+}
+
+.buttons button{
+    margin: 1rem;
 }

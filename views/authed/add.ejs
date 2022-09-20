@@ -41,19 +41,49 @@
     </div>
         <h1 class = 'flex justifyContent'>Choose Servant to Add</h1>
 
+
+    <div class = 'flex filter'>
+        <button class = 'button' id = 'letter'>Filter By Starting Letter</button>
+    </div>
+
+
+    <div class = 'buttons flex button hidden'>
+        <% let alphabet = 'abcdefghijklmnopqrstuvwxyz' %>
+        <% for(let i = 0;i < alphabet.length; i++) { %>
+       <button class = 'button filter-<%= alphabet[i] %>'><%= alphabet[i] %></button>
+        <% } %>
+    </div>
+
         <article id = 'servant' class = 'flex button justifyContent alignItems'>
 
-    <% let choice = '' %>
-          
-    <form action = '/user/choose/your/servant?_method=PUT' method = 'POST'>
 
-        <button type='submit' class = ' selected button'><img src = '<%= info1[choose[choose.length-1].index].servant[0].image %>'></button>
+
+            <% let servantName = info1[choose[0].index].servant[0].name.split('').map(ele=>{ %>
+                <% if(ele !== ' ' && ele !== '.' && ele !== '-' && ele !== '(' && ele !== ')' && ele !== "'" && ele !== '&' && ele !== '=' && ele !== "\"" && ele !== "\/"){ %>
+              <% return ele %>
+               <%  }else{ %>
+                 <%  return '' %>
+                <% } %>
+              <% }).join('') %>
+          
+    <form action = '/user/choose/your/servant?_method=PUT' method = 'POST' class = "form <%= servantName %><%= info1[choose[0].index].servant[0].className %>">
+
+        <button type='submit' class = ' selected button'><img src = '<%= info1[choose[0].index].servant[0].image %>'></button>
     <input value = '<%= choose[0].index %>' class = 'hidden' type="text" name = 'index'>
     </form>
     
     <% for(let i = 0; i< info1.length; i++) { %>
         <% if (i !== choose[0].index) { %>
-        <form action = '/user/choose/your/servant?_method=PUT' method = 'POST'>
+
+
+            <% servantName = info1[i].servant[0].name.split('').map(ele=>{ %>
+                <% if(ele !== ' ' && ele !== '.' && ele !== '-' && ele !== '(' && ele !== ')' && ele !== "'" && ele !== '&' && ele !== '=' && ele !== "\"" && ele !== "\/"){ %>
+              <% return ele %>
+               <%  }else{ %>
+                 <%  return '' %>
+                <% } %>
+              <% }).join('') %>
+        <form action = '/user/choose/your/servant?_method=PUT' method = 'POST' class = 'form <%= servantName %><%= info1[i].servant[0].className %>'>
     <button type='submit' class = 'button'><img src = '<%= info1[i].servant[0].image %>'></button>
     <input value = '<%= i %>' class = 'hidden' type="text" name = 'index'>
     </form>
@@ -188,6 +218,7 @@
     
   </footer>
 
+  <script src="/js/add.js"></script>
   <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
 </body>
 </html>
