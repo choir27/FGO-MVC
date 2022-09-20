@@ -151,13 +151,20 @@ module.exports={
         try{
             const data = await Servant.findById(req.params.servant).populate('user').lean()
             const data1 = await Choose.find({userId:req.user.id})
+            const skill1 = await Skill1.find({userId:req.user.id}).lean()
+            const skill2 = await Skill2.find({userId:req.user.id}).lean()
+            const skill3 = await Skill3.find({userId:req.user.id}).lean()
+            const appendskill1 = await AppendSkill1.find({userId:req.user.id}).lean()
+            const appendskill2 = await AppendSkill2.find({userId:req.user.id}).lean()
+            const appendskill3 = await AppendSkill3.find({userId:req.user.id}).lean()
+            const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
             if (!data) {
                 return res.render('authed/error')  
               }
               if (data.user._id != req.user.id) {
                 res.render('authed/error')
               } else {
-                res.render('authed/edit.ejs', {data, info1: data1})
+                res.render('authed/edit.ejs', {data, choose: chooseServant ,info1: data1, appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 , skill1: skill1,skill2: skill2,skill3: skill3})
               }
         }catch(err){
             res.render('authed/error')
@@ -168,7 +175,6 @@ module.exports={
             let response = await fetch(`https://api.atlasacademy.io/nice/NA/servant/search?name=${req.body.name}&rarity=${req.body.rarity}&className=${req.body.className}&gender=${req.body.gender}`)
             let data = await response.json()
             if(data){
-      
                 req.body.servant = {collectionNo: data[0].collectionNo, lvMax: data[0].lvMax, atkMax: data[0].atkMax, hpMax: data[0].hpMax, cost: data[0].cost, id: data[0].id, starAbsorb: data[0].starAbsorb, starGen: data[0].starGen, attribute: data[0].atrribute, instantDeathChance: data[0].instantDeathChance, cards: data[0].cards, profile: data[0].profile, ascensionAdd: data[0].ascensionAdd, noblePhantasms: data[0].noblePhantasms}
                 let character = await Servant.findById(req.params.character).lean() 
                 req.body.user = req.user.id
@@ -195,9 +201,8 @@ module.exports={
     },
     chooseServant: async (req, res)=>{
     try{
-        req.body.user = req.user.id
         await ChooseServant.findOneAndUpdate(req.body)
-        res.redirect('/user/add')
+        res.redirect(`/user/edit/${req.params.servant}`)
     }catch(err){
         res.render('authed/error')
     }

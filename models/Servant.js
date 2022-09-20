@@ -45,15 +45,6 @@ appendSkill2:{
 appendSkill3:{
   type: String
 },
-skillCooldown1:{
-  type: Array
-},
-skillCooldown2:{
-  type: Array
-},
-skillCooldown3:{
-  type: Array
-},
 level:{
   type: String
 },
