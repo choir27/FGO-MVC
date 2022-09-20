@@ -9,12 +9,12 @@
 - [ ] Implement CSS for all pages, ranging from layouts, backgrounds, font styling, colors, etc.
 - [ ] Make the site responsive using media query, accounting for zooming in/out as well
 - [X] Allow users to create pages that will be dynamically created based on the servant data inputted
-- [ ] Have the user content in the created webpages be relative to the servant of that page
+- [X] Have the user content in the created webpages be relative to the servant of that page
 - [ ] Provide a method to add comment sections for each page, enabling a like/delete system for them as well
-  - [ ] Implement an edit option for comments, only editable/deletable by the user that made them
-- [ ] Include a sign up/log in option to have unique users able to access certain content
-  - [ ] Only able to add character content if the user has an account
-  - [ ] Only able to edit/delete posts of respective user posts
+  - [X] Implement an edit option for comments, only editable/deletable by the user that made them
+- [X] Include a sign up/log in option to have unique users able to access certain content
+  - [X] Only able to add character content if the user has an account
+  - [X] Only able to edit/delete posts of respective user posts
 - [ ] Have a search function that only works for public servant webpages and content available for every user
 - [ ] Make simulator function using RPG elements, with win/lose conditions
   - [ ] Using a turn-based system, the user and bot opponent will take turns doing an action
