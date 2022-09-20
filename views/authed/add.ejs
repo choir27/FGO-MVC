@@ -45,23 +45,21 @@
 
     <% let choice = '' %>
           
-            <form action = '/user/choose/servant?_method=PUT' method = 'POST'>
+    <form action = '/user/choose/your/servant?_method=PUT' method = 'POST'>
 
-    <button type='submit' class = ' selected button'><img src = '<%= info1[choose[choose.length-1].index].servant[0].image %>'></button>
-<input value = '<%= choose[0].index %>' class = 'hidden' type="text" name = 'index'>
-</form>
-
-<% for(let i = 0; i< info1.length; i++) { %>
-    <% if (i !== choose[0].index) { %>
-    <form action = '/user/choose/servant?_method=PUT' method = 'POST'>
-
-<button type='submit' class = 'button'><img src = '<%= info1[i].servant[0].image %>'></button>
-
-<input value = '<%= i %>' class = 'hidden' type="text" name = 'index'>
-</form>
-<% } %>
+        <button type='submit' class = ' selected button'><img src = '<%= info1[choose[choose.length-1].index].servant[0].image %>'></button>
+    <input value = '<%= choose[0].index %>' class = 'hidden' type="text" name = 'index'>
+    </form>
     
-            <% } %>
+    <% for(let i = 0; i< info1.length; i++) { %>
+        <% if (i !== choose[0].index) { %>
+        <form action = '/user/choose/your/servant?_method=PUT' method = 'POST'>
+    <button type='submit' class = 'button'><img src = '<%= info1[i].servant[0].image %>'></button>
+    <input value = '<%= i %>' class = 'hidden' type="text" name = 'index'>
+    </form>
+    <% } %>
+        
+                <% } %>
         </article>
 
 

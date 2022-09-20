@@ -206,8 +206,16 @@ module.exports={
     }catch(err){
         res.render('authed/error')
     }
-    
-}
+},
+    chooseCharacter:  async (req, res)=>{
+        try{
+            req.body.user = req.user.id
+            await ChooseServant.findOneAndUpdate(req.body)
+            res.redirect('/user/add')
+        }catch(err){
+            res.render('authed/error')
+        }
+    },
 
 }
 
