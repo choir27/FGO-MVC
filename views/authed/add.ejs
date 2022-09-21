@@ -43,7 +43,9 @@
 
 
     <div class = 'flex filter'>
-        <button class = 'button showLetterFilter' id = 'letter'>Filter By Starting Letter</button>
+        <button class = 'button' id = 'letter'>Filter By Starting Letter</button>
+        <button class = 'button' id = 'servantClass'>Filter By Servant Class</button>
+
     </div>
 
 
@@ -54,12 +56,14 @@
         <% } %>
     </div>
 
+
+
+    <% let servantClass = ['saber','archer','lancer','rider','assassin','caster','shielder','avenger','alter ego','ruler','berserker'] %>
+
+    
     <button class = 'button' id = 'clear'>Clear Filters</button>
 
-
-    <% let servantClass = ['saber','archer','lancer','rider','assassin','caster','shielder','avenger','alter ego','ruler','foreigner','pretender','berserker','moon cancer'] %>
-
-<div class="flex buttons">
+<div class="flex button buttons servantClass hidden">
     
 
 
@@ -78,6 +82,13 @@
 </div>
 
 
+<div class="flex button justifyContent servantRarity">
+    <% for(let i = 0; i < 6; i ++){ %>
+        <button class="button rarity_<%=i %>"><%= i%></button>
+    <% } %>
+</div>
+
+
         <article id = 'servant' class = 'flex button justifyContent alignItems'>
 
 
@@ -91,7 +102,7 @@
               <% }).join('') %>
           
 
-    <form action = '/user/choose/your/servant?_method=PUT' method = 'POST' class = "form <%= servantName %>_<%= info1[choose[0].index].servant[0].className %>">
+    <form action = '/user/choose/your/servant?_method=PUT' method = 'POST' class = "form <%= servantName %>_<%= info1[choose[0].index].servant[0].className %> <%= servantName %><%= info1[choose[0].index].servant[0].className %>rarity_<%= info1[choose[0].index].servant[0].rarity %>">
 
         <button type='submit' class = ' selected button'><img src = '<%= info1[choose[0].index].servant[0].image %>'></button>
 
@@ -110,7 +121,7 @@
                  <%  return '' %>
                 <% } %>
               <% }).join('') %>
-        <form action = '/user/choose/your/servant?_method=PUT' method = 'POST' class = 'form <%= servantName %>_<%= info1[i].servant[0].className %>'>
+        <form action = '/user/choose/your/servant?_method=PUT' method = 'POST' class = 'form <%= servantName %>_<%= info1[i].servant[0].className %> <%= servantName %><%= info1[i].servant[0].className %>rarity_<%= info1[i].servant[0].rarity %>'>
     <button type='submit' class = 'button'><img src = '<%= info1[i].servant[0].image %>'></button>
     <input value = '<%= i %>' class = 'hidden' type="text" name = 'index'>
     </form>
@@ -120,7 +131,6 @@
 
         </article>
 
-<% info1.forEach(ele=> console.log(ele.servant[0].className)) %>
 
 
 
