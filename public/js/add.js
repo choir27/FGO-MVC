@@ -43,4 +43,38 @@ function splitClass(){
 }
 
 
-document.querySelector('#letter').addEventListener('click',function filterByLetter(){document.querySelector('.buttons').classList.remove('hidden')})
+document.querySelector('#letter').addEventListener('click',function filterByLetter(){
+    document.querySelector('.buttons').classList.remove('hidden')
+    document.querySelector('#letter').classList.add('showLetterFilter')
+
+
+})
+
+document.querySelector('#clear').addEventListener('click',function clearFilters(){
+    const splitClass = document.querySelectorAll('.form')
+    return Array.from(splitClass).map((element)=>{
+        element.classList.remove('hidden')
+    })
+})
+
+let servantClass = ['saber','archer','lancer','rider','assassin','caster','shielder','avenger','alterego','ruler','foreigner','pretender','berserker','mooncancer']
+
+for(let i = 0; i < servantClass.length ; i++){
+    document.querySelector(`.${servantClass[i]}`).addEventListener('click',function filterByClass(){
+        let servantSplit = splitClass()
+
+servantSplit.forEach(ele=>{
+    document.querySelector(`.${ele}`).classList.remove('hidden')
+}) 
+
+servantSplit.forEach(ele=>{
+    console.log(ele.split('_')[1] )
+    if(ele.split('_')[1].toLowerCase() !== servantClass[i]){
+        document.querySelector(`.${ele}`).classList.add('hidden')
+    }else{
+        document.querySelector(`.${ele}`).classList.remove('hidden')
+    }
+})
+
+    })
+}
