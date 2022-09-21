@@ -61,98 +61,90 @@
             
                 <% let image = '' %>
 
-                <% function one(){ %>
-                    <% if(Number(info[i].level) <=25){ %>
-                    <%  return image = info1[info[i].index].servant[0].image  %>
-                    <% }else if(Number(info[i].level) <=45){ %>
-                    <%  return image = info2[info[i].index].servant[0].image  %>
-                    <% }else if(Number(info[i].level) <=55){ %>
-                    <%   return image = info3[info[i].index].servant[0].image  %>
-                    <% }else if(Number(info[i].level) >=55 && Number(info[i].level) <= 120){ %>
-                    <%  return image = info4[info[i].index].servant[0].image  %>
-                    <% } %>
-                <% } %>
-                <% function two(){ %>
-                    <%     if(Number(info[i].level)<=20){ %>
-                    <%    return image = info1[info[i].index].servant[0].image  %>
-                    <%       }else if(Number(info[i].level)<=40){ %>
-                    <%  return image = info2[info[i].index].servant[0].image  %>
-                    <%       }else if(Number(info[i].level)<=50){ %>
-                    <%  return image = info3[info[i].index].servant[0].image  %>
-                    <%       }else if(Number(info[i].level)>=60 && Number(info[i].level) <= 120){ %>
-                    <%  returnimage =  info4[info[i].index].servant[0].image  %>
-                    <%       } %>
-                    <% } %>
-        
-                    <% function three(){ %>
-                    <%     if(Number(info[i].level)<=25){ %>
-                    <%        return image = info1[info[i].index].servant[0].image  %>
-                    <%       }else if(Number(info[i].level)<=45){ %>
-                    <%      return image = info2[info[i].index].servant[0].image  %>
-                    <%       }else if(Number(info[i].level)<=55){ %>
-                    <%      return image = info3[info[i].index].servant[0].image  %>
-                    <%       }else if(Number(info[i].level>=65) && Number(info[i].level) <= 120){ %>
-                    <%      return image = info4[info[i].index].servant[0].image  %>
-                    <%       } %>
-                    <% } %>
-        
-                    <% function three(){ %>
-                    <%     if(Number(info[i].level)<=30){ %>
-                    <%        return image = info1[info[i].index].servant[0].image  %>
-                    <%       }else if(Number(info[i].level)<=50){ %>
-                    <%      return image = info2[info[i].index].servant[0].image  %>
-                    <%       }else if(Number(info[i].level)<=60){ %>
-                    <%      return image = info3[info[i].index].servant[0].image  %>
-                    <%       }else if(Number(info[i].level) >=70 && Number(info[i].level) <= 120){ %>
-                    <%      return image = info4[info[i].index].servant[0].image  %>
-                    <%       } %>
-                    <% } %>
-        
-                    <% function four(){ %>
-                    <%     if(Number(info[i].level)<=40){ %>
-                    <%       return  image = info1[info[i].index].servant[0].image  %>
-                    <%       }else if(Number(info[i].level)<=60){ %>
-                    <%      return image = info2[info[i].index].servant[0].image  %>
-                    <%       }else if(Number(info[i].level)<=70){ %>
-                    <%      return image = info3[info[i].index].servant[0].image  %>
-                    <%       }else if(Number(info[i].level>=80) && Number(info[i].level) <= 120){ %>
-                    <%      return image = info4[info[i].index].servant[0].image  %>
-                    <%       } %>
-                    <% } %>
-        
-                    <% function five(){ %>
-                    <%     if(Number(info[i].level)<=50){ %>
-                    <%    image = info1[info[i].index].servant[0].image  %>
-                    <% return image %>
-                    <%       }else if(Number(info[i].level)<=70){ %>
-                    <%  image = info2[info[i].index].servant[0].image  %>
-                    <% return image %>
-                    <%       }else if(Number(info[i].level)<=80){ %>
-                    <%  image = info3[info[i].index].servant[0].image  %>
-                    <% return image %>
-                    <%       }else if(Number(info[i].level) >=90 && Number(info[i].level) <= 120){ %>
-                    <%  image = info4[info[i].index].servant[0].image  %>
-                    <% return image %>
-                    <%       } %>
-                    <% } %>
-        
+        <% function one(){ %>
+            <% if(Number(info[i].level) <=25){ %>
+            <%  return image = info1[info[i].index].servant[0].image  %>
+            <% }else if(Number(info[i].level) <=45){ %>
+            <%  return image = info2[info[i].index].servant[0].image  %>
+            <% }else if(Number(info[i].level) <=55){ %>
+            <%   return image = info3[info[i].index].servant[0].image  %>
+            <% }else if(Number(info[i].level) >=65 && Number(info[i].level) <= 120){ %>
+            <%  return image = info4[info[i].index].servant[0].image  %>
+            <% } %>
+        <% } %>
+        <% function two(){ %>
+            <%     if(Number(info[i].level)<=20){ %>
+            <%  return image = info1[info[i].index].servant[0].image  %>
+            <%       }else if(Number(info[i].level)<=40){ %>
+            <%  return image = info2[info[i].index].servant[0].image  %>
+            <%       }else if(Number(info[i].level)<=50){ %>
+            <%   return image = info3[info[i].index].servant[0].image  %>
+            <%       }else if(Number(info[i].level)>=60 && Number(info[i].level) <= 120){ %>
+            <%  return image =  info4[info[i].index].servant[0].image  %>
+            <%       } %>
+            <% } %>
 
-    <% if (info[i].ascension == 'default') { %>
 
-                    <% if(info[i].rarity == '1'){ %>
-                           <% one() %>
-                   <% }else if(info[i].rarity == '2'){ %>
-                            <% two() %>
-                    <% }else if(info[i].rarity == '3'){ %>
-                            <% three() %>
-                    <% }else if(info[i].rarity == '4'){ %>
-                          <% four() %>
-                    <% }else if(info[i].rarity == '5'){ %>
-                            <% five() %>
-                    <% } %>
-        
-                    <img src = '<%= image %>'>
-                    <% } %>
+            <% function three(){ %>
+            <%     if(Number(info[i].level)<=30){ %>
+            <%        return image = info1[info[i].index].servant[0].image  %>
+            <%       }else if(Number(info[i].level)<=50){ %>
+            <%      return image = info2[info[i].index].servant[0].image  %>
+            <%       }else if(Number(info[i].level)<=60){ %>
+            <%      return image = info3[info[i].index].servant[0].image  %>
+            <%       }else if(Number(info[i].level) >=70 && Number(info[i].level) <= 120){ %>
+            <%      return image = info4[info[i].index].servant[0].image  %>
+            <%       } %>
+            <% } %>
+
+            <% function four(){ %>
+            <%     if(Number(info[i].level)<=40){ %>
+            <%       return  image = info1[info[i].index].servant[0].image  %>
+            <%       }else if(Number(info[i].level)<=60){ %>
+            <%      return image = info2[info[i].index].servant[0].image  %>
+            <%       }else if(Number(info[i].level)<=70){ %>
+            <%      return image = info3[info[i].index].servant[0].image  %>
+            <%       }else if(Number(info[i].level>=80) && Number(info[i].level) <= 120){ %>
+            <%      return image = info4[info[i].index].servant[0].image  %>
+            <%       } %>
+            <% } %>
+
+            <% function five(){ %>
+            <%     if(Number(info[i].level)<=50){ %>
+            <%    image = info1[info[i].index].servant[0].image  %>
+            <% return image %>
+            <%       }else if(Number(info[i].level)<=70){ %>
+            <%  image = info2[info[i].index].servant[0].image  %>
+            <% return image %>
+            <%       }else if(Number(info[i].level)<=80){ %>
+            <%  image = info3[info[i].index].servant[0].image  %>
+            <% return image %>
+            <%       }else if(Number(info[i].level) >=90 && Number(info[i].level) <= 120){ %>
+            <%  image = info4[info[i].index].servant[0].image  %>
+            <% return image %>
+            <%       } %>
+            <% } %>
+
+
+
+           <% if (info[i].ascension == 'default') { %>
+
+
+            <% if(info[i].rarity == '1'){ %>
+                   <% one() %>
+           <% }else if(info[i].rarity == '2' || info[i].rarity == '0'){ %>
+                    <% two() %>
+            <% }else if(info[i].rarity == '3'){ %>
+                    <% three() %>
+            <% }else if(info[i].rarity == '4'){ %>
+                  <% four() %>
+            <% }else if(info[i].rarity == '5'){ %>
+                    <% five() %>
+            <% } %>
+          
+
+            <img src = '<%= image %>'>
+            <% } %>
 
 
                     <% if (info[i].ascension !== 'default') { %>
@@ -249,7 +241,6 @@
       </footer>
     
       <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
-      <script src = '/js/servant.js'></script>
 
     </body>
     </html>

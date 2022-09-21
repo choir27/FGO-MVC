@@ -96,6 +96,7 @@ module.exports={
     let data = await response.json()
         req.body.servant = {collectionNo: data[0].collectionNo, lvMax: data[0].lvMax, atkMax: data[0].atkMax, hpMax: data[0].hpMax, cost: data[0].cost, id: data[0].id, starAbsorb: data[0].starAbsorb, starGen: data[0].starGen, attribute: data[0].atrribute, instantDeathChance: data[0].instantDeathChance, cards: data[0].cards, profile: data[0].profile, ascensionAdd: data[0].ascensionAdd, noblePhantasms: data[0].noblePhantasms}
         req.body.user = req.user.id
+        await ChooseServant.findOneAndUpdate({servantIndex: req.body.servantIndex})
         await Servant.create(req.body)
         res.redirect('/user/servants')
     }catch(err){
@@ -178,6 +179,7 @@ module.exports={
                 req.body.servant = {collectionNo: data[0].collectionNo, lvMax: data[0].lvMax, atkMax: data[0].atkMax, hpMax: data[0].hpMax, cost: data[0].cost, id: data[0].id, starAbsorb: data[0].starAbsorb, starGen: data[0].starGen, attribute: data[0].atrribute, instantDeathChance: data[0].instantDeathChance, cards: data[0].cards, profile: data[0].profile, ascensionAdd: data[0].ascensionAdd, noblePhantasms: data[0].noblePhantasms}
                 let character = await Servant.findById(req.params.character).lean() 
                 req.body.user = req.user.id
+                await ChooseServant.findOneAndUpdate({servantIndex: req.body.servantIndex})
                 character = await Servant.findOneAndUpdate({ _id: req.params.character }, req.body, {
                     new: true,
                     runValidators: true,

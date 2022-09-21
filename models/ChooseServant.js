@@ -5,7 +5,7 @@ const ChooseServantSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref:  'User'
   },
-  index: {
+  servantIndex: {
     type: Number,
     required: false,
   }
