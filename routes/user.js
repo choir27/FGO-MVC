@@ -24,7 +24,7 @@ router.put('/details/:character', homeController.editServant)
 
 router.put('/choose/your/servant', homeController.chooseCharacter)
 
-// router.post('/simulator/:select', homeController.chooseServant)
+router.put('/choose/servant/simulator', homeController.chooseSimulator)
 
 router.delete('/delete/:select', homeController.deleteServant)
 

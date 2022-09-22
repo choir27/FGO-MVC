@@ -42,7 +42,7 @@
 
                     <% if(check > 3) { %>
 
-                        <div href = '/user/<%= info[i]._id %>' class = 'flex alignItems justifyContent button hidden'> 
+                        <div href = '/user/<%= info[i]._id %>' class = 'flex alignItems justifyContent button hidden check<%= i %>'> 
                             <div class="flex alignItems justifyContent column edit-delete">
                                         <a href = '/user/edit/<%= info[i]._id %>' class = 'button edit flex justifyContent'><i class="fa-solid fa-pen"></i></a>
                             
@@ -200,7 +200,7 @@
                     <% } else { %>
 
 
-        <div href = '/user/<%= info[i]._id %>' class = 'flex alignItems justifyContent button'> 
+        <div href = '/user/<%= info[i]._id %>' class = 'flex alignItems justifyContent button check<%=i %>'> 
 <div class="flex alignItems justifyContent column edit-delete">
             <a href = '/user/edit/<%= info[i]._id %>' class = 'button edit flex justifyContent'><i class="fa-solid fa-pen"></i></a>
 
@@ -382,6 +382,12 @@
             
 
 </section>
+
+<div class="flex buttons">
+    <button class="button" id = 'show'>Show More</button>
+    <button class="button" id = 'hide'>Show Less</button>
+    
+</div>
 
 <i class="fa-solid fa-angle-down arrow-down"><a href = '#one'></a></i>
 </header>

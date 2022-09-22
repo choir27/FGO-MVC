@@ -231,6 +231,14 @@ color: black;
     margin: 0rem;
    }
    
+
+   .buttons{
+    margin: 2rem;
+   }
+
+   .buttons button{
+    margin: 1rem;
+   }
 /* 
    body *{
     border: 2px solid white;

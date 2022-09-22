@@ -78,7 +78,8 @@ module.exports={
             const skill1 = await Skill1.find({userId:req.user.id}).lean()
             const skill2 = await Skill2.find({userId:req.user.id}).lean()
             const skill3 = await Skill3.find({userId:req.user.id}).lean()
-            res.render('authed/simulator.ejs', {info: data,skill1: skill1,skill2: skill2,skill3: skill3,info1: data1, info2: data2, info3: data3, info4: data4, userID: req.user.id})
+            const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
+            res.render('authed/simulator.ejs', {choose: chooseServant, info: data,skill1: skill1,skill2: skill2,skill3: skill3,info1: data1, info2: data2, info3: data3, info4: data4, userID: req.user.id})
         }catch(err){
             console.error(err)
         } 
@@ -218,7 +219,14 @@ module.exports={
             res.render('authed/error')
         }
     },
-
+    chooseSimulator: async (req, res)=>{
+        try{
+            await ChooseServant.findOneAndUpdate(req.body)
+            res.redirect(`/user/simulator`)
+        }catch(err){
+            res.render('authed/error')
+        }
+    },
 }
 
 

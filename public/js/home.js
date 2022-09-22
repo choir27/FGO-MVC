@@ -34,3 +34,30 @@ function scrollDown4(){
 }
 
 }
+
+let check = 6
+document.querySelector('#show').addEventListener('click',function showMore(){
+for(let i = 3;i<check;i++){
+   if(document.querySelector(`.check${i}`)!=null){
+      document.querySelector(`.check${i}`).classList.remove('hidden')
+
+   }
+}
+
+check += 3
+
+})
+
+document.querySelector('#hide').addEventListener('click',function showMore(){
+   if(check > 3){
+      for(let i = check;i>check-3;i--){
+         if(document.querySelector(`.check${i}`)!=null){
+            document.querySelector(`.check${i}`).classList.add('hidden')
+      
+         }
+      }
+   }
+   
+   check -= 3
+   
+   })
