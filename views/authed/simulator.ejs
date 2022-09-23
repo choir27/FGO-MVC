@@ -8,7 +8,7 @@
     <link rel = 'stylesheet' href = '/css/normalize.css'>
     <link rel = 'stylesheet' href = '/css/style.css'>
     <link rel = 'stylesheet' href = '/css/simulator.css'>
-    <title>Gameplay</title>
+    <title>Simulator</title>
 </head>
 <body>
 <!-- <a href = 'https://fgo-api.herokuapp.com/'>Make your team</a> -->
@@ -140,7 +140,7 @@
 </div>
 
 
-<section>
+<section id = 'simulator' class = 'flex'>
     <% if(choose[0].servantIndex != '-1') { %>
         <% let data; %>
         <% for(let i =0; i < info.length; i++) { %>
@@ -248,8 +248,21 @@
                 <% five() %>
         <% } %>
 
+        <div class="flex alignItems column">
 
-            <img src="<%= image %>" alt="" srcset="">
+
+            <img src="<%= image %>" id ='player1' >
+            <meter id="health" value = '<%= data.servant[0].hpMax %>.00' min = '0.00' max = '<%= data.servant[0].hpMax %>.00' ></meter>
+			<meter id ='np' value = '0.00' min = '0.00' max = '100.00'></meter>
+
+            <div class="flex justifyContent" id = 'skills'>
+                <button class = 'button'  id ='skill1'><img src="<%= skill1[data.index].servant[0].image %>" ></button>
+                <button class = 'button'  id ='skill2'><img src="<%= skill2[data.index].servant[0].image %>" ></button>
+                <button class = 'button'  id ='skill3'><img src="<%= skill3[data.index].servant[0].image %>" ></button>
+            </div>
+           
+        </div>
+
 
         
     <% } %>

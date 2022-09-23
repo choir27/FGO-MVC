@@ -103,8 +103,8 @@
       <% const ascensions = {'0': 'First', '1': 'Second', '2': 'Third', '3': 'Fourth', '4': 'Last'} %>
       <div class = 'flex alignItems column ascension-level'> 
         <h3> Max levels to reach next each ascension</h3>
-    <% for(let keys in info.servant[0].ascensionAdd.lvMax.ascension) { %>
-        <span><%= ascensions[keys]%> Ascension: Level <%= info.servant[0].ascensionAdd.lvMax.ascension[keys] %></span>
+    <% for(let keys in info.servant[0].ascensionAdd) { %>
+        <span><%= ascensions[keys]%> Ascension: Level <%= info.servant[0].ascensionAdd[keys] %></span>
     <% } %>
 
 

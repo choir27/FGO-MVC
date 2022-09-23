@@ -95,7 +95,13 @@ module.exports={
         try{
     let response = await fetch(`https://api.atlasacademy.io/nice/NA/servant/search?name=${req.body.name}&rarity=${req.body.rarity}&className=${req.body.className}&gender=${req.body.gender}`)
     let data = await response.json()
-        req.body.servant = {collectionNo: data[0].collectionNo, lvMax: data[0].lvMax, atkMax: data[0].atkMax, hpMax: data[0].hpMax, cost: data[0].cost, id: data[0].id, starAbsorb: data[0].starAbsorb, starGen: data[0].starGen, attribute: data[0].atrribute, instantDeathChance: data[0].instantDeathChance, cards: data[0].cards, profile: data[0].profile, ascensionAdd: data[0].ascensionAdd, noblePhantasms: data[0].noblePhantasms}
+    // console.log(data[0].skills[0].functions[0].buffs[0].tvals)
+
+    console.log(data[0].skills[0].functions[0].buffs[0].vals)
+    console.log(data[0].skills[1].functions[0].buffs[0].vals)
+    console.log(data[0].skills[2].functions[0].buffs[0].vals)
+
+        req.body.servant = {tValue1: data[0].skills[0].functions[0].buffs[0].tvals,  tValue2: data[0].skills[1].functions[0].buffs[0].tvals, tValue3: data[0].skills[2].functions[0].buffs[0].tvals, skillValues1: data[0].skills[1].functions[0].svals, skillValues2: data[0].skills[2].functions[0].svals, skillValues3: data[0].skills[3].functions[0].svals , skillDetail1: data[0].skills[0].detail,skillDetail2: data[0].skills[1].detail, skillDetail3: data[0].skills[2].detail, collectionNo: data[0].collectionNo, lvMax: data[0].lvMax, atkMax: data[0].atkMax, hpMax: data[0].hpMax, cost: data[0].cost, id: data[0].id, starAbsorb: data[0].starAbsorb, starGen: data[0].starGen, attribute: data[0].atrribute, instantDeathChance: data[0].instantDeathChance, cards: data[0].cards, profile: data[0].profile, ascensionAdd: data[0].ascensionAdd.lvMax.ascension, noblePhantasms: data[0].noblePhantasms}
         req.body.user = req.user.id
         await ChooseServant.findOneAndUpdate({servantIndex: req.body.servantIndex})
         await Servant.create(req.body)
