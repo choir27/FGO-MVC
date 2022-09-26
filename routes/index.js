@@ -20,7 +20,11 @@ MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true })
     })
 
     router.get('/api/servants',(request,response)=>{
-        db.collection('chooses').find().toArray()
+        db.collection('servants').find().toArray()
+            .then(info=>{
+                db.collection('users').find().toArray()
+                    .then(users=>{
+                        db.collection('chooses').find().toArray()
         .then(data => {
             db.collection('skill1').find().toArray()
                 .then(skill1=>{
@@ -34,7 +38,7 @@ MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true })
                                                 .then(appendskill2=>{
                                                     db.collection('appendskill3').find().toArray()
                                                         .then(appendskill3=>{
-                                                            response.json({info: data, skill1: skill1, skill2: skill2, skill3: skill3,  appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 })
+                                                            response.json({servants: info, users: users, info: data, skill1: skill1, skill2: skill2, skill3: skill3,  appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 })
                                                         })
                                                 })
                                         })
@@ -42,6 +46,9 @@ MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true })
 
                         })
                 })
+                    })
+            })
+        
        })
        .catch(error => res.render('not-authed/error.ejs'))
     })
