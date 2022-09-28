@@ -24,16 +24,20 @@ module.exports={
     },
     getServants: async(req,res) =>{
         try{
-            const data = await Servant.find({userId:req.user.id}).lean()
+            const data = await Character.find({userId:req.user.id}).lean()
                 .populate('user')
                 .sort({ createdAt: 'desc' })
                 .lean()
     
-            res.render('authed/servants.ejs', {info: data, userID: req.user.id , userName: req.user.displayName, userImage: req.user.image})
+                const info = await Servant.find({userId:req.user.id}).lean()
+                const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
+                const skill = await Skill.find({userId:req.user.id}).lean()
+                const ascension = await Ascension.find({userId:req.user.id}).lean()
+                res.render('authed/servants.ejs', {info: data, skill: skill ,ascension: ascension ,choose: chooseServant, data: info, name: req.user.firstName, userID: req.user.id, userName: req.user.displayName, userImage: req.user.image})
         }catch(err){
             res.render('error')  
             console.error(err)
-        } 
+        }
     },
     getAdd: async(req,res) =>{
         try{

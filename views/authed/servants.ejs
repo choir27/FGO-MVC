@@ -46,13 +46,14 @@
 
 
 
-                <% let className = info[i].className.split('').map(ele=>{
-                    if(ele===ele.toUpperCase()){
-                        return ' ' + ele
-                    }else{
-                        return ele
-                    }
-                }).join('') %>
+                <% let className = info[i].servant[0].className.split('').map(ele => { %>
+                    <% if(ele === ele.toUpperCase()) { %>
+                       <% return ' ' + ele %>
+                        <% } %>
+                    <% if(ele != ele.toUpperCase()) { %>
+                       <% return ele %>
+                        <% } %>
+           <% }).join('') %>
                 <div class = 'flex alignItems column'>View <%= className %> <%= info[i].name %> page
                     <h3>By <%= userName %></h3>
                     <img src = '<%= userImage %>'>
@@ -171,9 +172,9 @@
                         <div class="flex justifyContent alignContent column skills">
                             <h2>Skills</h2>
                             <div class="flex justifyContent alignContent row image">
-                            <div class = 'flex'><img src="<%= skill1[i].servant[0].image %>" alt="">   <h2>Lv:<%= info[i].skill1 %></h2></div>
-                            <div class = 'flex'><img src="<%= skill2[i].servant[0].image %>" alt="">   <h2>Lv:<%= info[i].skill2 %></h2></div>
-                            <div class = 'flex'><img src="<%= skill3[i].servant[0].image %>" alt="">   <h2>Lv:<%= info[i].skill3 %></h2></div>
+                            <div class = 'flex'><img src="<%= skill[info[i].index].servant[0].skills.skills1.icon %>" alt="">   <h2>Lv:<%= info[i].skill1 %></h2></div>
+                            <div class = 'flex'><img src="<%= skill[info[i].index].servant[0].skills.skills2.icon %>" alt="">   <h2>Lv:<%= info[i].skill2 %></h2></div>
+                            <div class = 'flex'><img src="<%= skill[info[i].index].servant[0].skills.skills3.icon %>" alt="">   <h2>Lv:<%= info[i].skill3 %></h2></div>
                         </div>
                         </div>
         
