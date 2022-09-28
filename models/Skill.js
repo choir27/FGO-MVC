@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const Skill2Schema = new mongoose.Schema({
+const SkillSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref:  'User'
@@ -8,7 +8,11 @@ const Skill2Schema = new mongoose.Schema({
   servant: {
     type: Array,
     required: false,
+  },
+  classPassive: {
+    type: Array,
+    required: false,
   }
 })
 
-module.exports = mongoose.model('Skill2', Skill2Schema)
+module.exports = mongoose.model('Skill',SkillSchema)

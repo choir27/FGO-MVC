@@ -2,35 +2,23 @@ const fetch = (...args) =>
 import('node-fetch').then(({default: fetch}) => fetch(...args))
 const Servant = require('../models/Servant')
 const cloudinary = require("../middleware/cloudinary");
-const Choose = require('../models/Choose')
-const Choose1 = require('../models/Choose1')
-const Choose2 = require('../models/Choose2')
-const Choose3 = require('../models/Choose3')
-const Skill1 = require('../models/Skill1')
-const Skill2 = require('../models/Skill2')
-const Skill3 = require('../models/Skill3')
-const AppendSkill1 = require('../models/AppendSkill1.js')
-const AppendSkill2 = require('../models/AppendSkill2.js')
-const AppendSkill3 = require('../models/AppendSkill3.js')
 const ChooseServant = require('../models/ChooseServant.js')
+const Character = require('../models/Character')
+const Ascension = require('../models/Ascension')
+const Skill = require('../models/Skill')
 
 
 module.exports={
     getHome: async(req,res) =>{
         try{
-            const data = await Servant.find({userId:req.user.id}).lean()
-            const data1 = await Choose.find({userId:req.user.id}).lean()
-            const data2 = await Choose1.find({userId:req.user.id}).lean()
-            const data3 = await Choose2.find({userId:req.user.id}).lean()
-            const data4 = await Choose3.find({userId:req.user.id}).lean()
-            const skill1 = await Skill1.find({userId:req.user.id}).lean()
-            const skill2 = await Skill2.find({userId:req.user.id}).lean()
-            const skill3 = await Skill3.find({userId:req.user.id}).lean()
-            const appendskill1 = await AppendSkill1.find({userId:req.user.id}).lean()
-            const appendskill2 = await AppendSkill2.find({userId:req.user.id}).lean()
-            const appendskill3 = await AppendSkill3.find({userId:req.user.id}).lean()
-            res.render('authed/home.ejs', {appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1, skill1: skill1, skill2: skill2, skill3: skill3, info1: data1,info2: data2,info3: data3,info4: data4, info: data, name: req.user.firstName, userID: req.user.id})
+            const data = await Character.find({userId:req.user.id}).lean()
+            const info = await Servant.find({userId:req.user.id}).lean()
+            const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
+            const skill = await Skill.find({userId:req.user.id}).lean()
+            const ascension = await Ascension.find({userId:req.user.id}).lean()
+            res.render('authed/home.ejs', {info: data, skill: skill ,ascension: ascension ,choose: chooseServant, data: info, name: req.user.firstName, userID: req.user.id})
         }catch(err){
+            res.render('error')  
             console.error(err)
         } 
     },
@@ -40,47 +28,33 @@ module.exports={
                 .populate('user')
                 .sort({ createdAt: 'desc' })
                 .lean()
-            const data1 = await Choose.find({userId:req.user.id}).lean()
-            const data2 = await Choose1.find({userId:req.user.id}).lean()
-            const data3 = await Choose2.find({userId:req.user.id}).lean()
-            const data4 = await Choose3.find({userId:req.user.id}).lean()
-            const skill1 = await Skill1.find({userId:req.user.id}).lean()
-            const skill2 = await Skill2.find({userId:req.user.id}).lean()
-            const skill3 = await Skill3.find({userId:req.user.id}).lean()
     
-            res.render('authed/servants.ejs', {skill1: skill1, skill2: skill2, skill3: skill3, info1: data1, info2: data2, info3: data3, info4: data4, info: data, userID: req.user.id , userName: req.user.displayName, userImage: req.user.image})
+            res.render('authed/servants.ejs', {info: data, userID: req.user.id , userName: req.user.displayName, userImage: req.user.image})
         }catch(err){
+            res.render('error')  
             console.error(err)
         } 
     },
     getAdd: async(req,res) =>{
         try{
-        const data = await Choose.find({userId:req.user.id}).lean()
-        const skill1 = await Skill1.find({userId:req.user.id}).lean()
-        const skill2 = await Skill2.find({userId:req.user.id}).lean()
-        const skill3 = await Skill3.find({userId:req.user.id}).lean()
-        const appendskill1 = await AppendSkill1.find({userId:req.user.id}).lean()
-        const appendskill2 = await AppendSkill2.find({userId:req.user.id}).lean()
-        const appendskill3 = await AppendSkill3.find({userId:req.user.id}).lean()
+        const data = await Servant.find({userId:req.user.id}).lean()
         const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
-        res.render('authed/add.ejs', {choose: chooseServant ,info1: data, appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 , skill1: skill1,skill2: skill2,skill3: skill3})
+        const skill = await Skill.find({userId:req.user.id}).lean()
+        const ascension = await Ascension.find({userId:req.user.id}).lean()
+
+        res.render('authed/add.ejs', {skill: skill ,ascension: ascension ,choose: chooseServant, info: data})
         }catch(err){
+            res.render('error')  
             console.error(err)
         } 
     },
     getSimulator: async(req,res) =>{
         try{
             const data = await Servant.find({userId:req.user.id}).lean()
-            const data1 = await Choose.find({userId:req.user.id}).lean()
-            const data2 = await Choose1.find({userId:req.user.id}).lean()
-            const data3 = await Choose2.find({userId:req.user.id}).lean()
-            const data4 = await Choose3.find({userId:req.user.id}).lean()
-            const skill1 = await Skill1.find({userId:req.user.id}).lean()
-            const skill2 = await Skill2.find({userId:req.user.id}).lean()
-            const skill3 = await Skill3.find({userId:req.user.id}).lean()
             const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
-            res.render('authed/simulator.ejs', {choose: chooseServant, info: data,skill1: skill1,skill2: skill2,skill3: skill3,info1: data1, info2: data2, info3: data3, info4: data4, userID: req.user.id})
+            res.render('authed/simulator.ejs', {choose: chooseServant, info: data, userID: req.user.id})
         }catch(err){
+            res.render('error')  
             console.error(err)
         } 
     },
@@ -88,51 +62,36 @@ module.exports={
         try{
             res.render('authed/gameplay.ejs')
         }catch(err){
+            res.render('error')  
             console.error(err)
         } 
     },
     postServants: async (req,res) =>{
         try{
-    let response = await fetch(`https://api.atlasacademy.io/nice/NA/servant/search?name=${req.body.name}&rarity=${req.body.rarity}&className=${req.body.className}&gender=${req.body.gender}`)
-    let data = await response.json()
-    // console.log(data[0].skills[0].functions[0].buffs[0].tvals)
-
-    console.log(data[0].skills[0].functions[0].buffs[0].vals)
-    console.log(data[0].skills[1].functions[0].buffs[0].vals)
-    console.log(data[0].skills[2].functions[0].buffs[0].vals)
-
-        req.body.servant = {tValue1: data[0].skills[0].functions[0].buffs[0].tvals,  tValue2: data[0].skills[1].functions[0].buffs[0].tvals, tValue3: data[0].skills[2].functions[0].buffs[0].tvals, skillValues1: data[0].skills[1].functions[0].svals, skillValues2: data[0].skills[2].functions[0].svals, skillValues3: data[0].skills[3].functions[0].svals , skillDetail1: data[0].skills[0].detail,skillDetail2: data[0].skills[1].detail, skillDetail3: data[0].skills[2].detail, collectionNo: data[0].collectionNo, lvMax: data[0].lvMax, atkMax: data[0].atkMax, hpMax: data[0].hpMax, cost: data[0].cost, id: data[0].id, starAbsorb: data[0].starAbsorb, starGen: data[0].starGen, attribute: data[0].atrribute, instantDeathChance: data[0].instantDeathChance, cards: data[0].cards, profile: data[0].profile, ascensionAdd: data[0].ascensionAdd.lvMax.ascension, noblePhantasms: data[0].noblePhantasms}
-        req.body.user = req.user.id
-        await ChooseServant.findOneAndUpdate({servantIndex: req.body.servantIndex})
-        await Servant.create(req.body)
-        res.redirect('/user/servants')
-    }catch(err){
+            let data = await Servant.find({userId:req.user.id}).lean()
+        
+                req.body.servant = data[req.body.index].servant[0]
+                req.body.user = req.user.id
+                await ChooseServant.findOneAndUpdate({servantIndex: req.body.servantIndex})
+                await Character.create(req.body)
+                res.redirect('/user/servants')
+        }
+            catch(err){
         console.log(err)
-        res.render('authed/error')  
+        res.render('error')  
         }
     },
     getTemplate: async (req,res) =>{
         try{
-            const data1 = await Choose.find({userId:req.user.id}).lean()
-            const data2 = await Choose1.find({userId:req.user.id}).lean()
-            const data3 = await Choose2.find({userId:req.user.id}).lean()
-            const data4 = await Choose3.find({userId:req.user.id}).lean()
-            const skill1 = await Skill1.find({userId:req.user.id}).lean()
-            const skill2 = await Skill2.find({userId:req.user.id}).lean()
-            const skill3 = await Skill3.find({userId:req.user.id}).lean()
-            const appendskill1 = await AppendSkill1.find({userId:req.user.id}).lean()
-            const appendskill2 = await AppendSkill2.find({userId:req.user.id}).lean()
-            const appendskill3 = await AppendSkill3.find({userId:req.user.id}).lean()
-
-            const info = await Servant.findById(req.params.id).populate('user').lean()
+            const info = await Servant.find({userId:req.user.id}).lean()
             if (!info) {
-                return res.render('authed/error')  
+                return res.render('error')  
               }
           
               if (info.user._id != req.user.id && info.status == 'private') {
-                res.render('authed/error')
+                res.render('error')
               } else {
-                res.render('authed/template.ejs', {appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 , skill1: skill1,skill2: skill2,skill3: skill3,info1: data1, info2: data2, info3: data3, info4: data4, info})
+                res.render('authed/template.ejs', { info})
               }
         }
         catch(err){
@@ -144,11 +103,8 @@ module.exports={
           const data = await Servant.find({user: req.params.name, status: 'public'})
             .populate('user')
             .lean()
-            const data1 = await Choose.find({userId:req.user.id}).lean()
-            const data2 = await Choose1.find({userId:req.user.id}).lean()
-            const data3 = await Choose2.find({userId:req.user.id}).lean()
-            const data4 = await Choose3.find({userId:req.user.id}).lean()
-        res.render('authed/view', {info1: data1, info2: data2, info3: data3, info4: data4,info: data, userName: req.user.displayName, userImage: req.user.image})
+           
+        res.render('authed/view', {info: data, userName: req.user.displayName, userImage: req.user.image})
     
       } catch (err) {
         console.error(err)
@@ -157,25 +113,18 @@ module.exports={
     },
     getEditPage: async (req,res)=>{
         try{
-            const data = await Servant.findById(req.params.servant).populate('user').lean()
-            const data1 = await Choose.find({userId:req.user.id})
-            const skill1 = await Skill1.find({userId:req.user.id}).lean()
-            const skill2 = await Skill2.find({userId:req.user.id}).lean()
-            const skill3 = await Skill3.find({userId:req.user.id}).lean()
-            const appendskill1 = await AppendSkill1.find({userId:req.user.id}).lean()
-            const appendskill2 = await AppendSkill2.find({userId:req.user.id}).lean()
-            const appendskill3 = await AppendSkill3.find({userId:req.user.id}).lean()
+            const data = await Servant.find({userId:req.user.id}).lean()
             const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
             if (!data) {
-                return res.render('authed/error')  
+                return res.render('error')  
               }
               if (data.user._id != req.user.id) {
                 res.render('authed/error')
               } else {
-                res.render('authed/edit.ejs', {data, choose: chooseServant ,info1: data1, appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 , skill1: skill1,skill2: skill2,skill3: skill3})
+                res.render('authed/edit.ejs', {data, choose: chooseServant})
               }
         }catch(err){
-            res.render('authed/error')
+            res.render('error')
         }
     },
     editServant: async (req,res)=>{
@@ -195,7 +144,7 @@ module.exports={
     }
         }catch(err){
             console.log(err)
-            res.render('authed/error')
+            res.render('error')
         }
     },
     deleteServant: async (req, res) => {
@@ -205,7 +154,7 @@ module.exports={
 
             res.redirect('/user/servants')
         }catch(err){
-            res.render('authed/error')
+            res.render('error')
         }
     },
     chooseServant: async (req, res)=>{
@@ -213,7 +162,7 @@ module.exports={
         await ChooseServant.findOneAndUpdate(req.body)
         res.redirect(`/user/edit/${req.params.servant}`)
     }catch(err){
-        res.render('authed/error')
+        res.render('error')
     }
 },
     chooseCharacter:  async (req, res)=>{
@@ -222,7 +171,7 @@ module.exports={
             await ChooseServant.findOneAndUpdate(req.body)
             res.redirect('/user/add')
         }catch(err){
-            res.render('authed/error')
+            res.render('error')
         }
     },
     chooseSimulator: async (req, res)=>{
@@ -230,7 +179,7 @@ module.exports={
             await ChooseServant.findOneAndUpdate(req.body)
             res.redirect(`/user/simulator`)
         }catch(err){
-            res.render('authed/error')
+            res.render('error')
         }
     },
 }

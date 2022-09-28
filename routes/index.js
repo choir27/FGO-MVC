@@ -24,31 +24,8 @@ MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true })
             .then(info=>{
                 db.collection('users').find().toArray()
                     .then(users=>{
-                        db.collection('chooses').find().toArray()
-        .then(data => {
-            db.collection('skill1').find().toArray()
-                .then(skill1=>{
-                    db.collection('skill2').find().toArray()
-                        .then(skill2=>{
-                            db.collection('skill3').find().toArray()
-                                .then(skill3=>{
-                                    db.collection('appendskill1').find().toArray()
-                                        .then(appendskill1=>{
-                                            db.collection('appendskill2').find().toArray()
-                                                .then(appendskill2=>{
-                                                    db.collection('appendskill3').find().toArray()
-                                                        .then(appendskill3=>{
-                                                            response.json({servants: info, users: users, info: data, skill1: skill1, skill2: skill2, skill3: skill3,  appendskill3: appendskill3 ,appendskill2: appendskill2 ,appendskill1: appendskill1 })
-                                                        })
-                                                })
-                                        })
-                                })
-
-                        })
-                })
-                    })
+ response.json({servants: info, users: users})
             })
-        
        })
        .catch(error => res.render('not-authed/error.ejs'))
     })

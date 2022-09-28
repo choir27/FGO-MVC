@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const AppendSkill2Schema = new mongoose.Schema({
+const AscensionSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref:  'User'
@@ -11,4 +11,4 @@ const AppendSkill2Schema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('AppendSkill2', AppendSkill2Schema)
+module.exports = mongoose.model('Ascension', AscensionSchema)
