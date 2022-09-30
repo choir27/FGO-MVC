@@ -1,3 +1,18 @@
+// async function getData(){
+//     let response = await fetch(`https://api.atlasacademy.io/export/NA/nice_servant_lore.json`)
+//     let data = await response.json()
+//     console.log(data[data.length-4].name)
+//     console.log(data[data.length-5].name)
+//     console.log(data[data.length-6].name)
+//     console.log(data[data.length-7].name)
+
+// }
+
+// getData()
+         
+       
+
+
 let alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 for(let i = 0;i < alphabet.length; i++){
@@ -154,19 +169,19 @@ for(let i = 0; i< 6; i++){
 
 // skills:{ 
 //     skills1:{
-//     name: data[0].skills[0].name,
+//     name: data[i].skills[0].name,
 //     coolDown : data[i].skills[0].coolDown,
 //     detail : data[i].skills[0].detail,
 //     icon : skill1.secure_url,
 //     cloudinaryId: skill1.public_id,
 //     funcPopupText : data[i].skills[0].functions[0].funcPopupText,
 //     funcTargetTeam : data[i].skills[0].functions[0].funcTargetTeam,
-//     funcTargetType : data[i].skills[0].functions[0].funcTargetType,
+//     funcTargetType : daSta[i].skills[0].functions[0].funcTargetType,
 //     funcType : data[i].skills[0].functions[0].funcType,
 //     svals : data[i].skills[0].functions[0].svals,
 //  },
 // skills2:{
-//     name: data[0].skills[1].name,
+//     name: data[i].skills[1].name,
 //     coolDown : data[i].skills[1].coolDown,
 //     detail : data[i].skills[1].detail,
 //     icon : skill2.secure_url,
@@ -178,7 +193,7 @@ for(let i = 0; i< 6; i++){
 //     svals : data[i].skills[1].functions[0].svals,
 //  },
 // skills3:{
-//    name: data[0].skills[2].name,
+//    name: data[i].skills[2].name,
 //    coolDown : data[i].skills[2].coolDown,
 //    detail : data[i].skills[2].detail,
 //    icon : skill3.secure_url,

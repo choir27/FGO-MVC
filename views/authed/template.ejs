@@ -74,7 +74,7 @@
       <h2 class = 'flex'>class Name: <%= className %></h2>
 
       <div class = 'flex rarity'>
-      <h2 class = 'flex alignItems stars'>rarity: <%for(let i = 0; i < info.rarity; i++) { %>
+      <h2 class = 'flex alignItems stars'>rarity: <%for(let i = 0; i < info.servant[0].rarity; i++) { %>
         <img src = '/servants/star.png'>
         <% }%>
 
@@ -82,9 +82,9 @@
       </h2>
     </div>
 
-    <div class = 'div flex'><h2>gender: <%= info.gender %></h2><h2>max level: <%= info.servant[0].lvMax %></h2></div>
+    <div class = 'div flex'><h2>gender: <%= info.servant[0].gender %></h2><h2>level: <%= info.servant[0].lvMax[4] %></h2></div>
     <div class = 'div flex'><h2>max attack: <%= info.servant[0].atkMax %></h2><h2>max health: <%= info.servant[0].hpMax %></h2></div>
-    <div class = 'div flex'><h2>cost: <%= info.servant[0].cost %></h2><h2>servant id: <%= info.servant[0].id%></h2></div>
+    <div class = 'div flex'><h2>cost: <%= info.servant[0].cost %></h2><h2>Noble Phantasm: <%= info.servant[0].noblePhantasms.name %></h2></div>
     <div class = 'div flex'><h2>star absorb: <%= info.servant[0].starAbsorb%></h2><h2>star gen: <%= info.servant[0].starGen%></h2></div>
     <h2>servant attribute: <%= info.servant[0].attribute%></h2>
     <h2>instant death chance: <%= info.servant[0].instantDeathChance%></h2>    
@@ -104,8 +104,8 @@
       <% const ascensions = {'0': 'First', '1': 'Second', '2': 'Third', '3': 'Fourth', '4': 'Last'} %>
       <div class = 'flex alignItems column ascension-level'> 
         <h3> Max levels to reach next each ascension</h3>
-    <% for(let keys in info.servant[0].ascensionAdd) { %>
-        <span><%= ascensions[keys]%> Ascension: Level <%= info.servant[0].ascensionAdd[keys] %></span>
+    <% for(let keys in info.servant[0].lvMax) { %>
+        <span><%= ascensions[keys]%> Ascension: Level <%= info.servant[0].lvMax[keys] %></span>
     <% } %>
 
 
@@ -133,11 +133,9 @@
 
       
      
-     
 
       <div class ='flex alignItems'>
-
-      <h2><%= skill[info.index].servant[0].skills.skills2.icon.name %></h2>
+      <h2><%= skill[info.index].servant[0].skills.skills2.name %></h2>
       <img src = '<%= skill[info.index].servant[0].skills.skills2.icon %>'>
       <h2 class = 'flex justifyContent skills'><%= skill[info.index].servant[0].skills.skills2.coolDown[0] %></h2>
       <h2 class = 'flex justifyContent skills'><%= skill[info.index].servant[0].skills.skills2.coolDown[6] %></h2>

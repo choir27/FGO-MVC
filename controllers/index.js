@@ -73,6 +73,8 @@ module.exports={
     },
     postServants: async (req,res) =>{
         try{
+       
+ 
           
             let data = await Servant.find({userId:req.user.id}).lean()
         
@@ -125,39 +127,43 @@ module.exports={
     },
     getEditPage: async (req,res)=>{
         try{
-            const data = await Servant.find({userId:req.user.id}).lean()
-            const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
+            const data = await Character.findById(req.params.servant).populate('user').lean()
+    
             if (!data) {
-                return res.render('error')  
+                return res.render('error.ejs')  
               }
               if (data.user._id != req.user.id) {
-                res.render('authed/error')
+                res.render('error.ejs')
               } else {
-                res.render('authed/edit.ejs', {data, choose: chooseServant})
-              }
+                const info = await Servant.find({userId:req.user.id}).lean()
+                const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
+                const skill = await Skill.find({userId:req.user.id}).lean()
+                const ascension = await Ascension.find({userId:req.user.id}).lean()
+                res.render('authed/edit.ejs', {data: info, skill: skill ,ascension: ascension ,choose: chooseServant, info: data})
+            }
         }catch(err){
-            res.render('error')
+            res.render('error.ejs')
         }
     },
     editServant: async (req,res)=>{
         try{
-            let response = await fetch(`https://api.atlasacademy.io/nice/NA/servant/search?name=${req.body.name}&rarity=${req.body.rarity}&className=${req.body.className}&gender=${req.body.gender}`)
-            let data = await response.json()
-            if(data){
-                req.body.servant = {collectionNo: data[0].collectionNo, lvMax: data[0].lvMax, atkMax: data[0].atkMax, hpMax: data[0].hpMax, cost: data[0].cost, id: data[0].id, starAbsorb: data[0].starAbsorb, starGen: data[0].starGen, attribute: data[0].atrribute, instantDeathChance: data[0].instantDeathChance, cards: data[0].cards, profile: data[0].profile, ascensionAdd: data[0].ascensionAdd, noblePhantasms: data[0].noblePhantasms}
-                let character = await Servant.findById(req.params.character).lean() 
-                req.body.user = req.user.id
-                await ChooseServant.findOneAndUpdate({servantIndex: req.body.servantIndex})
-                character = await Servant.findOneAndUpdate({ _id: req.params.character }, req.body, {
-                    new: true,
-                    runValidators: true,
-                  })
-        res.redirect('/user/servants')
-    }
-        }catch(err){
-            console.log(err)
-            res.render('error')
+        let response = await fetch(`https://api.atlasacademy.io/nice/NA/servant/search?name=${req.body.name}&rarity=${req.body.rarity}&className=${req.body.className}&gender=${req.body.gender}`)
+        let data = await response.json()
+        if(data){
+            req.body.servant = {collectionNo: data[0].collectionNo, lvMax: data[0].lvMax, atkMax: data[0].atkMax, hpMax: data[0].hpMax, cost: data[0].cost, id: data[0].id, starAbsorb: data[0].starAbsorb, starGen: data[0].starGen, attribute: data[0].atrribute, instantDeathChance: data[0].instantDeathChance, cards: data[0].cards, profile: data[0].profile, ascensionAdd: data[0].ascensionAdd, noblePhantasms: data[0].noblePhantasms}
+            let character = await Servant.findById(req.params.character).lean() 
+            req.body.user = req.user.id
+            await ChooseServant.findOneAndUpdate({servantIndex: req.body.servantIndex})
+            character = await Servant.findOneAndUpdate({ _id: req.params.character }, req.body, {
+                new: true,
+                runValidators: true,
+              })
+            }
         }
+        catch(err){
+            console.log(err)
+            res.render('authed/error')
+        }    
     },
     deleteServant: async (req, res) => {
         try{
@@ -171,7 +177,7 @@ module.exports={
     },
     chooseServant: async (req, res)=>{
     try{
-        await ChooseServant.findOneAndUpdate(req.body)
+        await ChooseServant.findOneAndUpdate({servantIndex: req.body.servantIndex})
         res.redirect(`/user/edit/${req.params.servant}`)
     }catch(err){
         res.render('error')

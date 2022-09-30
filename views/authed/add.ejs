@@ -73,7 +73,6 @@
                 <% return ele %>
             <% } %>
             <% }).join('') %>
-
      <button class = 'button <%= removeSpace %> '><%= ele%></button>
    <%  } ) %>
 </div>
@@ -83,7 +82,6 @@
     <% } %>
 </div>
         <article id = 'servant' class = 'flex button justifyContent alignItems'>
-
             <% let servantName = info[choose[0].servantIndex].servant[0].name.split('').map(ele=>{ %>
                 <% if(ele !== ' ' && ele !== '.' && ele !== '-' && ele !== '(' && ele !== ')' && ele !== "'" && ele !== '&' && ele !== '=' && ele !== "\"" && ele !== "\/"){ %>
               <% return ele %>
@@ -192,7 +190,6 @@
             <% } %>
         </div>
         <% let servantClass = ['saber','archer','lancer','rider','assassin','caster','shielder','avenger','alter ego','ruler','berserker'] %>
-
         <div class="flex button buttons servantClass hidden">
         
             <% servantClass.forEach((ele,i)=> { %>
@@ -225,7 +222,6 @@
                 <input value = '<%= i %>' class = 'hidden' type="text" name = 'servantIndex'>
                 </form>
                 <% } %>
-
                 </article>
                 <form action = '/user/servants' method = "POST" class = 'flex alignItems column servant button'>
             
