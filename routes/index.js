@@ -3,7 +3,6 @@ const express = require('express')
 const router = express.Router()
 const homeController = require('../controllers/not-authed')
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
-const Servant = require('../models/Servant')
 const MongoClient = require('mongodb').MongoClient
 
 router.get('/', ensureGuest ,homeController.getHome)

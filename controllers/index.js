@@ -41,12 +41,13 @@ module.exports={
     },
     getAdd: async(req,res) =>{
         try{
-        const data = await Servant.find({userId:req.user.id}).lean()
-        const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
-        const skill = await Skill.find({userId:req.user.id}).lean()
-        const ascension = await Ascension.find({userId:req.user.id}).lean()
 
-        res.render('authed/add.ejs', {skill: skill ,ascension: ascension ,choose: chooseServant, info: data})
+            const data = await Servant.find({userId:req.user.id}).lean()
+            const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
+            const skill = await Skill.find({userId:req.user.id}).lean()
+            const ascension = await Ascension.find({userId:req.user.id}).lean()
+    
+            res.render('authed/add.ejs', {skill: skill ,ascension: ascension ,choose: chooseServant, info: data})
         }catch(err){
             res.render('error')  
             console.error(err)
@@ -72,6 +73,7 @@ module.exports={
     },
     postServants: async (req,res) =>{
         try{
+          
             let data = await Servant.find({userId:req.user.id}).lean()
         
                 req.body.servant = data[req.body.index].servant[0]
@@ -79,6 +81,7 @@ module.exports={
                 await ChooseServant.findOneAndUpdate({servantIndex: req.body.servantIndex})
                 await Character.create(req.body)
                 res.redirect('/user/servants')
+   
         }
             catch(err){
         console.log(err)
@@ -87,7 +90,7 @@ module.exports={
     },
     getTemplate: async (req,res) =>{
         try{
-            const info = await Servant.find({userId:req.user.id}).lean()
+            const info = await Character.findById(req.params.id).populate('user').lean()
             if (!info) {
                 return res.render('error')  
               }
@@ -95,7 +98,12 @@ module.exports={
               if (info.user._id != req.user.id && info.status == 'private') {
                 res.render('error')
               } else {
-                res.render('authed/template.ejs', { info})
+                const data = await Servant.find({userId:req.user.id}).lean()
+                const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
+                const skill = await Skill.find({userId:req.user.id}).lean()
+                const ascension = await Ascension.find({userId:req.user.id}).lean()
+        
+                res.render('authed/template.ejs', {skill: skill ,ascension: ascension ,choose: chooseServant, data: data, info})
               }
         }
         catch(err){
