@@ -9,6 +9,9 @@ router.get('/servants', ensureAuth, homeController.getServants)
 
 router.get('/add', ensureAuth, homeController.getAdd)
 
+router.get('/addServant', ensureAuth, homeController.getAddServant)
+
+
 router.get('/simulator', ensureAuth, homeController.getSimulator)
 
 router.get('/gameplay', ensureAuth, homeController.getGameplay)

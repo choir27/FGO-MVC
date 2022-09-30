@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = 'stylesheet' href = '/css/reset.css'>
+    <link rel = 'stylesheet' href = '/css/normalize.css'>
+    <link rel = 'stylesheet' href = '/css/style.css'>
+    <link rel = 'stylesheet' href = '/css/add.css'>
+    <title>Add Servant</title>
+</head>
+<body>
+    <header class = 'flex column alignItems justifyContent header'>
+        <div class = 'banner'></div>
+
+        <nav class = 'flex'>
+            <li><a href = '/user'><h2 class = 'logo'>Fate Grand Order</h2></a></li>
+    
+                <ul class = 'flex row'>
+                    <li><a href = '/user'>Home</a></li>
+                    <li><a href = '/user/add'>Add Servant</a></li>
+                    <li><a href = '/user/servants'>See Servant Data</a></li>
+                    <li><a href = '/user/gameplay'>Gameplay</a></li>
+                    <li><a href = '/user/simulator'>Simulator</a></li>
+                    <li><a href = '/auth/logout'>Logout</a></li>
+
+                </ul>
+        </nav>
+    </header>
+
+
+<section class = 'flex justifyContent column alignItems section'>
+    <div class = 'flex column alignItems data'>
+        <h1 class = 'flex justifyContent'>Add Servant Info</h1>
+        <span>Enter in information regarding Fate Grand Servants below and submit the data once everything is filled out.</span>
+
+        <span>Use the link below to access the added servant data API</span>
+        <code><pre>https://fgo-app.herokuapp.com/api/servants</pre></code>
+    </div>
+        <h1 class = 'flex justifyContent'>Add Servant Info</h1>
+
+
+
+<form action = '/user/servants' method = "POST" class = 'flex alignItems column servant button'>
+     
+<% if(choose[0].servantIndex !== -1) {%>
+
+    <input value = '<%= choose[0].servantIndex  %>' class = 'hidden' type="text" name ='index'>
+    <div class ='flex alignItems column status'>
+    <h2>Status:</h2>
+    <select name="status">
+        <option value="public" selected>Public</option>
+        <option value="private">Private</option>
+    </select>
+        </div>
+    <div class ='flex alignItems column'>
+            <h2>Pick Ascension Art to Show:</h2>
+            <select name="ascension">
+                <option value="default">Default Based on Level</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+    </div> 
+        <div class="flex justifyContent alignItems fgo">
+            <h2>Name: </h2><h2 id="servantName"><%= info[choose[0].servantIndex].servant[0].name  %></h2>
+            <h2>Rarity: </h2><h2 id= 'servantRarity'><%= info[choose[0].servantIndex].servant[0].rarity  %></h2>
+            <h2>Class: </h2><h2 id= 'servantClass'><%= info[choose[0].servantIndex].servant[0].className  %></h2>
+            <h2>Servant Level: </h2>
+            <input value = '1' name = 'level' type="number" max="120" min = '1' id = 'level'>
+        </div>
+    <article class = 'flex justifyContent alignItems button'>
+        <img id = 'image' src = '<%= ascension[choose[0].servantIndex].servant[0]['1']  %>'>
+        <div class="flex alignItems justifyContent column">
+            
+            <div class="flex justifyContent alignItems column">
+            <h2>Servant Skills:</h2>
+            <div class="flex justifyContent">
+                <div class="flex column alignItems">
+                <img id = 'skill1' src="<%= skill[choose[0].servantIndex].servant[0].skills.skills1.icon  %>" alt="">
+                <h2>Level</h2>
+                <input value = '1' name = 'skill1' type="number" max="10" min = '1' step = '1'>
+            </div>
+            <div class="flex column alignItems">
+                <img id = 'skill2' src="<%= skill[choose[0].servantIndex].servant[0].skills.skills2.icon  %>" alt="">
+                <h2>Level</h2><input value = '1' name = 'skill2' type="number" max="10" min = '1' step = '1'>
+            </div>
+            <div class="flex column alignItems">
+                <img id = 'skill3' src="<%= skill[choose[0].servantIndex].servant[0].skills.skills3.icon  %>" alt="">
+                <h2>Level</h2><input value = '1' name = 'skill3' type="number" max="10" min = '1' step = '1'>
+            </div>
+        </div>
+    
+        <div class="flex justifyContent alignItems column">
+            <h2>Append Skills:</h2>
+            <div class="flex justifyContent">
+                <div class="flex column alignItems">
+                    <img id = 'skill2' src="<%= skill[choose[0].servantIndex].servant[0].appendPassive.appendPassive0.icon  %>" alt="">
+                <h2>Level</h2><input value = '0' name = 'appendSkill1' type="number" max="10" min = '0'>
+            </div>
+            <div class="flex column alignItems">
+                <img id = 'appendSkill2' src="<%= skill[choose[0].servantIndex].servant[0].appendPassive.appendPassive2.icon   %>" alt="">
+                <h2>Level</h2><input value = '0' name = 'appendSkill2' type="number" max="10" min = '0'>
+            </div>
+            <div class="flex column alignItems">
+                <img id = 'appendSkill3' src="<%= skill[choose[0].servantIndex].servant[0].appendPassive.appendPassive3.icon   %>" alt="">
+                <h2>Level</h2><input value = '0' name = 'appendSkill3' type="number" max="10" min = '0'>
+            </div>
+            </div>
+                
+            </div>
+        </div>
+
+<% } else { %>
+
+    
+    <input value = '<%= choose[0].servantIndex  %>' class = 'hidden' type="text" name ='index'>
+    <div class ='flex alignItems column status'>
+    <h2>Status:</h2>
+    <select name="status">
+        <option value="public" selected>Public</option>
+        <option value="private">Private</option>
+    </select>
+        </div>
+    <div class ='flex alignItems column'>
+            <h2>Pick Ascension Art to Show:</h2>
+            <select name="ascension">
+                <option value="default">Default Based on Level</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+    </div> 
+        <div class="flex justifyContent alignItems fgo">
+            <h2>Name: </h2><h2 id="servantName"></h2>
+            <h2>Rarity: </h2><h2 id= 'servantRarity'></h2>
+            <h2>Class: </h2><h2 id= 'servantClass'></h2>
+            <h2>Servant Level: </h2>
+            <input value = '1' name = 'level' type="number" max="120" min = '1' id = 'level'>
+        </div>
+    <article class = 'flex justifyContent alignItems button'>
+        <img id = 'image' src = ''>
+        <div class="flex alignItems justifyContent column">
+            
+            <div class="flex justifyContent alignItems column">
+            <h2>Servant Skills:</h2>
+            <div class="flex justifyContent">
+                <div class="flex column alignItems">
+                <img id = 'skill1' src="" alt="">
+                <h2>Level</h2>
+                <input value = '1' name = 'skill1' type="number" max="10" min = '1' step = '1'>
+            </div>
+            <div class="flex column alignItems">
+                <img id = 'skill2' src="" alt="">
+                <h2>Level</h2><input value = '1' name = 'skill2' type="number" max="10" min = '1' step = '1'>
+            </div>
+            <div class="flex column alignItems">
+                <img id = 'skill3' src="" alt="">
+                <h2>Level</h2><input value = '1' name = 'skill3' type="number" max="10" min = '1' step = '1'>
+            </div>
+        </div>
+    
+        <div class="flex justifyContent alignItems column">
+            <h2>Append Skills:</h2>
+            <div class="flex justifyContent">
+                <div class="flex column alignItems">
+                    <img id = 'skill2' src="" alt="">
+                <h2>Level</h2><input value = '0' name = 'appendSkill1' type="number" max="10" min = '0'>
+            </div>
+            <div class="flex column alignItems">
+                <img id = 'appendSkill2' src="" alt="">
+                <h2>Level</h2><input value = '0' name = 'appendSkill2' type="number" max="10" min = '0'>
+            </div>
+            <div class="flex column alignItems">
+                <img id = 'appendSkill3' src="" alt="">
+                <h2>Level</h2><input value = '0' name = 'appendSkill3' type="number" max="10" min = '0'>
+            </div>
+            </div>
+                
+            </div>
+        </div>
+
+    <% } %>
+
+    </article>
+
+    <input type="number" name="servantIndex" value = '-1' class = 'hidden'>
+<button type = 'submit' class = 'button'>Submit</button>
+</form>
+
+
+</section>
+
+        <footer class = 'flex column alignItems' id = 'footer'>
+            <section class = 'flex icons'>
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-github"></i>
+            <i class="fa-solid fa-envelope"></i>
+            </section>
+              <nav>
+            
+                  <ul class = 'flex justifyContent'>
+        
+                    <li><a href = '/user'>Home</a></li>
+                    <li><a href = '/user/add'>Add Servant</a></li>
+                    <li><a href = '/user/servants'>See Servant Data</a></li>
+                    <li><a href = '/user/gameplay'>Gameplay</a></li>
+                    <li><a href = '/user/simulator'>Simulator</a></li>
+                    <li><a href = '/auth/logout'>Logout</a></li>
+                    </ul>
+             </nav>
+        
+             <small>FGO app &copy; choir Design: HTML5 UP</small>
+            
+          </footer>
+        
+          <script src="/js/add.js"></script>
+          <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
+        </body>
+        </html>
+        

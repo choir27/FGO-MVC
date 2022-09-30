@@ -53,6 +53,21 @@ module.exports={
             console.error(err)
         } 
     },
+
+    getAddServant: async(req,res) =>{
+        try{
+
+            const data = await Servant.find({userId:req.user.id}).lean()
+            const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
+            const skill = await Skill.find({userId:req.user.id}).lean()
+            const ascension = await Ascension.find({userId:req.user.id}).lean()
+    
+            res.render('authed/addServant.ejs', {skill: skill ,ascension: ascension ,choose: chooseServant, info: data})
+        }catch(err){
+            res.render('error')  
+            console.error(err)
+        } 
+    },
     getSimulator: async(req,res) =>{
         try{
             const data = await Servant.find({userId:req.user.id}).lean()
@@ -73,9 +88,6 @@ module.exports={
     },
     postServants: async (req,res) =>{
         try{
-       
- 
-          
             let data = await Servant.find({userId:req.user.id}).lean()
         
                 req.body.servant = data[req.body.index].servant[0]
@@ -186,7 +198,7 @@ module.exports={
     chooseCharacter:  async (req, res)=>{
         try{
             await ChooseServant.findOneAndUpdate(req.body)
-            res.redirect('/user/add')
+            res.redirect('/user/addServant')
         }catch(err){
             res.render('error')
         }
