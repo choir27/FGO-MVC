@@ -7,7 +7,6 @@ const ChooseServantSchema = new mongoose.Schema({
   },
   servantIndex: {
     type: Number,
-    required: false,
   }
 })
 

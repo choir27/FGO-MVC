@@ -64,7 +64,7 @@ h2{
     overflow: scroll;
 }
 
-#servant form{
+#servant form, .form{
     width: 20%;
     margin: 2rem;
 }
