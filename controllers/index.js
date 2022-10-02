@@ -69,9 +69,12 @@ module.exports={
     },
     getSimulator: async(req,res) =>{
         try{
-            const data = await Servant.find({userId:req.user.id}).lean()
-            const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
-            res.render('authed/simulator.ejs', {choose: chooseServant, info: data, userID: req.user.id})
+            const data = await Character.find({userId:req.user.id}).lean()
+                const info = await Servant.find({userId:req.user.id}).lean()
+                const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
+                const skill = await Skill.find({userId:req.user.id}).lean()
+                const ascension = await Ascension.find({userId:req.user.id}).lean()
+            res.render('authed/simulator.ejs', {data: info, skill: skill ,ascension: ascension ,choose: chooseServant, info: data, userID: req.user.id})
         }catch(err){
             res.render('error')  
             console.error(err)
@@ -125,11 +128,15 @@ module.exports={
     },
     getUserPage: async (req,res)=>{
         try{
-          const data = await Servant.find({user: req.params.name, status: 'public'})
+          const data = await Character.find({user: req.params.name, status: 'public'})
             .populate('user')
             .lean()
+            const info = await Servant.find({userId:req.user.id}).lean()
+            const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
+            const skill = await Skill.find({userId:req.user.id}).lean()
+            const ascension = await Ascension.find({userId:req.user.id}).lean()
            
-        res.render('authed/view', {info: data, userName: req.user.displayName, userImage: req.user.image})
+            res.render('authed/view.ejs', {userName: req.user.displayName, skill: skill ,ascension: ascension ,choose: chooseServant, data: data, info: info})
     
       } catch (err) {
         console.error(err)

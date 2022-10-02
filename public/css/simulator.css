@@ -1,4 +1,17 @@
-section img{
+.team1{
+    overflow-y: scroll;
+    flex-wrap: wrap;
+    height: 40rem;
+    padding: 2rem;
+}
+
+.team1 img{
+    width: 15%;
+    margin: 2rem;
+}
+
+
+/* section img{
     width: 50%;
 }
 
@@ -52,4 +65,4 @@ meter{
     background: none;
     box-shadow: none;
     border-radius: none;
-}
+} */
