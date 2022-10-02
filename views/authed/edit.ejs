@@ -98,22 +98,27 @@
                              <%  return '' %>
                             <% } %>
                           <% }).join('') %>
-
-
-                
-
-                          <% if(choose[0].servantIndex != -1 ){ %>
                             
                     
-                          <form action = '/user/choose/<%= info._id %>?_method=PUT' method = 'POST' class = "form <%= servantName %>_<%= info.servant[0].className %> <%= servantName %><%= info.servant[0].className %>rarity_<%= info.servant[0].rarity %>">
-                            <button class = ' selected button' type = 'submit'><img src = '<%= ascension[info.index].servant[0]['1'] %>'></button>
+                          <form action = '/user/choose/<%= info._id %>?_method=PUT' method = 'POST' class = "form <%= servantName %>_<%= info.servant[0].className %>">
+                            <button type = 'submit selected'><img src = '<%= ascension[info.index].servant[0]['1'] %>'></button>
                         <input value = '<%= info.index %>' class = 'hidden' type="text" name = 'servantIndex'>
                           </form>
             
             
-                        <% for(let i = 0; i< data.length; i++) { %>
+                        <% for(let i = 0; i< data.length; i++) { %> 
                             <% if (i != info.index) { %>
-                                <form action = '/user/choose/<%= data[i]._id %>?_method=PUT' method = 'POST' class = "form <%= servantName %>_<%= data[i].servant[0].className %> <%= servantName %><%= data[i].servant[0].className %>rarity_<%= data[i].servant[0].rarity %>">
+
+                                
+                        <% let servantName = data[i].servant[0].name.split('').map(ele=>{ %>
+                            <% if(ele !== ' ' && ele !== '.' && ele !== '-' && ele !== '(' && ele !== ')' && ele !== "'" && ele !== '&' && ele !== '=' && ele !== "\"" && ele !== "\/"){ %>
+                          <% return ele %>
+                           <%  }else{ %>
+                             <%  return '' %>
+                            <% } %>
+                          <% }).join('') %>
+                            
+                                <form action = '/user/choose/<%= info._id%>?_method=PUT' method = 'POST' class = "form <%= servantName %>_<%= data[i].servant[0].className %>">
                                     <button class = 'button' type = 'submit'><img src = '<%= ascension[i].servant[0]['1'] %>'></button>
                                 <input value = '<%= i %>' class = 'hidden' type="text" name = 'servantIndex'>
                                 </form>
@@ -124,295 +129,7 @@
                        
                     </article>
             
-            
-            
-            
-                    <form action = '/user/details/<%= info._id %>?_method=PUT' method = 'POST' class = 'flex alignItems column servant button'>
-
-                        <input value = '<%= info.index  %>' class = 'hidden' type="text" name ='index'>
-
-            
-                    <div class ='flex alignItems column status'>
-            
-                        <% if(info.status === 'public') { %>
-                    <h2>Status:</h2>
-                    <select name="status">
-                        <option value="public" selected>Public</option>
-                        <option value="private">Private</option>
-                    </select>
-                    <% } else if(info.status === 'private') { %>
-                        <h2>Status:</h2>
-                        <select name="status">
-                            <option value="public">Public</option>
-                            <option value="private" selected>Private</option>
-                        </select>
-                        <% } %>
-                        </div>
-            
-                    <div class ='flex alignItems column'>
-                            <h2>Pick Ascension Art to Show:</h2>
-                            <% if(info.ascension == 'default') { %>
-                            <select name="ascension">
-                                <option value="default" selected>Default Based on Level</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                            <% } else if(info.ascension == '1') { %>
-                                <select name="ascension">
-                                    <option value="default">Default Based on Level</option>
-                                    <option value="1" selected>1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                            <% } else if(info.ascension == '2') { %>
-                                <select name="ascension">
-                                    <option value="default">Default Based on Level</option>
-                                    <option value="1">1</option>
-                                    <option value="2" selected>2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                            <% } else if(info.ascension == '3') { %>
-                                <select name="ascension">
-                                    <option value="default">Default Based on Level</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3" selected>3</option>
-                                    <option value="4">4</option>
-                                </select>
-                            <% } else if(data.ascension == '4') { %>
-                                <select name="ascension">
-                                    <option value="default">Default Based on Level</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4" selected>4</option>
-                                </select>
-                            <% } %>
-                    </div> 
-            
-                        <div class="flex justifyContent alignItems fgo">
-                            <h2>Name: </h2><h2 id="servantName"><%= info.servant[0].name %></h2>
-                            <h2>Rarity: </h2><h2 id= 'servantRarity'><%= info.servant[0].rarity %></h2>
-                            <h2>Class: </h2><h2 id= 'servantClass'><%= info.servant[0].className %></h2>
-                            <h2>Servant Level: </h2>
-                            <input value = '<%= info.level %>' name = 'level' type="number" max="120" min = '1' id = 'level'>
-                        </div>
-            
-            
-            
-                    <article class = 'flex justifyContent alignItems button'>
-                        <img id = 'image' src = '<%= ascension[info.index].servant[0]['1']  %>'>
-                        <div class="flex alignItems justifyContent column">
-                            
-            
-            
-                            <div class="flex justifyContent alignItems column">
-                            <h2>Servant Skills:</h2>
-                            <div class="flex justifyContent">
-                                <div class="flex column alignItems">
-                                <img id = 'skill1' src="<%= skill[info.index].servant[0].skills.skills1.icon  %>" alt="">
-                                <h2>Level</h2>
-                                <input value = '<%= info.skill1 %>' name = 'skill1' type="number" max="10" min = '1' step = '1'>
-                            </div>
-                            <div class="flex column alignItems">
-                                <img id = 'skill2' src="<%= skill[info.index].servant[0].skills.skills2.icon  %>" alt="">
-                                <h2>Level</h2><input value = '<%= info.skill2 %>' name = 'skill2' type="number" max="10" min = '1' step = '1'>
-                             </div>
-                             <div class="flex column alignItems">
-            
-                                <img id = 'skill3' src="<%= skill[info.index].servant[0].skills.skills3.icon  %>" alt="">
-                                <h2>Level</h2><input value = '<%= info.skill3 %>' name = 'skill3' type="number" max="10" min = '1' step = '1'>
-                            </div>
-                        </div>
-            
-                       
-                        <div class="flex justifyContent alignItems column">
-            
-                            <h2>Append Skills:</h2>
-                            <div class="flex justifyContent">
-                                <div class="flex column alignItems">
-                                    <img id = 'skill2' src="<%= skill[info.index].servant[0].appendPassive.appendPassive0.icon  %>" alt="">
-                                <h2>Level</h2><input value = '<%= info.appendSkill1 %>' name = 'appendSkill1' type="number" max="10" min = '0'>
-                            </div>
-                            <div class="flex column alignItems">
-                                <img id = 'appendSkill2' src="<%= skill[info.index].servant[0].appendPassive.appendPassive2.icon  %>" alt="">
-                                <h2>Level</h2><input value = '<%= info.appendSkill2 %>' name = 'appendSkill2' type="number" max="10" min = '0'>
-                             </div>
-                             <div class="flex column alignItems">
-            
-                                <img id = 'appendSkill3' src="<%= skill[info.index].servant[0].appendPassive.appendPassive3.icon  %>" alt="">
-                                <h2>Level</h2><input value = '<%= info.appendSkill3 %>' name = 'appendSkill3' type="number" max="10" min = '0'>
-                            </div>
-                            </div>
-                                
-                            </div>
-                        </div>
-
-
-                        <% } else { %>
-
-                            
-                            <form action = '/user/choose/<%= info._id %>?_method=PUT' method = 'POST' class = "form <%= servantName %>_<%= info.servant[0].className %> <%= servantName %><%= info.servant[0].className %>rarity_<%= info.servant[0].rarity %>">
-                              <button class = ' selected button' type = 'submit'><img src = '<%= ascension[choose[0].servantIndex].servant[0]['1'] %>'></button>
-                          <input value = '<%= choose[0].servantIndex %>' class = 'hidden' type="text" name = 'servantIndex'>
-                            </form>
-              
-              
-                          <% for(let i = 0; i< data.length; i++) { %>
-                              <% if (i != choose[0].servantIndex) { %>
-                                  <form action = '/user/choose/<%= data[i]._id %>?_method=PUT' method = 'POST' class = "form <%= servantName %>_<%= data[i].servant[0].className %> <%= servantName %><%= data[i].servant[0].className %>rarity_<%= data[i].servant[0].rarity %>">
-                                      <button class = 'button' type = 'submit'><img src = '<%= ascension[i].servant[0]['1'] %>'></button>
-                                  <input value = '<%= i %>' class = 'hidden' type="text" name = 'servantIndex'>
-                                  </form>
-              <% } %>
-  
-                          <% } %>
-
-
-                        </article>
-            
-            
-            
-            
-                        <form action = '/user/details/<%= info._id %>?_method=PUT' method = 'POST' class = 'flex alignItems column servant button'>
-    
-                            <input value = '<%= choose[0].servantIndex  %>' class = 'hidden' type="text" name ='index'>
-    
-                
-                        <div class ='flex alignItems column status'>
-                
-                            <% if(info.status === 'public') { %>
-                        <h2>Status:</h2>
-                        <select name="status">
-                            <option value="public" selected>Public</option>
-                            <option value="private">Private</option>
-                        </select>
-                        <% } else if(info.status === 'private') { %>
-                            <h2>Status:</h2>
-                            <select name="status">
-                                <option value="public">Public</option>
-                                <option value="private" selected>Private</option>
-                            </select>
-                            <% } %>
-                            </div>
-                
-                        <div class ='flex alignItems column'>
-                                <h2>Pick Ascension Art to Show:</h2>
-                                <% if(info.ascension == 'default') { %>
-                                <select name="ascension">
-                                    <option value="default" selected>Default Based on Level</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                                <% } else if(info.ascension == '1') { %>
-                                    <select name="ascension">
-                                        <option value="default">Default Based on Level</option>
-                                        <option value="1" selected>1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                                <% } else if(info.ascension == '2') { %>
-                                    <select name="ascension">
-                                        <option value="default">Default Based on Level</option>
-                                        <option value="1">1</option>
-                                        <option value="2" selected>2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                                <% } else if(info.ascension == '3') { %>
-                                    <select name="ascension">
-                                        <option value="default">Default Based on Level</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                                <% } else if(data.ascension == '4') { %>
-                                    <select name="ascension">
-                                        <option value="default">Default Based on Level</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4" selected>4</option>
-                                    </select>
-                                <% } %>
-                        </div> 
-                
-                            <div class="flex justifyContent alignItems fgo">
-                                <h2>Name: </h2><h2 id="servantName"><%= info.servant[0].name %></h2>
-                                <h2>Rarity: </h2><h2 id= 'servantRarity'><%= info.servant[0].rarity %></h2>
-                                <h2>Class: </h2><h2 id= 'servantClass'><%= info.servant[0].className %></h2>
-                                <h2>Servant Level: </h2>
-                                <input value = '<%= info.level %>' name = 'level' type="number" max="120" min = '1' id = 'level'>
-                            </div>
-                
-                
-                
-                        <article class = 'flex justifyContent alignItems button'>
-                            <img id = 'image' src = '<%= ascension[choose[0].servantIndex].servant[0]['1']  %>'>
-                            <div class="flex alignItems justifyContent column">
-                                
-                
-                
-                                <div class="flex justifyContent alignItems column">
-                                <h2>Servant Skills:</h2>
-                                <div class="flex justifyContent">
-                                    <div class="flex column alignItems">
-                                    <img id = 'skill1' src="<%= skill[choose[0].servantIndex].servant[0].skills.skills1.icon  %>" alt="">
-                                    <h2>Level</h2>
-                                    <input value = '<%= info.skill1 %>' name = 'skill1' type="number" max="10" min = '1' step = '1'>
-                                </div>
-                                <div class="flex column alignItems">
-                                    <img id = 'skill2' src="<%= skill[choose[0].servantIndex].servant[0].skills.skills2.icon  %>" alt="">
-                                    <h2>Level</h2><input value = '<%= info.skill2 %>' name = 'skill2' type="number" max="10" min = '1' step = '1'>
-                                 </div>
-                                 <div class="flex column alignItems">
-                
-                                    <img id = 'skill3' src="<%= skill[choose[0].servantIndex].servant[0].skills.skills3.icon  %>" alt="">
-                                    <h2>Level</h2><input value = '<%= info.skill3 %>' name = 'skill3' type="number" max="10" min = '1' step = '1'>
-                                </div>
-                            </div>
-                
-                           
-                            <div class="flex justifyContent alignItems column">
-                
-                                <h2>Append Skills:</h2>
-                                <div class="flex justifyContent">
-                                    <div class="flex column alignItems">
-                                        <img id = 'skill2' src="<%= skill[choose[0].servantIndex].servant[0].appendPassive.appendPassive0.icon  %>" alt="">
-                                    <h2>Level</h2><input value = '<%= info.appendSkill1 %>' name = 'appendSkill1' type="number" max="10" min = '0'>
-                                </div>
-                                <div class="flex column alignItems">
-                                    <img id = 'appendSkill2' src="<%= skill[choose[0].servantIndex].servant[0].appendPassive.appendPassive2.icon  %>" alt="">
-                                    <h2>Level</h2><input value = '<%= info.appendSkill2 %>' name = 'appendSkill2' type="number" max="10" min = '0'>
-                                 </div>
-                                 <div class="flex column alignItems">
-                
-                                    <img id = 'appendSkill3' src="<%= skill[choose[0].servantIndex].servant[0].appendPassive.appendPassive3.icon  %>" alt="">
-                                    <h2>Level</h2><input value = '<%= info.appendSkill3 %>' name = 'appendSkill3' type="number" max="10" min = '0'>
-                                </div>
-                                </div>
-                                    
-                                </div>
-                            </div>
-                          <% } %>
-
-        </article>
-
-        <input type="text" name="servantIndex" value = '-1' class = 'hidden'>
-
-        <button type = 'submit' class = 'button'>Submit</button>
-    </form>
-
-
-     
+ 
 </section>
 
 

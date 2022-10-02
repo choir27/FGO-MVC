@@ -33,6 +33,8 @@ router.delete('/delete/:select', homeController.deleteServant)
 
 router.get('/edit/:servant', ensureAuth, homeController.getEditPage)
 
+router.get('/edit/your/:post', ensureAuth, homeController.getEditServantPage)
+
 router.get('/:id', ensureAuth , homeController.getTemplate)
 
 router.get('/id/:name', ensureAuth, homeController.getUserPage)

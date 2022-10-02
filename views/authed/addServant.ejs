@@ -41,10 +41,10 @@
         <h1 class = 'flex justifyContent'>Add Servant Info</h1>
 
 
+        <% if(choose[0].servantIndex !== -1) {%>
 
 <form action = '/user/servants' method = "POST" class = 'flex alignItems column servant button'>
      
-<% if(choose[0].servantIndex !== -1) {%>
 
     <input value = '<%= choose[0].servantIndex  %>' class = 'hidden' type="text" name ='index'>
     <div class ='flex alignItems column status'>
@@ -113,78 +113,7 @@
             </div>
         </div>
 
-<% } else { %>
-
-    
-    <input value = '<%= choose[0].servantIndex  %>' class = 'hidden' type="text" name ='index'>
-    <div class ='flex alignItems column status'>
-    <h2>Status:</h2>
-    <select name="status">
-        <option value="public" selected>Public</option>
-        <option value="private">Private</option>
-    </select>
-        </div>
-    <div class ='flex alignItems column'>
-            <h2>Pick Ascension Art to Show:</h2>
-            <select name="ascension">
-                <option value="default">Default Based on Level</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-    </div> 
-        <div class="flex justifyContent alignItems fgo">
-            <h2>Name: </h2><h2 id="servantName"></h2>
-            <h2>Rarity: </h2><h2 id= 'servantRarity'></h2>
-            <h2>Class: </h2><h2 id= 'servantClass'></h2>
-            <h2>Servant Level: </h2>
-            <input value = '1' name = 'level' type="number" max="120" min = '1' id = 'level'>
-        </div>
-    <article class = 'flex justifyContent alignItems button'>
-        <img id = 'image' src = ''>
-        <div class="flex alignItems justifyContent column">
-            
-            <div class="flex justifyContent alignItems column">
-            <h2>Servant Skills:</h2>
-            <div class="flex justifyContent">
-                <div class="flex column alignItems">
-                <img id = 'skill1' src="" alt="">
-                <h2>Level</h2>
-                <input value = '1' name = 'skill1' type="number" max="10" min = '1' step = '1'>
-            </div>
-            <div class="flex column alignItems">
-                <img id = 'skill2' src="" alt="">
-                <h2>Level</h2><input value = '1' name = 'skill2' type="number" max="10" min = '1' step = '1'>
-            </div>
-            <div class="flex column alignItems">
-                <img id = 'skill3' src="" alt="">
-                <h2>Level</h2><input value = '1' name = 'skill3' type="number" max="10" min = '1' step = '1'>
-            </div>
-        </div>
-    
-        <div class="flex justifyContent alignItems column">
-            <h2>Append Skills:</h2>
-            <div class="flex justifyContent">
-                <div class="flex column alignItems">
-                    <img id = 'skill2' src="" alt="">
-                <h2>Level</h2><input value = '0' name = 'appendSkill1' type="number" max="10" min = '0'>
-            </div>
-            <div class="flex column alignItems">
-                <img id = 'appendSkill2' src="" alt="">
-                <h2>Level</h2><input value = '0' name = 'appendSkill2' type="number" max="10" min = '0'>
-            </div>
-            <div class="flex column alignItems">
-                <img id = 'appendSkill3' src="" alt="">
-                <h2>Level</h2><input value = '0' name = 'appendSkill3' type="number" max="10" min = '0'>
-            </div>
-            </div>
-                
-            </div>
-        </div>
-
-    <% } %>
-
+        
     </article>
 
     <input type="number" name="servantIndex" value = '-1' class = 'hidden'>
@@ -192,6 +121,11 @@
 </form>
 
 
+<% } else { %>
+
+    <a href="/user/add" class="button">Go Back</a>
+  
+<% } %>
 </section>
 
         <footer class = 'flex column alignItems' id = 'footer'>
