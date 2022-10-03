@@ -35,7 +35,7 @@
     <h1 class = 'flex justifyContent'>Create A Team</h1>
     <% let count = 0 %>
 
-    <form class = 'flex column alignItems' method = 'POST' action = '/user/choose/your/team'>
+    <form action = '/user/choose/your/team' method = 'POST'>
 
 
      <article class="flex justifyContent alignItems team button">
@@ -53,13 +53,15 @@
                 <%  return '' %>
                 <% } %>
             <% }).join('') %>
-      <img class = 'button btn <%= servantName %><%= info[i].servant[0].className %><%= info[i].servant[0].rarity %>' id = '<%= i%>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
+      <img class = 'button btn <%= servantName %><%= info[i].servant[0].className %><%= info[i].servant[0].rarity %>' id = '<%= info[i].index %>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
 
     </div>
  
+    <% } %>
+    <% } %>
+
     <input type = 'number' class = 'hidden' name = 'index1' value = '' id = 'servant1'>
-    <% } %>
-    <% } %>
+
 </article>   
 
     <article class="button team flex justifyContent alignItems">
@@ -76,17 +78,19 @@
             <% }).join('') %>
   
              <div class="box">
-          <img class = 'button btn1 <%= servantName %><%= info[i].servant[0].className %><%= info[i].servant[0].rarity %>1' id = '<%= i%>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
+          <img class = 'button btn1 <%= servantName %><%= info[i].servant[0].className %><%= info[i].servant[0].rarity %>1' id = '<%= info[i].index %>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
         </div>
     
 
-        <input type = 'number' class = 'hidden' name = 'index2' value = '' id = 'servant2'>
 
         
         <% } %>
     
         <% } %>
     </article>
+
+
+    <input type = 'number' class = 'hidden' name = 'index2' value = '' id = 'servant2'>
 
         <article class = 'button team flex justifyContent alignContent'>
         <% for(let i = 0 ; i < info.length; i++) { %>
@@ -100,14 +104,15 @@
                         <%  return '' %>
                         <% } %>
                     <% }).join('') %>
-              <img class = 'button btn2 <%= servantName %><%= info[i].servant[0].className %><%= info[i].servant[0].rarity %>2' id = '<%= i%>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
+              <img class = 'button btn2 <%= servantName %><%= info[i].servant[0].className %><%= info[i].servant[0].rarity %>2' id = '<%= info[i].index %>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
                  </div>
 
-        <input type = 'number' class = 'hidden' name = 'index3' value = '' id = 'servant3'>
                 
                 <% } %>
                 <% } %>
         </article>
+
+        <input type = 'number' class = 'hidden' name = 'index3' value = '' id = 'servant3'>
 
 
         <% if(count === 0) { %>

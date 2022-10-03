@@ -33,19 +33,23 @@
 <section class = 'section flex justifyContent alignItems column'>
     <h1 class = 'flex justifyContent'>Simulator</h1>
 
+    <% let count = 0 %>
     <% for(let i = 0; i < team.length; i++) { %>
 
         <% if (team[i].user._id == userID) { %>
 
+            <% count ++ %>
             <a href = '/user/simulator/team' class = 'button'>See Your Team</a>
             <a href = '/user/simulator/editTeam' class = 'button'>Edit Your Team</a>
             <a href = '/user/simulator/battle' class = 'button'>Simulate Battle</a>
         
-        <% } else { %>
+        <% } %>
+    <% } %>
 
-            <a href = '/user/simulator/createTeam' class = 'button'>Create A Team</a>
+    <% if(count === 0) { %>
 
-            <% } %>
+        <a href = '/user/simulator/createTeam' class = 'button'>Create A Team</a>
+
     <% } %>
 </section>
 

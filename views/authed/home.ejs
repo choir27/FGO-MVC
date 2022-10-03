@@ -36,7 +36,7 @@
             <% for(let i =0; i < info.length; i++) { %>
               
 
-                <% if(info[i].servant[0] && info[i].user._id==userID) { %>
+                <% if(info[i].user._id==userID) { %>
 
                     <% check +=1 %>
 
@@ -173,7 +173,7 @@
                                            <% }).join('') %>
                             
                                             <h3>Servant Class: <%=className %></h3> 
-                                            <a href = '/user/<%= info[i]._id %>' class = 'button'>Go to <%= info[i].name %> page</a>
+                                            <a href = '/user/<%= info[i]._id %>' class = 'button'><%= info[i].servant[0].name %> page</a>
                                         </div>
                             
                             
@@ -329,7 +329,7 @@
                <% }).join('') %>
 
                 <h3>Servant Class: <%=className %></h3> 
-                <a href = '/user/<%= info[i]._id %>' class = 'button'>Go to <%= info[i].name %> page</a>
+                <a href = '/user/<%= info[i]._id %>' class = 'button'><%= info[i].servant[0].name %> page</a>
             </div>
 
 

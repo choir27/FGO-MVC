@@ -198,9 +198,9 @@ module.exports={
             let character = await Character.findById(req.params.character).lean() 
             const info = await Servant.find({userId:req.user.id}).lean()
             req.body.user = req.user.id
-            req.body.servant = info[req.body.index].servant[0]
+            req.body.servant = info[req.body.index].servant
             await ChooseServant.findOneAndUpdate({servantIndex: req.body.servantIndex})
-            character = await Servant.findOneAndUpdate({ _id: req.params.character }, req.body, {
+            character = await Character.findOneAndUpdate({ _id: req.params.character }, req.body, {
                 new: true,
                 runValidators: true,
               })
@@ -240,8 +240,9 @@ module.exports={
         try{
             req.body.user = req.user.id 
             await Team.create(req.body)
-            res.redirect('/user/simulator/team')
+            res.redirect('/user/simulator')
         }catch(err){
+            console.log(err)
             res.render('error')
         }
     },

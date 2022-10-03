@@ -8,7 +8,7 @@
     <link rel = 'stylesheet' href = '/css/normalize.css'>
     <link rel = 'stylesheet' href = '/css/style.css'>
     <link rel = 'stylesheet' href = '/css/view.css'>
-    <title><%= userName %>'s Servant Pages</title>
+    <title><%= userName.split(' ')[0][0].toUpperCase() + userName.split(' ')[0].substring(1,userName.split(' ')[0].length) %>'s Servant Pages</title>
 </head>
 <body>
 <header class = 'flex column alignItems justifyContent header'>
@@ -139,17 +139,17 @@
         
                     <img src = '<%= image %>'>
 
-                    <% } else if (info[i].ascension !== 'default') { %>
+                    <% } else if (data[i].ascension !== 'default') { %>
                             
                             
-                        <% if(info[i].ascension == '1') { %>
-                          <%    image = ascension[info[i].index].servant[0]['1']   %>
-                      <% }else if(info[i].ascension == '2'){ %>
-                          <%    image = ascension[info[i].index].servant[0]['2']   %>
-                      <% }else if(info[i].ascension == '3'){ %>
-                          <%    image = ascension[info[i].index].servant[0]['3']   %>
-                      <% }else if(info[i].ascension == '4'){ %>
-                          <%    image = ascension[info[i].index].servant[0]['4']   %>
+                        <% if(data[i].ascension == '1') { %>
+                          <%    image = ascension[data[i].index].servant[0]['1']   %>
+                      <% }else if(data[i].ascension == '2'){ %>
+                          <%    image = ascension[data[i].index].servant[0]['2']   %>
+                      <% }else if(data[i].ascension == '3'){ %>
+                          <%    image = ascension[data[i].index].servant[0]['3']   %>
+                      <% }else if(data[i].ascension == '4'){ %>
+                          <%    image = ascension[data[i].index].servant[0]['4']   %>
                       <% } %>
                       <img src = '<%= image %>'>
                       

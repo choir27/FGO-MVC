@@ -1,5 +1,6 @@
 .team img{
     width: 100%;
+    margin: 2rem;
 }
 
 .selected{
@@ -12,9 +13,8 @@
 }
 
 .team{
-    overflow-y: scroll;
-    flex-wrap: wrap;
     margin: 2rem;
+    width: 20%;
 }
 
 form{

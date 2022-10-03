@@ -205,10 +205,11 @@ color: black;
    }
 
    .skills div h2{
-    color: black;
+    color: rgb(255, 255, 255);
     margin: 0rem;
-    padding:.2rem;
-    background-color: aliceblue;
+    padding:.5rem;
+    background: rgba(39, 40, 51, 0.965);
+    border-radius: 5px;
     font-size: 2rem;
     font-weight: bold;
     position: absolute;
@@ -239,7 +240,7 @@ color: black;
    .buttons button{
     margin: 1rem;
    }
-/* 
-   body *{
-    border: 2px solid white;
-   } */
+
+   .name h2{
+    width:80%;
+   }
