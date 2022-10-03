@@ -1,10 +1,39 @@
-for(let i = 1; i < 4; i++){
-    document.querySelector(`#skill${i}`).addEventListener('click',)
-}
+const servant = document.querySelectorAll('.btn')
+Array.from(servant).map((element)=>{
+    element.addEventListener('click', function getServant(){
+
+      document.querySelector('#servant1').setAttribute('value',this.getAttribute('id')  )
+    })
+  
+})
+
+
+const servant1 = document.querySelectorAll('.btn1')
+Array.from(servant1).map((element)=>{
+    element.addEventListener('click', function getServant(){
+
+      document.querySelector('#servant2').setAttribute('value',this.getAttribute('id')  )
+    })
+  
+})
+
+
+const servant2 = document.querySelectorAll('.btn2')
+Array.from(servant2).map((element)=>{
+    element.addEventListener('click', function getServant(){
+
+      document.querySelector('#servant3').setAttribute('value',this.getAttribute('id')  )
+    })
+  
+})
+
+// for(let i = 1; i < 4; i++){
+//     document.querySelector(`#skill${i}`).addEventListener('click',)
+// }
 
 
 
-{/* <div class="flex alignItems column">
+/* <div class="flex alignItems column">
 
 
 <img src="<%= image %>" id ='player1' >
@@ -17,4 +46,4 @@ for(let i = 1; i < 4; i++){
     <button class = 'button'  id ='skill3'><img src="<%= skill3[data.index].servant[0].image %>" ></button>
 </div>
 
-</div> */}
+</div> */

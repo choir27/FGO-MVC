@@ -1,18 +1,3 @@
-// async function getData(){
-//     let response = await fetch(`https://api.atlasacademy.io/export/NA/nice_servant_lore.json`)
-//     let data = await response.json()
-//     console.log(data[data.length-4].name)
-//     console.log(data[data.length-5].name)
-//     console.log(data[data.length-6].name)
-//     console.log(data[data.length-7].name)
-
-// }
-
-// getData()
-         
-       
-
-
 let alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 for(let i = 0;i < alphabet.length; i++){

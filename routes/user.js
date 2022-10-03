@@ -11,6 +11,8 @@ router.get('/add', ensureAuth, homeController.getAdd)
 
 router.get('/addServant', ensureAuth, homeController.getAddServant)
 
+router.get('/simulator/chooseTeam', ensureAuth, homeController.getChooseTeam)
+
 
 router.get('/simulator', ensureAuth, homeController.getSimulator)
 
@@ -22,12 +24,11 @@ router.post('/servants', homeController.postServants)
 
 router.put('/choose/:servant', homeController.chooseServant)
 
+router.get('/simulator/team', ensureAuth , homeController.getTeam)
 
 router.put('/details/:character', homeController.editServant)
 
 router.put('/choose/your/servant', homeController.chooseCharacter)
-
-router.put('/choose/servant/simulator', homeController.chooseSimulator)
 
 router.delete('/delete/:select', homeController.deleteServant)
 
@@ -39,7 +40,7 @@ router.get('/:id', ensureAuth , homeController.getTemplate)
 
 router.get('/id/:name', ensureAuth, homeController.getUserPage)
 
-
+router.post('/choose/your/team', homeController.chooseTeam)
 
 
 module.exports = router

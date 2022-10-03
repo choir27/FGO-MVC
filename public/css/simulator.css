@@ -10,7 +10,13 @@
     margin: 2rem;
 }
 
+form{
+padding: 2rem;
+}
 
+#submit{
+    margin: 2rem;
+}
 /* section img{
     width: 50%;
 }

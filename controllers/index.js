@@ -6,6 +6,7 @@ const ChooseServant = require('../models/ChooseServant.js')
 const Character = require('../models/Character')
 const Ascension = require('../models/Ascension')
 const Skill = require('../models/Skill')
+const Team = require('../models/Team')
 
 
 module.exports={
@@ -70,11 +71,21 @@ module.exports={
     getSimulator: async(req,res) =>{
         try{
             const data = await Character.find({userId:req.user.id}).lean()
+             const team = await Team.find({userId:req.user.id}).lean()
+            res.render('authed/simulator.ejs', {data: data, team: team ,userID: req.user.id})
+        }catch(err){
+            res.render('error')  
+            console.error(err)
+        } 
+    },
+    getChooseTeam: async(req, res)=>{
+        try{
+            const data = await Character.find({userId:req.user.id}).lean()
                 const info = await Servant.find({userId:req.user.id}).lean()
                 const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
                 const skill = await Skill.find({userId:req.user.id}).lean()
                 const ascension = await Ascension.find({userId:req.user.id}).lean()
-            res.render('authed/simulator.ejs', {data: info, skill: skill ,ascension: ascension ,choose: chooseServant, info: data, userID: req.user.id})
+            res.render('authed/chooseTeam.ejs', {data: info, skill: skill ,ascension: ascension ,choose: chooseServant, info: data, userID: req.user.id})
         }catch(err){
             res.render('error')  
             console.error(err)
@@ -213,19 +224,31 @@ module.exports={
     chooseCharacter:  async (req, res)=>{
         try{
             await ChooseServant.findOneAndUpdate(req.body)
-            res.redirect('/user/addServant')
+            res.redirect('/user/add')
         }catch(err){
             res.render('error')
         }
     },
-    chooseSimulator: async (req, res)=>{
+    chooseTeam: async (req,res)=>{
         try{
-            await ChooseServant.findOneAndUpdate(req.body)
-            res.redirect(`/user/simulator`)
+            req.body.user = req.user.id 
+            await Team.create(req.body)
+            res.redirect('/user/simulator/team')
         }catch(err){
             res.render('error')
         }
     },
+    getTeam: async (req,res)=>{
+        try{
+            const team = await Team.find({userId: req.user.id}).lean()
+            const info = await Servant.find({userId:req.user.id}).lean()
+            const skill = await Skill.find({userId:req.user.id}).lean()
+            const ascension = await Ascension.find({userId:req.user.id}).lean()
+            res.render('authed/team.ejs', {team: team, info: info, skill: skill, ascension: ascension,userID: req.user.id })
+        }catch(err){
+            res.render('error')
+        }
+    }
 }
 
 

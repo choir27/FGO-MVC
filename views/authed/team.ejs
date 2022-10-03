@@ -7,8 +7,9 @@
     <link rel = 'stylesheet' href = '/css/reset.css'>
     <link rel = 'stylesheet' href = '/css/normalize.css'>
     <link rel = 'stylesheet' href = '/css/style.css'>
-    <link rel = 'stylesheet' href = '/css/simulator.css'>
-    <title>Simulator</title>
+    <link rel = 'stylesheet' href = '/css/team.css'>
+
+    <title>Team</title>
 </head>
 <body>
 <!-- <a href = 'https://fgo-api.herokuapp.com/'>Make your team</a> -->
@@ -31,16 +32,18 @@
 </header>
 
 <section class = 'section'>
-    <h1 class = 'flex justifyContent'>Simulator</h1>
-
+    <h1 class = 'flex justifyContent'>Your Team</h1>
     <% for(let i = 0; i < team.length; i++) { %>
+    <% if( team[i].user._id == userID) { %>
 
-    <a href = '/user/simulator/chooseTeam' class = 'button'>Create A Team</a>
-
-
-    <a href = '/user/simulator/team' class = 'button'>See Your Team</a>
-    <a href = '/user/simulator/editTeam' class = 'button'>Edit Your Team</a>
-
+<div class = 'flex team'>
+<img src = '<%= ascension[team[i].index1].servant[0]['1'] %>'>
+<img src = '<%= ascension[team[i].index2].servant[0]['1'] %>'>
+<img src = '<%= ascension[team[i].index3].servant[0]['1'] %>'>
+</div>
+<% } %>
+<% } %>
+   
 </section>
 
 
