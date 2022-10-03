@@ -1,4 +1,26 @@
 .team img{
-    width: 15%;
+    width: 100%;
+}
+
+.selected{
+   border: 1px solid red;
+}
+
+.box{
+    margin: 3rem;
+    width: 10%;
+}
+
+.team{
+    overflow-y: scroll;
+    flex-wrap: wrap;
+    margin: 2rem;
+}
+
+form{
+padding: 2rem;
+}
+
+#submit{
     margin: 2rem;
 }

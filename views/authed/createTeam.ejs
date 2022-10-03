@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = 'stylesheet' href = '/css/reset.css'>
+    <link rel = 'stylesheet' href = '/css/normalize.css'>
+    <link rel = 'stylesheet' href = '/css/style.css'>
+    <link rel = 'stylesheet' href = '/css/team.css'>
+
+    <title>Create a Team</title>
+</head>
+<body>
+<!-- <a href = 'https://fgo-api.herokuapp.com/'>Make your team</a> -->
+<header class = 'flex column alignItems justifyContent header'>
+    <div class = 'banner'></div>
+
+    <nav class = 'flex'>
+        <li><a href = '/user'><h2 class = 'logo'>Fate Grand Order</h2></a></li>
+
+            <ul class = 'flex row'>
+                <li><a href = '/user'>Home</a></li>
+                <li><a href = '/user/add'>Add Servant</a></li>
+                <li><a href = '/user/servants'>See Servant Data</a></li>
+                <li><a href = '/user/gameplay'>Gameplay</a></li>
+                <li><a href = '/user/simulator'>Simulator</a></li>
+                <li><a href = '/auth/logout'>Logout</a></li>
+
+            </ul>
+    </nav>
+</header>
+
+<section class = 'section'>
+    <h1 class = 'flex justifyContent'>Create A Team</h1>
+    <% let count = 0 %>
+
+    <form class = 'flex column alignItems' method = 'POST' action = '/user/choose/your/team'>
+
+
+     <article class="flex justifyContent alignItems team button">
+        <% for(let i = 0 ; i < info.length; i++) { %>
+            <% if(info[i].user._id==userID) { %>
+
+                <% count ++ %>
+
+         <div class="box">
+
+            <% let servantName = info[i].servant[0].name.split('').map(ele=>{ %>
+                <% if(ele !== ' ' && ele !== '.' && ele !== '-' && ele !== '(' && ele !== ')' && ele !== "'" && ele !== '&' && ele !== '=' && ele !== "\"" && ele !== "\/"){ %>
+            <% return ele %>
+            <%  }else{ %>
+                <%  return '' %>
+                <% } %>
+            <% }).join('') %>
+      <img class = 'button btn <%= servantName %><%= info[i].servant[0].className %><%= info[i].servant[0].rarity %>' id = '<%= i%>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
+
+    </div>
+ 
+    <input type = 'number' class = 'hidden' name = 'index1' value = '' id = 'servant1'>
+    <% } %>
+    <% } %>
+</article>   
+
+    <article class="button team flex justifyContent alignItems">
+
+    <% for(let i = 0 ; i < info.length; i++) { %>
+        <% if(info[i].user._id==userID) { %>
+
+            <% let servantName = info[i].servant[0].name.split('').map(ele=>{ %>
+                <% if(ele !== ' ' && ele !== '.' && ele !== '-' && ele !== '(' && ele !== ')' && ele !== "'" && ele !== '&' && ele !== '=' && ele !== "\"" && ele !== "\/"){ %>
+            <% return ele %>
+            <%  }else{ %>
+                <%  return '' %>
+                <% } %>
+            <% }).join('') %>
+  
+             <div class="box">
+          <img class = 'button btn1 <%= servantName %><%= info[i].servant[0].className %><%= info[i].servant[0].rarity %>1' id = '<%= i%>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
+        </div>
+    
+
+        <input type = 'number' class = 'hidden' name = 'index2' value = '' id = 'servant2'>
+
+        
+        <% } %>
+    
+        <% } %>
+    </article>
+
+        <article class = 'button team flex justifyContent alignContent'>
+        <% for(let i = 0 ; i < info.length; i++) { %>
+            <% if(info[i].user._id==userID) { %>
+         
+                 <div class = 'box'>
+                    <% let servantName = info[i].servant[0].name.split('').map(ele=>{ %>
+                        <% if(ele !== ' ' && ele !== '.' && ele !== '-' && ele !== '(' && ele !== ')' && ele !== "'" && ele !== '&' && ele !== '=' && ele !== "\"" && ele !== "\/"){ %>
+                    <% return ele %>
+                    <%  }else{ %>
+                        <%  return '' %>
+                        <% } %>
+                    <% }).join('') %>
+              <img class = 'button btn2 <%= servantName %><%= info[i].servant[0].className %><%= info[i].servant[0].rarity %>2' id = '<%= i%>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
+                 </div>
+
+        <input type = 'number' class = 'hidden' name = 'index3' value = '' id = 'servant3'>
+                
+                <% } %>
+                <% } %>
+        </article>
+
+
+        <% if(count === 0) { %>
+            <h2 class="flex justifyContent">No Servants have been added to this account yet</h2>
+        <% } else { %>
+            <button id = 'submit' type = 'submit' class = 'button'>Submit</button>
+
+        
+            <% } %>
+
+        </form>
+</section>
+
+
+
+<footer class = 'flex column alignItems' id = 'footer'>
+    <section class = 'flex icons'>
+    <i class="fa-brands fa-facebook-f"></i>
+    <i class="fa-brands fa-instagram"></i>
+    <i class="fa-brands fa-twitter"></i>
+    <i class="fa-brands fa-github"></i>
+    <i class="fa-solid fa-envelope"></i>
+    </section>
+      <nav>
+    
+          <ul class = 'flex justifyContent'>
+
+            <li><a href = '/user'>Home</a></li>
+            <li><a href = '/user/add'>Add Servant</a></li>
+            <li><a href = '/user/servants'>See Servant Data</a></li>
+            <li><a href = '/user/gameplay'>Gameplay</a></li>
+            <li><a href = '/user/simulator'>Simulator</a></li>
+            <li><a href = '/auth/logout'>Logout</a></li>
+            </ul>
+     </nav>
+
+     <small>FGO app &copy; choir Design: HTML5 UP</small>
+    
+  </footer>
+
+  <script src = '/js/simulator.js'></script>
+  <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
+</body>
+</html>

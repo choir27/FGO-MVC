@@ -78,14 +78,22 @@ module.exports={
             console.error(err)
         } 
     },
-    getChooseTeam: async(req, res)=>{
+    getEditTeam: async(req,res)=>{
         try{
-            const data = await Character.find({userId:req.user.id}).lean()
-                const info = await Servant.find({userId:req.user.id}).lean()
-                const chooseServant = await ChooseServant.find({userId:req.user.id}).lean()
-                const skill = await Skill.find({userId:req.user.id}).lean()
-                const ascension = await Ascension.find({userId:req.user.id}).lean()
-            res.render('authed/chooseTeam.ejs', {data: info, skill: skill ,ascension: ascension ,choose: chooseServant, info: data, userID: req.user.id})
+            const ascension = await Ascension.find({userId:req.user.id}).lean()
+            const info = await Character.find({userId:req.user.id}).lean()
+            const team = await Team.find({userId: req.user.id}).lean()
+            res.render('authed/editTeam.ejs', {userID: req.user.id, info: info, ascension: ascension, team: team})
+            
+        }catch(err){
+            res.render('error')
+        }
+    },
+    getCreateTeam: async(req, res)=>{
+        try{
+            const info = await Character.find({userId:req.user.id}).lean()
+            const ascension = await Ascension.find({userId:req.user.id}).lean()
+            res.render('authed/createTeam.ejs', {ascension: ascension , info: info, userID: req.user.id})
         }catch(err){
             res.render('error')  
             console.error(err)
@@ -205,8 +213,7 @@ module.exports={
     },
     deleteServant: async (req, res) => {
         try{
-            let post = await Servant.findByIdAndDelete({_id: req.params.select })
-            console.log(post)
+            let post = await Character.findByIdAndDelete({_id: req.params.select })
 
             res.redirect('/user/servants')
         }catch(err){
@@ -224,7 +231,7 @@ module.exports={
     chooseCharacter:  async (req, res)=>{
         try{
             await ChooseServant.findOneAndUpdate(req.body)
-            res.redirect('/user/add')
+            res.redirect('/user/addServant')
         }catch(err){
             res.render('error')
         }
