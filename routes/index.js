@@ -19,14 +19,28 @@ MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true })
     })
 
     router.get('/api/servants',(request,response)=>{
+        db.collection('teams').find().toArray()
+        .then(team=>{
+        db.collection('skills').find().toArray()
+        .then(skill=>{
+        db.collection('chooseservants').find().toArray()
+        .then(choose=>{
+        db.collection('characters').find().toArray()
+        .then(character=>{
+    db.collection('ascensions').find().toArray()
+        .then(ascension=>{
         db.collection('servants').find().toArray()
-            .then(info=>{
+            .then(servant=>{
                 db.collection('users').find().toArray()
-                    .then(users=>{
- response.json({servants: info, users: users})
+                    .then(user=>{
+ response.json({team: team, skill: skill, choose: choose, servant: servant, user: user, ascension: ascension, character: character})
             })
        })
-       .catch(error => res.render('not-authed/error.ejs'))
+
+    })
+})
+        })
+}).catch(error => res.render('error.ejs'))
     })
 
 
