@@ -42,6 +42,6 @@ MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true })
         })
 }).catch(error => res.render('error.ejs'))
     })
-
+    })
 
 module.exports = router
