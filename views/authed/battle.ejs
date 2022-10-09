@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = 'stylesheet' href = '/css/reset.css'>
+    <link rel = 'stylesheet' href = '/css/normalize.css'>
+    <link rel = 'stylesheet' href = '/css/style.css'>
+    <link rel = 'stylesheet' href = '/css/battle.css'>
+
+    <title>Your Team</title>
+</head>
+<body>
+<!-- <a href = 'https://fgo-api.herokuapp.com/'>Make your team</a> -->
+<header class = 'flex column alignItems justifyContent header'>
+    <div class = 'banner'></div>
+
+    <nav class = 'flex'>
+        <li><a href = '/user'><h2 class = 'logo'>Fate Grand Order</h2></a></li>
+
+            <ul class = 'flex row'>
+                <li><a href = '/user'>Home</a></li>
+                <li><a href = '/user/add'>Add Servant</a></li>
+                <li><a href = '/user/servants'>See Servant Data</a></li>
+                <li><a href = '/user/gameplay'>Gameplay</a></li>
+                <li><a href = '/user/simulator'>Simulator</a></li>
+                <li><a href = '/auth/logout'>Logout</a></li>
+
+            </ul>
+    </nav>
+</header>
+
+<section class = 'section flex column'>
+    <h1 class = 'flex justifyContent'>Your Team</h1>
+    <% for(let i = 0; i < team.length; i++) { %>
+    <% if( team[i].user._id == userID) { %>
+<article class = 'flex battle row'> 
+
+<div class = 'flex team'>
+    <div class = 'servant1 flex alignItems column'>
+<img src = '<%= ascension[team[i].index1].servant[0]['1'] %>'>
+<meter id="health" value = '<%= info[team[i].index1].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[team[i].index1].servant[0].hpMax %>.00' ></meter>
+<meter id ='np' value = '0.00' min = '0.00' max = '100.00'></meter>
+            <div class = 'flex alignItems justifyContent skills'>
+                <img src = '<%= skill[team[i].index1].servant[0].skills.skills1.icon %>'>
+                <img src = '<%= skill[team[i].index1].servant[0].skills.skills2.icon %>'>
+                <img src = '<%= skill[team[i].index1].servant[0].skills.skills3.icon %>'>
+            </div>
+    </div>
+    <div class="servant2 flex alignItems column">
+<img src = '<%= ascension[team[i].index2].servant[0]['1'] %>'>
+<meter id="health2" value = '<%= info[team[i].index1].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[team[i].index1].servant[0].hpMax %>.00' ></meter>
+<meter id ='np2' value = '0.00' min = '0.00' max = '100.00'></meter>
+        <div class="flex alignItems justifyContent skills">
+            <img src = '<%= skill[team[i].index2].servant[0].skills.skills1.icon %>'>
+            <img src = '<%= skill[team[i].index2].servant[0].skills.skills2.icon %>'>
+            <img src = '<%= skill[team[i].index2].servant[0].skills.skills3.icon %>'>
+        </div>
+    </div>
+    <div class="flex servant3 alignItems column">
+<img src = '<%= ascension[team[i].index3].servant[0]['1'] %>'>
+<meter id="health3" value = '<%= info[team[i].index1].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[team[i].index1].servant[0].hpMax %>.00' ></meter>
+<meter id ='np3' value = '0.00' min = '0.00' max = '100.00'></meter>
+    <div class="flex alignItems justifyContent skills">
+        <img src = '<%= skill[team[i].index3].servant[0].skills.skills1.icon %>'>
+        <img src = '<%= skill[team[i].index3].servant[0].skills.skills2.icon %>'>
+        <img src = '<%= skill[team[i].index3].servant[0].skills.skills3.icon %>'>
+    </div>
+    </div>
+</div>
+<% } %>
+<% } %>
+   
+<div class = 'enemy flex'>
+    <meter id="enemyhp" value = '<%= info[2].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[2].servant[0].hpMax %>.00' ></meter>
+
+<img src = 'https://res.cloudinary.com/choir2/image/upload/v1664535081/c1sxxov8apcm5hg9rbph.png'>
+</div>
+
+</article>
+</section>
+
+
+
+<footer class = 'flex column alignItems' id = 'footer'>
+    <section class = 'flex icons'>
+    <i class="fa-brands fa-facebook-f"></i>
+    <i class="fa-brands fa-instagram"></i>
+    <i class="fa-brands fa-twitter"></i>
+    <i class="fa-brands fa-github"></i>
+    <i class="fa-solid fa-envelope"></i>
+    </section>
+      <nav>
+    
+          <ul class = 'flex justifyContent'>
+
+            <li><a href = '/user'>Home</a></li>
+            <li><a href = '/user/add'>Add Servant</a></li>
+            <li><a href = '/user/servants'>See Servant Data</a></li>
+            <li><a href = '/user/gameplay'>Gameplay</a></li>
+            <li><a href = '/user/simulator'>Simulator</a></li>
+            <li><a href = '/auth/logout'>Logout</a></li>
+            </ul>
+     </nav>
+
+     <small>FGO app &copy; choir Design: HTML5 UP</small>
+    
+  </footer>
+
+  <script src = '/js/simulator.js'></script>
+  <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
+</body>
+</html>

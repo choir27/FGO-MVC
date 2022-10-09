@@ -15,6 +15,8 @@ router.get('/addServant', ensureAuth, homeController.getAddServant)
 
 router.get('/simulator/createTeam', ensureAuth, homeController.getCreateTeam)
 
+router.get('/simulator/battle', ensureAuth, homeController.getBattle)
+
 router.get('/simulator', ensureAuth, homeController.getSimulator)
 
 router.get('/gameplay', ensureAuth, homeController.getGameplay)

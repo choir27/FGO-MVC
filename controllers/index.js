@@ -256,6 +256,17 @@ module.exports={
         }catch(err){
             res.render('error')
         }
+    },
+    getBattle: async (req,res)=>{
+        try{
+            const team = await Team.find({userId: req.user.id}).lean()
+            const info = await Servant.find({userId:req.user.id}).lean()
+            const skill = await Skill.find({userId:req.user.id}).lean()
+            const ascension = await Ascension.find({userId:req.user.id}).lean()
+            res.render('authed/battle.ejs', {team: team, info: info, skill: skill, ascension: ascension,userID: req.user.id })
+        }catch(err){
+            res.render('error')
+        }
     }
 }
 

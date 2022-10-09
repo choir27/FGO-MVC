@@ -1,0 +1,41 @@
+img{
+    width: 100%;
+}
+
+.skills img{
+    width: 60%;
+    margin: .4rem;
+}
+
+section div{
+    margin: 2rem;
+    width: 45%;
+}
+
+.enemy img{
+    width: 40%;
+}
+
+.enemy{
+    justify-content: flex-end;
+}
+
+.battle{
+   justify-content: space-between;
+}
+
+
+meter{
+height: 4vh;
+width: 14vw;  
+}
+
+
+#np::-webkit-meter-optimum-value{
+    background: blue
+}
+    
+body *{
+    border: 3px solid white;
+}
+
