@@ -2,9 +2,26 @@ img{
     width: 100%;
 }
 
+#status{
+flex-wrap: wrap;
+}
+
+#status1 img{
+    width: 30%;
+}
+
 section div{
-    margin: 2rem;
-    width: 45%;
+    margin: 1.1rem;
+    width: 35%;
+}
+
+.servant3 img{
+margin-bottom: 1rem;
+}
+
+.enemy meter, .enemy img{
+    margin-top: 1rem;
+    margin-bottom: .5rem;
 }
 
 .section .prompt{
@@ -12,6 +29,7 @@ section div{
 }
 
 .enemy{
+    margin-right: 6 rem;
  align-items: flex-end;
 }
 
@@ -19,8 +37,10 @@ section div{
     width: 40%;
 }
 
-.enemy{
-    justify-content: flex-end;
+.enemyMeter{
+    padding: 0rem;
+    margin:0rem;
+    height: 5rem;
 }
 
 .battle{
@@ -31,6 +51,7 @@ section div{
     border: none;
     padding: 0rem;
     margin: 0rem;
+    box-shadow: none;
 }
 
 .skills{
@@ -44,8 +65,6 @@ section div{
 
 .help1{
     width: 80%;
-    margin: 0rem;
-    padding: .2rem;
 }
 
 .skills i{
@@ -57,12 +76,24 @@ height: 4vh;
 width: 14vw;  
 }
 
+#enemyHelp{
+    margin-left: 7rem;
+}
 
 #np::-webkit-meter-optimum-value{
     background: blue
 }
-    
-/* body *{
+
+.cards img{
+    width: 100%;
+}
+
+.cards{
+    margin-left: 2rem;
+}
+
+/*     
+body *{
     border: 3px solid white;
 } */
 

@@ -61,18 +61,39 @@
     
   
     <div class="flex servant3 alignItems column">
+        <div id = 'status1' class = 'flex'></div>
 <img src = '<%= ascension[team[i].index3].servant[0]['1'] %>'>
 <meter id="health3" value = '<%= info[team[i].index1].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[team[i].index1].servant[0].hpMax %>.00' ></meter>
 <meter id ='np3' value = '0.00' min = '0.00' max = '100.00'></meter>
     <div class="flex alignItems justifyContent skills">
         <div class = 'skill1 flex column'>
-        <button class = '<%= team[i].index3 %>' id = skill1><img src = '<%= skill[team[i].index3].servant[0].skills.skills1.icon %>'></button>
-        <div class = 'help1 flex justifyContent'><i id = 'help1' class="fa-regular fa-circle-question"></i></div>
+            <button class = '<%= team[i].index3 %> button' id = 'skill1'><img src = '<%= skill[team[i].index3].servant[0].skills.skills1.icon %>'></button>
+            <div class = 'help1 flex justifyContent'><i id = 'help1' class="fa-regular fa-circle-question"></i></div>
+        </div> 
+
+        <div class = 'skill2 flex column'>
+        <button class = '<%= team[i].index3 %> button' id = 'skill2'><img src = '<%= skill[team[i].index3].servant[0].skills.skills2.icon %>'></button>
+        <div class = 'help2 flex justifyContent'><i id = 'help2' class="fa-regular fa-circle-question"></i></div>
+        </div> 
+
+        <div class = 'skill3 flex column'>
+        <button class = '<%= team[i].index3 %> button' id = 'skill3'><img src = '<%= skill[team[i].index3].servant[0].skills.skills3.icon %>'></button>
+        <div class = 'help3 flex justifyContent'><i id = 'help3' class="fa-regular fa-circle-question"></i></div>
+
         </div>
-        <button class = 'button'><img src = '<%= skill[team[i].index3].servant[0].skills.skills2.icon %>'></button>
-        <button class = 'button'><img src = '<%= skill[team[i].index3].servant[0].skills.skills3.icon %>'></button>
     </div>
+
+    
     </div>
+   
+</div>
+
+<div class = 'flex cards'>
+    <% info[team[i].index3].servant[0].cards.forEach((ele,i) => { %>
+    <button class = 'card<%= i %> <%= ele %> button'>
+        <img src = '/simulator/<%= ele %>.png' class = ''>
+    </button>
+        <% })%>
 </div>
 
 <% } %>
@@ -80,7 +101,14 @@
    
 <div class = 'enemy flex column'>
     <meter id="enemyhp" value = '<%= info[2].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[2].servant[0].hpMax %>.00' ></meter>
+    <!-- <i class="fa-solid fa-square"></i> -->
+    <div class="flex justifyContent enemyMeter">
+    <% for(let i = 0; i < 4; i++) { %>
+        <i class="fa-regular fa-square"></i>
 
+        <% } %>
+        <i id = 'enemyHelp' class="fa-regular fa-circle-question"></i>
+    </div>
 <img src = 'https://res.cloudinary.com/choir2/image/upload/v1664535081/c1sxxov8apcm5hg9rbph.png'>
 </div>
 
