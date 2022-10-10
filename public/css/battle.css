@@ -2,14 +2,17 @@ img{
     width: 100%;
 }
 
-.skills img{
-    width: 60%;
-    margin: .4rem;
-}
-
 section div{
     margin: 2rem;
     width: 45%;
+}
+
+.section .prompt{
+    width: 100%;
+}
+
+.enemy{
+ align-items: flex-end;
 }
 
 .enemy img{
@@ -24,6 +27,30 @@ section div{
    justify-content: space-between;
 }
 
+.button, img {
+    border: none;
+    padding: 0rem;
+    margin: 0rem;
+}
+
+.skills{
+    justify-content: space-around;
+    width: 100%;
+}
+
+.skill1{
+    align-items: flex-end;
+}
+
+.help1{
+    width: 80%;
+    margin: 0rem;
+    padding: .2rem;
+}
+
+.skills i{
+    height: .5rem;
+}
 
 meter{
 height: 4vh;
@@ -35,7 +62,7 @@ width: 14vw;
     background: blue
 }
     
-body *{
+/* body *{
     border: 3px solid white;
-}
+} */
 

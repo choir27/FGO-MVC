@@ -38,7 +38,7 @@
 <article class = 'flex battle row'> 
 
 <div class = 'flex team'>
-    <div class = 'servant1 flex alignItems column'>
+    <!-- <div class = 'servant1 flex alignItems column'>
 <img src = '<%= ascension[team[i].index1].servant[0]['1'] %>'>
 <meter id="health" value = '<%= info[team[i].index1].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[team[i].index1].servant[0].hpMax %>.00' ></meter>
 <meter id ='np' value = '0.00' min = '0.00' max = '100.00'></meter>
@@ -57,28 +57,39 @@
             <img src = '<%= skill[team[i].index2].servant[0].skills.skills2.icon %>'>
             <img src = '<%= skill[team[i].index2].servant[0].skills.skills3.icon %>'>
         </div>
-    </div>
+    </div> -->
+    
+  
     <div class="flex servant3 alignItems column">
 <img src = '<%= ascension[team[i].index3].servant[0]['1'] %>'>
 <meter id="health3" value = '<%= info[team[i].index1].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[team[i].index1].servant[0].hpMax %>.00' ></meter>
 <meter id ='np3' value = '0.00' min = '0.00' max = '100.00'></meter>
     <div class="flex alignItems justifyContent skills">
-        <img src = '<%= skill[team[i].index3].servant[0].skills.skills1.icon %>'>
-        <img src = '<%= skill[team[i].index3].servant[0].skills.skills2.icon %>'>
-        <img src = '<%= skill[team[i].index3].servant[0].skills.skills3.icon %>'>
+        <div class = 'skill1 flex column'>
+        <button class = '<%= team[i].index3 %>' id = skill1><img src = '<%= skill[team[i].index3].servant[0].skills.skills1.icon %>'></button>
+        <div class = 'help1 flex justifyContent'><i id = 'help1' class="fa-regular fa-circle-question"></i></div>
+        </div>
+        <button class = 'button'><img src = '<%= skill[team[i].index3].servant[0].skills.skills2.icon %>'></button>
+        <button class = 'button'><img src = '<%= skill[team[i].index3].servant[0].skills.skills3.icon %>'></button>
     </div>
     </div>
 </div>
+
 <% } %>
 <% } %>
    
-<div class = 'enemy flex'>
+<div class = 'enemy flex column'>
     <meter id="enemyhp" value = '<%= info[2].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[2].servant[0].hpMax %>.00' ></meter>
 
 <img src = 'https://res.cloudinary.com/choir2/image/upload/v1664535081/c1sxxov8apcm5hg9rbph.png'>
 </div>
 
 </article>
+
+<div class = 'prompt'>
+    <h2 id = 'prompt'></h2>
+    <h2 id = 'detail'></h2>
+</div>
 </section>
 
 
