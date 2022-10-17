@@ -48,36 +48,51 @@
                 <img src = '<%= skill[team[i].index1].servant[0].skills.skills3.icon %>'>
             </div>
     </div>
-    <div class="servant2 flex alignItems column">
+    <div class="flex servant2 alignItems column">
+        <div id = 'status2' class = 'flex'></div>
 <img src = '<%= ascension[team[i].index2].servant[0]['1'] %>'>
-<meter id="health2" value = '<%= info[team[i].index1].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[team[i].index1].servant[0].hpMax %>.00' ></meter>
-<meter id ='np2' value = '0.00' min = '0.00' max = '100.00'></meter>
-        <div class="flex alignItems justifyContent skills">
-            <img src = '<%= skill[team[i].index2].servant[0].skills.skills1.icon %>'>
-            <img src = '<%= skill[team[i].index2].servant[0].skills.skills2.icon %>'>
-            <img src = '<%= skill[team[i].index2].servant[0].skills.skills3.icon %>'>
-        </div>
-    </div> -->
-    
-  
-    <div class="flex servant3 alignItems column">
-        <div id = 'status1' class = 'flex'></div>
-<img src = '<%= ascension[team[i].index3].servant[0]['1'] %>'>
-<meter id="health3" value = '<%= info[team[i].index1].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[team[i].index1].servant[0].hpMax %>.00' ></meter>
+<meter id="health3" value = '<%= info[team[i].index2].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[team[i].index2].servant[0].hpMax %>.00' ></meter>
 <meter id ='np3' value = '0.00' min = '0.00' max = '100.00'></meter>
     <div class="flex alignItems justifyContent skills">
         <div class = 'skill1 flex column'>
-            <button class = '<%= team[i].index3 %> button' id = 'skill1'><img src = '<%= skill[team[i].index3].servant[0].skills.skills1.icon %>'></button>
+            <button class = '<%= team[i].index2 %> button' id = 'skill1'><img src = '<%= skill[team[i].index2].servant[0].skills.skills1.icon %>'></button>
             <div class = 'help1 flex justifyContent'><i id = 'help1' class="fa-regular fa-circle-question"></i></div>
         </div> 
 
         <div class = 'skill2 flex column'>
-        <button class = '<%= team[i].index3 %> button' id = 'skill2'><img src = '<%= skill[team[i].index3].servant[0].skills.skills2.icon %>'></button>
+        <button class = '<%= team[i].index2 %> button' id = 'skill2'><img src = '<%= skill[team[i].index2].servant[0].skills.skills2.icon %>'></button>
         <div class = 'help2 flex justifyContent'><i id = 'help2' class="fa-regular fa-circle-question"></i></div>
         </div> 
 
         <div class = 'skill3 flex column'>
-        <button class = '<%= team[i].index3 %> button' id = 'skill3'><img src = '<%= skill[team[i].index3].servant[0].skills.skills3.icon %>'></button>
+        <button class = '<%= team[i].index2 %> button' id = 'skill3'><img src = '<%= skill[team[i].index2].servant[0].skills.skills3.icon %>'></button>
+        <div class = 'help3 flex justifyContent'><i id = 'help3' class="fa-regular fa-circle-question"></i></div>
+
+        </div>
+    </div>
+
+    
+    </div>-->
+    
+  
+    <div class="flex servant1 alignItems column">
+        <div id = 'status1' class = 'flex'></div>
+<img src = '<%= ascension[team[i].index1].servant[0]['1'] %>'>
+<meter id="health3" value = '<%= info[team[i].index1].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[team[i].index1].servant[0].hpMax %>.00' ></meter>
+<meter id ='np3' value = '0.00' min = '0.00' max = '100.00'></meter>
+    <div class="flex alignItems justifyContent skills">
+        <div class = 'skill1 flex column'>
+            <button class = '<%= team[i].index1 %> button' id = 'skill1'><img src = '<%= skill[team[i].index1].servant[0].skills.skills1.icon %>'></button>
+            <div class = 'help1 flex justifyContent'><i id = 'help1' class="fa-regular fa-circle-question"></i></div>
+        </div> 
+
+        <div class = 'skill2 flex column'>
+        <button class = '<%= team[i].index1 %> button' id = 'skill2'><img src = '<%= skill[team[i].index1].servant[0].skills.skills2.icon %>'></button>
+        <div class = 'help2 flex justifyContent'><i id = 'help2' class="fa-regular fa-circle-question"></i></div>
+        </div> 
+
+        <div class = 'skill3 flex column'>
+        <button class = '<%= team[i].index1 %> button' id = 'skill3'><img src = '<%= skill[team[i].index1].servant[0].skills.skills3.icon %>'></button>
         <div class = 'help3 flex justifyContent'><i id = 'help3' class="fa-regular fa-circle-question"></i></div>
 
         </div>
@@ -118,6 +133,8 @@
     <h2 id = 'prompt'></h2>
     <h2 id = 'detail'></h2>
 </div>
+
+<div class = 'flex'><h2>Crit Stars: </h2><h2 id = 'stars'>0</h2></div>
 </section>
 
 
