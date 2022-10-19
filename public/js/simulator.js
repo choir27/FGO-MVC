@@ -1,4 +1,4 @@
-const data = {
+let data = {
   ascension : '',
   servant : '',
   skill : '',
@@ -21,6 +21,7 @@ data.servant = info.servant[document.querySelector('#skill1').classList[0]]
 data.skill = info.skill[document.querySelector('#skill1').classList[0]]
 })
 }, false);
+
 
 document.querySelector('#skill1').addEventListener('click',getSkill1)
 
@@ -114,12 +115,11 @@ function getSkill3(){
     document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills3.name}.`
 }
  else if(target === 'self'){
-    status.setAttribute('src',getUrl(effect,value))
+    getUrl(effect,value)
     document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills3.name}.`
   } else if(target === 'ptAll'){
     let status = document.createElement('img')
-    status.setAttribute('src',getUrl(effect,value))
-    document.querySelector('#status1').appendChild(status)
+   'src',getUrl(effect,value)
     document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills2.name}.`
   }
 }

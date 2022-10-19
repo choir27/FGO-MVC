@@ -97,3 +97,35 @@ width: 14vw;
     border: 3px solid white;
 }  */
 
+
+#health{
+    color: green;
+}
+
+#health::-webkit-meter-optimum-value{
+    background: linear-gradient(to right, #114DA3, #0389FF, #2AACF8, #1E9BFC,#53D0F5, #79EAF3);
+}
+
+#np::-webkit-meter-optimum-value{
+    background: linear-gradient(to right,#6F3706, #6E553D, #974907, #A14D06, #BB5802, #A04E03, #B95902)
+}
+
+#np::-webkit-meter-bar, #health::-webkit-meter-bar{
+    background: black;
+    border: 3px solid #4D493C;
+}
+
+meter{
+    height: 4vh;
+    width: 14vw;    
+}
+
+.button{
+    padding: 0rem;
+    margin: 0rem;
+    overflow: hidden;
+    border: none;
+    background: none;
+    box-shadow: none;
+    border-radius: none;
+}

@@ -33,6 +33,11 @@
 
 <section class = 'section flex column'>
     <h1 class = 'flex justifyContent'>Your Team</h1>
+
+    <% let turns = 1 %>
+
+    <h2>Turn: <%= turns %></h2>
+
     <% for(let i = 0; i < team.length; i++) { %>
     <% if( team[i].user._id == userID) { %>
 <article class = 'flex battle row'> 
@@ -78,8 +83,8 @@
     <div class="flex servant1 alignItems column">
         <div id = 'status1' class = 'flex'></div>
 <img src = '<%= ascension[team[i].index1].servant[0]['1'] %>'>
-<meter id="health3" value = '<%= info[team[i].index1].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[team[i].index1].servant[0].hpMax %>.00' ></meter>
-<meter id ='np3' value = '0.00' min = '0.00' max = '100.00'></meter>
+<meter id="health" value = '<%= info[team[i].index1].servant[0].hpMax %>.00' min = '0.00' max = '<%= info[team[i].index1].servant[0].hpMax %>.00' ></meter>
+<meter id ='np' value = '0.00' min = '0.00' max = '100.00'></meter>
     <div class="flex alignItems justifyContent skills">
         <div class = 'skill1 flex column'>
             <button class = '<%= team[i].index1 %> button' id = 'skill1'><img src = '<%= skill[team[i].index1].servant[0].skills.skills1.icon %>'></button>
@@ -104,7 +109,8 @@
 </div>
 
 <div class = 'flex cards'>
-    <% info[team[i].index3].servant[0].cards.forEach((ele,i) => { %>
+
+    <% info[team[i].index1].servant[0].cards.forEach((ele,i) => { %>
     <button class = 'card<%= i %> <%= ele %> button'>
         <img src = '/simulator/<%= ele %>.png' class = ''>
     </button>
@@ -165,6 +171,7 @@
   </footer>
 
   <script src = '/js/simulator.js'></script>
+
   <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
 </body>
 </html>
