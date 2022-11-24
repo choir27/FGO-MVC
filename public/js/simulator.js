@@ -1,17 +1,17 @@
 let data = {
   servant1:{
     ascension : '',
-    servant : '',
+    profile : '',
     skill : '',
   },
   servant2:{
     ascension : '',
-    servant : '',
+    profile : '',
     skill : '',
   },
   servant3:{
     ascension : '',
-    servant : '',
+    profile : '',
     skill : '',
   }
 }
@@ -29,23 +29,20 @@ document.addEventListener('DOMContentLoaded', function() {
   .then(res=>res.json())
   .then(info=>{
 data.servant1.ascension = info.ascension[document.querySelector('#skill1').classList[0]]
-data.servant1.servant = info.servant[document.querySelector('#skill1').classList[0]]
+data.servant1.profile = info.servant[document.querySelector('#skill1').classList[0]]
 data.servant1.skill = info.skill[document.querySelector('#skill1').classList[0]]
 
 data.servant2.ascension = info.ascension[document.querySelector('#skill4').classList[0]]
-data.servant2.servant = info.servant[document.querySelector('#skill4').classList[0]]
+data.servant2.profile = info.servant[document.querySelector('#skill4').classList[0]]
 data.servant2.skill = info.skill[document.querySelector('#skill4').classList[0]]
 
 data.servant3.ascension = info.ascension[document.querySelector('#skill8').classList[0]]
-data.servant3.servant = info.servant[document.querySelector('#skill8').classList[0]]
+data.servant3.profile = info.servant[document.querySelector('#skill8').classList[0]]
 data.servant3.skill = info.skill[document.querySelector('#skill8').classList[0]]
 })
 }, false);
 
 
-document.querySelector('#skill1').addEventListener('click',getSkill1)
-document.querySelector('#skill4').addEventListener('click',getSkill1)
-document.querySelector('#skill7').addEventListener('click',getSkill1)
 
 function getUrl(effect,value){
   if(effect.toLowerCase().includes('c.') && effect.toLowerCase().includes('star') && effect.toLowerCase().includes('gain')){
@@ -71,27 +68,46 @@ function getUrl(effect,value){
   }
 }
 
+document.querySelector('#skill1').addEventListener('click',getSkill1)
+document.querySelector('#skill4').addEventListener('click',getSkill1)
+document.querySelector('#skill7').addEventListener('click',getSkill1)
 
 
 function getSkill1(){
-  let target = data.skill.servant[0].skills.skills1.funcTargetType
-  let effect = data.skill.servant[0].skills.skills1.funcPopupText
-  let value = data.skill.servant[0].skills.skills1.svals[9].Value
+  let target = data.servant1.skill.servant[0].skills.skills1.funcTargetType
+  let effect = data.servant1.skill.servant[0].skills.skills1.funcPopupText
+  let value = data.servant1.skill.servant[0].skills.skills1.svals[9].Value
 if(target === 'self' && (!effect.includes('C.') || !effect.includes('Star'))){
     let status = document.createElement('img')
     status.setAttribute('src',getUrl(effect,value))
     document.querySelector('#status1').appendChild(status)
-    document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills1.name}.`
+    if(this.getAttribute("id")=='skill1'){
+    document.querySelector('#prompt').innerText = `${data.servant1.profile.servant[0].name} used ${data.servant1.skill.servant[0].skills.skills1.name}.`
+    }else if(this.getAttribute("id") == 'skill4'){
+      document.querySelector('#prompt').innerText = `${data.servant2.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills1.name}.`
+    }else if(this.getAttribute("id") == 'skill7'){
+      document.querySelector('#prompt').innerText = `${data.servant3.profile.servant[0].name} used ${data.servant3.skill.servant[0].skills.skills1.name}.`
+    }
 }else if(target === 'self'){
   getUrl(effect,value)
-  document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills1.name}.`
-}
+  if(this.getAttribute("id")=='skill1'){
+    document.querySelector('#prompt').innerText = `${data.servant1.profile.servant[0].name} used ${data.servant1.skill.servant[0].skills.skills1.name}.`
+    }else if(this.getAttribute("id") == 'skill4'){
+      document.querySelector('#prompt').innerText = `${data.servant2.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills1.name}.`
+    }else if(this.getAttribute("id") == 'skill7'){
+      document.querySelector('#prompt').innerText = `${data.servant3.profile.servant[0].name} used ${data.servant3.skill.servant[0].skills.skills1.name}.`
+    }
+  }
 else if(target === 'ptAll'){
   let status = document.createElement('img')
   status.setAttribute('src',getUrl(effect,value))
-  document.querySelector('#status1').appendChild(status)
-  document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills2.name}.`
-  document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills2.name}.`
+  if(this.getAttribute("id")=='skill1'){
+    document.querySelector('#prompt').innerText = `${data.servant1.profile.servant[0].name} used ${data.servant1.skill.servant[0].skills.skills1.name}.`
+    }else if(this.getAttribute("id") == 'skill4'){
+      document.querySelector('#prompt').innerText = `${data.servant2.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills1.name}.`
+    }else if(this.getAttribute("id") == 'skill7'){
+      document.querySelector('#prompt').innerText = `${data.servant3.profile.servant[0].name} used ${data.servant3.skill.servant[0].skills.skills1.name}.`
+    }
 }
 }
 
@@ -100,27 +116,27 @@ document.querySelector('#skill5').addEventListener('click',getSkill2)
 document.querySelector('#skill8').addEventListener('click',getSkill2)
 
 function getSkill2(){
-  let target = data.skill.servant[0].skills.skills2.funcTargetType
-  let effect = data.skill.servant[0].skills.skills2.funcPopupText
-  let value = data.skill.servant[0].skills.skills2.svals[9].Value
+  let target = data.servant2.skill.servant[0].skills.skills2.funcTargetType
+  let effect = data.servant2.skill.servant[0].skills.skills2.funcPopupText
+  let value = data.servant2.skill.servant[0].skills.skills2.svals[9].Value
   if(target === 'self' && (!effect.includes('C.') || !effect.includes('Star'))){
     let status = document.createElement('img')
     status.setAttribute('src',getUrl(effect,value))
     document.querySelector('#status1').appendChild(status)
-    document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills2.name}.`
+    document.querySelector('#prompt').innerText = `${data.servant1.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills2.name}.`
 }
   else if(target === 'self'){
     let status = document.createElement('img')
     status.setAttribute('src',getUrl(effect,value))
     document.querySelector('#status1').appendChild(status)
-    document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills2.name}.`
+    document.querySelector('#prompt').innerText = `${data.servant1.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills2.name}.`
   }
   else if(target === 'ptAll'){
     let status = document.createElement('img')
     status.setAttribute('src',getUrl(effect,value))
     document.querySelector('#status1').appendChild(status)
-    document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills2.name}.`
-    document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills2.name}.`
+    document.querySelector('#prompt').innerText = `${data.servant1.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills2.name}.`
+    document.querySelector('#prompt').innerText = `${data.servant1.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills2.name}.`
   }
 }
 
@@ -130,9 +146,9 @@ document.querySelector('#skill9').addEventListener('click',getSkill3)
 document.querySelector('#skill6').addEventListener('click',getSkill3)
 
 function getSkill3(){  
-  let target = data.skill.servant[0].skills.skills3.funcTargetType
-  let effect = data.skill.servant[0].skills.skills3.funcPopupText
-  let value = data.skill.servant[0].skills.skills3.svals[9].Value
+  let target = data.servant3.skill.servant[0].skills.skills3.funcTargetType
+  let effect = data.servant3.skill.servant[0].skills.skills3.funcPopupText
+  let value = data.servant3.skill.servant[0].skills.skills3.svals[9].Value
   if(target === 'self' && (!effect.includes('C.') || !effect.includes('Star'))){
     let status = document.createElement('img')
     status.setAttribute('src',getUrl(effect,value))

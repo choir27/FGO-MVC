@@ -1,3 +1,9 @@
+fetch(`https://api.atlasacademy.io/export/NA/nice_servant_lore.json`)
+.then(res=>res.json())
+.then(data=>{
+   console.log(data[0])
+})
+
 
 let check0 = document.querySelector('.check0')
 let check1 = document.querySelector('.check1')
