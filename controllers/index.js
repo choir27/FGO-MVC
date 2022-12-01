@@ -246,6 +246,22 @@ module.exports={
             res.render('error')
         }
     },
+    editTeam: async (req,res)=>{
+try{
+req.body.user = req.user.id 
+await Team.find({userId: req.user.id})
+await Team.findOneAndUpdate({index1: req.body.index1,
+index2: req.body.index2,
+index3: req.body.index3
+})
+res.redirect('/user/simulator')
+
+}
+catch(err){
+    console.log(err)
+    res.render('error')
+}
+    },
     getTeam: async (req,res)=>{
         try{
             const team = await Team.find({userId: req.user.id}).lean()

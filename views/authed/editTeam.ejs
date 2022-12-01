@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = 'stylesheet' href = '/css/reset.css'>
     <link rel = 'stylesheet' href = '/css/normalize.css'>
     <link rel = 'stylesheet' href = '/css/style.css'>
-    <link rel = 'stylesheet' href = '/css/simulator.css'>
+    <link rel = 'stylesheet' href = '/css/team.css'>
     <title>Edit Your Team</title>
 </head>
 <body>
@@ -33,52 +34,94 @@
 <section class = 'section'>
     <h1 class = 'flex justifyContent'>Edit Your Team</h1>
 
-    <form class = 'flex column alignItems' method = 'POST' action = '/user/choose/your/team'>
-    <div class = 'flex team1 justifyContent alignContent'>
-    <% for(let i = 0 ; i < info.length; i++) { %>
-        <% if(info[i].user._id==userID) { %>
-
-         
-      <img class = 'button btn' id = '<%= i%>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
+    <% let count = 0 %>
 
 
+    <form class = 'flex column alignItems' method = 'POST' action = '/user/edit/your/team?_method=PUT'>
+        <article class="flex justifyContent alignItems team button">
+            <% for(let i = 0 ; i < info.length; i++) { %>
+                <% if(info[i].user._id==userID) { %>
+    
+                    <% count ++ %>
+    
+             <div class="box">
+    
+                <% let servantName = info[i].servant[0].name.split('').map(ele=>{ %>
+                    <% if(ele !== ' ' && ele !== '.' && ele !== '-' && ele !== '(' && ele !== ')' && ele !== "'" && ele !== '&' && ele !== '=' && ele !== "\"" && ele !== "\/"){ %>
+                <% return ele %>
+                <%  }else{ %>
+                    <%  return '' %>
+                    <% } %>
+                <% }).join('') %>
+          <img class = 'button btn <%= servantName %><%= info[i].servant[0].className %><%= info[i].servant[0].rarity %>' id = '<%= info[i].index %>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
+    
+        </div>
+     
         <% } %>
-
         <% } %>
-    </div>
-    <input type = 'number' class = 'hidden' name = 'index1' value = '' id = 'servant1'>
-
-
-    <div class = 'flex team1 justifyContent alignContent'>
+    
+        <input type = 'number' class = 'hidden' name = 'index1' value = '' id = 'servant1'>
+    
+    </article>   
+    
+        <article class="button team flex justifyContent alignItems">
+    
         <% for(let i = 0 ; i < info.length; i++) { %>
             <% if(info[i].user._id==userID) { %>
     
-             
-          <img class = 'button btn1' id = '<%= i%>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
+                <% let servantName = info[i].servant[0].name.split('').map(ele=>{ %>
+                    <% if(ele !== ' ' && ele !== '.' && ele !== '-' && ele !== '(' && ele !== ')' && ele !== "'" && ele !== '&' && ele !== '=' && ele !== "\"" && ele !== "\/"){ %>
+                <% return ele %>
+                <%  }else{ %>
+                    <%  return '' %>
+                    <% } %>
+                <% }).join('') %>
+      
+                 <div class="box">
+              <img class = 'button btn1 <%= servantName %><%= info[i].servant[0].className %><%= info[i].servant[0].rarity %>1' id = '<%= info[i].index %>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
+            </div>
+        
     
     
+            
             <% } %>
-    
+        
             <% } %>
-        </div>
-
+        </article>
+    
+    
         <input type = 'number' class = 'hidden' name = 'index2' value = '' id = 'servant2'>
-
-        <div class = 'flex team1 justifyContent alignContent'>
+    
+            <article class = 'button team flex justifyContent alignContent'>
             <% for(let i = 0 ; i < info.length; i++) { %>
                 <% if(info[i].user._id==userID) { %>
-        
-                 
-              <img class = 'button btn2' id = '<%= i%>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
-        
-        
+             
+                     <div class = 'box'>
+                        <% let servantName = info[i].servant[0].name.split('').map(ele=>{ %>
+                            <% if(ele !== ' ' && ele !== '.' && ele !== '-' && ele !== '(' && ele !== ')' && ele !== "'" && ele !== '&' && ele !== '=' && ele !== "\"" && ele !== "\/"){ %>
+                        <% return ele %>
+                        <%  }else{ %>
+                            <%  return '' %>
+                            <% } %>
+                        <% }).join('') %>
+                  <img class = 'button btn2 <%= servantName %><%= info[i].servant[0].className %><%= info[i].servant[0].rarity %>2' id = '<%= info[i].index %>' src = '<%= ascension[info[i].index].servant[0]['1'] %>'>
+                     </div>
+    
+                    
+                    <% } %>
+                    <% } %>
+            </article>
+    
+            <input type = 'number' class = 'hidden' name = 'index3' value = '' id = 'servant3'>
+    
+    
+            <% if(count === 0) { %>
+                <h2 class="flex justifyContent">No Servants have been added to this account yet</h2>
+            <% } else { %>
+                <button id = 'submit' type = 'submit' class = 'button'>Submit</button>
+    
+            
                 <% } %>
-        
-                <% } %>
-            </div>
-
-        <input type = 'number' class = 'hidden' name = 'index3' value = '' id = 'servant3'>
-        <button id = 'submit' type = 'submit' class = 'button'>Submit</button>
         </form>
 </section>
 
@@ -109,7 +152,7 @@
     
   </footer>
 
-  <script src = '/js/simulator.js'></script>
+  <script src = '/js/team.js'></script>
   <script src="https://kit.fontawesome.com/d0e0071c1c.js" crossorigin="anonymous"></script>
 </body>
 </html>

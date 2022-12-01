@@ -37,6 +37,8 @@ router.post('/choose/your/team', homeController.chooseTeam)
 
 router.post('/servants', homeController.postServants)
 
+router.put('/edit/your/team', homeController.editTeam)
+
 router.put('/choose/:servant', homeController.chooseServant)
 
 router.put('/details/:character', homeController.editServant)

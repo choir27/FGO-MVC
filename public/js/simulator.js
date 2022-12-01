@@ -326,80 +326,44 @@ else if(target === 'ptAll'){
 
 document.querySelector('#help1').addEventListener('click', skillHelp1)
 document.querySelector('#help4').addEventListener('click', skillHelp1)
-document.querySelector('#help6').addEventListener('click', skillHelp1)
+document.querySelector('#help7').addEventListener('click', skillHelp1)
 
 function skillHelp1(){
-  document.querySelector('#detail').innerText = `${data.skill.servant[0].skills.skills1.detail}`
+  if(this.getAttribute("id") == 'help1'){
+    document.querySelector('#detail').innerText = `${data.servant1.skill.servant[0].skills.skills1.name}'s effect: ${data.servant1.skill.servant[0].skills.skills1.detail}.`
+  }else if(this.getAttribute("id") == 'help4'){
+    document.querySelector('#detail').innerText = `${data.servant2.skill.servant[0].skills.skills1.name}'s effect: ${data.servant2.skill.servant[0].skills.skills1.detail}.`
+  }else if(this.getAttribute("id") == 'help7'){
+    document.querySelector('#detail').innerText = `${data.servant3.skill.servant[0].skills.skills1.name}'s effect: ${data.servant3.skill.servant[0].skills.skills1.detail}.`
+  }
 }
 
 
 document.querySelector('#help2').addEventListener('click', skillHelp2)
 document.querySelector('#help5').addEventListener('click', skillHelp2)
-document.querySelector('#help7').addEventListener('click', skillHelp2)
+document.querySelector('#help8').addEventListener('click', skillHelp2)
 
 function skillHelp2(){
-  document.querySelector('#detail').innerText = `${data.skill.servant[0].skills.skills2.detail}`
+  if(this.getAttribute("id") == 'help2'){
+    document.querySelector('#detail').innerText = `${data.servant1.skill.servant[0].skills.skills2.name}'s effect: ${data.servant1.skill.servant[0].skills.skills2.detail}.`
+  }else if(this.getAttribute("id") == 'help5'){
+    document.querySelector('#detail').innerText = `${data.servant2.skill.servant[0].skills.skills2.name}'s effect: ${data.servant2.skill.servant[0].skills.skills2.detail}.`
+  }else if(this.getAttribute("id") == 'help8'){
+    document.querySelector('#detail').innerText = `${data.servant3.skill.servant[0].skills.skills2.name}'s effect: ${data.servant3.skill.servant[0].skills.skills2.detail}.`
+  }
 }
 
 
 document.querySelector('#help3').addEventListener('click', skillHelp3)
 document.querySelector('#help6').addEventListener('click', skillHelp3)
-document.querySelector('#help8').addEventListener('click', skillHelp3)
+document.querySelector('#help9').addEventListener('click', skillHelp3)
 
 function skillHelp3(){
-  document.querySelector('#detail').innerText = `${data.skill.servant[0].skills.skills3.detail}`
-}
-
-
-// const servant = document.querySelectorAll('.btn')
-// Array.from(servant).map((element)=>{
-//     element.addEventListener('click', function getServant(){
-//       const servant = document.querySelectorAll('.btn')
-//       Array.from(servant).map((ele)=>{
-//         ele.classList.remove('selected')
-//       })
-
-//       document.querySelector('#servant1').setAttribute('value',this.getAttribute('id')  )
-//       document.querySelector(`.${this.classList[2]}`).classList.add('selected')
-
-//     })
-  
-// })
-
-
-// const servant1 = document.querySelectorAll('.btn1')
-// Array.from(servant1).map((element)=>{
-//     element.addEventListener('click', function getServant(){
-//       const servant = document.querySelectorAll('.btn1')
-//       Array.from(servant).map((ele)=>{
-//         ele.classList.remove('selected')
-//       })
-//       document.querySelector('#servant2').setAttribute('value',this.getAttribute('id')  )
-//       document.querySelector(`.${this.classList[2]}`).classList.add('selected')
-
-//     })
-  
-// })
-
-
-
-// const servant2 = document.querySelectorAll('.btn2')
-// Array.from(servant2).map((element)=>{
-//     element.addEventListener('click', function getServant(){
-
-//       clearSelected2()
-//       document.querySelector('#servant3').setAttribute('value',this.getAttribute('id')  )
-//       document.querySelector(`.${this.classList[2]}`).classList.add('selected')
-
-//     })
-  
-// })
-
-// function clearSelected2(){
-//   const servant = document.querySelectorAll('.btn2')
-//   Array.from(servant).map((element)=>{
-//     element.classList.remove('selected')
-  
-// })
-// }
+  if(this.getAttribute("id") == 'help3'){
+    document.querySelector('#detail').innerText = `${data.servant1.skill.servant[0].skills.skills3.name}'s effect: ${data.servant1.skill.servant[0].skills.skills3.detail}.`
+  }else if(this.getAttribute("id") == 'help6'){
+    document.querySelector('#detail').innerText = `${data.servant2.skill.servant[0].skills.skills3.name}'s effect: ${data.servant2.skill.servant[0].skills.skills3.detail}.`
+  }else if(this.getAttribute("id") == 'help9'){
+    document.querySelector('#detail').innerText = `${data.servant3.skill.servant[0].skills.skills3.name}'s effect: ${data.servant3.skill.servant[0].skills.skills3.detail}.`
+  }}
 
