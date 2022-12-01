@@ -77,10 +77,9 @@ function getSkill1(){
   let status = document.createElement('img')
   
     if(this.getAttribute("id")=='skill1'){
-      let target = data.servant1.skill.servant[0].skills.skills1.funcTargetType
+      let target = data.servant1.skill.servant[0].skills.skills1
       effect = data.servant1.skill.servant[0].skills.skills1.funcPopupText
       value = data.servant1.skill.servant[0].skills.skills1.svals[9].Value
-
 
       if(effect.includes('C.') || effect.includes('Star')){
     document.querySelector('#prompt').innerText = `${data.servant1.profile.servant[0].name} used ${data.servant1.skill.servant[0].skills.skills1.name}.`
@@ -129,7 +128,6 @@ function getSkill1(){
   effect = data.servant3.skill.servant[0].skills.skills1.funcPopupText
   value = data.servant3.skill.servant[0].skills.skills1.svals[9].Value
 
-  
   if(effect.includes('C.') || effect.includes('Star')){
 document.querySelector('#prompt').innerText = `${data.servant3.profile.servant[0].name} used ${data.servant3.skill.servant[0].skills.skills1.name}.`
   }
@@ -163,8 +161,20 @@ function getSkill2(){
 
   if(this.getAttribute("id")=='skill2'){
     let target = data.servant1.skill.servant[0].skills.skills2.funcTargetType
-    effect = data.servant1.skill.servant[0].skills.skills2.funcPopupText
+    effect = data.servant1.skill.servant[0].skills.skills2.detail
     value = data.servant1.skill.servant[0].skills.skills2.svals[9].Value
+
+
+    if(effect.includes('&')){
+  let buffs = getUrl(effect,value)
+  buffs.forEach(ele=>{
+    status.setAttribute('src',ele)
+    document.querySelector('#status1').appendChild(status)
+    console.log(document.querySelector('#status1'))
+  })
+
+}
+
 
 
     if(effect.includes('C.') || effect.includes('Star')){
