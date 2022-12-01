@@ -162,9 +162,9 @@ function getSkill2(){
   let status = document.createElement('img')
 
   if(this.getAttribute("id")=='skill2'){
-    let target = data.servant1.skill.servant[0].skills.skills1.funcTargetType
-    effect = data.servant1.skill.servant[0].skills.skills1.funcPopupText
-    value = data.servant1.skill.servant[0].skills.skills1.svals[9].Value
+    let target = data.servant1.skill.servant[0].skills.skills2.funcTargetType
+    effect = data.servant1.skill.servant[0].skills.skills2.funcPopupText
+    value = data.servant1.skill.servant[0].skills.skills2.svals[9].Value
 
 
     if(effect.includes('C.') || effect.includes('Star')){
@@ -185,54 +185,54 @@ function getSkill2(){
       document.querySelector('#prompt').innerText = `${data.servant1.profile.servant[0].name} used ${data.servant1.skill.servant[0].skills.skills2.name}.`
 
   }
-}else if(this.getAttribute("id") == 'skill4'){
-    let target = data.servant2.skill.servant[0].skills.skills1.funcTargetType
-    effect = data.servant2.skill.servant[0].skills.skills1.funcPopupText
-    value = data.servant2.skill.servant[0].skills.skills1.svals[9].Value
+}else if(this.getAttribute("id") == 'skill5'){
+    let target = data.servant2.skill.servant[0].skills.skills2.funcTargetType
+    effect = data.servant2.skill.servant[0].skills.skills2.funcPopupText
+    value = data.servant2.skill.servant[0].skills.skills2.svals[9].Value
 
     
     if(effect.includes('C.') || effect.includes('Star')){
-  document.querySelector('#prompt').innerText = `${data.servant2.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills1.name}.`
+  document.querySelector('#prompt').innerText = `${data.servant2.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills2.name}.`
     }
     else if(target === 'self'){
       status.setAttribute('src',getUrl(effect,value))
       document.querySelector('#status2').appendChild(status)
-      document.querySelector('#prompt').innerText = `${data.servant2.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills1.name}.`
+      document.querySelector('#prompt').innerText = `${data.servant2.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills2.name}.`
     }
 
     else if(target === 'ptAll'){
-      effect = data.servant2.skill.servant[0].skills.skills1.funcPopupText
-      value = data.servant2.skill.servant[0].skills.skills1.svals[9].Value
+      effect = data.servant2.skill.servant[0].skills.skills2.funcPopupText
+      value = data.servant2.skill.servant[0].skills.skills2.svals[9].Value
       document.querySelector('#buff1').setAttribute('src',getUrl(effect,value))
       document.querySelector('#buff2').setAttribute('src',getUrl(effect,value))
       document.querySelector('#buff3').setAttribute('src',getUrl(effect,value))
-      document.querySelector('#prompt').innerText = `${data.servant2.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills1.name}.`
+      document.querySelector('#prompt').innerText = `${data.servant2.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills2.name}.`
 
 }
-}else if(this.getAttribute("id") == 'skill7'){
-let target = data.servant3.skill.servant[0].skills.skills1.funcTargetType
-effect = data.servant3.skill.servant[0].skills.skills1.funcPopupText
-value = data.servant3.skill.servant[0].skills.skills1.svals[9].Value
+}else if(this.getAttribute("id") == 'skill8'){
+let target = data.servant3.skill.servant[0].skills.skills2.funcTargetType
+effect = data.servant3.skill.servant[0].skills.skills2.funcPopupText
+value = data.servant3.skill.servant[0].skills.skills2.svals[9].Value
 
 
 if(effect.includes('C.') || effect.includes('Star')){
-document.querySelector('#prompt').innerText = `${data.servant3.profile.servant[0].name} used ${data.servant3.skill.servant[0].skills.skills1.name}.`
+document.querySelector('#prompt').innerText = `${data.servant3.profile.servant[0].name} used ${data.servant3.skill.servant[0].skills.skills2.name}.`
 }
 else if(target === 'self'){
   status.setAttribute('src',getUrl(effect,value))
   document.querySelector('#status3').appendChild(status)
-  document.querySelector('#prompt').innerText = `${data.servant3.profile.servant[0].name} used ${data.servant3.skill.servant[0].skills.skills1.name}.`
+  document.querySelector('#prompt').innerText = `${data.servant3.profile.servant[0].name} used ${data.servant3.skill.servant[0].skills.skills2.name}.`
 }
 
 else if(target === 'ptAll'){
-  effect = data.servant3.skill.servant[0].skills.skills1.funcPopupText
-  value = data.servant3.skill.servant[0].skills.skills1.svals[9].Value
+  effect = data.servant3.skill.servant[0].skills.skills2.funcPopupText
+  value = data.servant3.skill.servant[0].skills.skills2.svals[9].Value
   status.setAttribute('src',getUrl(effect,value))
 
   document.querySelector('#buff1').setAttribute('src',getUrl(effect,value))
   document.querySelector('#buff2').setAttribute('src',getUrl(effect,value))
   document.querySelector('#buff3').setAttribute('src',getUrl(effect,value))
-  document.querySelector('#prompt').innerText = `${data.servant3.profile.servant[0].name} used ${data.servant3.skill.servant[0].skills.skills1.name}.`
+  document.querySelector('#prompt').innerText = `${data.servant3.profile.servant[0].name} used ${data.servant3.skill.servant[0].skills.skills2.name}.`
 
 }
 }
@@ -244,23 +244,83 @@ document.querySelector('#skill9').addEventListener('click',getSkill3)
 document.querySelector('#skill6').addEventListener('click',getSkill3)
 
 function getSkill3(){  
-  let target = data.servant3.skill.servant[0].skills.skills3.funcTargetType
-  let effect = data.servant3.skill.servant[0].skills.skills3.funcPopupText
-  let value = data.servant3.skill.servant[0].skills.skills3.svals[9].Value
-  if(target === 'self' && (!effect.includes('C.') || !effect.includes('Star'))){
-    let status = document.createElement('img')
-    status.setAttribute('src',getUrl(effect,value))
-    document.querySelector('#status1').appendChild(status)
-    document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills3.name}.`
-}
- else if(target === 'self'){
-    getUrl(effect,value)
-    document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills3.name}.`
-  } else if(target === 'ptAll'){
-    let status = document.createElement('img')
-   'src',getUrl(effect,value)
-    document.querySelector('#prompt').innerText = `${data.servant.servant[0].name} used ${data.skill.servant[0].skills.skills2.name}.`
+  let status = document.createElement('img')
+
+  if(this.getAttribute("id")=='skill3'){
+    let target = data.servant1.skill.servant[0].skills.skills3.funcTargetType
+    effect = data.servant1.skill.servant[0].skills.skills3.funcPopupText
+    value = data.servant1.skill.servant[0].skills.skills3.svals[9].Value
+
+
+    if(effect.includes('C.') || effect.includes('Star')){
+  document.querySelector('#prompt').innerText = `${data.servant1.profile.servant[0].name} used ${data.servant1.skill.servant[0].skills.skills3.name}.`
+    }
+    else if(target === 'self'){
+      status.setAttribute('src',getUrl(effect,value))
+      document.querySelector('#status1').appendChild(status)
+      document.querySelector('#prompt').innerText = `${data.servant1.profile.servant[0].name} used ${data.servant1.skill.servant[0].skills.skills3.name}.`
+    }
+
+    else if(target === 'ptAll'){
+      effect = data.servant1.skill.servant[0].skills.skills3.funcPopupText
+      value = data.servant1.skill.servant[0].skills.skills3.svals[9].Value
+      document.querySelector('#buff1').setAttribute('src',getUrl(effect,value))
+      document.querySelector('#buff2').setAttribute('src',getUrl(effect,value))
+      document.querySelector('#buff3').setAttribute('src',getUrl(effect,value))
+      document.querySelector('#prompt').innerText = `${data.servant1.profile.servant[0].name} used ${data.servant1.skill.servant[0].skills.skills3.name}.`
+
   }
+}else if(this.getAttribute("id") == 'skill6'){
+    let target = data.servant2.skill.servant[0].skills.skills3.funcTargetType
+    effect = data.servant2.skill.servant[0].skills.skills3.funcPopupText
+    value = data.servant2.skill.servant[0].skills.skills3.svals[9].Value
+
+    
+    if(effect.includes('C.') || effect.includes('Star')){
+  document.querySelector('#prompt').innerText = `${data.servant2.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills3.name}.`
+    }
+    else if(target === 'self'){
+      status.setAttribute('src',getUrl(effect,value))
+      document.querySelector('#status2').appendChild(status)
+      document.querySelector('#prompt').innerText = `${data.servant2.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills3.name}.`
+    }
+
+    else if(target === 'ptAll'){
+      effect = data.servant2.skill.servant[0].skills.skills3.funcPopupText
+      value = data.servant2.skill.servant[0].skills.skills3.svals[9].Value
+      document.querySelector('#buff1').setAttribute('src',getUrl(effect,value))
+      document.querySelector('#buff2').setAttribute('src',getUrl(effect,value))
+      document.querySelector('#buff3').setAttribute('src',getUrl(effect,value))
+      document.querySelector('#prompt').innerText = `${data.servant2.profile.servant[0].name} used ${data.servant2.skill.servant[0].skills.skills3.name}.`
+
+}
+}else if(this.getAttribute("id") == 'skill9'){
+let target = data.servant3.skill.servant[0].skills.skills3.funcTargetType
+effect = data.servant3.skill.servant[0].skills.skills3.funcPopupText
+value = data.servant3.skill.servant[0].skills.skills3.svals[9].Value
+
+
+if(effect.includes('C.') || effect.includes('Star')){
+document.querySelector('#prompt').innerText = `${data.servant3.profile.servant[0].name} used ${data.servant3.skill.servant[0].skills.skills3.name}.`
+}
+else if(target === 'self'){
+  status.setAttribute('src',getUrl(effect,value))
+  document.querySelector('#status3').appendChild(status)
+  document.querySelector('#prompt').innerText = `${data.servant3.profile.servant[0].name} used ${data.servant3.skill.servant[0].skills.skills3.name}.`
+}
+
+else if(target === 'ptAll'){
+  effect = data.servant3.skill.servant[0].skills.skills3.funcPopupText
+  value = data.servant3.skill.servant[0].skills.skills3.svals[9].Value
+  status.setAttribute('src',getUrl(effect,value))
+
+  document.querySelector('#buff1').setAttribute('src',getUrl(effect,value))
+  document.querySelector('#buff2').setAttribute('src',getUrl(effect,value))
+  document.querySelector('#buff3').setAttribute('src',getUrl(effect,value))
+  document.querySelector('#prompt').innerText = `${data.servant3.profile.servant[0].name} used ${data.servant3.skill.servant[0].skills.skills3.name}.`
+
+}
+}
 }
 
 
