@@ -7,7 +7,7 @@ const Character = require('../models/Character')
 const Ascension = require('../models/Ascension')
 const Skill = require('../models/Skill')
 const Team = require('../models/Team')
-
+const ServantFace = require('../models/ServantFace')
 
 module.exports={
     getHome: async(req,res) =>{
@@ -109,14 +109,62 @@ module.exports={
     },
     postServants: async (req,res) =>{
         try{
-            let data = await Servant.find({userId:req.user.id}).lean()
+    let res =  await fetch('https://api.atlasacademy.io/export/JP/nice_servant_lore_lang_en.json')
+        let data = await res.json()
+        for(let i = 0; i < data.length-1 ;i++){
+
+                if(data[i].extraAssets.faces.ascension[1]){
+                    const asc1= await cloudinary.uploader.upload(data[i].extraAssets.faces.ascension[1]);
+                    const asc2= await cloudinary.uploader.upload(data[i].extraAssets.faces.ascension[2]);
+                    const asc3= await cloudinary.uploader.upload(data[i].extraAssets.faces.ascension[3]);
+                    const asc4= await cloudinary.uploader.upload(data[i].extraAssets.faces.ascension[4]);
+
+                    const cmd1= await cloudinary.uploader.upload(data[i].extraAssets.commands.ascension[1]);
+                    const cmd2= await cloudinary.uploader.upload(data[i].extraAssets.commands.ascension[2]);
+                    const cmd3= await cloudinary.uploader.upload(data[i].extraAssets.commands.ascension[3]);
+
+                            req.body.face ={
+                                1: asc1.secure_url,
+                                2: asc2.secure_url,
+                                3: asc3.secure_url,
+                                4: asc4.secure_url,
+                            }
+
+                            req.body.command = {
+                                1: cmd1.secure_url,
+                                2: cmd2.secure_url,
+                                3: cmd3.secure_url,
+                            }
+
+                        req.body.cloudinaryId = {
+                                "face1": asc1.public_id,
+                                "face2": asc2.public_id,
+                                "face3": asc3.public_id,
+                                "face4": asc4.public_id,
+                                "cmd1": cmd1.public_id,
+                                "cmd2": cmd2.public_id,
+                                "cmd3": cmd3.public_id,
+                        }
+
+                        ServantFace.create(req.body)
+
+                }else{
+                  console.log(`${data[i].name} has no pics`)
+                }
+
+
+              }
+
+              res.redirect('/user/servants')
+
+                          // let data = await Servant.find({userId:req.user.id}).lean()
         
-                req.body.servant = data[req.body.index].servant[0]
-                req.body.user = req.user.id
-                await ChooseServant.findOneAndUpdate({servantIndex: req.body.servantIndex})
-                await Character.create(req.body)
-                res.redirect('/user/servants')
-   
+            //     req.body.servant = data[req.body.index].servant[0]
+            //     req.body.user = req.user.id
+            //     await ChooseServant.findOneAndUpdate({servantIndex: req.body.servantIndex})
+            //     await Character.create(req.body)
+            //     res.redirect('/user/servants')
+           
         }
             catch(err){
         console.log(err)

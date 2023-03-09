@@ -1,3 +1,27 @@
+fetch('https://api.atlasacademy.io/export/JP/nice_servant_lore_lang_en.json')
+        .then(res=>res.json())
+        .then(data=>{
+          for(let i = 0; i < data.length-1;i++){
+            if(data[i].extraAssets.faces.ascension[1]){
+              console.log(data[i].name)
+
+              console.log(data[i].extraAssets.faces.ascension[1])
+              console.log(data[i].extraAssets.faces.ascension[2])
+              console.log(data[i].extraAssets.faces.ascension[3])
+              console.log(data[i].extraAssets.faces.ascension[4])
+
+
+              console.log(data[i].extraAssets.commands.ascension[1])
+              console.log(data[i].extraAssets.commands.ascension[2])
+              console.log(data[i].extraAssets.commands.ascension[3])
+            }else{
+              console.log(`${data[i].name} has no pics`)
+            }
+          }
+
+        })
+            
+
 document.querySelector(`.link1`).addEventListener('click',showTab)
 
 

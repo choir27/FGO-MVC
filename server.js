@@ -42,8 +42,8 @@ app.use(express.json())
 //Sessions middleware
 app.use(session({
     secret: 'keyboard cat',
-    resave: false,
-    saveUnitialized: false,
+    resave: true,
+    saveUnitialized: true,
     store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL
     })
     //cookie: { secure: true }
